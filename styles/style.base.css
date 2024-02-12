@@ -1,0 +1,65 @@
+@layer base {
+	:root {
+		--primary-fg: 0deg 0% 100%;
+		--primary-bg: 203deg 23% 76%;
+		--secondary-bg: 203deg 30% 38%;
+
+		--failure-accent: 11deg 83% 77%;
+		--warning-accent: 50deg 83% 77%;
+		--success-accent: 142deg 83% 77%;
+
+		--header-height: 75px;
+		--header-item: 25px;
+		--preview-header-height: 40px;
+		--total-header-height: calc(var(--header-height) + var(--preview-header-height));
+
+		--icon-size: 28px;
+	}
+
+	.clearNight {
+		--primary-fg: 0deg 0% 100%;
+		--primary-bg: 230deg 50% 25%;
+		--secondary-bg: 245deg 49% 15%;
+	}
+
+	.cloudyNight {
+		--primary-fg: 252deg 7% 86%;
+		--primary-bg: 229deg 40% 27%;
+		--secondary-bg: 240deg 8% 9%;
+	}
+
+	.clearDay {
+		--primary-fg: 0deg 0% 100%;
+		--primary-bg: 196deg 25% 75%;
+		--secondary-bg: 197deg 45% 50%;
+	}
+
+	.cloudyDay {
+		--primary-fg: 173deg 10% 96%;
+		--primary-bg: 203deg 23% 76%;
+		--secondary-bg: 203deg 30% 38%;
+	}
+
+	.current {
+		--primary-fg: 0deg 0% 100%;
+	}
+
+	body {
+		@apply font-body text-left text-lg text-fg-primary bg-bg-primary transition-colors duration-300;
+		/* background: linear-gradient(
+				to top,
+				transparent,
+				var(--secondary-bg)
+			)
+			var(--primary-bg);*/
+	}
+	h1, h2, h3, h4, h5, h6 { @apply font-heading text-fg-primary font-bold; }
+	h1 { @apply text-6xl ; }
+	p { @apply mt-2; }
+	a { @apply cursor-pointer transition-opacity duration-300; }
+
+	.main-padding { @apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32; }
+	.separator { @apply before:-z-1 before:absolute before:inset-0 before:border-b-2 before:border-solid before:border-fg-primary before:opacity-60; }
+	.separator-top { @apply before:-z-1 before:absolute before:inset-0 before:border-t-2 before:border-solid before:border-fg-primary before:opacity-60; }
+
+}

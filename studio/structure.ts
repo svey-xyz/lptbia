@@ -1,8 +1,8 @@
 import { MdSettings } from "react-icons/md";
-import { StructureBuilder } from "sanity/desk";
+import { StructureBuilder } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 import { AiFillInfoCircle, AiFillStar } from "react-icons/ai";
-import { types } from "@sanityStudio/schema";
+import { types } from "@/studio/schema";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -24,10 +24,7 @@ export const structure = (S: StructureBuilder) =>
 					S.document().title('Featured Content').schemaType('featuredContent').documentId('featuredContent')
 				),
 				S.divider(),
-				S.documentTypeListItem('artist').title('Artists'),
-				S.documentTypeListItem('artistGroup').title('Artist Groups'),
 				S.documentTypeListItem('sponsor').title('Sponsors'),
-				S.documentTypeListItem('host').title('Hosts'),
 			])
 		),
 		S.documentTypeListItem('taxonomicTerm').title('Taxonomies'),
@@ -36,9 +33,6 @@ export const structure = (S: StructureBuilder) =>
 
 		/** NEWS */
 		S.documentTypeListItem('news'),
-
-		/** PROGRAM */
-		S.documentTypeListItem('program').title('Programs'),
 
 		/** PROJECTS */
 		S.documentTypeListItem('project').title('Projects'),

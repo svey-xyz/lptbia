@@ -1,15 +1,9 @@
 import React from 'react'
 
 const links: Array<{title: string, url: string}> = [
-	{ title: 'Artworks', url: '/projects' },
-	{ title: 'Artists', url: '/artists' },
-	{ title: 'Map', url: '/programming' },
+	{ title: 'Projects', url: '/projects' },
 	{ title: 'News', url: '/news' },
-	{ title: 'About OAM', url: '/about' },
-	{ title: 'Our Partners', url: '/partners' },
-	{ title: 'This Land', url: '/this-land' },
-
-
+	{ title: 'About LPT bIA', url: '/about' },
 ]
 
 function Navigation() {

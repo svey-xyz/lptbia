@@ -1,13 +1,12 @@
 'use client'
 
-import { sanityImage, simpleDocument } from '@lib/data/types'
+import { sanityImage } from '@lib/data/types'
 import React from 'react'
 import { readableDate } from '@lib/readableDate'
-import ImageBuilder from '@/lib/ImageBuilder'
 
 function FeaturedContentCard({ feature }: {
 	feature: {
-		featuredContent: simpleDocument;
+		featuredContent: any;
 		image?: sanityImage;
 	}
 }) {

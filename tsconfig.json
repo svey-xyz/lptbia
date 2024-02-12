@@ -25,9 +25,8 @@
 			"@public/*": ["./public/*"],
 			"@components/*": ["./components/*"],
 			"@lib/*": ["./lib/*"],
-			"@sanityStudio/*": ["./sanityStudio/*"],
-			"@schemas/*": ["./sanityStudio/schemas/*"],
-			"@studio/*": ["./app/(studio)/*"],
+			"@studio/*": ["./studio/*"],
+			"@schemas/*": ["./studio/schemas/*"],
 			"@site/*": ["./app/(site)/*"]
     }
   },

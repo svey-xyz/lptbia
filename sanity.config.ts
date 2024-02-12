@@ -2,23 +2,23 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 import {visionTool} from '@sanity/vision'
-import {deskTool} from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 
 /** PLUGINS */
 import { colorInput } from '@sanity/color-input'
 import { noteField } from 'sanity-plugin-note-field'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from '@sanityStudio/env'
+import { apiVersion, dataset, googleMapsKey, projectId } from '@lib/data/env'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'
-import { structure, schemaOptions, documentOptions } from '@/sanityStudio/structure'
+import { structure, schemaOptions, documentOptions } from '@studio/structure'
 import { googleMapsInput } from '@sanity/google-maps-input'
 import { defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 
-const defaultDesk = deskTool({
+const defaultDesk = structureTool({
 	structure,
 })
 const deskPlugins = [
@@ -30,7 +30,7 @@ const deskPlugins = [
 	noteField(),
 	media(),
 	googleMapsInput({
-		apiKey: 'AIzaSyDKGKJT6WLx22pBmZTH-AqOhQhVLoe3UEY',
+		apiKey: googleMapsKey,
 		defaultZoom: 16,
   	defaultLocale: 'en',
   	defaultLocation: {

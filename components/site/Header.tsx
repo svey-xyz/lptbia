@@ -1,8 +1,7 @@
 import { settings } from '@lib/data/data'
-import { componentParamsType } from '@lib/types'
-import ControlPanelWidget from '@components/site/ControlPanelWidget'
+import ThemeButton from '@/components/site/ThemeButton'
 
-export default function Header({ componentParams }: { componentParams: componentParamsType }) {
+export default function Header({ componentParams }: { componentParams: any }) {
 
 	return (
 		<HeaderWrapper>
@@ -34,7 +33,8 @@ async function SiteHeader() {
 					<a href='/' aria-label='Link to the site home.' className='relative z-10 duration-300 transition-opacity hover:opacity-60'>
 						<h1>{settings.title}</h1>
 					</a>
-					<ControlPanelWidget />
+					<ThemeButton />
+
 				</div>
 			</div>
 		</div>

@@ -42,23 +42,8 @@ export interface locationData extends inherentObjectData {
 	preciseLocation: boolean,
 }
 
-export interface basicDocumentOptionsData extends inherentObjectData {
-	title: string,
-	slug: Slug,
-	published?: boolean,
-	date?: dateData,
-	location?: locationData,
-	tags?: Array<taxonomyData>,
-	links?: Array<any>, // needs type definition
-	socials?: Array<any>, // needs type definition
-	image?: sanityImage,
-	about?: PortableTextBlock,
-}
 
 // DOCUMENT INTERFACES
-export interface simpleDocument extends inherentDocumentData {
-	data: basicDocumentOptionsData
-}
 
 export interface taxonomyData extends inherentDocumentData {
 	termVisibility?: boolean,
@@ -91,40 +76,10 @@ export interface settingsData extends inherentDocumentData {
 }
 
 export interface projectData extends inherentDocumentData {
-	data: basicDocumentOptionsData,
-	sponsors?: Array<sponsorData>,
-	hosts?: Array<any>, // needs type definition
-	artists?: Array<artistData | artistGroupData>,
 	writeup?: PortableTextBlock,
 	credits?: PortableTextBlock,
 	gallery?: Array<sanityImage>,
 	media?: Array<any>, // needs type definition
-}
-
-export interface artistData extends inherentDocumentData {
-	_type: "artist",
-	firstName: string,
-	lastName: string,
-	slug: string,
-	alias?: string,
-	bio?: PortableTextBlock,
-	image?: sanityImage,
-	website?: string,
-	socials?: Array<social>,
-	tags?: Array<taxonomyData>,
-}
-
-export interface artistGroupData extends inherentDocumentData {
-	_type: "artistGroup",
-	name: string,
-	slug: string,
-	alias?: string,
-	artists?: Array<artistData>,
-	bio?: PortableTextBlock,
-	image?: sanityImage,
-	website?: string,
-	socials?: Array<social>,
-	tags?: Array<taxonomyData>,
 }
 
 export interface featuredContentData extends inherentDocumentData {
@@ -135,7 +90,6 @@ export interface featuredContentData extends inherentDocumentData {
 
 export interface newsData extends inherentDocumentData {
 	_type: "news",
-	data: basicDocumentOptionsData,
 	content?: PortableTextBlock,
 	author?: string,
 }

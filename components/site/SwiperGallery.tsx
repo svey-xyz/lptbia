@@ -2,9 +2,9 @@
 
 import { sanityImage } from '@lib/data/types'
 import { Swiper, SwiperSlide } from "swiper/react";
-import ImageBuilder from "@lib/ImageBuilder";
 import React from 'react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
+import Image from '@components/site/Image'
 
 import "swiper/css";
 import 'swiper/css/navigation';
@@ -35,13 +35,10 @@ export default function SwiperGallery({ images, className, slide}: { images: Arr
 					if (!image.imageAsset) return
 					return (
 						<SwiperSlide key={image.imageAsset._id} className=''>
-							<ImageBuilder className='w-auto h-full object-contain flex flex-row items-center justify-center max-h-[95vh] mx-auto max-w-[95vw]'
-								image={image}
-								sizes="(max-height: 1200px) 100vw, (max-width: 1200px) 95vw, 33vw"
-								width={1200}
-								height={1200}
-								loading="lazy"
-							/>
+							<Image image={image} size={{
+								width: 1200, height: 1200,
+								sizes: "(max-height: 1200px) 100vw, (max-width: 1200px) 95vw, 33vw"
+							}} />
 						</SwiperSlide>
 					)
 				})}

@@ -3,6 +3,7 @@
 import { sanityImage } from '@lib/data/types'
 import React from 'react'
 import { readableDate } from '@lib/readableDate'
+import Image from '@components/site/Image'
 
 function FeaturedContentCard({ feature }: {
 	feature: {
@@ -20,12 +21,9 @@ function FeaturedContentCard({ feature }: {
 		<a href={featureLink}
 			className='group relative flex flex-col w-full h-80 min-h-full pb-2 cursor-pointer'>
 			<div className='relative h-full object-contain w-full min-h-[320px]'>
-				{cover && ImageBuilder({
-					image: cover,
-					props: { fill: true },
-					style: { objectFit: 'cover' },
-					sizes: "(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-				})}
+				{ cover &&
+					<Image image={cover} size={{sizes:"(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"}} />
+				}
 			</div>
 			<div className='absolute inset-0 flex flex-row content-between duration-300 bg-gradient-radial from-transparent to-black/60 from-40%'>
 				<div className='relative flex flex-col w-full h-full p-4 justify-between'>

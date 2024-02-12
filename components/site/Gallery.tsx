@@ -1,9 +1,9 @@
 'use client'
 
-import ImageBuilder from '@lib/ImageBuilder';
 import { sanityImage } from '@lib/data/types';
 import SwiperGallery from '@components/site/SwiperGallery'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import Image from '@components/site/Image'
 
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -44,13 +44,7 @@ const Gallery = ({ images, className, lightBox }: { images: Array<sanityImage>, 
 					return(
 					<div key={image.imageAsset._id} className={`${lightBox ? 'cursor-pointer' : '' } w-48 h-48`}
 						onClick={(e) => { if (mounted && lightBox) openLightBox(e, i) }}>
-						<ImageBuilder className='w-full h-full object-cover items-center justify-center'
-							image={image}
-							sizes="(max-height: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-							width={480}
-							height={480}
-							loading="lazy"
-						/>
+						<Image image={image} size={{ width: 480, height: 480, sizes: "(max-height: 480px) 100vw, (max-width: 768px) 50vw, 33vw" }} />
 					</div>)
 				})}
 			</div>

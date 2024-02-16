@@ -9,8 +9,7 @@ import { cookies, draftMode } from 'next/headers';
 // import PreviewProvider from '@components/sanity/PreviewProvider';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
-import { componentParamsType, metadataPropsType, previewType, themeType } from '@/lib/types';
-import { client } from '@/sanityStudio/lib/client';
+import { client } from '@lib/data/client';
 import ThemeHandler from '@components/site/Theme'
 import dynamic from 'next/dynamic';
 import Navigation from '@components/site/Navigation';
@@ -25,10 +24,10 @@ const firaCode = localFont({
 });
 
 export async function generateMetadata(
-	{ params }: metadataPropsType,
+	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const preview: previewType = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
+	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
 
 	const titleTemplate = `${settings.title} | %s`
 
@@ -51,8 +50,8 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	const preview: previewType = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
-	const componentParams: componentParamsType = {
+	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
+	const componentParams = {
 		preview: preview,
 		client: client
 	}

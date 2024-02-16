@@ -22,9 +22,7 @@ export const structure = (S: StructureBuilder) =>
 				),
 				S.listItem().title('Featured Content').icon(AiFillStar).child(
 					S.document().title('Featured Content').schemaType('featuredContent').documentId('featuredContent')
-				),
-				S.divider(),
-				S.documentTypeListItem('sponsor').title('Sponsors'),
+				)
 			])
 		),
 		S.documentTypeListItem('taxonomicTerm').title('Taxonomies'),
@@ -35,7 +33,7 @@ export const structure = (S: StructureBuilder) =>
 		S.documentTypeListItem('news'),
 
 		/** PROJECTS */
-		S.documentTypeListItem('project').title('Projects'),
+		// S.documentTypeListItem('project').title('Projects'),
 	])
 
 export const schemaOptions = {

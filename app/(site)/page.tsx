@@ -5,11 +5,11 @@ import { featuredContent, settings } from "@lib/data/data";
 
 /** Metadata defined in layout for top route page */
 export default async function Home() {
-	const features = featuredContent.frontpageContent
+	const features = featuredContent?.frontpageContent
 
 	// const client = getClient(preview)
-	const featuredText: PortableTextBlock | undefined = featuredContent.frontpageText?.textContent ?? settings.landAcknowledgement
-	const featuredLink: string = featuredContent.frontpageText?.link ?? '/this-land'
+	const featuredText: PortableTextBlock | undefined = featuredContent?.frontpageText?.textContent ?? settings.landAcknowledgement
+	const featuredLink: string = featuredContent?.frontpageText?.link ?? '/this-land'
 
 	return (
 		<div className="relative flex flex-col main-padding">

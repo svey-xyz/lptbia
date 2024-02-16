@@ -1,22 +1,23 @@
 /**
  * Objects
  */
-import { social } from '@/studio/schemas/objects/social'
-import { link } from '@/studio/schemas/objects/link'
-import { basicDate } from '@/studio/schemas/objects/basicDate'
-import { location } from '@/studio/schemas/objects/location'
+import { social } from '@schemas/objects/social'
+import { link } from '@schemas/objects/link'
+import { basicDate } from '@schemas/objects/basicDate'
+import { location } from '@schemas/objects/location'
+import { basicBlockContent, extraBlockContent } from '@schemas/objects/blockContent'
 
-const _objects = [social, link, basicDate, location]
+const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent]
 
 /**
  * Documents
  */
-import { sponsor } from '@/studio/schemas/documents/sponsor'
-import { news } from '@/studio/schemas/documents/news'
-import { project } from '@/studio/schemas/documents/project'
-import { taxonomicTerm } from '@/studio/schemas/documents/taxonomy'
-import { siteSettings } from '@/studio/schemas/settings/siteSettings'
-import { featuredContent } from '@/studio/schemas/settings/featuredContent'
+import { sponsor } from '@schemas/documents/sponsor'
+import { news } from '@schemas/documents/news'
+import { project } from '@schemas/documents/project'
+import { taxonomicTerm } from '@schemas/documents/taxonomy'
+import { siteSettings } from '@schemas/settings/siteSettings'
+import { featuredContent } from '@schemas/settings/featuredContent'
 
 const _documents = [project, sponsor, news, taxonomicTerm, siteSettings, featuredContent]
 

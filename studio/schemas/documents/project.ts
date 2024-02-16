@@ -1,11 +1,12 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
-import { basicDocumentConstructor } from "@/sanityStudio/lib/basicDocumentConstructor";
 
 import { BsFillBookmarkFill } from 'react-icons/bs'
 
-export const project = basicDocumentConstructor({
+export const project = defineType({
 	name: 'project',
-	contentFields:[
+	title: 'Project',
+	type: 'document',
+	fields:[
 		defineField({
 			title: 'Sponsor(s)',
 			name: 'sponsors',
@@ -14,28 +15,6 @@ export const project = basicDocumentConstructor({
 				defineArrayMember({
 					type: 'reference',
 					to: [{ type: 'sponsor' }]
-				})
-			],
-		}),
-		defineField({
-			title: 'Host(s)',
-			name: 'hosts',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'reference',
-					to: [{ type: 'host' }]
-				})
-			],
-		}),
-		defineField({
-			title: 'Artist(s)',
-			name: 'artists',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'reference',
-					to: [{ type: 'artist' }, { type: 'artistGroup' }]
 				})
 			],
 		}),
@@ -60,12 +39,6 @@ export const project = basicDocumentConstructor({
 					type: 'image'
 				})
 			]
-		}),
-		defineField({
-			title: 'AR Project',
-			name: 'arProject',
-			type: 'url',
-			description: 'A link to the 8th wall project.'
 		}),
 		defineField({
 			title: 'Additional Media',

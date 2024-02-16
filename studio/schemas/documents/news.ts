@@ -1,11 +1,14 @@
-import { defineField } from "sanity";
+import { defineField, defineType } from "sanity";
 
 import { ImNewspaper } from 'react-icons/im';
-import { basicDocumentConstructor } from "@/sanityStudio/lib/basicDocumentConstructor";
+import { options } from '@studio/schemas/objects/options'
 
-export const news = basicDocumentConstructor({
+export const news = defineType({
 	name:'news',
-	contentFields:[
+	type:'document',
+
+	fields:[
+		options,
 		defineField({
 			title: 'Content',
 			name: 'content',

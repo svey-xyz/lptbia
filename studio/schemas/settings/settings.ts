@@ -3,8 +3,9 @@ import {
 	defineField,
 	defineType,
 } from "sanity";
+import { mediaAssetSource } from "sanity-plugin-media";
 
-export const siteSettings = defineType({
+export const settings = defineType({
 	title: 'Settings',
 	name: 'siteSettings',
 	type: 'document',
@@ -14,6 +15,30 @@ export const siteSettings = defineType({
 			name: 'title',
 			type: 'string',
 			validation: Rule => Rule.required().error(`This site needs a fun name!`)
+		}),
+		defineField({
+			title: 'Logo',
+			name: 'logo',
+			type: 'image',
+			description: 'Featured image.',
+			options: {
+				sources: [mediaAssetSource]
+			},
+			preview: {
+				select: {
+					asset: 'asset',
+					title: 'asset.title',
+					description: 'asset.description'
+
+				},
+				prepare(value: any) {
+					return {
+						title: value.title ? value.title : 'Untitled Image',
+						subtitle: value.description,
+						media: value.asset
+					}
+				}
+			},
 		}),
 		defineField({
 			title: 'Blurb',

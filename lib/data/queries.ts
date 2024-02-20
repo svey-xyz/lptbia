@@ -2,7 +2,13 @@ import { groq } from "next-sanity";
 
 /** QUERIES */
 export const settingsQuery: string = groq`
-	*[_id == "siteSettings"][0]
+	*[_id == "siteSettings"][0] {
+		...,
+		logo {
+			...,
+			"imageAsset":asset->,
+		},
+	}
 `
 export const featuredQuery: string = groq`
 	*[_id == "featuredContent"] {

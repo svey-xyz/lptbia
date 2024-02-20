@@ -8,7 +8,7 @@ import {
 } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
 
-export const featuredContent = defineType({
+export const features = defineType({
 	title: 'Featured Content',
 	name: 'featuredContent',
 	type: 'document',

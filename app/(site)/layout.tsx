@@ -6,14 +6,11 @@ import { Inter } from 'next/font/google'
 import Head from '@site/head'
 import { cookies, draftMode } from 'next/headers';
 
-// import PreviewProvider from '@components/sanity/PreviewProvider';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { client } from '@lib/data/client';
-import ThemeHandler from '@components/site/Theme'
 import dynamic from 'next/dynamic';
-import Navigation from '@components/site/Navigation';
-import { settings } from '@/lib/data/data';
+import { settings } from '@lib/data/data';
 
 const PreviewProvider = dynamic(() => import('@components/site/PreviewProvider'))
 
@@ -27,10 +24,7 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
-
 	const titleTemplate = `${settings.title} | %s`
-
 	return {
 		title: {
 			template: titleTemplate,
@@ -65,20 +59,17 @@ export default async function RootLayout({
 	return (
 		<html lang="en" className={documentClasses} suppressHydrationWarning>
 			<Head />
-			<body className='relative min-h-screen overflow-x-hidden bg-gradient-to-b from-bg-primary to-bg-secondary from-10% to-80% duration-300 transition-all'>
-				<ThemeHandler>
-					<Header componentParams={componentParams} />
-					<main className='pb-24 min-h-full'>
-						{ (preview && preview.token) ? (
-							<PreviewProvider token={preview.token}>
-								{children}
-							</PreviewProvider>
-						) : (
-							children
-						)}
-						<Navigation />
-					</main>
-				</ThemeHandler>
+			<body className='relative min-h-screen overflow-x-hidden'>
+				<Header componentParams={componentParams} />
+				<main className='pb-24 min-h-full'>
+					{ (preview && preview.token) ? (
+						<PreviewProvider token={preview.token}>
+							{children}
+						</PreviewProvider>
+					) : (
+						children
+					)}
+				</main>
 				<Analytics />
 			</body>
 		</html>

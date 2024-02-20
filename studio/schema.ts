@@ -16,9 +16,9 @@ import { sponsor } from '@schemas/documents/sponsor'
 import { news } from '@schemas/documents/news'
 import { project } from '@schemas/documents/project'
 import { taxonomicTerm } from '@schemas/documents/taxonomy'
-import { siteSettings } from '@schemas/settings/siteSettings'
-import { featuredContent } from '@schemas/settings/featuredContent'
+import { settings } from '@schemas/settings/settings'
+import { features } from '@schemas/settings/features'
 
-const _documents = [project, sponsor, news, taxonomicTerm, siteSettings, featuredContent]
+const _documents = [project, sponsor, news, taxonomicTerm, settings, features]
 
 export const types = [..._objects, ..._documents];

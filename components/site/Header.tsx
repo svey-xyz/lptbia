@@ -1,8 +1,7 @@
 import { settings } from '@lib/data/data'
-import ThemeButton from '@/components/site/ThemeButton'
+import Image from '@components/site/Image'
 
-export default function Header({ componentParams }: { componentParams: any }) {
-
+const Header = ({ componentParams }: { componentParams: any }) => {
 	return (
 		<HeaderWrapper>
 			{(componentParams.preview && componentParams.preview.token) ? (
@@ -17,7 +16,7 @@ export default function Header({ componentParams }: { componentParams: any }) {
 	)
 }
 
-function HeaderWrapper({ children }: { children: React.ReactNode }) {
+const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<header className='relative top-0 left-0 right-0 max-w-screen h-fit'>
 			{children}
@@ -25,30 +24,32 @@ function HeaderWrapper({ children }: { children: React.ReactNode }) {
 	)
 }
 
-async function SiteHeader() {
+const SiteHeader = () => {
 	return (
-		<div className="relative h-full flex flex-col items-center justify-center pt-8 md:pt-16 lg:pt-20">
+		<div className="relative h-full flex flex-col items-center justify-center bg-bg shadow-sm">
 			<div className="relative main-padding">
-				<div className='relative separator flex flex-col md:flex-row justify-between pb-4 gap-4'>
-					<a href='/' aria-label='Link to the site home.' className='relative z-10 duration-300 transition-opacity hover:opacity-60'>
-						<h1>{settings.title}</h1>
+				<div className='relative flex flex-row justify-between gap-4 my-4'>
+					<a href='/' aria-label='Link to the site home.' className='relative z-10'>
+						{ settings.logo &&
+							<Image image={settings.logo} size={{ width: 165, height: 100, sizes: "(max-width: 244px) 20vw, (max-width: 244px) 20vw, 20vw" }} />
+						}
 					</a>
-					<ThemeButton />
-
 				</div>
 			</div>
 		</div>
 	)
 }
 
-function PreviewHeader() {
+const PreviewHeader = () => {
 	return (
-		<div className="relative h-[--preview-header-height] flex items-center justify-center z-50 bg-fg-primary/20">
+		<div className="relative h-[--preview-header-height] flex items-center justify-center z-50 bg-accent">
 			<div className="main-padding m-auto flex flex-row">
-				<span className="w-full text-center">
+				<span className="w-full text-center text-bg">
 					You&apos;re viewing the site in preview mode! To view published content click <a href="/api/exit-preview" className="underline">here</a>.
 				</span>
 			</div>
 		</div>
 	)
 }
+
+export default Header

@@ -1,8 +1,10 @@
 @layer base {
 	:root {
-		--primary-fg: 0deg 0% 100%;
-		--primary-bg: 203deg 23% 76%;
-		--secondary-bg: 203deg 30% 38%;
+		--primary-fg: 0deg 0% 0%;
+		--primary-bg: 32deg 88% 97%;
+
+		--primary-accent: 354deg 73% 43%;
+		--secondary-accent: 169deg 71% 41%;
 
 		--failure-accent: 11deg 83% 77%;
 		--warning-accent: 50deg 83% 77%;

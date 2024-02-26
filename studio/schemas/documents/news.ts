@@ -1,13 +1,11 @@
 import { defineField, defineType } from "sanity";
 
 import { ImNewspaper } from 'react-icons/im';
-import { options } from '@studio/schemas/objects/options'
 
 export const news = defineType({
 	name:'news',
 	type:'document',
 	fields:[
-		options,
 		defineField({
 			title: 'Content',
 			name: 'content',

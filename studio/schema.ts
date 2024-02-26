@@ -1,3 +1,5 @@
+import Business from '@schemas/documents/businesses'
+
 /**
  * Objects
  */
@@ -6,19 +8,19 @@ import { link } from '@schemas/objects/link'
 import { basicDate } from '@schemas/objects/basicDate'
 import { location } from '@schemas/objects/location'
 import { basicBlockContent, extraBlockContent } from '@schemas/objects/blockContent'
+import { taxonomy } from '@schemas/objects/taxonomy'
 
-const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent]
+
+const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent, taxonomy, Business.taxonomy, Business.warning]
 
 /**
  * Documents
  */
-import { sponsor } from '@schemas/documents/sponsor'
 import { news } from '@schemas/documents/news'
 import { project } from '@schemas/documents/project'
-import { taxonomicTerm } from '@schemas/documents/taxonomy'
 import { settings } from '@schemas/settings/settings'
 import { features } from '@schemas/settings/features'
 
-const _documents = [project, sponsor, news, taxonomicTerm, settings, features]
+const _documents = [project, news, settings, features, Business.business]
 
 export const types = [..._objects, ..._documents];

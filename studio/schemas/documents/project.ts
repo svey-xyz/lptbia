@@ -8,17 +8,6 @@ export const project = defineType({
 	type: 'document',
 	fields:[
 		defineField({
-			title: 'Sponsor(s)',
-			name: 'sponsors',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'reference',
-					to: [{ type: 'sponsor' }]
-				})
-			],
-		}),
-		defineField({
 			title: 'Write-up',
 			name: 'writeup',
 			type: 'basicBlockContent',

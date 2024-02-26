@@ -2,7 +2,10 @@ import { MdSettings } from "react-icons/md";
 import { StructureBuilder } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 import { AiFillInfoCircle, AiFillStar } from "react-icons/ai";
+import { IoStorefront, IoWarning } from "react-icons/io5";
+
 import { types } from "@/studio/schema";
+import { FaTag } from "react-icons/fa6";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -25,12 +28,22 @@ export const structure = (S: StructureBuilder) =>
 				)
 			])
 		),
-		S.documentTypeListItem('taxonomicTerm').title('Taxonomies'),
 
 		S.divider(),
 
-		/** NEWS */
+
 		S.documentTypeListItem('news'),
+		S.listItem().title('Businesses').icon(IoStorefront).child(
+			S.list().title('Businesses').items([ 
+				S.documentTypeListItem('business').title('Business Directory').icon(IoStorefront),
+				S.documentTypeListItem('businessTaxonomy').title('Business Taxonomies').icon(FaTag),
+				S.documentTypeListItem('businessWarning').title('Business Warnings').icon(IoWarning),
+
+
+			]),
+		),
+
+
 
 		/** PROJECTS */
 		// S.documentTypeListItem('project').title('Projects'),

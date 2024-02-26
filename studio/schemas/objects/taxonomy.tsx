@@ -10,10 +10,10 @@ function skosSectionLink(sec: string, text: string) {
 const taxonomicTermDescription =
 	<span>Terms aim to apply to {skosSectionLink('', 'SKOS guidelines')} but are adapted to fit the requirements of this project.</span>
 
-export const taxonomicTerm = defineType({
+export const taxonomy = defineType({
 	title: 'Term',
-	name: 'taxonomicTerm',
-	type: 'document',
+	name: 'taxonomy',
+	type: 'object',
 	icon: FaTag,
 	description: taxonomicTermDescription,
 	fieldsets: [
@@ -54,30 +54,6 @@ export const taxonomicTerm = defineType({
 			type: 'string',
 			fieldset: 'options',
 			description: skosSectionLink('secdocumentation', 'The description supplies a complete explanation of the term.')
-		}),
-		defineField({
-			name: 'related',
-			title: 'Related Terms',
-			type: 'reference',
-			to: [{ type: 'taxonomicTerm' }],
-			fieldset: 'relational',
-			description: skosSectionLink('secassociative', 'Related terms that are not broader or narrower.'),
-		}),
-		defineField({
-			name: 'broader',
-			title: 'Broader Terms',
-			type: 'reference',
-			to: [{ type: 'taxonomicTerm' }],
-			fieldset: 'relational',
-			description: skosSectionLink('sechierarchy', 'More general terms.'),
-		}),
-		defineField({
-			name: 'narrower',
-			title: 'Narrower Terms',
-			type: 'reference',
-			to: [{ type: 'taxonomicTerm' }],
-			fieldset: 'relational',
-			description: skosSectionLink('sechierarchy', 'More specific terms.'),
 		}),
 	],
 	preview: {

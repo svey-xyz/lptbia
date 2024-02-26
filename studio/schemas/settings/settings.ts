@@ -95,17 +95,6 @@ export const settings = defineType({
 			description: 'A short blurb'
 		}),
 		defineField({
-			title: 'Partners',
-			name: 'partners',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'reference',
-					to: [{ type: 'sponsor' }]
-				})
-			]
-		}),
-		defineField({
 			title: 'Location',
 			name: 'location',
 			type: 'geopoint',

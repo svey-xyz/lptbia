@@ -6,29 +6,61 @@ export const location = defineType({
 	name: 'location',
 	icon: MdLocationPin,
 	type: 'object',
+	options: {
+		collapsible: true, collapsed: true,
+	},
 	fields: [
+		defineField({
+			title: 'Address Number',
+			name: 'addressNumber',
+			type: 'number',
+		}),
+		defineField({
+			title: 'Street Name',
+			name: 'streetName',
+			type: 'string',
+		}),
+		defineField({
+			title: 'Unit',
+			name: 'unit',
+			type: 'string',
+		}),
 		defineField({
 			title: 'Location',
 			name: 'location',
 			type: 'geopoint',
 		}),
 		defineField({
-			title: 'Address',
-			name: 'address',
+			title: 'Load in Street',
+			name: 'loadStreet',
 			type: 'string',
-			description: 'Street number and name. Do not enter postal code or province.',
 		}),
 		defineField({
 			title: 'Notes',
 			name: 'notes',
 			type: 'string',
-			description: 'Notes about the location; may include information such as the placement.',
 		}),
 		defineField({
 			title: 'Precise Location',
 			name: 'preciseLocation',
 			type: 'boolean',
 			description: 'When set to true the precise location will be displayed.'
+		}),
+		defineField({
+			title: 'Zone',
+			name: 'zone',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Zone 6 - PURPLE', value: '6' },
+					{ title: 'Zone 5 - ORANGE', value: '5' },
+					{ title: 'Zone 4 - BLUE', value: '4' },
+					{ title: 'Zone 3 - YELLOW', value: '3' },
+					{ title: 'Zone 2 - GREEN', value: '2' },
+					{ title: 'Zone 1 - PINK', value: '1' },
+					{ title: 'Out of closure', value: '0' },
+				],
+			},
 		}),
 	],
 	preview: {

@@ -1,16 +1,5 @@
-import { defineField, defineType } from "sanity";
-
+import constructors from "@studio/lib/constructors"
 import { IoWarning } from "react-icons/io5";
 
-export const warning = defineType({
-	name: 'businessWarning',
-	type: 'document',
-	fields: [
-		defineField({
-			title: 'Term',
-			name: 'term',
-			type: 'taxonomy',
-		}),
-	],
-	icon: IoWarning
-})
+
+export const warning = constructors.taxonomy({ name: 'businessWarning', icon: IoWarning })

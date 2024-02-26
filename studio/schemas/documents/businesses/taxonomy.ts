@@ -2,15 +2,14 @@ import { defineField, defineType } from "sanity";
 
 import { mediaAssetSource } from "sanity-plugin-media";
 import { FaTag } from "react-icons/fa6";
+import constructors from "@studio/lib/constructors"
 
-export const taxonomy = defineType({
-	name: 'businessTaxonomy',
-	type: 'document',
-	fields: [
+const fields = [
 		defineField({
 			title: 'Icon',
 			name: 'icon',
 			type: 'image',
+			description: 'Displayed in the frontend.',
 			options: {
 				sources: [mediaAssetSource],
 				accept: '.svg',
@@ -31,11 +30,6 @@ export const taxonomy = defineType({
 				}
 			},
 		}),
-		defineField({
-			title: 'Term',
-			name: 'term',
-			type: 'taxonomy',
-		}),
-	],
-	icon: FaTag
-})
+	]
+
+export const taxonomy = constructors.taxonomy({ name: 'businessTaxonomy', fields, icon: FaTag })

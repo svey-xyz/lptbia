@@ -6,6 +6,7 @@ import { IoStorefront, IoWarning } from "react-icons/io5";
 
 import { types } from "@/studio/schema";
 import { FaTag } from "react-icons/fa6";
+import { BsFillBookmarkFill } from "react-icons/bs";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -25,8 +26,13 @@ export const structure = (S: StructureBuilder) =>
 				),
 				S.listItem().title('Featured Content').icon(AiFillStar).child(
 					S.document().title('Featured Content').schemaType('featuredContent').documentId('featuredContent')
-				)
-			])
+				),
+
+				S.divider(),
+
+				S.documentTypeListItem('sponsor').title('Sponsors'),
+
+			]),
 		),
 
 		S.divider(),
@@ -38,8 +44,12 @@ export const structure = (S: StructureBuilder) =>
 				S.documentTypeListItem('business').title('Business Directory').icon(IoStorefront),
 				S.documentTypeListItem('businessTaxonomy').title('Business Taxonomies').icon(FaTag),
 				S.documentTypeListItem('businessWarning').title('Business Warnings').icon(IoWarning),
-
-
+			]),
+		),
+		S.listItem().title('Projects').icon(BsFillBookmarkFill).child(
+			S.list().title('Projects').items([
+				S.documentTypeListItem('project').title('Projects Archive').icon(BsFillBookmarkFill),
+				S.documentTypeListItem('projectTaxonomy').title('Project Taxonomies').icon(FaTag),
 			]),
 		),
 

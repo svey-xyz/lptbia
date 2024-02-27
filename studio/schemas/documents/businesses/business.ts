@@ -45,6 +45,7 @@ export const business = defineType({
 			title: 'Logo',
 			name: 'logo',
 			type: 'image',
+			group: 'about',
 			options: {
 				sources: [mediaAssetSource],
 			},

@@ -72,16 +72,13 @@ export const settings = defineType({
 			name: 'socials',
 			type: 'array',
 			of: [
-				defineArrayMember({
-					type: 'social',
-				})
+				defineArrayMember({ type: 'social', }),
 			],
 		}),
 		defineField({
 			title: 'About',
 			name: 'about',
 			type: 'extraBlockContent',
-			description: 'A full write-up about the OAM; displayed on the website.',
 		}),
 		defineField({
 			title: 'Land Acknowledgement',
@@ -89,15 +86,45 @@ export const settings = defineType({
 			type: 'extraBlockContent',
 		}),
 		defineField({
-			title: 'Land Acknowledgement Blurb',
-			name: 'landAcknowledgementBlurb',
-			type: 'string',
-			description: 'A short blurb'
-		}),
-		defineField({
 			title: 'Location',
 			name: 'location',
 			type: 'geopoint',
+		}),
+		defineField({
+			title: 'Directors',
+			name: 'directors',
+			type: 'array',
+			of: [
+				defineArrayMember({
+					type: 'object',
+					name: 'director',
+					fields: [
+						defineField({
+							title: 'Name',
+							name: 'name',
+							type: 'string',
+						}),
+						defineField({
+							title: 'Position',
+							name: 'position',
+							type: 'string',
+						}),
+						defineField({
+							name: 'business',
+							title: 'Business',
+							type: 'reference',
+							to: [ { type:'business', } ],
+							options: {
+								disableNew: true,
+							},
+						}),
+						defineField({
+							name: 'contact',
+							type: 'contact',
+						}),
+					]
+				}),
+			]
 		}),
 	],
 	preview: {

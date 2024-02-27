@@ -42,6 +42,14 @@ export const business = defineType({
 			group: 'about',
 		}),
 		defineField({
+			title: 'Published',
+			name: 'published',
+			type: 'boolean',
+			initialValue: false,
+			description: 'Published documents are visible on the website.',
+			group: 'about',
+		}),
+		defineField({
 			title: 'Logo',
 			name: 'logo',
 			type: 'image',
@@ -98,40 +106,15 @@ export const business = defineType({
 		/** CONTACT */
 
 		defineField({
-			title: 'Website',
-			name: 'website',
-			type: 'url',
-			group: 'contact',
-		}),
-		defineField({
-			title: 'Socials',
-			name: 'socials',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'social',
-				})
-			],
-			group: 'contact',
-		}),
-		defineField({
 			title: 'Contact Name',
 			name: 'contactName',
 			type: 'string',
 			group: 'contact',
 		}),
 		defineField({
-			title: 'Email',
-			name: 'email',
-			type: 'string',
-			validation: Rule => Rule.email(),
-			group: 'contact',
-		}),
-		defineField({
-			title: 'Phone',
-			name: 'phone',
-			type: 'string',
-			validation: Rule => Rule.regex(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, {name:'phone number'}),
+			title: 'Contact',
+			name: 'contact',
+			type: 'contact',
 			group: 'contact',
 		}),
 
@@ -168,6 +151,12 @@ export const business = defineType({
 			name: 'warnings',
 			type: 'array',
 			of: [{ type: 'businessWarning' }],
+			group: 'notes',
+		}),
+		defineField({
+			title: 'Notes',
+			name: 'notes',
+			type: 'text',
 			group: 'notes',
 		}),
 	],

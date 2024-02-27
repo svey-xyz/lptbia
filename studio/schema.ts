@@ -19,7 +19,8 @@ import { news } from '@schemas/documents/news'
 import { settings } from '@schemas/settings/settings'
 import { features } from '@schemas/settings/features'
 import { sponsor } from '@schemas/documents/sponsor'
+import { contact } from '@schemas/objects/contact'
 
-const _documents = [PROJECTS.project, news, settings, sponsor, features, BUSINESS.business]
+const _documents = [PROJECTS.project, news, settings, sponsor, features, contact, BUSINESS.business]
 
 export const types = [..._objects, ..._documents];

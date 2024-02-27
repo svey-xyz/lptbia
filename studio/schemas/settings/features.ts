@@ -15,12 +15,12 @@ export const features = defineType({
 	icon: AiFillStar,
 	fields: [
 		defineField({
-			title: 'Front Page Text',
-			name: 'frontpageText',
+			title: 'Front Page Feature',
+			name: 'frontpageFeature',
 			type: 'object',
 			fields: [
 				defineField({
-					type: 'basicBlockContent',
+					type: 'extraBlockContent',
 					name: 'textContent',
 					title: 'Text Content'
 				}),
@@ -28,79 +28,37 @@ export const features = defineType({
 					title: 'Link',
 					name: 'link',
 					type: 'url'
-				})
-			]
-		}),
-		defineField({
-			title: 'Front Page Content',
-			name: 'frontpageContent',
-			type: 'array',
-			validation: (Rule) => Rule.max(2),
-			of: [
-				defineArrayMember({
-					title: 'Featured Item',
-					name: 'featuredItem',
-					type: 'object',
-					fields: [
-						defineField({
-							title: 'Featured Content',
-							name: 'featuredContent',
-							type: 'reference',
-							to: [
-								{ type: 'project' },
-								{ type: 'news' },
-							],
-							options: {
-								disableNew: true,
-							},
-						}),
-						defineField({
-							title: 'Image',
-							name: 'image',
-							type: 'image',
-							description: 'Featured image.',
-							options: {
-								sources: [mediaAssetSource]
-							},
-							preview: {
-								select: {
-									asset: 'asset',
-									title: 'asset.title',
-									description: 'asset.description'
-
-								},
-								prepare(value: any) {
-									return {
-										title: value.title ? value.title : 'Untitled Image',
-										subtitle: value.description,
-										media: value.asset
-									}
-								}
-							},
-						}),
-					],
+				}),
+				defineField({
+					title: 'Image',
+					name: 'image',
+					type: 'image',
+					description: 'Featured image.',
+					options: {
+						sources: [mediaAssetSource],
+					},
 					preview: {
 						select: {
-							title: 'featuredContent.basicDocumentOptions.title',
-							image: 'featuredContent.basicDocumentOptions.image',
-							type: 'featuredContent._type'
+							asset: 'asset',
+							title: 'asset.title',
+							description: 'asset.description'
+
 						},
 						prepare(value: any) {
-							const docType = value.type.charAt(0).toUpperCase() + value.type.slice(1);
 							return {
-								title: `${docType}: ${value.title}`,
-								media: value.image ? value.image.asset : value.image ? value.image : AiFillStar
+								title: value.title ? value.title : 'Untitled Image',
+								subtitle: value.description,
+								media: value.asset
 							}
 						}
-					}
+					},
 				}),
-			]
+			],
 		}),
 		defineField({
 			title: 'News',
 			name: 'news',
 			type: 'array',
-			validation: (Rule) => Rule.max(2),
 			of: [
 				defineArrayMember({
 					title: 'Featured Item',
@@ -156,7 +114,22 @@ export const features = defineType({
 						}
 					}
 				}),
-			]
+				
+			],
+		}),
+		defineField({
+			name: 'businessTaxonomies',
+			title: 'Featured Business Types',
+			type: 'array',
+			
+			of: [
+				defineArrayMember({
+					type: 'businessTaxonomy',
+					options: {
+						disableNew: true,
+					},
+				}),
+			],
 		}),
 	],
 	preview: {

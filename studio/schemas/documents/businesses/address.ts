@@ -5,10 +5,17 @@
 
 import { defineType, defineField } from "sanity";
 
-import { FaCircleInfo, FaStore, FaSignsPost } from "react-icons/fa6";
+import { FaCircleInfo, FaStore, FaSignsPost, FaBandage } from "react-icons/fa6";
 import { GiStreetLight } from "react-icons/gi";
 import { CgReadme } from "react-icons/cg";
 import { readableAddress } from "@/lib/readableAddress";
+
+const healthOptions = [
+	{ title: 'Good', value: 'good' },
+	{ title: 'Needs Repairs', value: 'repairs' },
+	{ title: 'On-Going Construction', value: 'construction' },
+
+]
 
 export const address = defineType({
 	name: 'address',
@@ -25,6 +32,11 @@ export const address = defineType({
 			name: 'street',
 			title: 'Street',
 			icon: GiStreetLight,
+		},
+		{
+			name: 'health',
+			title: 'Health',
+			icon: FaBandage,
 		},
 	],
 	fields: [
@@ -72,24 +84,13 @@ export const address = defineType({
 			group: 'about',
 		}),
 		defineField({
-			title: 'Health',
-			name: 'health',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Needs Repairs', value: 'repairs' },
-					{ title: 'Good', value: 'good' },
-				],
-			},
-			initialValue: 'good',
-			group: 'about',
-		}),
-		defineField({
 			title: 'Notes',
-			name: 'addressNotes',
+			name: 'notes',
 			type: 'text',
 			group: 'about',
 		}),
+
+		/** AMENITIES */
 		
 		defineField({
 			title: 'Street Fields Information',
@@ -114,22 +115,60 @@ export const address = defineType({
 			group: 'street',
 		}),
 		defineField({
-			title: 'TTC',
-			name: 'ttc',
+			title: 'Bus Shelter',
+			name: 'shelter',
 			type: 'boolean',
 			group: 'street',
 		}),
 		defineField({
-			title: 'Construction',
-			name: 'construction',
+			title: 'Waste Bins',
+			name: 'bins',
 			type: 'boolean',
 			group: 'street',
 		}),
 		defineField({
-			title: 'Notes',
-			name: 'streetNotes',
-			type: 'text',
+			title: 'TTC Poles/Hydro',
+			name: 'poles',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Hydro', value: 'hydro' },
+					{ title: 'TTC Poles', value: 'ttc' },
+				]
+			},
 			group: 'street',
+		}),
+
+		/** HEALTH */
+		defineField({
+			title: 'Property Health',
+			name: 'propertyHealth',
+			type: 'string',
+			options: {
+				list: healthOptions,
+			},
+			initialValue: 'good',
+			group: 'health',
+		}),
+		defineField({
+			title: 'Sidewalk Health',
+			name: 'sidewalkHealth',
+			type: 'string',
+			options: {
+				list: healthOptions,
+			},
+			initialValue: 'good',
+			group: 'health',
+		}),
+		defineField({
+			title: 'Street Health',
+			name: 'streetHealth',
+			type: 'string',
+			options: {
+				list: healthOptions,
+			},
+			initialValue: 'good',
+			group: 'health',
 		}),
 		
 	],

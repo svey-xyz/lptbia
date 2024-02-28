@@ -35,14 +35,8 @@ export const business = defineType({
 		/** ABOUT */
 
 		defineField({
-			title: 'Member Name',
-			name: 'memberName',
-			type: 'string',
-			group: 'about',
-		}),
-		defineField({
-			title: 'Vendor Name',
-			name: 'vendorName',
+			title: 'Name',
+			name: 'name',
 			type: 'string',
 			group: 'about',
 		}),
@@ -86,77 +80,49 @@ export const business = defineType({
 			group: 'about',
 		}),
 		defineField({
-			title: 'Activation Type',
-			name: 'activationType',
+			title: 'Taxonomies',
+			name: 'taxonomies',
 			type: 'array',
 			of: [{ type:'businessTaxonomy'}],
 			group: 'about',
 		}),
 		defineField({
-			title: 'Food spot',
-			name: 'foodSpot',
-			type: 'array',
-			description: 'Leave both un-selected if business is not a food spot.',
-			of: [{ type: 'string' }],
-			options: {
-				list: [
-					{ title: 'To Go', value: 'toGo' },
-					{ title: 'Dine In', value: 'dineIn' },
-				],
-				
-				layout: 'grid',
-			},
+			title: 'Description',
+			name: 'description',
+			type: 'basicBlockContent',
 			group: 'about',
 		}),
 
 		/** CONTACT */
 
 		defineField({
-			title: 'Contact Name',
-			name: 'contactName',
-			type: 'string',
-			group: 'contact',
-		}),
-		defineField({
-			title: 'Contact',
-			name: 'contact',
+			title: 'Public Contact',
+			name: 'publicContact',
 			type: 'contact',
 			group: 'contact',
+			description: 'This information may be displayed publicly'
+		}),
+		defineField({
+			title: 'Internal Contacts',
+			name: 'internalContacts',
+			type: 'array',
+			of: [defineArrayMember({type:'contact'})],
+			group: 'contact',
+			description: 'This information is for internal use only'
 		}),
 
 		/** NOTES */
 
 		defineField({
-			title: 'Outreach Notes',
-			name: 'outreachNotes',
-			type: 'text',
-			group: 'notes',
-		}),
-		defineField({
-			title: 'CafeTO Notes',
-			name: 'cafeTONotes',
-			type: 'text',
+			title: 'LastSaturday',
+			name: 'lastSaturday',
+			type: 'boolean',
 			group: 'notes',
 		}),
 		defineField({
 			title: 'CafeTO',
 			name: 'cafeTO',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Yes', value: 'yes' },
-					{ title: 'No', value: 'no' },
-					{ title: 'Blocked', value: 'blocked' },
-					{ title: 'Partially Blocked', value: 'partially' },
-				],
-			},
-			group: 'notes',
-		}),
-		defineField({
-			title: 'Warnings',
-			name: 'warnings',
-			type: 'array',
-			of: [{ type: 'businessWarning' }],
+			type: 'boolean',
 			group: 'notes',
 		}),
 		defineField({
@@ -168,14 +134,13 @@ export const business = defineType({
 	],
 	preview: {
 		select: {
-			memberName: 'memberName',
-			vendorName: 'vendorName',
+			name: 'name',
 			logo: 'logo',
 		},
 		prepare(value: any) {
-			const {memberName, vendorName, logo} = value
+			const {name, logo} = value
 			return {
-				title: memberName ? memberName : vendorName ? vendorName : 'Untitled Business',
+				title: name ? name : 'Untitled Business',
 				media: logo ? logo : FaStore,
 			}
 		},

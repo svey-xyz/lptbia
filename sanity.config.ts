@@ -30,7 +30,7 @@ const deskPlugins = [
 	noteField(),
 	media(),
 	googleMapsInput({
-		apiKey: googleMapsKey,
+		apiKey: "AIzaSyDKGKJT6WLx22pBmZTH-AqOhQhVLoe3UEY",
 		defaultZoom: 16,
   	defaultLocale: 'en',
   	defaultLocation: {

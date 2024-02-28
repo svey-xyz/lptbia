@@ -41,9 +41,9 @@ export const structure = (S: StructureBuilder) =>
 		S.documentTypeListItem('news'),
 		S.listItem().title('Businesses').icon(IoStorefront).child(
 			S.list().title('Businesses').items([ 
-				S.documentTypeListItem('business').title('Business Directory').icon(IoStorefront),
-				S.documentTypeListItem('businessTaxonomy').title('Business Taxonomies').icon(FaTag),
-				S.documentTypeListItem('businessWarning').title('Business Warnings').icon(IoWarning),
+				S.documentTypeListItem('business').title('Business Directory'),
+				S.documentTypeListItem('address').title('Addresses'),
+				S.documentTypeListItem('businessTaxonomy').title('Business Taxonomies'),
 			]),
 		),
 		S.listItem().title('Projects').icon(BsFillBookmarkFill).child(

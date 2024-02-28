@@ -32,14 +32,21 @@ export interface dateData extends inherentObjectData {
 	endDate?: string,
 }
 
-export interface locationData extends inherentObjectData {
-	location: {
+export interface location extends inherentObjectData {
+	location?: {
 		lng: number,
 		lat: number,
 	},
-	address: string,
+	unit?: string,
+	number?: number,
+	street?: string,
+	notes?: string,
+	preciseLocation?: boolean,
+}
+
+export interface address extends inherentObjectData {
+	location?: location,
 	notes: string,
-	preciseLocation: boolean,
 }
 
 

@@ -1,3 +1,8 @@
+// address as separate document
+// spreadsheet
+// filter
+// archive businesses - status
+
 import { defineType, defineField, defineArrayMember } from "sanity";
 
 import { FaCircleInfo, FaIdCard, FaStore, FaNoteSticky } from "react-icons/fa6";
@@ -74,9 +79,10 @@ export const business = defineType({
 			},
 		}),
 		defineField({
-			title: 'Location',
-			name: 'location',
-			type: 'location',
+			title: 'Address',
+			name: 'address',
+			type: 'reference',
+			to: [{type:'address'}],
 			group: 'about',
 		}),
 		defineField({
@@ -174,4 +180,5 @@ export const business = defineType({
 			}
 		},
 	},
+	icon: FaStore,
 })

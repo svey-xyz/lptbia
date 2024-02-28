@@ -8,9 +8,10 @@ import { social } from '@schemas/objects/social'
 import { link } from '@schemas/objects/link'
 import { basicDate } from '@schemas/objects/basicDate'
 import { location } from '@schemas/objects/location'
+
 import { basicBlockContent, extraBlockContent } from '@schemas/objects/blockContent'
 
-const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent, BUSINESS.taxonomy, BUSINESS.warning, PROJECTS.taxonomy]
+const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent]
 
 /**
  * Documents
@@ -21,6 +22,6 @@ import { features } from '@schemas/settings/features'
 import { sponsor } from '@schemas/documents/sponsor'
 import { contact } from '@schemas/objects/contact'
 
-const _documents = [PROJECTS.project, news, settings, sponsor, features, contact, BUSINESS.business]
+const _documents = [news, settings, sponsor, features, contact]
 
-export const types = [..._objects, ..._documents];
+export const types = [..._objects, ..._documents, ...PROJECTS, ...BUSINESS];

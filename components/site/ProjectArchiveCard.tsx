@@ -6,7 +6,7 @@ import Image from '@components/site/Image'
 export default function ProjectArchiveCard({project, filtered = true}:{project:projectData, filtered: boolean}) {
 	return (
 		<div className={`${filtered ? 'block' : "hidden"} relative flex flex-col`}>
-			<a href={`/projects/${project.data.slug.current}`} aria-label={`Link to project: ${project.data.title}`}
+			{/* <a href={`/projects/${project.data.slug.current}`} aria-label={`Link to project: ${project.data.title}`}
 				className={`group relative flex flex-col w-full cursor-pointer `}>
 				<div className='relative h-80 object-contain w-full min-h-[320px] mb-1'>
 					{ project.data.image?.imageAsset && 
@@ -21,7 +21,7 @@ export default function ProjectArchiveCard({project, filtered = true}:{project:p
 				<span className="text-xl font-bold leading-tight group-hover:opacity-75">
 					{project.data.title}
 				</span>
-			</a>
+			</a> */}
 		</div>
 		
 	)

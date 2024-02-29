@@ -41,11 +41,11 @@ export const business = defineType({
 			group: 'about',
 		}),
 		defineField({
-			title: 'Published',
-			name: 'published',
+			title: 'Active',
+			name: 'active',
 			type: 'boolean',
 			initialValue: false,
-			description: 'Published documents are visible on the website.',
+			description: 'Set to false to archive the business.',
 			group: 'about',
 		}),
 		defineField({
@@ -109,6 +109,12 @@ export const business = defineType({
 			of: [defineArrayMember({type:'contact'})],
 			group: 'contact',
 			description: 'This information is for internal use only'
+		}),
+		defineField({
+			title: 'Name',
+			name: 'contactName',
+			type: 'string',
+			description: 'Internal contact person.',
 		}),
 
 		/** NOTES */

@@ -19,18 +19,18 @@ export default function ProjectsArchive({projects}:{projects:Array<projectData>}
 	const [filteredTagPrefLabel, setFilteredTagPrefLabel] = useState<string>(allTag.prefLabel)
 	const allTagRef = useRef<HTMLInputElement>(null)
 
-	let tags: Array<taxonomyData> = []
-	let tagNames: Array<string> = []
-	projects.forEach(project => {
-		if (!project.data.tags) project.data.tags = []
-		project.data.tags?.unshift(allTag) // TODO all tag gets added every re-render but is being filtered out by code below, it should only be added once
-		project.data.tags?.forEach((tag: taxonomyData) => {
-			if (tagNames.indexOf(tag.prefLabel) == -1 && tag.termVisibility) {
-				tags.push(tag)
-				tagNames.push(tag.prefLabel)
-			}
-		});
-	});
+	// let tags: Array<taxonomyData> = []
+	// let tagNames: Array<string> = []
+	// projects.forEach(project => {
+	// 	if (!project.data.tags) project.data.tags = []
+	// 	project.data.tags?.unshift(allTag) // TODO all tag gets added every re-render but is being filtered out by code below, it should only be added once
+	// 	project.data.tags?.forEach((tag: taxonomyData) => {
+	// 		if (tagNames.indexOf(tag.prefLabel) == -1 && tag.termVisibility) {
+	// 			tags.push(tag)
+	// 			tagNames.push(tag.prefLabel)
+	// 		}
+	// 	});
+	// });
 
 	useEffect(()=> {
 		allTagRef.current ? allTagRef.current.checked = true : null
@@ -46,7 +46,7 @@ export default function ProjectsArchive({projects}:{projects:Array<projectData>}
 				<span className="relative text-6xl font-bold mt-4 mb-6 pb-2 separator">Artworks</span>
 
 				<fieldset className="flex flex-row gap-4">
-					{(tags &&
+					{/* {(tags &&
 						tags.map((tag) => {
 							return (
 								<div key={tag._id} className="group relative flex cursor-pointer w-auto px-4 flex-col items-center justify-center py-2">
@@ -60,11 +60,11 @@ export default function ProjectsArchive({projects}:{projects:Array<projectData>}
 								</div>
 							)
 						})
-					)}
+					)} */}
 				</fieldset>
 			</div>
 			<div className="relative grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pb-4 separator">
-				{(projects &&
+				{/* {(projects &&
 					projects.map((project) => {
 						let tagInFilter: boolean = false;
 						project.data.tags?.forEach((tag: taxonomyData) => {
@@ -74,7 +74,7 @@ export default function ProjectsArchive({projects}:{projects:Array<projectData>}
 							<ProjectArchiveCard key={project._id} project={project} filtered={tagInFilter} />
 						)
 					})
-				)}
+				)} */}
 			</div>
 		</div>
 	)

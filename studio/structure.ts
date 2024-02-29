@@ -5,8 +5,9 @@ import { AiFillInfoCircle, AiFillStar } from "react-icons/ai";
 import { IoStorefront, IoWarning } from "react-icons/io5";
 
 import { types } from "@/studio/schema";
-import { FaTag } from "react-icons/fa6";
+import { FaSignsPost, FaTag } from "react-icons/fa6";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import DocumentsPane from 'sanity-plugin-documents-pane'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -41,10 +42,35 @@ export const structure = (S: StructureBuilder) =>
 		S.documentTypeListItem('news'),
 		S.listItem().title('Businesses').icon(IoStorefront).child(
 			S.list().title('Businesses').items([ 
-				S.documentTypeListItem('business').title('Business Directory'),
-				S.documentTypeListItem('address').title('Addresses'),
-				S.documentTypeListItem('businessTaxonomy').title('Business Taxonomies'),
+				S.documentTypeListItem('businessTaxonomy').title('Taxonomies'),
+				S.divider(),
+				S.documentTypeListItem('business').title('Directory'),
+				S.listItem().title('Addresses').icon(FaSignsPost).child(
+					S.documentTypeList('address')
+						.child(id =>
+							S.document()
+								.schemaType('address')
+								.documentId(id)
+								.views([
+									// The default form for editing a document
+									S.view
+										.form(),
+									S.view
+										.component(DocumentsPane)
+										.options({
+											query: `*[references($id)]`,
+											params: { id: `_id` },
+											options: { perspective: 'previewDrafts' },
+											useDraft: true,
+										})
+										.title('Businesses at this address')
+								])
+						)
+				),
+				
 			]),
+			
+			
 		),
 		S.listItem().title('Projects').icon(BsFillBookmarkFill).child(
 			S.list().title('Projects').items([
@@ -58,6 +84,7 @@ export const structure = (S: StructureBuilder) =>
 		/** PROJECTS */
 		// S.documentTypeListItem('project').title('Projects'),
 	])
+	
 
 export const schemaOptions = {
 	types: types,

@@ -90,7 +90,7 @@ export const address = defineType({
 			group: 'about',
 		}),
 
-		/** AMENITIES */
+		/** STREET */
 		
 		defineField({
 			title: 'Street Fields Information',
@@ -101,6 +101,7 @@ export const address = defineType({
 				icon: CgReadme,
 				tone: 'primary',
 			},
+			group: 'street',
 		}),
 		defineField({
 			title: 'Planters',
@@ -136,6 +137,24 @@ export const address = defineType({
 					{ title: 'TTC Poles', value: 'ttc' },
 				]
 			},
+			group: 'street',
+		}),
+		defineField({
+			title: 'Active Mural',
+			name: 'murals',
+			type: 'boolean',
+			group: 'street',
+		}),
+		defineField({
+			title: 'Mural Space Available',
+			name: 'muralSpace',
+			type: 'boolean',
+			group: 'street',
+		}),
+		defineField({
+			title: 'Frontage Meters',
+			name: 'frontage',
+			type: 'number',
 			group: 'street',
 		}),
 

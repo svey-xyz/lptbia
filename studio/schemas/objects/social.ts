@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 import { HiAtSymbol } from 'react-icons/hi';
 
 const socialTypes = [
-	{ title: 'Twitter', value: 'twitter' },
+	{ title: 'Twitter / X', value: 'twitter' },
 	{ title: 'Instagram', value: 'instagram' },
 	{ title: 'Facebook', value: 'facebook' },
 	{ title: 'Vimeo', value: 'vimeo' },

@@ -56,6 +56,12 @@ export const features = defineType({
 			],
 		}),
 		defineField({
+			title: 'Video',
+			name: 'video',
+			type: 'url',
+			description: 'Video displayed on the landing page.',
+		}),
+		defineField({
 			title: 'News',
 			name: 'news',
 			type: 'array',

@@ -72,6 +72,7 @@ export interface sponsorData extends inherentDocumentData {
 export interface settingsData extends inherentDocumentData {
 	title: string,
 	logo?: sanityImage,
+	motto?: string,
 	blurb?: string,
 	keywords?: Array<string>,
 	contactEmail?: string,

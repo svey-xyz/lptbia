@@ -47,6 +47,11 @@ export const settings = defineType({
 			description: 'Concise description of the site, used primarily for SEO and metadata.',
 		}),
 		defineField({
+			title: 'Motto',
+			name: 'motto',
+			type: 'string',
+		}),
+		defineField({
 			title: 'Keywords',
 			name: 'keywords',
 			type: 'array',

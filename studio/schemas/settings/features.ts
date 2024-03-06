@@ -130,7 +130,8 @@ export const features = defineType({
 			
 			of: [
 				defineArrayMember({
-					type: 'businessTaxonomy',
+					type: 'reference',
+					to: { type: 'businessTaxonomy' },
 					options: {
 						disableNew: true,
 					},

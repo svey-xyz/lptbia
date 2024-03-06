@@ -17,6 +17,7 @@ import { structure, schemaOptions, documentOptions } from '@studio/structure'
 import { googleMapsInput } from '@sanity/google-maps-input'
 import { defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
+import { iconify } from 'sanity-plugin-iconify';
 
 const defaultDesk = structureTool({
 	structure,
@@ -38,6 +39,17 @@ const deskPlugins = [
 			lng: -79.42172173646215,
 		}
 	}),
+	iconify({
+		// Optional configuration
+
+		// Filter icons by collection for all Icon fields (this field has typed autocomplete ✨)
+		// Defaults to empty array (all collections)
+		// collections: ['fa-brands', 'mdi'],
+
+		// Shows the selected icon name and collection underneath the icon picker
+		// Defaults to false
+		showName: false,
+	})
 ]
 
 

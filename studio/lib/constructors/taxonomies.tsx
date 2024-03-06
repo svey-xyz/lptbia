@@ -2,6 +2,7 @@ import { camelCaseToWords } from "../../../lib/stringFunctions";
 import { FieldDefinition, defineField, defineType } from "sanity";
 import { IconType } from "react-icons";
 import React from "react";
+import { Icon } from '@iconify/react';
 
 const skosPrimerURL: string = "https://www.w3.org/TR/2009/NOTE-skos-primer-20090818"
 function skosSectionLink(sec: string, text: string) {
@@ -113,12 +114,14 @@ export function taxonomy(args: { name: string, fields?: fields, icon?: IconType 
 			select: {
 				prefLabel: 'prefLabel',
 				description: 'definition',
+				icon: 'icon',
 			},
 			prepare(value: any) {
+				console.log(value.icon)
 				return {
 					title: value.prefLabel,
 					description: value.description,
-					media: icon
+					media: value.icon ? <Icon icon={value.icon.name as string} /> : icon,
 				}
 			}
 		},

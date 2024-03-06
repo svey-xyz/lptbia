@@ -61,7 +61,7 @@ export default async function RootLayout({
 			<Head />
 			<body className='relative min-h-screen overflow-x-hidden'>
 				<Header componentParams={componentParams} />
-				<main className='pb-24 min-h-full'>
+				<main className='min-h-full'>
 					{ (preview && preview.token) ? (
 						<PreviewProvider token={preview.token}>
 							{children}

@@ -2,6 +2,7 @@
 	:root {
 		--primary-fg: 0deg 0% 0%;
 		--primary-bg: 32deg 88% 97%;
+		--secondary-bg: 343deg 82% 15%;
 
 		--primary-accent: 354deg 73% 43%;
 		--secondary-accent: 169deg 71% 41%;
@@ -16,34 +17,6 @@
 		--total-header-height: calc(var(--header-height) + var(--preview-header-height));
 
 		--icon-size: 28px;
-	}
-
-	.clearNight {
-		--primary-fg: 0deg 0% 100%;
-		--primary-bg: 230deg 50% 25%;
-		--secondary-bg: 245deg 49% 15%;
-	}
-
-	.cloudyNight {
-		--primary-fg: 252deg 7% 86%;
-		--primary-bg: 229deg 40% 27%;
-		--secondary-bg: 240deg 8% 9%;
-	}
-
-	.clearDay {
-		--primary-fg: 0deg 0% 100%;
-		--primary-bg: 196deg 25% 75%;
-		--secondary-bg: 197deg 45% 50%;
-	}
-
-	.cloudyDay {
-		--primary-fg: 173deg 10% 96%;
-		--primary-bg: 203deg 23% 76%;
-		--secondary-bg: 203deg 30% 38%;
-	}
-
-	.current {
-		--primary-fg: 0deg 0% 100%;
 	}
 
 	body {

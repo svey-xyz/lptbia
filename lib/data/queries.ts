@@ -13,11 +13,8 @@ export const settingsQuery: string = groq`
 export const featuredQuery: string = groq`
 	*[_id == "featuredContent"] {
 		...,
-		frontpageContent[]{
+		frontpageFeature{
 			...,
-			featuredContent-> {
-				...,
-			},
 			image {
 				...,
 			"imageAsset":asset->
@@ -33,6 +30,7 @@ export const featuredQuery: string = groq`
 				},
 			}
 		},
+		businessTaxonomies[]->
 	}[0]
 `
 export const projectQuery = groq`

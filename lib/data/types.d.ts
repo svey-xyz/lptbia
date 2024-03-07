@@ -20,7 +20,7 @@ export interface sanityImage extends Image {
 }
 
 export interface socialData extends inherentObjectData {
-	socialType: string,
+	socialType: 'twitter' | 'instagram' | 'facebook' | 'vimeo' | 'linkedin' | 'github',
 	socialTitle: string,
 	url: string,
 }
@@ -49,6 +49,11 @@ export interface address extends inherentObjectData {
 	notes: string,
 }
 
+export interface icon {
+	_type: 'icon',
+	name: string,
+}
+
 
 // DOCUMENT INTERFACES
 
@@ -59,6 +64,10 @@ export interface taxonomyData extends inherentDocumentData {
 	related?: Array<taxonomyData>,
 	broader?: Array<taxonomyData>,
 	narrower?: Array<taxonomyData>,
+}
+
+export interface businessTaxonomyData extends taxonomyData {
+	icon: icon,
 }
 
 export interface sponsorData extends inherentDocumentData {
@@ -92,9 +101,10 @@ export interface projectData extends inherentDocumentData {
 }
 
 export interface featuredContentData extends inherentDocumentData {
-	frontpageContent?: Array<{ featuredContent: simpleDocument, image?: sanityImage }>,
-	frontpageText?: { textContent: PortableTextBlock, link: string },
-	news?: Array<{ featuredContent: newsData, image?: sanityImage }>
+	frontpageFeature?: { textContent: PortableTextBlock, link: string, image: sanityImage, },
+	video?: string,
+	news?: Array<{ featuredContent: newsData, image?: sanityImage }>,
+	businessTaxonomies?: Array<businessTaxonomyData>,
 }
 
 export interface newsData extends inherentDocumentData {
@@ -103,8 +113,3 @@ export interface newsData extends inherentDocumentData {
 	author?: string,
 }
 
-export interface social {
-	socialTitle: string,
-	socialType: 'twitter' | 'instagram' | 'facebook' | 'vimeo' | 'linkedin' | 'github',
-	url: string,
-}

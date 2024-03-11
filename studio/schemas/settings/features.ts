@@ -27,7 +27,7 @@ export const features = defineType({
 				defineField({
 					title: 'Link',
 					name: 'link',
-					type: 'url'
+					type: 'link',
 				}),
 				defineField({
 					title: 'Image',

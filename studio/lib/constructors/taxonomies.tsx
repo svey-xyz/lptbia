@@ -117,7 +117,6 @@ export function taxonomy(args: { name: string, fields?: fields, icon?: IconType 
 				icon: 'icon',
 			},
 			prepare(value: any) {
-				console.log(value.icon)
 				return {
 					title: value.prefLabel,
 					description: value.description,

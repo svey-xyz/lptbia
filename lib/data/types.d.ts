@@ -44,6 +44,12 @@ export interface location extends inherentObjectData {
 	preciseLocation?: boolean,
 }
 
+export interface link extends inherentObjectData {
+	text: string,
+	type: 'internal' | 'external' | undefined,
+	link: string,
+}
+
 export interface address extends inherentObjectData {
 	location?: location,
 	notes: string,
@@ -52,6 +58,12 @@ export interface address extends inherentObjectData {
 export interface icon {
 	_type: 'icon',
 	name: string,
+}
+
+export interface frontpageFeature extends inherentObjectData {
+	textContent: PortableTextBlock,
+	link: link,
+	image: sanityImage,
 }
 
 
@@ -101,7 +113,7 @@ export interface projectData extends inherentDocumentData {
 }
 
 export interface featuredContentData extends inherentDocumentData {
-	frontpageFeature?: { textContent: PortableTextBlock, link: string, image: sanityImage, },
+	frontpageFeature?: frontpageFeature,
 	video?: string,
 	news?: Array<{ featuredContent: newsData, image?: sanityImage }>,
 	businessTaxonomies?: Array<businessTaxonomyData>,

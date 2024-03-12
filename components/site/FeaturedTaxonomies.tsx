@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react';
 
 const FeaturedTaxonomies = ({ taxonomies } : { taxonomies: Array<businessTaxonomyData> }) => {
 	return (
-		<div className="relative flex flex-row flex-wrap">
+		<div className="relative flex-row flex-wrap inline-flex justify-center">
 			{taxonomies.map((tax, i, arr) => {
 				const brightness = 100 - (i * 10)
 

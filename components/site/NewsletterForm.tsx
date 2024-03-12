@@ -32,6 +32,7 @@ const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string
 			<label
 				className='text-bg font-bold text-sm'
 				htmlFor={`email-field-${uuid}`}
+				hidden={true}
 			>
 				Email
 			</label>

@@ -9,9 +9,9 @@ const Feature = ({feature}:{feature:frontpageFeature}) => {
 		<div 
 			className="relative overflow-hidden flex flex-col justify-center
 			after:bg-accent-secondary after:inset-0 after:absolute after:-z-1">
-			<div className="relative flex main-padding z-10 md:items-center flex-col md:flex-row gap-6 py-8">
+			<div className="relative flex main-padding z-10 md:items-center flex-col md:flex-row gap-12 py-8">
 				
-				<div className='relative flex flex-col font-semibold text-3xl text-bg gap-8 md:max-w-[50%]'>
+				<div className='relative flex flex-col font-semibold text-3xl text-bg gap-6 md:max-w-[50%]'>
 					<TextBlock text={feature.textContent} />
 					{ feature.link &&
 						<a

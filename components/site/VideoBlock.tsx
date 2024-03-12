@@ -10,7 +10,7 @@ const VideoBlock = ({source, children}:{source: string, children?:ReactElement})
 					<source src={source} type="video/mp4" />
 				</video>
 			</div>
-			<div className="absolute w-full min-w-full h-full top-0 left-0 bg-bg-secondary/65" />
+			<div className="absolute w-full min-w-full h-full top-0 left-0 bg-bg-secondary opacity-65" />
 			<div className="relative items-center flex main-padding z-10">
 				{ children }
 			</div>

@@ -22,16 +22,15 @@ const Feature = ({feature}:{feature:frontpageFeature}) => {
 						</a>
 					}
 				</div>
-					<Image
-						image={feature.image}
-						size={{
-							width: 1200, height: 1200,
-							sizes: "(max-width: 1200px) 60vw, (max-width: 1200px) 50vw, 50vw",
-						}}
-						className='h-auto w-full'
-					/>
+				<Image
+					image={feature.image}
+					size={{
+						width: 1200, height: 1200,
+						sizes: "(max-width: 1200px) 60vw, (max-width: 1200px) 50vw, 50vw",
+					}}
+					className='h-auto w-full'
+				/>
 				
-
 			</div>
 		</div>
 	);

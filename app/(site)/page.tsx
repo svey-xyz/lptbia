@@ -3,6 +3,8 @@ import Image from '@components/site/Image'
 import VideoBlock from '@components/site/VideoBlock'
 import FeaturedTaxonomies from '@components/site/FeaturedTaxonomies';
 import Feature from '@components/site/Feature'
+import NewsletterForm from '@components/site/NewsletterForm'
+
 
 export default async function Home() {
 
@@ -23,7 +25,22 @@ export default async function Home() {
 			{ featuredContent.frontpageFeature &&
 				<Feature feature={featuredContent.frontpageFeature}/>
 			}
-
+			<div className="flex flex-col bg-accent">
+				<div className="main-padding py-12 flex flex-col gap-4">
+					<span className="text-bg flex flex-col items-center text-center">
+						<span className="text-2xl font-semibold">
+							Subscribe to our newsletter.
+						</span>
+						<span>
+							Sign up with your email address to receive news and updates.
+						</span>
+					</span>
+					<NewsletterForm stacked={true} className="px-0 md:px-20 lg:px-24"/>
+					<span className="text-bg flex flex-col items-center text-center">
+						We do not share our mailing list.
+					</span>
+				</div>
+			</div>
 		</div>
 	)
 }

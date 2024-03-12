@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const NewsletterForm = ({stacked}:{stacked?:boolean}) => {
+const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string}) => {
+	const uuid = uuidv4();
+
 	const [email, setEmail] = useState<string>('')
 	const [error, setError] = useState<boolean>(false)
 
@@ -22,20 +25,34 @@ const NewsletterForm = ({stacked}:{stacked?:boolean}) => {
 		}
 	}
 	return (
-		<div className={`${ stacked ? 'flex-col' : 'flex-row' } flex relative w-full gap-4`}>
+		<form
+			name='newsletter'
+			method='post'
+			className={`${ className } ${ stacked ? 'flex-col' : 'flex-row items-center' } flex relative w-full gap-4`}>
+			<label
+				className='text-bg font-bold text-sm'
+				htmlFor={`email-field-${uuid}`}
+			>
+				Email
+			</label>
 			<input
-				className={`bg-bg py-1 px-3 text-fg outline-none focus:outline focus:outline-1 focus:outline-accent w-full`}
-				type="text"
+				id={`email-field-${uuid}`}
+				type='email'
+				name='email'
+				required={true}
+				className={`bg-bg py-1 px-3 text-fg outline-none focus:outline focus:outline-1 focus:outline-accent-secondary w-full`}
 				placeholder="Email"
 				value={email}
 				onChange={e => { handleChange(e.target.value); }}
 			/>
 			<button
-				className='bg-accent py-1 px-10 text-bg hover:bg-accent-secondary transition-colors duration-300'
-				onClick={() => { handleSubmit(); }}>
+				className='bg-accent-secondary py-1 px-10 text-bg hover:bg-accent-secondary/80 transition-colors duration-300'
+				onClick={() => { handleSubmit(); }}
+				type='submit'
+			>
 				Submit
 			</button>
-		</div>
+		</form>
 	);
 };
 

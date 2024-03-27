@@ -11,7 +11,7 @@
 		--warning-accent: 50deg 83% 77%;
 		--success-accent: 142deg 83% 77%;
 
-		--header-height: 75px;
+		--header-height: 100px;
 		--header-item: 25px;
 		--preview-header-height: 40px;
 		--total-header-height: calc(var(--header-height) + var(--preview-header-height));

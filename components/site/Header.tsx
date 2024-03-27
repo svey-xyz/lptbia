@@ -18,7 +18,7 @@ const Header = ({ componentParams }: { componentParams: any }) => {
 
 const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<header className='fixed top-0 left-0 right-0 max-w-screen h-fit z-50'>
+		<header className='relative top-0 left-0 right-0 max-w-screen h-fit z-50'>
 			{children}
 		</header>
 	)
@@ -26,7 +26,7 @@ const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
 
 const SiteHeader = () => {
 	return (
-		<div className="relative h-full flex flex-col items-center justify-center bg-bg shadow-md">
+		<div className="relative h-full flex flex-col items-center justify-center">
 			<div className="relative main-padding">
 				<div className='relative flex flex-row justify-between gap-4 my-4'>
 					<a href='/' aria-label='Link to the site home.' className='relative z-10'>

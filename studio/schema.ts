@@ -1,5 +1,6 @@
 import BUSINESS from '@schemas/documents/businesses'
 import PROJECTS from '@schemas/documents/projects'
+import NEWS from '@schemas/documents/news'
 
 /**
  * Objects
@@ -16,12 +17,11 @@ const _objects = [social, link, basicDate, location, basicBlockContent, extraBlo
 /**
  * Documents
  */
-import { news } from '@schemas/documents/news'
 import { settings } from '@schemas/settings/settings'
 import { features } from '@schemas/settings/features'
 import { sponsor } from '@schemas/documents/sponsor'
 import { contact } from '@schemas/objects/contact'
 
-const _documents = [news, settings, sponsor, features, contact]
+const _documents = [settings, sponsor, features, contact]
 
-export const types = [..._objects, ..._documents, ...PROJECTS, ...BUSINESS];
+export const types = [..._objects, ..._documents, ...PROJECTS, ...BUSINESS, ...NEWS];

@@ -8,6 +8,7 @@ import { types } from "@/studio/schema";
 import { FaSignsPost, FaTag } from "react-icons/fa6";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import DocumentsPane from 'sanity-plugin-documents-pane'
+import { ImNewspaper } from "react-icons/im";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -38,8 +39,14 @@ export const structure = (S: StructureBuilder) =>
 
 		S.divider(),
 
+		S.listItem().title('News').icon(ImNewspaper).child(
+			S.list().title('News').items([
+				S.documentTypeListItem('newsTaxonomy').title('News Taxonomies').icon(FaTag),
+				S.divider(),
 
-		S.documentTypeListItem('news'),
+				S.documentTypeListItem('news').title('News').icon(BsFillBookmarkFill),
+			]),
+		),
 		S.listItem().title('Businesses').icon(IoStorefront).child(
 			S.list().title('Businesses').items([ 
 				S.documentTypeListItem('businessTaxonomy').title('Taxonomies'),
@@ -74,8 +81,10 @@ export const structure = (S: StructureBuilder) =>
 		),
 		S.listItem().title('Projects').icon(BsFillBookmarkFill).child(
 			S.list().title('Projects').items([
-				S.documentTypeListItem('project').title('Projects Archive').icon(BsFillBookmarkFill),
 				S.documentTypeListItem('projectTaxonomy').title('Project Taxonomies').icon(FaTag),
+				S.divider(),
+
+				S.documentTypeListItem('project').title('Projects Archive').icon(BsFillBookmarkFill),
 			]),
 		),
 

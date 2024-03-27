@@ -15,7 +15,7 @@ import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'
 import { structure, schemaOptions, documentOptions } from '@studio/structure'
 import { googleMapsInput } from '@sanity/google-maps-input'
-import { defineConfig } from 'sanity'
+import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 
@@ -50,7 +50,7 @@ const deskPlugins = [
 		// Defaults to false
 		showName: false,
 	})
-]
+] as PluginOptions[]
 
 
 const config = defineConfig({

@@ -2,9 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { suspend } from "suspend-react";
-import LiveQueryProvider from "@sanity/preview-kit";
+// import LiveQueryProvider from "@sanity/preview-kit";
 
-// const LiveQueryProvider = dynamic(() => import("next-sanity/preview"));
+const LiveQueryProvider = dynamic(() => import("next-sanity/preview"));
 const UniqueKey = Symbol("@lib/data/client");
 
 export default function PreviewProvider({

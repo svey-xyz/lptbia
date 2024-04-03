@@ -61,6 +61,7 @@ export interface icon {
 }
 
 export interface frontpageFeature extends inherentObjectData {
+	title: string,
 	textContent: PortableTextBlock,
 	link: link,
 	image: sanityImage,
@@ -114,6 +115,7 @@ export interface projectData extends inherentDocumentData {
 
 export interface featuredContentData extends inherentDocumentData {
 	frontpageFeature?: frontpageFeature,
+	heroImages?: Array<sanityImage>,
 	video?: string,
 	news?: Array<{ featuredContent: newsData, image?: sanityImage }>,
 	businessTaxonomies?: Array<businessTaxonomyData>,

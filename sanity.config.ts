@@ -16,7 +16,7 @@ import StudioLogo from '@components/studio/StudioLogo'
 import { structure, schemaOptions, documentOptions } from '@studio/structure'
 import { googleMapsInput } from '@sanity/google-maps-input'
 import { PluginOptions, defineConfig } from 'sanity'
-import { media } from 'sanity-plugin-media'
+import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 
 const defaultDesk = structureTool({
@@ -24,9 +24,6 @@ const defaultDesk = structureTool({
 })
 const deskPlugins = [
 	defaultDesk,
-	visionTool({
-		defaultApiVersion: apiVersion
-	}),
 	colorInput(),
 	noteField(),
 	media(),
@@ -69,6 +66,13 @@ const config = defineConfig({
 			navbar: StudioHeader
 		}
 	},
+	// form: {
+	// 	image: {
+	// 		assetSources: () => [mediaAssetSource],
+	// 		directUploads: true,
+	// 	},
+	// },
+
 	theme: studioTheme
 })
 export default config;

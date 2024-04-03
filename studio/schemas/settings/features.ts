@@ -20,6 +20,11 @@ export const features = defineType({
 			type: 'object',
 			fields: [
 				defineField({
+					type: 'string',
+					name: 'title',
+					title: 'Title',
+				}),
+				defineField({
 					type: 'extraBlockContent',
 					name: 'textContent',
 					title: 'Text Content'
@@ -54,6 +59,37 @@ export const features = defineType({
 					},
 				}),
 			],
+		}),
+		defineField({
+			title: 'Hero Images',
+			name: 'heroImages',
+			type: 'array',
+			of: [
+				defineArrayMember({
+					title: 'Image',
+					name: 'image',
+					type: 'image',
+					description: 'Hero image.',
+					options: {
+						sources: [mediaAssetSource],
+					},
+					preview: {
+						select: {
+							asset: 'asset',
+							title: 'asset.title',
+							description: 'asset.description'
+
+						},
+						prepare(value: any) {
+							return {
+								title: value.title ? value.title : 'Untitled Image',
+								subtitle: value.description,
+								media: value.asset
+							}
+						}
+					},
+				}),
+			]
 		}),
 		defineField({
 			title: 'Video',

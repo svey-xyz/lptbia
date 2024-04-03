@@ -20,6 +20,10 @@ export const featuredQuery: string = groq`
 			"imageAsset":asset->
 			}
 		},
+		heroImages[]{
+			...,
+			"imageAsset":asset->
+		},
 		news[] {
 			...,
 			featuredContent-> {

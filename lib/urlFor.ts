@@ -1,11 +1,12 @@
-// import { client } from "@sanityStudio/lib/client"
+import { client } from "@lib/data/client"
 import imageUrlBuilder from "@sanity/image-url"
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { ImageUrlBuilder } from "next-sanity-image"
 
-// const builder = imageUrlBuilder(client)
+const builder = imageUrlBuilder(client)
 
-// function urlFor(source: SanityImageSource) {
-// 	return builder.image(source)
-// }
+function urlFor(source: SanityImageSource): ImageUrlBuilder {
+	return builder.image(source)
+}
 
-// export default urlFor;
+export default urlFor;

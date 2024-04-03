@@ -4,7 +4,7 @@ import VideoBlock from '@components/site/VideoBlock'
 import FeaturedTaxonomies from '@components/site/FeaturedTaxonomies';
 import Feature from '@components/site/Feature'
 import NewsletterForm from '@components/site/NewsletterForm'
-
+import ParallaxBackground from '@components/site/ParallaxBackground'
 
 export default async function Home() {
 
@@ -16,7 +16,9 @@ export default async function Home() {
 				}
 			</VideoBlock>
 			{ featuredContent.frontpageFeature &&
-				<Feature feature={featuredContent.frontpageFeature}/>
+			<ParallaxBackground image={featuredContent.heroImages![1]}>
+					<Feature feature={featuredContent.frontpageFeature} />
+			</ParallaxBackground>
 			}
 			<div className="flex flex-col bg-accent">
 				<div className="main-padding py-12 flex flex-col gap-4 justify-center text-center">

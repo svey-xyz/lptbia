@@ -5,6 +5,9 @@ import FeaturedTaxonomies from '@components/site/FeaturedTaxonomies';
 import Feature from '@components/site/Feature'
 import NewsletterForm from '@components/site/NewsletterForm'
 import ParallaxBackground from '@components/site/ParallaxBackground'
+import Map from '@components/site/Map'
+import { googleMapsKey } from '@lib/data/env'
+
 
 export default async function Home() {
 
@@ -36,6 +39,9 @@ export default async function Home() {
 					</span>
 				</div>
 			</div>
+
+			<Map apiKey={googleMapsKey} />
+
 			<div className="main-padding">
 				<div className="max-w-prose-short text-accent flex flex-col py-12 gap-4">
 					<span className="text-4xl font-bold">
@@ -49,6 +55,7 @@ export default async function Home() {
 				</div>
 				
 			</div>
+			
 		</div>
 	)
 }

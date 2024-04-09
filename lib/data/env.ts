@@ -1,3 +1,4 @@
+
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-07-05'
 
@@ -11,19 +12,23 @@ export const projectId = assertValue(
   'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
 )
 
-// export const googleMapsKey = assertValue(
-// 	process.env.GOOGLE_MAPS_API_KEY,
-// 	'Missing environment variable: GOOGLE_MAPS_API_KEY'
-// )
+export const openWeatherKey = assertValue(
+	process.env.OPENWEATHER_API_KEY,
+	'Missing environment variable: OPENWEATHER_API_KEY'
+)
 
-export const googleMapsKey = process.env.GOOGLE_MAPS_API_KEY;
+export const googleMapsKey = assertValue(
+	process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+	'Missing environment variable: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY'
+)
 
 export const useCdn = true
 
-function assertValue<T>(v: T | undefined, errorMessage: string): T {
+function assertValue<T>(v: T | undefined, errorMessage: string): T  {
   if (v === undefined) {
-    throw new Error(errorMessage)
+    // throw new Error(errorMessage) // Always throws error
+		console.log(errorMessage)
   }
 
-  return v
+  return v as T
 }

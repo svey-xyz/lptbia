@@ -6,13 +6,15 @@ const ParallaxBackground = ({ image, children }: { image: sanityImage, children:
 	const BG_URL = urlFor(image).url()
 	return (
 		<div
-			className="relative overflow-hidden flex flex-col justify-center backdrop-blur
+			className="relative overflow-hidden flex flex-col justify-center
 			bg-fixed bg-no-repeat bg-cover bg-center text-accent
 			after:absolute after:inset-0 after:bg-bg/30 after:backdrop-blur-sm"
 			style={{
 				backgroundImage: `url(${BG_URL})`
 			}}>
-				{children}
+				<div className='z-10'>
+					{children}
+				</div>
 			</div>
 	);
 };

@@ -32,16 +32,21 @@ export interface dateData extends inherentObjectData {
 	endDate?: string,
 }
 
+// export interface location extends inherentObjectData {
+// 	location?: {
+// 		lng: number,
+// 		lat: number,
+// 	},
+// 	unit?: string,
+// 	number?: number,
+// 	street?: string,
+// 	notes?: string,
+// 	preciseLocation?: boolean,
+// }
+
 export interface location extends inherentObjectData {
-	location?: {
-		lng: number,
 		lat: number,
-	},
-	unit?: string,
-	number?: number,
-	street?: string,
-	notes?: string,
-	preciseLocation?: boolean,
+		lng: number,
 }
 
 export interface link extends inherentObjectData {
@@ -69,6 +74,16 @@ export interface frontpageFeature extends inherentObjectData {
 
 
 // DOCUMENT INTERFACES
+
+export interface document extends inherentDocumentData {
+	title?: string,
+	image?: sanityImage,
+	date?: dateData,
+	location?: location,
+	taxonomies?: Array<taxonomyData>,
+	links?: Array<link>,
+
+}
 
 export interface taxonomyData extends inherentDocumentData {
 	termVisibility?: boolean,
@@ -103,10 +118,10 @@ export interface settingsData extends inherentDocumentData {
 	about?: PortableTextBlock,
 	landAcknowledgement?: PortableTextBlock,
 	partners?: Array<sponsorData>,
-	location?: locationData
+	location?: location
 }
 
-export interface projectData extends inherentDocumentData {
+export interface projectData extends document {
 	writeup?: PortableTextBlock,
 	credits?: PortableTextBlock,
 	gallery?: Array<sanityImage>,
@@ -121,7 +136,7 @@ export interface featuredContentData extends inherentDocumentData {
 	businessTaxonomies?: Array<businessTaxonomyData>,
 }
 
-export interface newsData extends inherentDocumentData {
+export interface newsData extends document {
 	_type: "news",
 	content?: PortableTextBlock,
 	author?: string,

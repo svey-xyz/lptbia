@@ -10,10 +10,10 @@ import urlFor from '@/lib/urlFor';
 const Feature = ({feature}:{feature:frontpageFeature}) => {
 	return (
 		<div className="relative overflow-hidden flex flex-col justify-center items-center py-16 gap-12">
-			<span className='z-10 font-black text-4xl'>
+			<span className='font-black text-4xl'>
 				{ feature.title }
 			</span>
-			<div className="relative flex main-padding z-10 md:items-center flex-col md:flex-row gap-12 justify-center">
+			<div className="relative flex main-padding md:items-center flex-col md:flex-row gap-12 justify-center">
 
 				<Image
 					image={feature.image}

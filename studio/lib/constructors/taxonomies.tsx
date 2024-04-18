@@ -1,8 +1,9 @@
-import { camelCaseToWords } from "../../../lib/stringFunctions";
+import { camelCaseToWords } from "@lib/stringFunctions";
 import { FieldDefinition, defineField, defineType } from "sanity";
 import { IconType } from "react-icons";
 import React from "react";
 import { Icon } from '@iconify/react';
+import { fields } from "@/studio/lib/constructors";
 
 const skosPrimerURL: string = "https://www.w3.org/TR/2009/NOTE-skos-primer-20090818"
 function skosSectionLink(sec: string, text: string) {
@@ -13,7 +14,7 @@ function skosSectionLink(sec: string, text: string) {
 const taxonomicTermDescription =
 	<span>Terms aim to apply to { skosSectionLink('', 'SKOS guidelines')} but are adapted to fit the requirements of this project.</span>
 
-type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
+
 
 export function taxonomy(args: { name: string, fields?: fields, icon?: IconType | undefined }) {
 	const { name, icon, fields } = args

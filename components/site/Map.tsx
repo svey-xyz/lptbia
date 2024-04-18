@@ -1,14 +1,17 @@
 "use client";
 
-import React, { CSSProperties, useCallback, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Data, GoogleMap, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
+import { type location } from '@lib/data/types'
 
-const Map = ({ apiKey }: { apiKey: string | undefined }) => {
+const Map = ({ apiKey, centre }: { apiKey: string | undefined, centre: location | undefined }) => {
 	if (!apiKey) return
+
+	console.log('Map centre: ', centre)
 	
 	const libraries = useMemo(() => ['places'], []);
 	const mapCenter = useMemo(
-		() => ({ lat: 27.672932021393862, lng: 85.31184012689732 }),
+		() => (centre),
 		[]
 	);
 
@@ -32,13 +35,13 @@ const Map = ({ apiKey }: { apiKey: string | undefined }) => {
 
 
 	return (
-		<div>
+		<div className='relative main-padding flex flex-row justify-center py-12'>
 			<GoogleMap
 				options={mapOptions}
 				zoom={14}
 				center={mapCenter}
 				mapTypeId={google.maps.MapTypeId.ROADMAP}
-				mapContainerStyle={{ width: '800px', height: '800px' }}
+				mapContainerStyle={{ width: '80%', height: '400px' }}
 				onLoad={() => console.log('Map Component Loaded...')}
 			/>
 		</div>

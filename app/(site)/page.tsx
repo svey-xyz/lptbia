@@ -10,7 +10,6 @@ import { googleMapsKey } from '@lib/data/env'
 
 
 export default async function Home() {
-
 	return (
 		<div>
 			<VideoBlock source={featuredContent.video || ''}>
@@ -40,21 +39,24 @@ export default async function Home() {
 				</div>
 			</div>
 
-			<Map apiKey={googleMapsKey} />
+			<Map apiKey={googleMapsKey} centre={settings.location} />
 
-			<div className="main-padding">
-				<div className="max-w-prose-short text-accent flex flex-col py-12 gap-4">
-					<span className="text-4xl font-bold">
-						Welcome to {settings.title}
-					</span>
-					{settings.blurb &&
-						<span className="font-bold">
-							{settings.blurb}
+			<ParallaxBackground image={featuredContent.heroImages![2]}>
+				<div className="main-padding">
+					<div className="max-w-prose-short text-accent flex flex-col py-12 gap-4">
+						<span className="text-4xl font-bold">
+							Welcome to {settings.title}
 						</span>
-					}
+						{settings.blurb &&
+							<span className="font-bold">
+								{settings.blurb}
+							</span>
+						}
+					</div>
+
 				</div>
-				
-			</div>
+			</ParallaxBackground>
+			
 			
 		</div>
 	)

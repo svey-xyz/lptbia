@@ -4,17 +4,18 @@ import client from '@lib/data/client';
 import { sanityImage } from '@lib/data/types';
 import { useNextSanityImage } from 'next-sanity-image'
 import Img from 'next/image'
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 const DEFAULT_HEIGHT = 100
 const DEFAULT_WIDTH = 100
 
 const Image = ({
-	image, size, className
+	image, size, className, style
 }: {
 	image: sanityImage,
 	size?: { width?: number, height?: number, sizes?: string },
 	className?: string
+	style?: CSSProperties
 }) => {
 	const imageProps = useNextSanityImage(client, image);
 
@@ -27,6 +28,7 @@ const Image = ({
 		blurDataURL={image.imageAsset.metadata.lqip}
 		alt={image.imageAsset.description ? image.imageAsset.description : 'No alt text found'}
 		className={className}
+		style={style}
 		loading="lazy"
 	/>)
 }

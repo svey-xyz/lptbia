@@ -103,67 +103,22 @@ export const features = defineType({
 			type: 'array',
 			of: [
 				defineArrayMember({
-					title: 'Featured Item',
-					name: 'featuredItem',
-					type: 'object',
-					fields: [
-						defineField({
-							title: 'Featured Content',
-							name: 'featuredContent',
-							type: 'reference',
-							to: [
-								{ type: 'news' },
-							],
-							options: {
-								disableNew: true,
-							},
-						}),
-						defineField({
-							title: 'Image',
-							name: 'image',
-							type: 'image',
-							description: 'Featured image.',
-							options: {
-								sources: [mediaAssetSource]
-							},
-							preview: {
-								select: {
-									asset: 'asset',
-									title: 'asset.title',
-									description: 'asset.description'
-
-								},
-								prepare(value: any) {
-									return {
-										title: value.title ? value.title : 'Untitled Image',
-										subtitle: value.description,
-										media: value.asset
-									}
-								}
-							},
-						}),
+					title: 'News',
+					name: 'news',
+					type: 'reference',
+					to: [
+						{ type: 'news' },
 					],
-					preview: {
-						select: {
-							title: 'featuredContent.basicDocumentOptions.title',
-							image: 'featuredContent.basicDocumentOptions.image',
-						},
-						prepare(value: any) {
-							return {
-								title: value.title,
-								media: value.image ? value.image.asset : value.image ? value.image : ImNewspaper
-							}
-						}
-					}
+					options: {
+						disableNew: true,
+					},
 				}),
-				
 			],
 		}),
 		defineField({
 			name: 'businessTaxonomies',
 			title: 'Featured Business Types',
 			type: 'array',
-			
 			of: [
 				defineArrayMember({
 					type: 'reference',

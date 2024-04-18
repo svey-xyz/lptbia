@@ -132,7 +132,7 @@ export interface featuredContentData extends inherentDocumentData {
 	frontpageFeature?: frontpageFeature,
 	heroImages?: Array<sanityImage>,
 	video?: string,
-	news?: Array<{ featuredContent: newsData, image?: sanityImage }>,
+	news?: Array<newsData>,
 	businessTaxonomies?: Array<businessTaxonomyData>,
 }
 

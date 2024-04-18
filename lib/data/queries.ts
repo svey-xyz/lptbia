@@ -24,15 +24,12 @@ export const featuredQuery: string = groq`
 			...,
 			"imageAsset":asset->
 		},
-		news[] {
+		news[]-> {
 			...,
-			featuredContent-> {
+			image {
 				...,
-				image {
-					...,
-					"imageAsset":asset->
-				},
-			}
+				"imageAsset":asset->
+			},
 		},
 		businessTaxonomies[]->
 	}[0]

@@ -7,6 +7,7 @@ import NewsletterForm from '@components/site/NewsletterForm'
 import ParallaxBackground from '@components/site/ParallaxBackground'
 import Map from '@components/site/Map'
 import { googleMapsKey } from '@lib/data/env'
+import FeaturedNews from "@/components/site/FeaturedNews";
 
 
 export default async function Home() {
@@ -40,6 +41,10 @@ export default async function Home() {
 			</div>
 
 			<Map apiKey={googleMapsKey} centre={settings.location} />
+
+			{ featuredContent.news &&
+				<FeaturedNews news={featuredContent.news} />
+			}
 
 			<ParallaxBackground image={featuredContent.heroImages![2]}>
 				<div className="main-padding">

@@ -9,7 +9,7 @@ import { FaSignsPost, FaTag } from "react-icons/fa6";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import DocumentsPane from 'sanity-plugin-documents-pane'
 import { ImNewspaper } from "react-icons/im";
-
+import { RiPagesLine } from "react-icons/ri";
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
@@ -34,6 +34,12 @@ export const structure = (S: StructureBuilder) =>
 
 				S.documentTypeListItem('sponsor').title('Sponsors'),
 
+			]),
+		),
+
+		S.listItem().title('Pages').icon(RiPagesLine).child(
+			S.list().title('Pages').items([
+				S.documentTypeListItem('page').title('Pages').icon(RiPagesLine),
 			]),
 		),
 

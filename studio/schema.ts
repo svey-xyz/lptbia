@@ -1,6 +1,9 @@
 import BUSINESS from '@schemas/documents/businesses'
 import PROJECTS from '@schemas/documents/projects'
 import NEWS from '@schemas/documents/news'
+// import BLOCKS from '@schemas/pages/blocks'
+import PAGES from '@schemas/pages'
+
 
 /**
  * Objects
@@ -24,4 +27,4 @@ import { contact } from '@schemas/objects/contact'
 
 const _documents = [settings, sponsor, features, contact]
 
-export const types = [..._objects, ..._documents, ...PROJECTS, ...BUSINESS, ...NEWS];
+export const types = [..._objects, ..._documents, ...PROJECTS, ...BUSINESS, ...NEWS, ...PAGES];

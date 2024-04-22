@@ -1,6 +1,6 @@
 'use client'
 
-import { sanityImage } from '@lib/data/types'
+import { sanityImage } from '@/types'
 import React from 'react'
 import { readableDate } from '@lib/readableDate'
 import Image from '@components/site/Image'

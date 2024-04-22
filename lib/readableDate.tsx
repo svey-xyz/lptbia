@@ -1,4 +1,4 @@
-import { dateData } from "@lib/data/types";
+import { dateData } from "@/types";
 import moment from 'moment-timezone';
 import { ReactNode } from "react";
 

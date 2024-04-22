@@ -1,5 +1,5 @@
 import React from "react";
-import { projectData } from "@lib/data/types";
+import { projectData } from "@/types";
 import TextBlock from "@components/site/TextBlock";
 import Image from '@components/site/Image'
 

@@ -1,5 +1,5 @@
 import NewsArchiveCard from '@/components/site/NewsArchiveCard';
-import { newsData } from '@/lib/data/types';
+import { newsData } from '@/types';
 import React from 'react';
 
 const FeaturedNews = ({news}:{news:Array<newsData>}) => {

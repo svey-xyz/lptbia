@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from '@components/site/Image'
 
-import { newsData } from '@lib/data/types'
+import { newsData } from '@/types'
 import { readableDate } from '@lib/readableDate';
 
 const NewsArchiveCard = ({news}:{news:newsData}) => {

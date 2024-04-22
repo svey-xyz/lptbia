@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { Data, GoogleMap, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
-import { type location } from '@lib/data/types'
+import { type location } from '@/types'
 
 const Map = ({ apiKey, centre }: { apiKey: string | undefined, centre: location | undefined }) => {
 	if (!apiKey) return

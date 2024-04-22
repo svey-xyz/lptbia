@@ -1,6 +1,6 @@
 'use client'
 
-import { sanityImage } from '@lib/data/types'
+import { sanityImage } from '@/types'
 import { Swiper, SwiperSlide } from "swiper/react";
 import React from 'react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';

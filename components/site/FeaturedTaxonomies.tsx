@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { type businessTaxonomyData } from '@lib/data/types'
+import { type businessTaxonomyData } from '@/types'
 import { Icon } from '@iconify/react';
 import { breakAdditionSign } from '@lib/stringFunctions'
 

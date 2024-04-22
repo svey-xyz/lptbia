@@ -1,4 +1,4 @@
-import { address, location } from "@lib/data/types"
+import { address, location } from "@/types"
 
 export const readableAddress = (loc: location): string | undefined => {
 

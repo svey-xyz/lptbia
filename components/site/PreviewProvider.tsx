@@ -15,7 +15,7 @@ export default function PreviewProvider({
 	token?: string;
 }){
 
-	const { client } = suspend(() => import("@lib/data/client"), [UniqueKey])
+	const { client } = suspend(() => import("@sanity/lib/client"), [UniqueKey])
 	if (!token) throw new TypeError("Missing token");
 
 	return (

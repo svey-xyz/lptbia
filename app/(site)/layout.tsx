@@ -9,9 +9,11 @@ import { cookies, draftMode } from 'next/headers';
 
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
-import { client } from '@lib/data/client';
+import { client } from '@sanity/lib/client';
 import dynamic from 'next/dynamic';
-import { settings } from '@lib/data/data';
+import { loadSettings } from '@/sanity/lib/loadQuery';
+// import { settings } from '@/data';
+
 
 const PreviewProvider = dynamic(() => import('@components/site/PreviewProvider'))
 
@@ -25,6 +27,8 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
+	const settings = await loadSettings()
+
 	const titleTemplate = `${settings.title} | %s`
 	return {
 		title: {

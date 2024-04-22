@@ -1,6 +1,6 @@
 'use client'
 
-import { sanityImage } from '@lib/data/types';
+import { sanityImage } from '@/types';
 import SwiperGallery from '@components/site/SwiperGallery'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import Image from '@components/site/Image'

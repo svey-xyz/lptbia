@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { projectData, taxonomyData } from "@lib/data/types";
+import { projectData, taxonomyData } from "@/types";
 import ProjectArchiveCard from "./ProjectArchiveCard";
 
 const allTag: taxonomyData = {

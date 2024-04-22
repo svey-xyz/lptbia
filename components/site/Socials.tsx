@@ -1,5 +1,5 @@
 import React from 'react';
-import type { socialData } from '../../lib/data/types'
+import type { socialData } from '../../types'
 import { FaLink, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 
 import { IconType } from "react-icons";

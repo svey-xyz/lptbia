@@ -1,7 +1,8 @@
-import { settings } from '@lib/data/data'
+// import { settings } from '@lib/data/data'
+import { loadSettings } from '@/sanity/lib/loadQuery'
 import Image from '@components/site/Image'
 
-const Header = ({ componentParams }: { componentParams: any }) => {
+const Header = async ({ componentParams }: { componentParams: any }) => {
 	return (
 		<HeaderWrapper>
 			{(componentParams.preview && componentParams.preview.token) ? (
@@ -24,7 +25,12 @@ const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
 	)
 }
 
-const SiteHeader = () => {
+const SiteHeader = async() => {
+	const initial = await loadSettings()
+	if (!initial) return;
+
+	const settings = initial.data;
+	
 	return (
 		<div className="relative h-full flex flex-col items-center justify-center">
 			<div className="relative main-padding">

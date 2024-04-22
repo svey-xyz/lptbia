@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { sanityImage } from '../../lib/data/types';
+import { sanityImage } from '../../types';
 import urlFor from '../../lib/urlFor'
 
 const ParallaxBackground = ({ image, children }: { image: sanityImage, children: ReactNode }) => {

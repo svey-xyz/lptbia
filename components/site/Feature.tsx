@@ -2,7 +2,7 @@ import React from 'react';
 import { featuredContent } from "@/lib/data/data";
 
 import Image from './Image'
-import { frontpageFeature } from '@/lib/data/types';
+import { frontpageFeature } from '@/types';
 import TextBlock from '@/components/site/TextBlock';
 import urlFor from '@/lib/urlFor';
 

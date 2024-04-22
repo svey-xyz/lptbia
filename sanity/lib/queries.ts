@@ -8,8 +8,16 @@ export const settingsQuery: string = groq`
 			...,
 			"imageAsset":asset->,
 		},
+		homepage->,
 	}
 `
+
+export const pageQuery: string = groq`
+	*[_type=='page' && slug.current == $slug][0] {
+  	...,
+	}
+`
+
 export const featuredQuery: string = groq`
 	*[_id == "featuredContent"] {
 		...,

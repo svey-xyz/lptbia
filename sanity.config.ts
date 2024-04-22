@@ -8,7 +8,7 @@ import { colorInput } from '@sanity/color-input'
 import { noteField } from 'sanity-plugin-note-field'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId, googleMapsKey } from '@lib/data/env'
+import { apiVersion, dataset, projectId, googleMapsKey } from '@sanity/lib/api'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'

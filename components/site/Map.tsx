@@ -6,8 +6,6 @@ import { type location } from '@/types'
 
 const Map = ({ apiKey, centre }: { apiKey: string | undefined, centre: location | undefined }) => {
 	if (!apiKey) return
-
-	console.log('Map centre: ', centre)
 	
 	const libraries = useMemo(() => ['places'], []);
 	const mapCenter = useMemo(

@@ -1,15 +1,14 @@
-import { loadSettings } from '@/sanity/lib/loadQuery';
+import { loadPage, loadSettings } from '@/sanity/lib/loadQuery';
 import { studioUrl } from '@/sanity/lib/api'
 import Link from 'next/link'
 import HomePage from '@/components/pages/Homepage';
+import Pages from '@/components/pages';
 
 
 export default async function Home() {
 	const initial = await loadSettings()
 
-	console.log(initial)
-
-	if (!initial) {
+	if (!initial || !initial.data.homepage) {
 		return (
 			<div className="text-center">
 				You don&rsquo;t have a homepage yet,{' '}
@@ -21,5 +20,5 @@ export default async function Home() {
 		)
 	}
 
-	return <HomePage data={initial.data} />
+	return <Pages.Page data={initial.data.homepage} />
 }

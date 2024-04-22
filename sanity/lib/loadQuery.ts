@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 
 // import { client } from './client'
 import {
+	pageQuery,
 	// homePageQuery,
 	// pagesBySlugQuery,
 	// projectBySlugQuery,
@@ -12,6 +13,7 @@ import {
 } from '@/sanity/lib/queries'
 
 import {
+	PagePayload,
 	// HomePagePayload,
 	// PagePayload,
 	// ProjectPayload,
@@ -79,15 +81,15 @@ export function loadSettings() {
 	return loadQuery<SettingsPayload>(
 		settingsQuery,
 		{},
-		{ next: { tags: ['settings', 'home', 'page', 'project'] } },
+		{ next: { tags: ['settings', 'home', 'page'] } },
 	)
 }
 
-// export function loadHomePage() {
-// 	return loadQuery<HomePagePayload | null>(
-// 		homePageQuery,
-// 		{},
-// 		{ next: { tags: ['home', 'project'] } },
+// export function loadHomePage(slug: string) {
+// 	return loadQuery<PagePayload | null>(
+// 		pageQuery,
+// 		{ slug },
+// 		{ next: { tags: ['home'] } },
 // 	)
 // }
 
@@ -99,10 +101,10 @@ export function loadSettings() {
 // 	)
 // }
 
-// export function loadPage(slug: string) {
-// 	return loadQuery<PagePayload | null>(
-// 		pagesBySlugQuery,
-// 		{ slug },
-// 		{ next: { tags: [`page:${slug}`] } },
-// 	)
-// }
+export function loadPage(slug: string) {
+	return loadQuery<PagePayload | null>(
+		pageQuery,
+		{ slug },
+		{ next: { tags: [`page:${slug}`, 'home'] } },
+	)
+}

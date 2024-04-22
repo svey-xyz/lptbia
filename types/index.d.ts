@@ -72,6 +72,39 @@ export interface frontpageFeature extends inherentObjectData {
 	image: sanityImage,
 }
 
+// BLOCKS
+
+export interface block extends inherentObjectData {
+	backdrop: 'video' | 'colour' | 'image',
+	video?: string,
+	image?: sanityImage,
+	colour?: undefined | 'accent',
+}
+
+export interface featuredTaxonomy extends block {
+	taxonomies: Array<businessTaxonomyData>,
+}
+
+export interface map extends block {
+
+}
+
+export interface feature extends block {
+	title: string,
+	text: block,
+	image: sanityImage,
+	link: link,
+}
+
+export interface newsFeature extends block {
+	title: string,
+	news: Array<newsData>,
+}
+
+export interface newsletter extends block {
+
+}
+
 
 // DOCUMENT INTERFACES
 
@@ -118,7 +151,14 @@ export interface SettingsPayload extends inherentDocumentData {
 	about?: PortableTextBlock,
 	landAcknowledgement?: PortableTextBlock,
 	partners?: Array<sponsorData>,
-	location?: location
+	location?: location,
+	homepage?: PagePayload,
+}
+
+export interface PagePayload extends inherentDocumentData {
+	title?: string,
+	slug: string,
+	blocks?: Array<feature | featuredTaxonomy | map | newsFeature | newsletter>
 }
 
 export interface projectData extends document {

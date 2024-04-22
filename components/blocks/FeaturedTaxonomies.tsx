@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { type businessTaxonomyData } from '@/types'
+import { featuredTaxonomy, type businessTaxonomyData } from '@/types'
 import { Icon } from '@iconify/react';
 import { breakAdditionSign } from '@lib/stringFunctions'
 
-const FeaturedTaxonomies = ({ taxonomies } : { taxonomies: Array<businessTaxonomyData> }) => {
+export const FeaturedTaxonomies = ({ data } : { data: featuredTaxonomy } ) => {
 	return (
 		<div className="relative flex-row flex-wrap inline-flex justify-center w-full h-4/6 gap-y-4">
-			{taxonomies.map((tax, i, arr) => {
+			{data.taxonomies.map((tax, i, arr) => {
 				const brightness = 100 - (i * 10)
 
 				return (
@@ -31,4 +31,4 @@ const FeaturedTaxonomies = ({ taxonomies } : { taxonomies: Array<businessTaxonom
 	);
 };
 
-export default FeaturedTaxonomies;
+export default FeaturedTaxonomies

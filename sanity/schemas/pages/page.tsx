@@ -1,4 +1,9 @@
+import Blocks from './blocks';
 import { defineType, defineField, defineArrayMember } from 'sanity';
+
+const blockList = Blocks.map((block) => {
+	return { type: block.name}
+})
 
 export const page = defineType({
 	name: 'page',
@@ -25,9 +30,7 @@ export const page = defineType({
 			title: 'Blocks',
 			name: 'blocks',
 			type: 'array',
-			of: [
-				{ type: 'FeaturedTaxonomies' }
-			]
+			of: blockList,
 		})
 	],
 	preview: {

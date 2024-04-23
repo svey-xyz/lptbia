@@ -48,7 +48,8 @@ export function block(
 				title: 'Video',
 				type: 'string',
 				description: '',
-				hidden: ({ parent, value }) => !value && parent?.backdrop !== 'video',
+				hidden: ({ parent, value }) => parent?.containerType !== 'Video',
+				validation: Rule => Rule.custom((field, context) => ((context.parent as any).containerType == 'Video' && field == undefined) ? 'This field is required.' : true),
 			}),
 			defineField({
 				title: 'Image',
@@ -72,7 +73,7 @@ export function block(
 						}
 					}
 				},
-				hidden: ({ parent, value }) => !value && parent?.backdrop !== 'image',
+				hidden: ({ parent, value }) => parent?.containerType !== 'Image',
 			}),
 			defineField({
 				name: 'colour',
@@ -84,19 +85,21 @@ export function block(
 						{ title: 'Accent', value: 'accent' },
 					],
 				},
-				hidden: ({ parent, value }) => !value && parent?.backdrop !== 'colour',
+				hidden: ({ parent, value }) => parent?.containerType !== 'Colour',
 			}),
 			...fieldsArray
 		],
 		preview: {
 			select: {
 				type: '_type',
+				containerType: 'containerType',
 				// logo: 'logo',
 			},
 			prepare(value: any) {
-				const { type, logo } = value
+				const { type, containerType } = value
 				return {
 					title: type ? camelCaseToWords(type) : 'Unknown Block Type',
+					subtitle: `Container type: ${containerType}`,
 					media: icon ? icon : RxSection,
 				}
 			},

@@ -2,14 +2,13 @@ import dynamic from 'next/dynamic'
 import { PagePayload } from '@/types';
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
-import Standard from '@components/blocks/containers/Standard';
 
 interface BlockMap {
 	[key: string]: React.ComponentType<{data:any}>
 }
 
 interface ContainerMap {
-	[key: string]: React.ComponentType<{ children: React.ReactNode }>
+	[key: string]: React.ComponentType<{ children: React.ReactNode, data?:any }>
 }
 
 export interface PageProps {
@@ -18,12 +17,15 @@ export interface PageProps {
 }
 
 const BlockList: BlockMap = {
-	FeaturedTaxonomies: dynamic(() => import('@components/blocks/FeaturedTaxonomies'))
+	Standard: dynamic(() => import('@components/blocks/Standard')),
+	FeaturedTaxonomies: dynamic(() => import('@components/blocks/FeaturedTaxonomies')),
 	// OtherComponent: dynamic(() => import(`../../components/other-component`))
 }
 
 const ContainerList: ContainerMap = {
-	Standard: dynamic(() => import('@components/blocks/containers/Standard'))
+	Standard: dynamic(() => import('@components/blocks/containers/Standard')),
+	Video: dynamic(() => import('@components/blocks/containers/Video')),
+
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {
@@ -32,10 +34,10 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 		<article className=''>
 			{ data.blocks &&
 				data.blocks.map((block) => {
-					const Container = ContainerList[block.containerType]
-					const BlockComponent = BlockList[block._type]
+					const Container = ContainerList[block.containerType] ?? ContainerList.Standard
+					const BlockComponent = BlockList[block._type] ?? BlockList.Standard
 					return(
-						<Container key={block._key}>
+						<Container key={block._key} data={block}>
 							<BlockComponent data={block} />
 						</Container>
 					)

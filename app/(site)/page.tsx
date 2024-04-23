@@ -1,13 +1,11 @@
 import { loadPage, loadSettings } from '@/sanity/lib/loadQuery';
 import { studioUrl } from '@/sanity/lib/api'
 import Link from 'next/link'
-import HomePage from '@/components/pages/Homepage';
 import Pages from '@/components/pages';
 
 
 export default async function Home() {
 	const initial = await loadSettings()
-	console.log('Initial: ', initial)
 
 	if (!initial || !initial.data.homepage) {
 		return (

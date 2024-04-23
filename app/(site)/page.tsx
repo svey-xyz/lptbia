@@ -7,6 +7,7 @@ import Pages from '@/components/pages';
 
 export default async function Home() {
 	const initial = await loadSettings()
+	console.log('Initial: ', initial)
 
 	if (!initial || !initial.data.homepage) {
 		return (

@@ -13,7 +13,10 @@ const fields = [
 	defineField({
 		title: 'Text',
 		name: 'text',
-		type: 'block',
+		type: 'array',
+		of: [
+			{type: 'block'},
+		],
 	}),
 	defineField({
 		title: 'Image',

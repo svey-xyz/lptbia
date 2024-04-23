@@ -1,18 +1,21 @@
 import { fields } from "@/sanity/lib/constructors";
 import { camelCaseToWords } from "@lib/stringFunctions";
+import { IconType } from "react-icons";
 import { defineType, defineField, PreviewConfig } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
+import { RxSection } from "react-icons/rx";
 
 export function block(
 	args: {
 		name: string,
 		fields?: fields,
-		preview?: PreviewConfig<{
-			title: string;
-			image: string;
-		}, any> | undefined
+		// preview?: PreviewConfig<{
+		// 	title: string;
+		// 	image: string;
+		// }, any> | undefined
+		icon?: IconType | undefined
 	}) {
-	const { name, fields, preview } = args
+	const { name, fields, icon } = args
 	const generatedFields = fields?.map(field => {
 		return field
 	})
@@ -22,18 +25,23 @@ export function block(
 		title: camelCaseToWords(name),
 		name: name,
 		type: 'object',
+		icon,
 		fields: [
 			defineField({
-				name: 'backdrop',
-				title: 'Backdrop',
+				name: 'containerType',
+				title: 'Container Type',
 				type: 'string',
 				options: {
 					list: [
-						{ title: 'Video', value: 'video'},
-						{ title: 'Image', value: 'image' },
-						{ title: 'Colour', value: 'colour' },
-					]
-				}
+						{ title: 'Standard', value: 'Standard' },
+						{ title: 'Colour', value: 'Colour' },
+						{ title: 'Image', value: 'Image' },
+						{ title: 'Video', value: 'Video'},
+					],
+					layout: 'radio',
+				},
+				initialValue: 'Standard',
+				validation: Rule => Rule.required()
 			}),
 			defineField({
 				name: 'video',
@@ -80,6 +88,18 @@ export function block(
 			}),
 			...fieldsArray
 		],
-		preview,
+		preview: {
+			select: {
+				type: '_type',
+				// logo: 'logo',
+			},
+			prepare(value: any) {
+				const { type, logo } = value
+				return {
+					title: type ? camelCaseToWords(type) : 'Unknown Block Type',
+					media: icon ? icon : RxSection,
+				}
+			},
+		},
 	})
 }

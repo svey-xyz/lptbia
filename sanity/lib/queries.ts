@@ -8,13 +8,25 @@ export const settingsQuery: string = groq`
 			...,
 			"imageAsset":asset->,
 		},
-		homepage->,
+		homepage->{
+			...,
+			"slug":slug.current,
+			blocks[]{
+				...,
+				taxonomies[]->,
+			}
+		}
 	}
 `
 
 export const pageQuery: string = groq`
 	*[_type=='page' && slug.current == $slug][0] {
   	...,
+		"slug":slug.current,
+		blocks[] {
+			...,
+			taxonomies[]->,
+		},
 	}
 `
 

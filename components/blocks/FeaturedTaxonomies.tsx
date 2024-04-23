@@ -5,7 +5,8 @@ import { featuredTaxonomy, type businessTaxonomyData } from '@/types'
 import { Icon } from '@iconify/react';
 import { breakAdditionSign } from '@lib/stringFunctions'
 
-export const FeaturedTaxonomies = ({ data } : { data: featuredTaxonomy } ) => {
+export const FeaturedTaxonomies = ({ data } : { data: featuredTaxonomy | undefined } ) => {
+	if (!data) return;
 	return (
 		<div className="relative flex-row flex-wrap inline-flex justify-center w-full h-4/6 gap-y-4">
 			{data.taxonomies.map((tax, i, arr) => {

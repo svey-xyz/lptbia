@@ -75,7 +75,7 @@ export interface frontpageFeature extends inherentObjectData {
 // BLOCKS
 
 export interface block extends inherentObjectData {
-	backdrop: 'video' | 'colour' | 'image',
+	containerType: 'standard' | 'colour' | 'image' | 'video',
 	video?: string,
 	image?: sanityImage,
 	colour?: undefined | 'accent',

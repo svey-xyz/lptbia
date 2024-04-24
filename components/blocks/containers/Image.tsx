@@ -4,7 +4,6 @@ import React, { ReactNode } from 'react';
 
 export const Image = ({ children, data }: { children: ReactNode, data?: block }) => {
 	const BG_URL = data?.image ? urlFor(data?.image).url() : ''
-	console.log(`Image container: `, data)
 	return (
 		<div
 			className="relative overflow-hidden flex flex-col justify-center

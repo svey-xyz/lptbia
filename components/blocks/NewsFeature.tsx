@@ -1,10 +1,9 @@
-import NewsArchiveCard from '@/components/site/NewsArchiveCard';
+import NewsArchiveCard from '@components/cards/NewsArchiveCard';
 import { NewsFeatureBlockType, block } from '@/types';
 import React from 'react';
 
 export const Standard = ({ data }: { data: NewsFeatureBlockType }) => {
 	if (!data) return
-	console.log(`News: `, data.news)
 	return (
 		<div className='main-padding my-24 flex flex-col gap-12 items-center'>
 			<span className='font-black text-4xl text-accent-secondary'>

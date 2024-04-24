@@ -19,8 +19,8 @@ const fields = [
 		],
 	}),
 	defineField({
-		title: 'Image',
-		name: 'Image',
+		title: 'Featured Image',
+		name: 'featuredImage',
 		type: 'image',
 		options: {
 			sources: [mediaAssetSource],
@@ -47,4 +47,4 @@ const fields = [
 	}),
 ]
 
-export const feature = constructors.block({ name: 'feature', fields })
+export const Feature = constructors.block({ name: 'Feature', fields })

@@ -6,4 +6,4 @@ import constructors from '@/sanity/lib/constructors';
 
 const fields: any = []
 
-export const map = constructors.block({ name: 'map', fields })
+export const Newsletter = constructors.block({ name: 'Newsletter', fields })

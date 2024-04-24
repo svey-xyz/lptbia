@@ -11,9 +11,24 @@ export const settingsQuery: string = groq`
 		homepage->{
 			...,
 			"slug":slug.current,
-			blocks[]{
+			blocks[] {
 				...,
+				image {
+					...,
+					"imageAsset":asset->
+				},
 				taxonomies[]->,
+				featuredImage {
+					...,
+					"imageAsset":asset->
+				},
+				news[]-> {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					},
+				},
 			}
 		}
 	}

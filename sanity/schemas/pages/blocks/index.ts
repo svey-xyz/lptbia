@@ -1,9 +1,9 @@
-import { feature } from '@/sanity/schemas/pages/blocks/feature';
-import { featuredTaxonomies } from './featuredTaxonomies';
-import { map } from '@/sanity/schemas/pages/blocks/map';
-import { newsFeature } from '@/sanity/schemas/pages/blocks/newsFeature';
-import { newsletter } from '@/sanity/schemas/pages/blocks/newsletter';
+import { Feature } from '@/sanity/schemas/pages/blocks/Feature';
+import { FeaturedTaxonomies } from './FeaturedTaxonomies';
+import { Map } from '@/sanity/schemas/pages/blocks/Map';
+import { NewsFeature } from '@/sanity/schemas/pages/blocks/NewsFeature';
+import { Newsletter } from '@/sanity/schemas/pages/blocks/Newsletter';
 
-const Blocks = [featuredTaxonomies, feature, map, newsFeature, newsletter];
+const Blocks = [FeaturedTaxonomies, Feature, Map, NewsFeature, Newsletter];
 
 export default Blocks;

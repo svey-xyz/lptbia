@@ -16,16 +16,19 @@ export interface PageProps {
 	encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-const BlockList: BlockMap = {
-	Standard: dynamic(() => import('@components/blocks/Standard')),
-	FeaturedTaxonomies: dynamic(() => import('@components/blocks/FeaturedTaxonomies')),
-	// OtherComponent: dynamic(() => import(`../../components/other-component`))
-}
-
 const ContainerList: ContainerMap = {
 	Standard: dynamic(() => import('@components/blocks/containers/Standard')),
 	Video: dynamic(() => import('@components/blocks/containers/Video')),
+	Image: dynamic(() => import('@components/blocks/containers/Image')),
+}
 
+const BlockList: BlockMap = {
+	Standard: dynamic(() => import('@components/blocks/Standard')),
+	FeaturedTaxonomies: dynamic(() => import('@components/blocks/FeaturedTaxonomies')),
+	Feature: dynamic(() => import('@components/blocks/Feature')),
+	Map: dynamic(() => import('@components/blocks/Map')),
+	Newsletter: dynamic(() => import('@components/blocks/Newsletter')),
+	NewsFeature: dynamic(() => import('@components/blocks/NewsFeature')),
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {

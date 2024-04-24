@@ -20,4 +20,4 @@ const fields = [
 	}),
 ]
 
-export const featuredTaxonomies = constructors.block({ name: 'FeaturedTaxonomies', fields })
+export const FeaturedTaxonomies = constructors.block({ name: 'FeaturedTaxonomies', fields })

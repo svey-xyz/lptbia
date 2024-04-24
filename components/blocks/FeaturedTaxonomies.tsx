@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { featuredTaxonomy, type businessTaxonomyData } from '@/types'
+import { FeaturedTaxonomyBlockType, type businessTaxonomyData } from '@/types'
 import { Icon } from '@iconify/react';
 import { breakAdditionSign } from '@lib/stringFunctions'
 
-export const FeaturedTaxonomies = ({ data } : { data: featuredTaxonomy | undefined } ) => {
+export const FeaturedTaxonomies = ({ data } : { data: FeaturedTaxonomyBlockType | undefined } ) => {
 	if (!data) return;
 	return (
 		<div className="relative flex-row flex-wrap inline-flex justify-center w-full h-4/6 gap-y-4">

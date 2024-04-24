@@ -15,9 +15,15 @@ const fields = [
 		name: 'news',
 		type: 'array',
 		of: [
-			{ type: 'news' }
+			{
+				type: 'reference',
+				to: [{type: 'news'}],
+				options: {
+					disableNew: true,
+				}
+			}
 		]
 	}),
 ]
 
-export const newsFeature = constructors.block({ name: 'newsFeature', fields })
+export const NewsFeature = constructors.block({ name: 'NewsFeature', fields })

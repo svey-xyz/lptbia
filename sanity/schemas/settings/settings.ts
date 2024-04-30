@@ -135,6 +135,33 @@ export const settings = defineType({
 				disableNew: true,
 			},
 		}),
+		defineField({
+			name: 'businessArchive',
+			title: 'Business Archive',
+			type: 'reference',
+			to: [{ type: 'page' }],
+			options: {
+				disableNew: true,
+			},
+		}),
+		defineField({
+			name: 'newsArchive',
+			title: 'News Archive',
+			type: 'reference',
+			to: [{ type: 'page' }],
+			options: {
+				disableNew: true,
+			},
+		}),
+		defineField({
+			name: 'projectArchive',
+			title: 'Project Archive',
+			type: 'reference',
+			to: [{ type: 'page' }],
+			options: {
+				disableNew: true,
+			},
+		}),
 	],
 	preview: {
 		select: {

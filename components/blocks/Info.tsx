@@ -3,6 +3,7 @@
 import { InfoBlockType } from '@/types';
 import { Icon } from '@iconify/react';
 import React from 'react';
+import NumericLabel from 'react-pretty-numbers';
 
 export const Info = ({ data }: { data: InfoBlockType }) => {
 	return (
@@ -24,7 +25,7 @@ export const Info = ({ data }: { data: InfoBlockType }) => {
 							}
 							{ item.number &&
 								<div className='text-4xl p-3 mb-2 font-black'>
-									{ item.number }
+									<NumericLabel params={{ wholenumber: true, justification: 'C', shortFormat: true, commafy: true }}>{item.number}</NumericLabel>
 								</div>
 							}
 							<span className='text-xl font-bold'>{item.title}</span>

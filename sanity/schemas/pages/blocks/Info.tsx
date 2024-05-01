@@ -5,6 +5,7 @@ import { IoInformationCircleSharp } from "react-icons/io5";
 import constructors from '@/sanity/lib/constructors';
 import { RiImageCircleFill } from "react-icons/ri";
 import { AiOutlineFieldNumber } from "react-icons/ai";
+import { Icon } from '@iconify/react';
 
 const fields = [
 	defineField({
@@ -68,15 +69,17 @@ const fields = [
 						title: 'title',
 						subTitle: 'subTitle',
 						icon: 'icon',
+						number: 'number',
 					},
 					prepare(value: any) {
-						const { type, title, subTitle, icon } = value
+						const { type, title, subTitle, icon, number } = value
+						
 						return {
 							title: title ? title : 'Untitled Info Section',
-							subtitle: `Info Type: ${type}. ${subTitle ? subTitle : ''}`,
+							subtitle: subTitle ? subTitle : `Type: ${type}`,
 							media:
-								type == 'icon' ? icon ? icon : RiImageCircleFill :
-								type == 'number' ? AiOutlineFieldNumber : IoInformationCircleSharp,
+								type == 'icon' ? icon ? <Icon icon={icon.name} /> : RiImageCircleFill :
+								type == 'number' ? <span>{number}</span> : IoInformationCircleSharp,
 						}
 					},
 				},

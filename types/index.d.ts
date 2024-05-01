@@ -107,6 +107,19 @@ export interface NewsFeatureBlockType extends block {
 	news?: Array<newsData>,
 }
 
+export interface InfoBlockType extends block {
+	title?: string,
+	items?: [
+		{
+			title?: string,
+			subTitle?: string,
+			infoType: 'icon' | 'number',
+			icon?: icon,
+			number?: number,
+		},
+	],
+}
+
 
 // DOCUMENT INTERFACES
 

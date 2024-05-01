@@ -20,15 +20,18 @@ module.exports = {
 		},
 		extend: {
 			height: {
-				'icon': 'var(--icon-size)'
+				'icon': 'var(--icon-size)',
 			},
 			width: {
-				'icon': 'var(--icon-size)'
+				'icon': 'var(--icon-size)',
+			},
+			minWidth: {
+				'icon': 'var(--icon-size)',
 			},
 			maxWidth: {
 				'prose-full': '85ch',
 				'prose': '65ch',
-				'prose-short': '45ch'
+				'prose-short': '45ch',
 			},
 			margin: {
 				'1/8': '12%',

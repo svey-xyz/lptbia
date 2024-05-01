@@ -29,6 +29,7 @@ const BlockList: BlockMap = {
 	Map: dynamic(() => import('@components/blocks/Map')),
 	Newsletter: dynamic(() => import('@components/blocks/Newsletter')),
 	NewsFeature: dynamic(() => import('@components/blocks/NewsFeature')),
+	Info: dynamic(() => import('@components/blocks/Info')),
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {

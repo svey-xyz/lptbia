@@ -3,7 +3,8 @@ import { FeaturedTaxonomies } from './FeaturedTaxonomies';
 import { Map } from '@/sanity/schemas/pages/blocks/Map';
 import { NewsFeature } from '@/sanity/schemas/pages/blocks/NewsFeature';
 import { Newsletter } from '@/sanity/schemas/pages/blocks/Newsletter';
+import { Info } from '@/sanity/schemas/pages/blocks/Info';
 
-const Blocks = [FeaturedTaxonomies, Feature, Map, NewsFeature, Newsletter];
+const Blocks = [FeaturedTaxonomies, Feature, Map, NewsFeature, Newsletter, Info];
 
 export default Blocks;

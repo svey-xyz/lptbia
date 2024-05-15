@@ -17,7 +17,7 @@ export const Info = ({ data }: { data: InfoBlockType }) => {
 			<div className='flex flex-row gap-12 flex-wrap '>
 				{ data.items?.map((item) => {
 					return (
-						<div className='flex flex-col items-center'>
+						<div key={item.title} className='flex flex-col items-center'>
 							{ item.icon &&
 								<div className='rounded-full bg-accent-secondary text-4xl text-bg p-3 mb-2'>
 									<Icon icon={item.icon.name} />

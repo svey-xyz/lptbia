@@ -1,49 +1,55 @@
-'use client';
 
-import { MapBlockType } from '@/types';
-import { useLoadScript, GoogleMap } from '@react-google-maps/api';
-import React, { useMemo } from 'react';
+import MapClient from '@/components/site/MapClient';
+import { loadBusinesses } from '@/sanity/lib/loadQuery';
+import { MapBlockType, icon } from '@/types';
 
-export const Map = ({ data }: { data: MapBlockType }) => {
+interface LatLng {
+	lat: number;
+	lng: number;
+}
+
+interface LocationWithIcon {
+	geopoint: LatLng,
+	icon?: icon
+}
+
+export const Map = async ({ data }: { data: MapBlockType }) => {
 	if (!data) return
 
-	const libraries = useMemo(() => ['places'], []);
-	const mapCenter = useMemo(
-		() => (data.centre),
-		[]
-	);
+	const initial = await loadBusinesses()
+	const businesses = initial.data;
 
-	const mapOptions = useMemo<google.maps.MapOptions>(
-		() => ({
-			disableDefaultUI: true,
-			clickableIcons: true,
-			scrollwheel: false,
-		}),
-		[]
-	);
+	const fetchLocations = async () => {
+		try {
+			const positions: LocationWithIcon[] = [];
 
-	const { isLoaded } = useLoadScript({
-		googleMapsApiKey: data.apiKey,
-		libraries: libraries as any,
-	});
+			for (const business of businesses) {
+				const location = business.address?.location
+				if (!location) return
 
-	if (!isLoaded) {
-		return <p>Loading...</p>;
-	}
+				const address = `${location?.number} ${location?.street}`
+				const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${data.apiKey}`);
+				const dataReturn = await response.json();
+				if (dataReturn.results && dataReturn.results.length > 0) {
+					const { lat, lng } = dataReturn.results[0].geometry.location;
+					positions.push({
+						geopoint: { lat, lng },
+						icon: business.address?.icon
+					});
+				} else {
+					console.error('No results found for address:', address);
+				}
+			}
 
+			return positions
+		} catch (error) {
+			console.error('Error geocoding addresses:', error);
+		}
+	};
 
-	return (
-		<div className='relative main-padding flex flex-row justify-center py-12'>
-			<GoogleMap
-				options={mapOptions}
-				zoom={14}
-				center={mapCenter}
-				mapTypeId={google.maps.MapTypeId.ROADMAP}
-				mapContainerStyle={{ width: '80%', height: '400px' }}
-				onLoad={() => console.log('Map Component Loaded...')}
-			/>
-		</div>
-	);
+	const locationsWithIcons = await fetchLocations()
+	
+	return <MapClient mapData={data} locationsWithIcons={locationsWithIcons}/>
 };
 
 export default Map;

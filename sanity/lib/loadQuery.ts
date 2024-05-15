@@ -9,6 +9,7 @@ import {
 	// homePageQuery,
 	// pagesBySlugQuery,
 	// projectBySlugQuery,
+	businessesQuery,
 	settingsQuery,
 } from '@/sanity/lib/queries'
 
@@ -17,6 +18,7 @@ import {
 	// HomePagePayload,
 	// PagePayload,
 	// ProjectPayload,
+	BusinessPayload,
 	SettingsPayload,
 } from '@/types'
 
@@ -82,6 +84,14 @@ export function loadSettings() {
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
+	)
+}
+
+export function loadBusinesses() {
+	return loadQuery<Array<BusinessPayload>>(
+		businessesQuery,
+		{},
+		{ next: { tags: ['business', 'page'] } },
 	)
 }
 

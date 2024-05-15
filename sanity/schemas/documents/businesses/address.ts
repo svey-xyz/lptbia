@@ -47,6 +47,12 @@ export const address = defineType({
 			group: 'about',
 		}),
 		defineField({
+			name: 'icon',
+			title: 'Icon',
+			type: 'icon',
+			group: 'about',
+		}),
+		defineField({
 			title: 'Type',
 			name: 'type',
 			type: 'string',

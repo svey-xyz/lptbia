@@ -33,22 +33,26 @@ export interface dateData extends inherentObjectData {
 	endDate?: string,
 }
 
-// export interface location extends inherentObjectData {
-// 	location?: {
-// 		lng: number,
-// 		lat: number,
-// 	},
-// 	unit?: string,
-// 	number?: number,
-// 	street?: string,
-// 	notes?: string,
-// 	preciseLocation?: boolean,
-// }
+export interface geopoint {
+	lng: number,
+	lat: number,
+}
 
 export interface location extends inherentObjectData {
-		lat: number,
-		lng: number,
+	location?: geopoint,
+	unit?: string,
+	number?: number,
+	street?: string,
+	notes?: string,
+	preciseLocation?: boolean,
 }
+
+// export interface location extends inherentObjectData {
+// 	number?: number,
+// 	street?: string,
+// 	unit?: string,
+// 	location?:
+// }
 
 export interface link extends inherentObjectData {
 	text: string,
@@ -57,6 +61,7 @@ export interface link extends inherentObjectData {
 }
 
 export interface address extends inherentObjectData {
+	icon?: icon,
 	location?: location,
 	notes: string,
 }
@@ -95,7 +100,7 @@ export interface FeatureBlockType extends block {
 
 export interface MapBlockType extends block {
 	apiKey: string,
-	centre: location,
+	centre: geopoint,
 }
 
 export interface NewsletterBlockType extends block {
@@ -168,6 +173,12 @@ export interface SettingsPayload extends inherentDocumentData {
 	partners?: Array<sponsorData>,
 	location?: location,
 	homepage?: PagePayload,
+}
+
+export interface BusinessPayload extends inherentDocumentData {
+	title: string,
+	address?: address,
+	logo?: sanityImage,
 }
 
 export interface PagePayload extends inherentDocumentData {

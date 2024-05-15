@@ -108,6 +108,15 @@ export const projectsQuery = groq`
 		}
 	}
 `
+
+export const businessesQuery = groq`
+	*[_type=='business'] {
+		...,
+		address->,
+		logo->,
+	}
+`
+
 export const newsSingleQuery = groq`
 	*[_type=='news' && slug.current == $slug][0] {
   	...,

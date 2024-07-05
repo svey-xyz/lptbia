@@ -3,6 +3,7 @@ import { } from 'react-icons';
 import { mediaAssetSource } from 'sanity-plugin-media';
 
 import constructors from '@/sanity/lib/constructors';
+import { PiNewspaperClippingFill } from "react-icons/pi";
 
 const fields = [
 	defineField({
@@ -47,4 +48,4 @@ const fields = [
 	}),
 ]
 
-export const Feature = constructors.block({ name: 'Feature', fields })
+export const Feature = constructors.block({ name: 'Feature', fields, icon: PiNewspaperClippingFill })

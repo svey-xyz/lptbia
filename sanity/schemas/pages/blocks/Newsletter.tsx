@@ -1,9 +1,6 @@
-import { defineType, defineField, defineArrayMember } from 'sanity';
-import { } from 'react-icons';
-import { mediaAssetSource } from 'sanity-plugin-media';
-
 import constructors from '@/sanity/lib/constructors';
+import { RiInputField } from 'react-icons/ri';
 
 const fields: any = []
 
-export const Newsletter = constructors.block({ name: 'Newsletter', fields })
+export const Newsletter = constructors.block({ name: 'Newsletter', fields, icon: RiInputField })

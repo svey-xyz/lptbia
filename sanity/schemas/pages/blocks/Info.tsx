@@ -1,11 +1,9 @@
-import { defineType, defineField, defineArrayMember } from 'sanity';
-import { } from 'react-icons';
-import { mediaAssetSource } from 'sanity-plugin-media';
+import { defineField } from 'sanity';
 import { IoInformationCircleSharp } from "react-icons/io5";
 import constructors from '@/sanity/lib/constructors';
 import { RiImageCircleFill } from "react-icons/ri";
-import { AiOutlineFieldNumber } from "react-icons/ai";
 import { Icon } from '@iconify/react';
+import { TbChartInfographic } from "react-icons/tb";
 
 const fields = [
 	defineField({
@@ -88,4 +86,4 @@ const fields = [
 	}),
 ]
 
-export const Info = constructors.block({ name: 'Info', fields })
+export const Info = constructors.block({ name: 'Info', fields, icon: TbChartInfographic })

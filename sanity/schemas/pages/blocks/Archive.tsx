@@ -1,6 +1,7 @@
 import { defineField } from 'sanity';
 import { } from 'react-icons';
 import constructors from '@/sanity/lib/constructors';
+import { RiGalleryView } from 'react-icons/ri';
 
 const fields = [
 	defineField({
@@ -67,4 +68,4 @@ const fields = [
 	}),
 ]
 
-export const Archive = constructors.block({ name: 'Archive', fields })
+export const Archive = constructors.block({ name: 'Archive', fields, icon: RiGalleryView })

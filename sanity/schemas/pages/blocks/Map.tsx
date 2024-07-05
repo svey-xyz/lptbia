@@ -3,6 +3,7 @@ import { } from 'react-icons';
 import { mediaAssetSource } from 'sanity-plugin-media';
 
 import constructors from '@/sanity/lib/constructors';
+import { FaMapLocationDot } from 'react-icons/fa6';
 
 const fields: any = [
 	defineField({
@@ -19,4 +20,4 @@ const fields: any = [
 	}),
 ]
 
-export const Map = constructors.block({ name: 'Map', fields })
+export const Map = constructors.block({ name: 'Map', fields, icon: FaMapLocationDot })

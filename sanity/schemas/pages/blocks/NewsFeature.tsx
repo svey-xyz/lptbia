@@ -1,8 +1,6 @@
 import { defineType, defineField, defineArrayMember } from 'sanity';
-import { } from 'react-icons';
-import { mediaAssetSource } from 'sanity-plugin-media';
-
 import constructors from '@/sanity/lib/constructors';
+import { MdWebStories } from 'react-icons/md';
 
 const fields = [
 	defineField({
@@ -26,4 +24,4 @@ const fields = [
 	}),
 ]
 
-export const NewsFeature = constructors.block({ name: 'NewsFeature', fields })
+export const NewsFeature = constructors.block({ name: 'NewsFeature', fields, icon: MdWebStories })

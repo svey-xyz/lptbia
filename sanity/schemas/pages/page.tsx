@@ -1,3 +1,4 @@
+import { RiPagesLine } from 'react-icons/ri';
 import Blocks from './blocks';
 import { defineType, defineField, defineArrayMember } from 'sanity';
 
@@ -9,6 +10,7 @@ export const page = defineType({
 	name: 'page',
 	title: 'page',
 	type: 'document',
+	icon: RiPagesLine,
 	fields: [
 		defineField({
 			title: 'Title',

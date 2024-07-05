@@ -91,7 +91,7 @@ export interface FeaturedTaxonomyBlockType extends block {
 	taxonomies: Array<businessTaxonomyData>,
 }
 
-export interface FeatureBlockType extends block {
+export interface TextBlockType extends block {
 	title?: string,
 	text?: PortableTextBlock,
 	featuredImage?: sanityImage,

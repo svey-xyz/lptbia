@@ -2,8 +2,8 @@ import { defineType, defineField, defineArrayMember } from 'sanity';
 import { } from 'react-icons';
 import { mediaAssetSource } from 'sanity-plugin-media';
 
-import constructors from '@/sanity/lib/constructors';
-import { PiNewspaperClippingFill } from "react-icons/pi";
+import constructors from '@/sanity/schemas/pages/constructors';
+import { BsJournalRichtext } from 'react-icons/bs';
 
 const fields = [
 	defineField({
@@ -48,4 +48,4 @@ const fields = [
 	}),
 ]
 
-export const Feature = constructors.block({ name: 'Feature', fields, icon: PiNewspaperClippingFill })
+export const Text = constructors.block({ name: 'Text', fields, icon: BsJournalRichtext })

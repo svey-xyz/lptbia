@@ -31,18 +31,27 @@ export const link = defineType({
 			title: 'Link',
 			name: 'link',
 			type: 'string',
+			hidden: ({ parent, value }) => parent?.type !== 'external',
 			validation: Rule => Rule.custom((field, context) => {
+				const type: string | undefined = (context.parent as any).type
+				// console.log('type: ', type)
+				if (type !== 'external') return true
 				if (!field) return 'This field must not be empty'
 
+				return URLExpression.test(field) ? true : `This doesn't look like a URL.`
+			}),
+		}),
+		defineField({
+			title: 'Page',
+			name: 'page',
+			type: 'reference',
+			to: [{type: 'page'}],
+			hidden: ({ parent, value }) => parent?.type !== 'internal',
+			validation: Rule => Rule.custom((field, context) => {
 				const type: string | undefined = (context.parent as any).type
-				switch (type) {
-					case('internal'):
-						return slugExpression.test(field) ? true : `This doesn't look like a slug.`
-					case('external'):
-						return URLExpression.test(field) ? true : `This doesn't look like a URL.`
-					default:
-						return 'Select a link type'
-				}
+				if (type !== 'internal') return true
+				if (!field) return 'This field must not be empty'
+				return true
 			}),
 		}),
 
@@ -50,12 +59,16 @@ export const link = defineType({
 	preview: {
 		select: {
 			title: 'text',
-			link: 'link'
+			type: 'type',
+			link: 'link',
+			page: 'page',
 		},
 		prepare(value: any) {
+			const { title, type, link, page } = value
+			const linkText = type == 'external' ? link : page.slug.current
 			return {
-				title: value.title ? value.title  : `Link text not set.`,
-				subtitle: value.link,
+				title: title ? title  : `Link text not set.`,
+				subtitle: linkText,
 				media: BiLink
 			}
 		}

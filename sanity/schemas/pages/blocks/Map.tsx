@@ -2,7 +2,7 @@ import { defineType, defineField, defineArrayMember } from 'sanity';
 import { } from 'react-icons';
 import { mediaAssetSource } from 'sanity-plugin-media';
 
-import constructors from '@/sanity/lib/constructors';
+import constructors from '@/sanity/schemas/pages/constructors';
 import { FaMapLocationDot } from 'react-icons/fa6';
 
 const fields: any = [

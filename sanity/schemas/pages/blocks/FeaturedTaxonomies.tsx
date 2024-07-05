@@ -1,4 +1,4 @@
-import constructors from '@/sanity/lib/constructors';
+import constructors from '@/sanity/schemas/pages/constructors';
 import { FaTags } from 'react-icons/fa6';
 import { defineType, defineField, defineArrayMember } from 'sanity';
 

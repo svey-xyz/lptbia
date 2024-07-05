@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from 'sanity';
-import constructors from '@/sanity/lib/constructors';
+import constructors from '@/sanity/schemas/pages/constructors';
 import { MdWebStories } from 'react-icons/md';
 
 const fields = [

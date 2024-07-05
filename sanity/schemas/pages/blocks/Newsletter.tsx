@@ -1,4 +1,4 @@
-import constructors from '@/sanity/lib/constructors';
+import constructors from '@/sanity/schemas/pages/constructors';
 import { RiInputField } from 'react-icons/ri';
 
 const fields: any = []

@@ -1,4 +1,4 @@
-import { fields } from "@/sanity/lib/constructors";
+import { fields } from "@/sanity/schemas/pages/constructors";
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
 import { defineType, defineField, PreviewConfig } from "sanity";

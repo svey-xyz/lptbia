@@ -1,6 +1,6 @@
 import { defineField } from 'sanity';
 import { IoInformationCircleSharp } from "react-icons/io5";
-import constructors from '@/sanity/lib/constructors';
+import constructors from '@/sanity/schemas/pages/constructors';
 import { RiImageCircleFill } from "react-icons/ri";
 import { Icon } from '@iconify/react';
 import { TbChartInfographic } from "react-icons/tb";

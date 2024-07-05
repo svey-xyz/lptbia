@@ -2,12 +2,12 @@ import React from 'react';
 // import { featuredContent } from "@lib/data/data";
 
 import Image from '@/components/site/Image'
-import { FeatureBlockType } from '@/types';
+import { TextBlockType } from '@/types';
 import TextBlock from '@/components/site/TextBlock';
 // import urlFor from '@/lib/urlFor';
 
 
-const Feature = ({ data }: { data: FeatureBlockType | undefined }) => {
+const Feature = ({ data }: { data: TextBlockType | undefined }) => {
 	if (!data) return;
 	return (
 		<div className="relative overflow-hidden flex flex-col justify-center items-center py-16 gap-12">

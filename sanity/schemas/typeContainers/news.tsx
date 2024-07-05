@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { ImNewspaper } from 'react-icons/im';
-import constructors from "@/sanity/lib/constructors";
+import { container } from "@/sanity/schemas/typeContainers/constructors/container";
 
 const fields = [
 	defineField({
@@ -17,4 +17,4 @@ const fields = [
 	}),
 ]
 
-export const news = constructors.document({ name: 'news', taxonomicTerm: 'newsTaxonomy', fields, icon: ImNewspaper })
+export const news = container({ type: 'news', fields, icon: ImNewspaper })

@@ -1,49 +1,20 @@
 import { RiPagesLine } from 'react-icons/ri';
-import Blocks from './blocks';
-import { defineType, defineField, defineArrayMember } from 'sanity';
+import { page as constructor } from '@/sanity/schemas/pages/constructors/page';
 
-const blockList = Blocks.map((block) => {
-	return { type: block.name}
-})
+import { defineField } from 'sanity';
 
-export const page = defineType({
-	name: 'page',
-	title: 'page',
-	type: 'document',
-	icon: RiPagesLine,
-	fields: [
-		defineField({
-			title: 'Title',
-			name: 'title',
-			type: 'string'
-		}),
-		defineField({
-			title: 'Slug',
-			name: 'slug',
-			type: 'slug',
-			options: {
-				source: 'title',
-				maxLength: 30,
-			},
-			description: 'Custom slugs are generally not recommended, use the generate option.',
-			validation: (Rule) => Rule.required()
-		}),
-		defineField({
-			title: 'Blocks',
-			name: 'blocks',
-			type: 'array',
-			of: blockList,
-		})
-	],
-	preview: {
-		select: {
-			title: 'title',
+const fields = [
+	defineField({
+		title: 'Slug',
+		name: 'slug',
+		type: 'slug',
+		options: {
+			source: 'title',
+			maxLength: 30,
 		},
-		prepare(value: any) {
-			const { title } = value;
-			return {
-				title: title ? title : 'Untitled Document'
-			}
-		}
-	}
-})
+		description: 'Custom slugs are generally not recommended, use the generate option.',
+		validation: (Rule) => Rule.required()
+	}),
+]
+
+export const page = constructor({ name: 'page', fields, icon: RiPagesLine })

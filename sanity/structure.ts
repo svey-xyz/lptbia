@@ -6,16 +6,35 @@ import { IoStorefront, IoWarning } from "react-icons/io5";
 
 import { types } from "@/sanity/schema";
 import { FaSignsPost, FaTag } from "react-icons/fa6";
-import { BsFillBookmarkFill } from "react-icons/bs";
 import DocumentsPane from 'sanity-plugin-documents-pane'
-import { ImNewspaper } from "react-icons/im";
 import { RiPagesLine } from "react-icons/ri";
+import { TypeContainers } from "@/sanity/schemas/typeContainers";
+import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
+
+
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
 // Define the singleton document types
-const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about"])
+const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", "archive"])
 
+const archivePages = (S: StructureBuilder) => TypeContainers.map(typeContainer => {
+	return S.listItem().title(`${typeContainer.document.name}`).icon(AiFillStar).child(
+		(S.document().title(`${typeContainer.document.name}`).schemaType('archive').documentId(`${typeContainer.document.name}`))
+	)
+});
+
+const documentTypes = (S: StructureBuilder) => TypeContainers.map(typeContainer => {
+	const Title = camelCaseToWords(typeContainer.type)
+
+	return S.listItem().title(pluralize(Title)).icon(typeContainer.document.icon as any).child(
+		S.list().title(pluralize(Title)).items([
+			S.documentTypeListItem(typeContainer.taxonomy.name).title(`${Title} Taxonomies`),
+			S.divider(),
+			S.documentTypeListItem(typeContainer.document.name).title(pluralize(Title)),
+		]),
+	)
+})
 
 
 export const structure = (S: StructureBuilder) =>
@@ -36,18 +55,23 @@ export const structure = (S: StructureBuilder) =>
 
 			]),
 		),
-		S.documentTypeListItem('page').title('Pages').icon(RiPagesLine),
+		S.listItem().title('Pages').icon(RiPagesLine).child(
+			S.list().title('Pages').items([
+				S.listItem().title('Archives').icon(RiPagesLine).child(
+					S.list().title('Archives').items([
+						...archivePages(S)
+					])
+				),
 
-		S.divider(),
-
-		S.listItem().title('News').icon(ImNewspaper).child(
-			S.list().title('News').items([
-				S.documentTypeListItem('newsTaxonomy').title('News Taxonomies').icon(FaTag),
 				S.divider(),
 
-				S.documentTypeListItem('news').title('News').icon(BsFillBookmarkFill),
+				S.documentTypeListItem('page').title('Pages').icon(RiPagesLine),
+
 			]),
 		),
+		// S.documentTypeListItem('page').title('Pages').icon(RiPagesLine),
+
+		S.divider(),
 		S.listItem().title('Businesses').icon(IoStorefront).child(
 			S.list().title('Businesses').items([ 
 				S.documentTypeListItem('businessTaxonomy').title('Taxonomies'),
@@ -80,16 +104,7 @@ export const structure = (S: StructureBuilder) =>
 			
 			
 		),
-		S.listItem().title('Projects').icon(BsFillBookmarkFill).child(
-			S.list().title('Projects').items([
-				S.documentTypeListItem('projectTaxonomy').title('Project Taxonomies').icon(FaTag),
-				S.divider(),
-
-				S.documentTypeListItem('project').title('Projects Archive').icon(BsFillBookmarkFill),
-			]),
-		),
-
-
+		...documentTypes(S),
 
 		/** PROJECTS */
 		// S.documentTypeListItem('project').title('Projects'),

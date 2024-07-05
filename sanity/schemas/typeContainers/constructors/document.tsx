@@ -1,46 +1,58 @@
-import { fields } from "@/sanity/lib/types";
 import { taxonomyType } from "@/sanity/schemas/typeContainers/constructors/container";
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { IconType } from "react-icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { FaCircleInfo } from "react-icons/fa6";
+import { defineArrayMember, defineField, defineType, FieldGroupDefinition } from "sanity";
+import { args } from './container'
 
-const documentBaseFields = (taxonomicTerm: string) => {
+const GROUPS: FieldGroupDefinition[] = [
+	{
+		name: 'about',
+		title: 'About',
+		default: true,
+		icon: FaCircleInfo,
+	},
+]
+
+const FIELDS = (taxonomicTerm: string) => {
 	return [
 		defineField({
 			title: 'Title',
 			name: 'title',
 			type: 'string',
+			group: 'about',
 		}),
 		defineField({
 			title: 'Description',
 			name: 'description',
 			type: 'array',
 			of: [{type: 'block'}],
+			group: 'about',
 		}),
 		defineField({
 			title: 'Taxonomies',
 			name: 'taxonomies',
 			type: 'array',
 			of: [defineArrayMember({ type: taxonomicTerm })],
+			group: 'about',
 		}),
 	]
 }
 
-export const document = (args: { name: string, fields?: fields, icon?: IconType | undefined }) => {
-	const { name, icon, fields } = args
-	const generatedFields = fields?.map(field => {
-		return field
-	})
-	const customDocumentFields = generatedFields ? generatedFields : []
+export const document = (args: args) => {
+	const { type, icon, fields, groups } = args
 
 	return defineType({
-		title: camelCaseToWords(name),
-		name: name,
+		title: camelCaseToWords(type),
+		name: type,
 		type: 'document',
 		icon: icon,
+		groups: [
+			...GROUPS,
+			...(groups || [])
+		],
 		fields: [
-			...documentBaseFields(taxonomyType(name)),
-			...customDocumentFields,
+			...FIELDS(taxonomyType(type)),
+			...fields || [],
 		],
 		preview: {
 			select: {

@@ -97,38 +97,38 @@ export const features = defineType({
 			type: 'url',
 			description: 'Video displayed on the landing page.',
 		}),
-		defineField({
-			title: 'News',
-			name: 'news',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					title: 'News',
-					name: 'news',
-					type: 'reference',
-					to: [
-						{ type: 'news' },
-					],
-					options: {
-						disableNew: true,
-					},
-				}),
-			],
-		}),
-		defineField({
-			name: 'businessTaxonomies',
-			title: 'Featured Business Types',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'reference',
-					to: { type: 'businessTaxonomy' },
-					options: {
-						disableNew: true,
-					},
-				}),
-			],
-		}),
+		// defineField({
+		// 	title: 'News',
+		// 	name: 'news',
+		// 	type: 'array',
+		// 	of: [
+		// 		defineArrayMember({
+		// 			title: 'News',
+		// 			name: 'news',
+		// 			type: 'reference',
+		// 			to: [
+		// 				{ type: 'news' },
+		// 			],
+		// 			options: {
+		// 				disableNew: true,
+		// 			},
+		// 		}),
+		// 	],
+		// }),
+		// defineField({
+		// 	name: 'businessTaxonomies',
+		// 	title: 'Featured Business Types',
+		// 	type: 'array',
+		// 	of: [
+		// 		defineArrayMember({
+		// 			type: 'reference',
+		// 			to: { type: 'businessTaxonomy' },
+		// 			options: {
+		// 				disableNew: true,
+		// 			},
+		// 		}),
+		// 	],
+		// }),
 	],
 	preview: {
 		prepare(value: any) {

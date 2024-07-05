@@ -1,10 +1,12 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { FieldDefinition, defineField, defineType } from "sanity";
-import { IconType } from "react-icons";
+import { defineField, defineType } from "sanity";
 import React from "react";
 import { Icon } from '@iconify/react';
 import { FaTag } from "react-icons/fa6";
-import { fields } from "@/sanity/lib/types";
+import { args } from './container'
+
+import { taxonomyType } from "@/sanity/schemas/typeContainers/constructors/container";
+
 
 const skosPrimerURL: string = "https://www.w3.org/TR/2009/NOTE-skos-primer-20090818"
 function skosSectionLink(sec: string, text: string) {
@@ -17,19 +19,20 @@ const taxonomicTermDescription =
 
 
 
-export function taxonomy(args: { documentType: string, fields?: fields, icon?: IconType | undefined }) {
-	const { documentType, icon, fields } = args
-	const taxonomyType = `${documentType}Taxonomy`
-	const generatedFields = fields?.map(field => {
-		field.fieldset = 'unique'
-		return field
-	})
-	const fieldsArray = generatedFields ? generatedFields : []
+export function taxonomy(args: args) {
+	const { type, icon, fields } = args
+	const TaxonomyType = taxonomyType(type)
+
+	// const generatedFields = fields?.map(field => {
+	// 	field.fieldset = 'unique'
+	// 	return field
+	// })
+	// const fieldsArray = generatedFields ? generatedFields : []
 
 
 	return defineType({
-		title: camelCaseToWords(taxonomyType),
-		name: taxonomyType,
+		title: camelCaseToWords(TaxonomyType),
+		name: TaxonomyType,
 		type: 'document',
 		icon: icon || FaTag,
 		description: taxonomicTermDescription,
@@ -57,7 +60,11 @@ export function taxonomy(args: { documentType: string, fields?: fields, icon?: I
 				description: taxonomicTermDescription,
 			}),
 			
-			...fieldsArray,
+			defineField({
+				name: 'icon',
+				title: 'Icon',
+				type: 'icon',
+			}),
 
 			/** OPTIONS */
 
@@ -92,7 +99,7 @@ export function taxonomy(args: { documentType: string, fields?: fields, icon?: I
 				name: 'related',
 				title: 'Related Terms',
 				type: 'reference',
-				to: [{ type: taxonomyType }],
+				to: [{ type: TaxonomyType }],
 				fieldset: 'relational',
 				description: skosSectionLink('secassociative', 'Related terms that are not broader or narrower.'),
 			}),
@@ -100,7 +107,7 @@ export function taxonomy(args: { documentType: string, fields?: fields, icon?: I
 				name: 'broader',
 				title: 'Broader Terms',
 				type: 'reference',
-				to: [{ type: taxonomyType }],
+				to: [{ type: TaxonomyType }],
 				fieldset: 'relational',
 				description: skosSectionLink('sechierarchy', 'More general terms.'),
 			}),
@@ -108,7 +115,7 @@ export function taxonomy(args: { documentType: string, fields?: fields, icon?: I
 				name: 'narrower',
 				title: 'Narrower Terms',
 				type: 'reference',
-				to: [{ type: taxonomyType }],
+				to: [{ type: TaxonomyType }],
 				fieldset: 'relational',
 				description: skosSectionLink('sechierarchy', 'More specific terms.'),
 			}),

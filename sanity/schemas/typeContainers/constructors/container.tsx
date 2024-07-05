@@ -1,20 +1,33 @@
-import { fields } from "@/sanity/lib/types";
 import { IconType } from "react-icons";
+import { FieldGroupDefinition, FieldDefinition, DocumentDefinition } from 'sanity'
+
 import { document } from './document'
 import { taxonomy } from './taxonomy'
+
+export type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
+
+export interface args {
+	type: string,
+	fields?: fields,
+	icon?: IconType,
+	groups?: FieldGroupDefinition[],
+	taxonomies?: boolean,
+}
 
 export const taxonomyType = (type: string) => {
 	return `${type}Taxonomy`
 }
 
-export const container = (args: { type: string, fields?: fields, icon?: IconType }) => {
-	const { type, icon, fields } = args
+export class typeContainer {
+	type: string
+	taxonomies: boolean = true
+	document: DocumentDefinition
+	taxonomy?: DocumentDefinition
 
-	const typeContainer = {
-		type: type,
-		document: document({ name: type, fields, icon }),
-		taxonomy: taxonomy({ documentType: type }),
+	constructor(args: args) {
+		this.type = args.type
+		this.taxonomies = args.taxonomies === false ? false : true
+		this.document = document(args)
+		this.taxonomy = this.taxonomies ? taxonomy(args) : undefined
 	}
-
-	return typeContainer
 }

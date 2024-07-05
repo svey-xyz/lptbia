@@ -1,4 +1,4 @@
-import BUSINESS from '@/sanity/schemas/typeContainers/businesses'
+// import BUSINESS from '@/sanity/schemas/typeContainers/businesses'
 // import PROJECTS from '@/sanity/schemas/documents/projects'
 // import NEWS from '@/sanity/schemas/documents/news'
 // import BLOCKS from '@schemas/pages/blocks'
@@ -29,4 +29,4 @@ import { contact } from '@/sanity/schemas/objects/contact'
 
 const _documents = [settings, sponsor, features, contact]
 
-export const types = [..._objects, ..._documents, ...BUSINESS, ...PAGES, ...DOCUMENT_TYPES];
+export const types = [..._objects, ..._documents, ...PAGES, ...DOCUMENT_TYPES];

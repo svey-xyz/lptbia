@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 import { BsFillBookmarkFill } from 'react-icons/bs'
-import { container } from "@/sanity/schemas/typeContainers/constructors/container";
+import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
 
 const fields = [
 	defineField({
@@ -38,6 +38,6 @@ const fields = [
 	}),
 ]
 
-export const projects = container({ type: 'project', fields, icon: BsFillBookmarkFill })
-
+const args = { type: 'project', fields, icon: BsFillBookmarkFill }
+export const projects = new typeContainer(args)
 

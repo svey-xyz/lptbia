@@ -72,20 +72,20 @@ export const business = defineType({
 				}
 			},
 		}),
-		defineField({
-			title: 'Address',
-			name: 'address',
-			type: 'reference',
-			to: [{type:'address'}],
-			group: 'about',
-		}),
-		defineField({
-			title: 'Taxonomies',
-			name: 'taxonomies',
-			type: 'array',
-			of: [{ type:'businessTaxonomy'}],
-			group: 'about',
-		}),
+		// defineField({
+		// 	title: 'Address',
+		// 	name: 'address',
+		// 	type: 'reference',
+		// 	to: [{type:'address'}],
+		// 	group: 'about',
+		// }),
+		// defineField({
+		// 	title: 'Taxonomies',
+		// 	name: 'taxonomies',
+		// 	type: 'array',
+		// 	of: [{ type:'businessTaxonomy'}],
+		// 	group: 'about',
+		// }),
 		defineField({
 			title: 'Description',
 			name: 'description',

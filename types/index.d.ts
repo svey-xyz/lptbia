@@ -125,6 +125,14 @@ export interface InfoBlockType extends block {
 	],
 }
 
+export interface ArchiveBlockType extends block {
+	title?: string,
+	description?: PortableTextBlock,
+	newsTaxonomies?: Array<newsTaxonomyData>,
+	businessTaxonomies?: Array<businessTaxonomyData>,
+	projectTaxonomies?: Array<projectTaxonomyData>,
+}
+
 
 // DOCUMENT INTERFACES
 
@@ -149,6 +157,12 @@ export interface taxonomyData extends inherentDocumentData {
 
 export interface businessTaxonomyData extends taxonomyData {
 	icon: icon,
+}
+
+export interface newsTaxonomyData extends taxonomyData {
+}
+
+export interface projectTaxonomyData extends taxonomyData {
 }
 
 export interface sponsorData extends inherentDocumentData {

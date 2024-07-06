@@ -1,9 +1,9 @@
-import { fields } from "@/sanity/schemas/pages/constructors";
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
 import { defineType, defineField, PreviewConfig } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
 import { RxSection } from "react-icons/rx";
+import { fields } from "@/sanity/schemas/typeContainers/constructors/container";
 
 export function block(
 	args: {

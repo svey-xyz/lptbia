@@ -2,9 +2,10 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 import { FieldGroupDefinition } from 'sanity'
 
 import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
-import { FaIdCard, FaNoteSticky } from "react-icons/fa6";
+import { FaIdCard, FaNoteSticky, FaStore } from "react-icons/fa6";
 import { mediaAssetSource } from "sanity-plugin-media";
 import { IoStorefront } from "react-icons/io5";
+import { adresses } from './adresses'
 
 const groups: FieldGroupDefinition[] = [
 	{
@@ -106,9 +107,21 @@ const fields = [
 ]
 
 
+const customPreview = {
+	select: {
+		name: 'name',
+		logo: 'logo',
+	},
+	prepare(value: any) {
+		const { name, logo } = value
+		return {
+			title: name ? name : 'Untitled Business',
+			media: logo ? logo : FaStore,
+		}
+	},
+}
 
-// export const businesses = container({ type: 'business', fields, groups, icon: BsFillBookmarkFill })
-const args = { type: 'business', fields, groups, icon: IoStorefront }
+const args = { type: 'business', fields, groups, icon: IoStorefront, childTypes: [adresses], customPreview }
 export const businesses = new typeContainer(args)
 
 

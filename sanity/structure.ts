@@ -8,6 +8,7 @@ import { RiGalleryView, RiPagesLine } from "react-icons/ri";
 import { TypeContainers } from "@/sanity/schemas/typeContainers";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 import { FaTag } from "react-icons/fa6";
+import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
 
 
 // Define the actions that should be available for singleton documents
@@ -17,25 +18,46 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", "archive"])
 
 const archivePages = (S: StructureBuilder) => TypeContainers.map(typeContainer => {
+	if (typeContainer.child) return
+
 	return S.listItem().title(`${typeContainer.document.name}`).icon(RiPagesLine).child(
 		(S.document().title(`${typeContainer.document.name}`).schemaType('archive').documentId(`${typeContainer.document.name}`))
 	)
-});
+}).filter((item)=>{ return item !== undefined})
+
+const documentTaxonomiesListItem = (S: StructureBuilder, typeContainer: typeContainer) => {
+	if (!typeContainer.taxonomy) return
+	const Title = camelCaseToWords(typeContainer.type)
+
+	return S.documentTypeListItem(typeContainer.taxonomy.name).title(`${Title} Taxonomies`).icon(FaTag)
+}
 
 const documentTypes = (S: StructureBuilder) => TypeContainers.map(typeContainer => {
 	const Title = camelCaseToWords(typeContainer.type)
+
+	const ChildTaxonomies = (typeContainer.childTypes?.map((typeContainer) => {
+		return documentTaxonomiesListItem(S, typeContainer)
+	}))?.filter((item) => { return item !== undefined})
+
 	const Taxonomies = typeContainer.taxonomy ? [
-		S.documentTypeListItem(typeContainer.taxonomy?.name).title(`${Title} Taxonomies`).icon(FaTag),
+		documentTaxonomiesListItem(S, typeContainer)!,
+		...ChildTaxonomies || [],
 		S.divider(),
 	] : []
 
+	const Children = typeContainer.childTypes?.map((childTypeContainer) => {
+		return S.documentTypeListItem(childTypeContainer.document.name).title(pluralize(camelCaseToWords(childTypeContainer.type)))
+	})
+
+	if (typeContainer.child) return
 	return S.listItem().title(pluralize(Title)).icon(typeContainer.document.icon as any).child(
 		S.list().title(pluralize(Title)).items([
 			...Taxonomies,
 			S.documentTypeListItem(typeContainer.document.name).title(pluralize(Title)),
+			...Children || []
 		]),
 	)
-})
+}).filter((item) => { return item !== undefined })
 
 
 export const structure = (S: StructureBuilder) =>

@@ -1,5 +1,5 @@
-import { fields } from "@/sanity/schemas/pages/constructors";
 import { blockTypes } from "@/sanity/schemas/pages/blocks";
+import { fields } from "@/sanity/schemas/typeContainers/constructors/container";
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
 import { defineField, defineType } from "sanity";

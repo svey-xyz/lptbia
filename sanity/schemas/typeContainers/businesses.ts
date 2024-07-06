@@ -53,13 +53,20 @@ const fields = [
 			}
 		},
 	}),
-	// defineField({
-	// 	title: 'Address',
-	// 	name: 'address',
-	// 	type: 'reference',
-	// 	to: [{ type: 'address' }],
-	// 	group: 'about',
-	// }),
+	defineField({
+		title: 'Addresses',
+		name: 'addresses',
+		type: 'array',
+		of: [
+			{
+				type: 'reference',
+				to: [{ type: 'address' }],
+			}
+		],
+		
+		group: 'about',
+	}),
+
 	/** CONTACT */
 
 	defineField({

@@ -1,4 +1,4 @@
-import { createClient } from 'next-sanity'
+import { createClient } from '@sanity/client'
 import { projectId, dataset, apiVersion } from './api'
 
 export const client = createClient({
@@ -6,7 +6,11 @@ export const client = createClient({
 	dataset,
 	apiVersion,
 	useCdn: false,
-	perspective: 'published',
+	perspective: "published",
+	stega: {
+		enabled: false,
+		studioUrl: "/studio",
+	},
 })
 
 export default client;

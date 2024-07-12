@@ -1,21 +1,16 @@
+import '@styles/site.globals.css'
+
 import { Analytics } from '@vercel/analytics/react';
 import Header from '@components/site/Header'
 import Footer from '@components/site/Footer'
-import '@styles/site.globals.css'
 
 import { Inter } from 'next/font/google'
 import Head from '@site/head'
-import { cookies, draftMode } from 'next/headers';
-
+import { draftMode } from 'next/headers';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
-import { client } from '@sanity/lib/client';
-import dynamic from 'next/dynamic';
 import { loadSettings } from '@/sanity/lib/loadQuery';
-// import { settings } from '@/data';
-
-
-const PreviewProvider = dynamic(() => import('@components/site/PreviewProvider'))
+import { AutomaticVisualEditing } from '@/components/AutomaticVisualEditing';
 
 const inter = Inter({ subsets: ['latin'] })
 const firaCode = localFont({
@@ -50,32 +45,17 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
-	const componentParams = {
-		preview: preview,
-		client: client
-	}
-
-	const headerHeightString = preview ?
-		'[--total-header-height:calc(var(--header-height)+var(--preview-header-height))]' :
-		'[--total-header-height:var(--header-height)]'
-
-	let documentClasses = `${inter.className} ${firaCode.variable} ${headerHeightString}`
+	let documentClasses = `${inter.className} ${firaCode.variable}`
 	
 	return (
 		<html lang="en" className={documentClasses} suppressHydrationWarning>
 			<Head />
 			<body className='relative min-h-screen overflow-x-hidden'>
-				<Header componentParams={componentParams} />
+				<Header />
 				<main className='min-h-full'>
-					{ (preview && preview.token) ? (
-						<PreviewProvider token={preview.token}>
-							{children}
-						</PreviewProvider>
-					) : (
-						children
-					)}
+					{ children }
 				</main>
+				{ draftMode().isEnabled && <AutomaticVisualEditing /> }
 				<Footer />
 				<Analytics />
 			</body>

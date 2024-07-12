@@ -17,6 +17,7 @@ const Image = ({
 	className?: string
 	style?: CSSProperties
 }) => {
+	if (!image.imageAsset) return
 	const imageProps = useNextSanityImage(client, image);
 
 	return (<Img

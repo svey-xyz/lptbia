@@ -6,7 +6,7 @@ import { readableDate } from '@lib/readableDate';
 
 const NewsArchiveCard = ({news}:{news:newsData}) => {
 	return (
-		<div className='relative flex flex-col group cursor-pointer'>
+		<div className='relative flex flex-col group cursor-pointer' >
 			<div className='relative flex flex-col bg-accent text-bg h-96 w-full'>
 				
 				{ news.image &&

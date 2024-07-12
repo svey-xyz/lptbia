@@ -1,31 +1,7 @@
-// import { settings } from '@lib/data/data'
 import { loadSettings } from '@/sanity/lib/loadQuery'
 import Image from '@components/site/Image'
 
-const Header = async ({ componentParams }: { componentParams: any }) => {
-	return (
-		<HeaderWrapper>
-			{(componentParams.preview && componentParams.preview.token) ? (
-				<>
-					<PreviewHeader />
-					<SiteHeader  />
-				</>
-			) : (
-					<SiteHeader />
-			)}
-		</HeaderWrapper>
-	)
-}
-
-const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
-	return (
-		<header className='relative top-0 left-0 right-0 max-w-screen h-fit z-50'>
-			{children}
-		</header>
-	)
-}
-
-const SiteHeader = async() => {
+const Header = async() => {
 	const initial = await loadSettings()
 	if (!initial) return;
 
@@ -41,18 +17,6 @@ const SiteHeader = async() => {
 						}
 					</a>
 				</div>
-			</div>
-		</div>
-	)
-}
-
-const PreviewHeader = () => {
-	return (
-		<div className="relative h-[--preview-header-height] flex items-center justify-center z-50 bg-accent">
-			<div className="main-padding m-auto flex flex-row">
-				<span className="w-full text-center text-bg">
-					You&apos;re viewing the site in preview mode! To view published content click <a href="/api/exit-preview" className="underline">here</a>.
-				</span>
 			</div>
 		</div>
 	)

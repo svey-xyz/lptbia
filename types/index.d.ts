@@ -55,9 +55,10 @@ export interface location extends inherentObjectData {
 // }
 
 export interface link extends inherentObjectData {
-	text: string,
-	type: 'internal' | 'external' | undefined,
-	link: string,
+	text?: string,
+	type?: 'internal' | 'external',
+	link?: string,
+	page?: PagePayload,
 }
 
 export interface address extends inherentObjectData {
@@ -133,6 +134,9 @@ export interface ArchiveBlockType extends block {
 	projectTaxonomies?: Array<projectTaxonomyData>,
 }
 
+export type BLOCK_TYPES = [FeaturedTaxonomyBlockType, TextBlockType, MapBlockType, NewsletterBlockType, NewsFeatureBlockType, ArchiveBlockType]
+
+
 
 // DOCUMENT INTERFACES
 
@@ -198,7 +202,7 @@ export interface BusinessPayload extends inherentDocumentData {
 export interface PagePayload extends inherentDocumentData {
 	title?: string,
 	slug: string,
-	blocks?: Array<feature | FeaturedTaxonomyBlockType | Map | newsFeature | newsletter>
+	blocks?: BLOCK_TYPES
 }
 
 export interface projectData extends document {

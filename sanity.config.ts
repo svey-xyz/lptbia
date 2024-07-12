@@ -2,6 +2,7 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 import { structureTool } from 'sanity/structure'
+import { presentationTool } from 'sanity/presentation'
 
 /** PLUGINS */
 import { colorInput } from '@sanity/color-input'
@@ -17,6 +18,8 @@ import { googleMapsInput } from '@sanity/google-maps-input'
 import { PluginOptions, defineConfig } from 'sanity'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
+
+import { locate } from '@/sanity/lib/locate'
 
 const googleMapsProps = {
 	apiKey: googleMapsKey,
@@ -36,7 +39,16 @@ const deskPlugins = [
 	noteField(),
 	media(),
 	googleMapsInput(googleMapsProps),
-	iconify({ showName: false, })
+	iconify({ showName: false, }),
+	presentationTool({
+		locate,
+		previewUrl: {
+			draftMode: {
+				enable: '/api/draft',
+			},
+		},
+	}),
+
 ] as PluginOptions[]
 
 

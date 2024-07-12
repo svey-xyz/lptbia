@@ -3,39 +3,24 @@ import 'server-only'
 import * as queryStore from '@sanity/react-loader'
 import { draftMode } from 'next/headers'
 
-// import { client } from './client'
 import {
 	pageQuery,
-	// homePageQuery,
-	// pagesBySlugQuery,
-	// projectBySlugQuery,
 	businessesQuery,
 	settingsQuery,
 } from '@/sanity/lib/queries'
 
 import {
 	PagePayload,
-	// HomePagePayload,
-	// PagePayload,
-	// ProjectPayload,
 	BusinessPayload,
 	SettingsPayload,
 } from '@/types'
 
-
-import type { ContentSourceMap, QueryOptions, QueryParams } from "@sanity/client";
-// import { draftMode } from "next/headers";
+import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
 import { client } from "./client";
-import { Type } from "typescript";
-import { QueryResponseInitial } from '@sanity/react-loader'
-// import { draftMode } from "next/headers";
-
-const DEFAULT_PARAMS = {} as QueryParams;
-const DEFAULT_TAGS = [] as string[];
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 
-const serverClient = client.withConfig({
+const serverClient: SanityClient = client.withConfig({
 	token,
 	// Enable stega if it's a Vercel preview deployment, as the Vercel Toolbar has controls that shows overlays
 	stega: process.env.VERCEL_ENV === 'preview',
@@ -75,10 +60,6 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 	}) as Promise<{ data: T, sourceMap: ContentSourceMap }>
 }) satisfies typeof queryStore.loadQuery
 
-/**
- * Loaders that are used in more than one place are declared here, otherwise they're colocated with the component
- */
-
 export function loadSettings() {
 	return loadQuery<SettingsPayload>(
 		settingsQuery,
@@ -94,22 +75,6 @@ export function loadBusinesses() {
 		{ next: { tags: ['business', 'page'] } },
 	)
 }
-
-// export function loadHomePage(slug: string) {
-// 	return loadQuery<PagePayload | null>(
-// 		pageQuery,
-// 		{ slug },
-// 		{ next: { tags: ['home'] } },
-// 	)
-// }
-
-// export function loadProject(slug: string) {
-// 	return loadQuery<ProjectPayload | null>(
-// 		projectBySlugQuery,
-// 		{ slug },
-// 		{ next: { tags: [`project:${slug}`] } },
-// 	)
-// }
 
 export function loadPage(slug: string) {
 	return loadQuery<PagePayload | null>(

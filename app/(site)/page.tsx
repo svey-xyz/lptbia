@@ -1,8 +1,5 @@
-import { loadPage, loadSettings } from '@/sanity/lib/loadQuery';
-import { studioUrl } from '@/sanity/lib/api'
-import Link from 'next/link'
-import Pages from '@/components/pages';
-
+import { loadSettings } from '@/sanity/lib/loadQuery';
+import Pages from '@/components/Pages';
 
 export default async function Home() {
 	const initial = await loadSettings()
@@ -10,14 +7,12 @@ export default async function Home() {
 	if (!initial || !initial.data.homepage) {
 		return (
 			<div className="text-center">
-				You don&rsquo;t have a homepage yet,{' '}
-				<Link href={`${studioUrl}/desk/home`} className="underline">
-					create one now
-				</Link>
-				!
+				You don&rsquo;t have a homepage yet
 			</div>
 		)
 	}
 
-	return <Pages.Page data={initial.data.homepage} />
+	
+
+	return <Pages.PageRoute params={{ slug: initial.data.homepage.slug }} />
 }

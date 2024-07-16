@@ -9,27 +9,7 @@ export const settingsQuery: string = groq`
 			"imageAsset":asset->,
 		},
 		homepage->{
-			...,
 			"slug":slug.current,
-			blocks[] {
-				...,
-				image {
-					...,
-					"imageAsset":asset->
-				},
-				taxonomies[]->,
-				featuredImage {
-					...,
-					"imageAsset":asset->
-				},
-				news[]-> {
-					...,
-					image {
-						...,
-						"imageAsset":asset->
-					},
-				},
-			}
 		}
 	}
 `
@@ -40,7 +20,20 @@ export const pageQuery: string = groq`
 		"slug":slug.current,
 		blocks[] {
 			...,
-			taxonomies[]->,
+			_type == "FeaturedTaxonomies" => {
+				...,
+				taxonomies[]->,
+			},
+			_type == "NewsFeature" => {
+				...,
+				news[]-> {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					},
+				},
+			},
 		},
 	}
 `
@@ -120,10 +113,18 @@ export const businessesQuery = groq`
 export const newsSingleQuery = groq`
 	*[_type=='news' && slug.current == $slug][0] {
   	...,
+		image {
+			...,
+			"imageAsset":asset->
+		},
 	}
 `
 export const newsQuery = groq`
 	*[_type=='news'] {
   	...,
+		image {
+			...,
+			"imageAsset":asset->
+		},
 	}
 `

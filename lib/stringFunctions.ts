@@ -1,3 +1,5 @@
+import { plural } from 'pluralize'
+
 export const camelCaseToWords = (string: string) => {
 	var words = string.match(/[A-Za-z][a-z]*/g) || [];
 
@@ -5,7 +7,7 @@ export const camelCaseToWords = (string: string) => {
 }
 
 export const pluralize = (string: string) => {
-	return string.endsWith('s') ? string : `${string}s`
+	return plural(string)
 }
 
 export const capitalize = (word: string) => {

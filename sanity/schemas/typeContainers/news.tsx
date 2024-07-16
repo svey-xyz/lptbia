@@ -15,6 +15,12 @@ const fields = [
 		type: 'string',
 		description: 'Author of the article.'
 	}),
+	defineField({
+		title: 'Image',
+		name: 'image',
+		type: 'image',
+		group: 'about',
+	}),
 ]
 
 const args = { type: 'news', fields, icon: ImNewspaper }

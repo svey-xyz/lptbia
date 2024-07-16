@@ -1,7 +1,7 @@
 import { loadSettings } from '@/sanity/lib/loadQuery';
 import Pages from '@/components/Pages';
 
-export default async function Home() {
+const Page = async() => {
 	const initial = await loadSettings()
 
 	if (!initial || !initial.data.homepage) {
@@ -16,3 +16,5 @@ export default async function Home() {
 
 	return <Pages.PageRoute params={{ slug: initial.data.homepage.slug }} />
 }
+
+export default Page

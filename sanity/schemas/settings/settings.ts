@@ -136,31 +136,44 @@ export const settings = defineType({
 			},
 		}),
 		defineField({
-			name: 'businessArchive',
-			title: 'Business Archive',
-			type: 'reference',
-			to: [{ type: 'page' }],
-			options: {
-				disableNew: true,
-			},
-		}),
-		defineField({
-			name: 'newsArchive',
-			title: 'News Archive',
-			type: 'reference',
-			to: [{ type: 'page' }],
-			options: {
-				disableNew: true,
-			},
-		}),
-		defineField({
-			name: 'projectArchive',
-			title: 'Project Archive',
-			type: 'reference',
-			to: [{ type: 'page' }],
-			options: {
-				disableNew: true,
-			},
+			name: 'navigation',
+			title: 'Navigation',
+			type: 'array',
+			of: [
+				{
+					name: 'Navigation Item',
+					title: 'item',
+					type: 'object',
+					fields: [
+						{
+							title: 'Title',
+							name: 'title',
+							type: 'string',
+							validation: Rule => Rule.required(),
+						},
+						{
+							title: 'Pages',
+							name: 'pages',
+							type: 'array',
+							description: 'A list of pages for the navigation item. If more than 1 page is added the navigation item will appear as a dropdown list.',
+							of: [
+								{
+									title: 'Page',
+									name: 'page',
+									type: 'reference',
+									to: [
+										{ type: 'page' },
+										{ type: 'archive' },
+									],
+									options: {
+										disableNew: true,
+									},
+								},
+							]
+						}
+					],
+				},
+			]
 		}),
 	],
 	preview: {

@@ -5,6 +5,12 @@ import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/cont
 
 const fields = [
 	defineField({
+		title: 'Date',
+		name: 'date',
+		type: 'basicDate',
+		group: 'about',
+	}),
+	defineField({
 		title: 'Write-up',
 		name: 'writeup',
 		type: 'basicBlockContent',

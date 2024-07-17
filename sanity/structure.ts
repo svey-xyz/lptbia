@@ -10,7 +10,6 @@ import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 import { FaTag } from "react-icons/fa6";
 import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
 
-
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
@@ -54,7 +53,6 @@ const typesList = (S: StructureBuilder) => TypeContainers.flatMap(typeContainer 
 	)
 })
 
-
 export const structure = (S: StructureBuilder) =>
 	S.list().title('Content').items([
 		/** ABOUT */
@@ -62,9 +60,6 @@ export const structure = (S: StructureBuilder) =>
 			S.list().title('About').items([
 				S.listItem().title('Site Settings').icon(MdSettings).child(
 					S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
-				),
-				S.listItem().title('Featured Content').icon(AiFillStar).child(
-					S.document().title('Featured Content').schemaType('featuredContent').documentId('featuredContent')
 				),
 
 				S.divider(),

@@ -31,7 +31,7 @@ const googleMapsProps = {
 	}
 }
 const defaultDesk = structureTool({
-	structure,
+	structure
 })
 const deskPlugins = [
 	defaultDesk,

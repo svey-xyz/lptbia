@@ -23,10 +23,9 @@ const _objects = [social, link, basicDate, location, basicBlockContent, extraBlo
  * Documents
  */
 import { settings } from '@/sanity/schemas/settings/settings'
-import { features } from '@/sanity/schemas/settings/features'
 import { sponsor } from '@/sanity/schemas/typeContainers/sponsor'
 import { contact } from '@/sanity/schemas/objects/contact'
 
-const _documents = [settings, sponsor, features, contact]
+const _documents = [settings, sponsor, contact]
 
 export const types = [..._objects, ..._documents, ...PAGES, ...DOCUMENT_TYPES];

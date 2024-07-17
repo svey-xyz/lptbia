@@ -18,9 +18,11 @@ const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", 
 
 const archivePages = (S: StructureBuilder) => TypeContainers.flatMap(typeContainer => {
 	if (typeContainer.child) return []
+	
+	const archiveName = `${pluralize(camelCaseToWords(typeContainer.type))} Archive`
 
-	return S.listItem().title(`${typeContainer.document.name}`).icon(RiPagesLine).child(
-		(S.document().title(`${typeContainer.document.name}`).schemaType('archive').documentId(`${typeContainer.document.name}`))
+	return S.listItem().title(archiveName).icon(RiPagesLine).child(
+		(S.document().title(archiveName).schemaType('archive').documentId(`${typeContainer.document.name}`))
 	)
 }).filter((item)=>{ return item !== undefined})
 

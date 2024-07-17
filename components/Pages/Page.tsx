@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { PagePayload } from '@/types';
+import { ArchivePayload, PagePayload } from '@/types';
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
 import { createDataAttribute } from "@sanity/visual-editing";
@@ -13,7 +13,7 @@ interface ContainerMap {
 }
 
 export interface PageProps {
-	data: PagePayload | null
+	data: PagePayload | ArchivePayload | null
 	encodeDataAttribute?: EncodeDataAttributeCallback
 }
 

@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadPage } from '@sanity/lib/loadQuery'
+import { loadArchive } from '@sanity/lib/loadQuery'
 import Pages from '@/components/Pages'
 
 type Props = {
@@ -10,10 +10,10 @@ export const generateMetadata = async(
 	{ params }: Props,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> => {
-	const { data: page } = await loadPage(params.slug)
+	const { data: archive } = await loadArchive(params.slug)
 
 	return {
-		title: page?.title,
+		title: archive?.title,
 		// description: page?.overview
 		// 	? toPlainText(page.overview)
 		// 	: (await parent).description,
@@ -21,7 +21,7 @@ export const generateMetadata = async(
 }
 
 const Page = ({ params }: Props) => {
-	return <Pages.PageRoute params={params} />
+	return <Pages.ArchiveRoute params={params} />
 }
 
 export default Page

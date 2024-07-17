@@ -19,54 +19,41 @@ export const settingsQuery: string = groq`
 	}
 `
 
-export const pageQuery: string = groq`
-	*[_type=='page' && slug.current == $slug][0] {
-  	...,
-		"slug":slug.current,
-		blocks[] {
+export const blocksQuery: string = groq`
+	blocks[] {
+		...,
+		_type == "FeaturedTaxonomies" => {
 			...,
-			_type == "FeaturedTaxonomies" => {
+			taxonomies[]->,
+		},
+		_type == "NewsFeature" => {
+			...,
+			news[]-> {
 				...,
-				taxonomies[]->,
-			},
-			_type == "NewsFeature" => {
-				...,
-				news[]-> {
+				image {
 					...,
-					image {
-						...,
-						"imageAsset":asset->
-					},
+					"imageAsset":asset->
 				},
 			},
 		},
 	}
 `
 
-export const featuredQuery: string = groq`
-	*[_id == "featuredContent"] {
-		...,
-		frontpageFeature{
-			...,
-			image {
-				...,
-			"imageAsset":asset->
-			}
-		},
-		heroImages[]{
-			...,
-			"imageAsset":asset->
-		},
-		news[]-> {
-			...,
-			image {
-				...,
-				"imageAsset":asset->
-			},
-		},
-		businessTaxonomies[]->
-	}[0]
+export const pageQuery: string = groq`
+	*[_type=='page' && slug.current == $slug][0] {
+  	...,
+		"slug":slug.current,
+		${blocksQuery},
+	}
 `
+
+export const archiveQuery: string = groq`
+	*[_type=='archive' && _id == $archiveID][0] {
+  	...,
+		${blocksQuery},
+	}
+`
+
 export const projectQuery = groq`
 	*[_type=='project' && slug.current == $slug][0] {
   	...,

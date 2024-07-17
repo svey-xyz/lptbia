@@ -7,12 +7,14 @@ import {
 	pageQuery,
 	businessesQuery,
 	settingsQuery,
+	archiveQuery,
 } from '@/sanity/lib/queries'
 
 import {
 	PagePayload,
 	BusinessPayload,
 	SettingsPayload,
+	ArchivePayload,
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
@@ -81,5 +83,13 @@ export function loadPage(slug: string) {
 		pageQuery,
 		{ slug },
 		{ next: { tags: [`page:${slug}`, 'home'] } },
+	)
+}
+
+export function loadArchive(archiveID: string) {
+	return loadQuery<ArchivePayload | null>(
+		archiveQuery,
+		{ archiveID },
+		{ next: { tags: [`archive:${archiveID}`, 'archive'] } },
 	)
 }

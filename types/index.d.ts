@@ -79,6 +79,11 @@ export interface frontpageFeature extends inherentObjectData {
 	image: sanityImage,
 }
 
+export interface navigationItem extends inherentObjectData {
+	title: string,
+	pages?: Array<PagePayload | ArchivePayload>,
+}
+
 // BLOCKS
 
 export interface block extends inherentObjectData {
@@ -191,10 +196,7 @@ export interface SettingsPayload extends inherentDocumentData {
 	partners?: Array<sponsorData>,
 	location?: location,
 	homepage?: PagePayload,
-	navigation?: Array<{
-		title: string,
-		pages?: Array<PagePayload>,
-	}>,
+	navigation?: Array<navigationItem>,
 }
 
 export interface BusinessPayload extends inherentDocumentData {
@@ -206,6 +208,11 @@ export interface BusinessPayload extends inherentDocumentData {
 export interface PagePayload extends inherentDocumentData {
 	title?: string,
 	slug: string,
+	blocks?: BLOCK_TYPES
+}
+
+export interface ArchivePayload extends inherentDocumentData {
+	title?: string,
 	blocks?: BLOCK_TYPES
 }
 

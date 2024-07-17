@@ -191,6 +191,10 @@ export interface SettingsPayload extends inherentDocumentData {
 	partners?: Array<sponsorData>,
 	location?: location,
 	homepage?: PagePayload,
+	navigation?: Array<{
+		title: string,
+		pages?: Array<PagePayload>,
+	}>,
 }
 
 export interface BusinessPayload extends inherentDocumentData {

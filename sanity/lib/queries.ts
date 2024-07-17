@@ -10,7 +10,12 @@ export const settingsQuery: string = groq`
 		},
 		homepage->{
 			"slug":slug.current,
-		}
+		},
+		navigation[]{
+			// ...,
+			title,
+			pages[]->,
+		},
 	}
 `
 

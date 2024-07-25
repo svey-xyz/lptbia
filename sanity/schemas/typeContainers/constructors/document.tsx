@@ -9,7 +9,7 @@ const GROUPS: FieldGroupDefinition[] = [
 	{
 		name: 'about',
 		title: 'About',
-		default: true,
+		// default: true,
 		icon: FaCircleInfo,
 	},
 ]
@@ -26,7 +26,7 @@ const TaxonomiesField = (taxonomicTerm: string) => {
 	)
 }
 
-const FIELDS = [
+const _FIELDS = [
 	defineField({
 		title: 'Title',
 		name: 'title',
@@ -43,7 +43,7 @@ const FIELDS = [
 
 ]
 
-const PREVIEW = (icon?: IconType) => {
+const _PREVIEW = (icon?: IconType) => {
 	return {
 		select: {
 			title: 'title',
@@ -62,12 +62,12 @@ const PREVIEW = (icon?: IconType) => {
 export const document = (args: args) => {
 	const { type, icon, fields, groups } = args
  	let documentFields = [
-		...FIELDS,
+		..._FIELDS,
 		...fields || [],
 	]
 	if (args.taxonomies) documentFields.push(TaxonomiesField(taxonomyType(type)))
 
-	const documentPreview = args.customPreview || PREVIEW(icon)
+	const documentPreview = args.customPreview || _PREVIEW(icon)
 
 	return defineType({
 		title: camelCaseToWords(type),

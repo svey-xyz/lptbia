@@ -8,6 +8,9 @@ import {
 	businessesQuery,
 	settingsQuery,
 	archiveQuery,
+	newsQuery,
+	projectQuery,
+	projectsQuery,
 } from '@/sanity/lib/queries'
 
 import {
@@ -15,6 +18,8 @@ import {
 	BusinessPayload,
 	SettingsPayload,
 	ArchivePayload,
+	newsData,
+	projectData,
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
@@ -74,7 +79,23 @@ export function loadBusinesses() {
 	return loadQuery<Array<BusinessPayload>>(
 		businessesQuery,
 		{},
-		{ next: { tags: ['business', 'page'] } },
+		{ next: { tags: ['business', 'businesses', 'page'] } },
+	)
+}
+
+export function loadProjects() {
+	return loadQuery<Array<projectData>>(
+		projectsQuery,
+		{},
+		{ next: { tags: ['project', 'projects', 'page'] } },
+	)
+}
+
+export function loadNews() {
+	return loadQuery<Array<newsData>>(
+		newsQuery,
+		{},
+		{ next: { tags: ['news', 'page'] } },
 	)
 }
 

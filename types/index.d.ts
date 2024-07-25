@@ -1,6 +1,9 @@
 import { Geopoint } from "@sanity/google-maps-input"
 import { ImageAsset, Slug, PortableTextBlock, Image } from "sanity"
 
+
+type documentTypesWithArchives = 'business' | 'project' | 'news'
+
 export interface inherentObjectData {
 	_key?: string,
 	_type: string,
@@ -134,6 +137,7 @@ export interface InfoBlockType extends block {
 export interface ArchiveBlockType extends block {
 	title?: string,
 	description?: PortableTextBlock,
+	archiveType: documentTypesWithArchives,
 	newsTaxonomies?: Array<newsTaxonomyData>,
 	businessTaxonomies?: Array<businessTaxonomyData>,
 	projectTaxonomies?: Array<projectTaxonomyData>,
@@ -146,13 +150,10 @@ export type BLOCK_TYPES = [FeaturedTaxonomyBlockType, TextBlockType, MapBlockTyp
 // DOCUMENT INTERFACES
 
 export interface document extends inherentDocumentData {
-	title?: string,
+	title: string,
+	description?: PortableTextBlock,
 	image?: sanityImage,
-	date?: dateData,
-	location?: location,
 	taxonomies?: Array<taxonomyData>,
-	links?: Array<link>,
-
 }
 
 export interface taxonomyData extends inherentDocumentData {
@@ -199,7 +200,7 @@ export interface SettingsPayload extends inherentDocumentData {
 	navigation?: Array<navigationItem>,
 }
 
-export interface BusinessPayload extends inherentDocumentData {
+export interface BusinessPayload extends document {
 	title: string,
 	address?: address,
 	logo?: sanityImage,

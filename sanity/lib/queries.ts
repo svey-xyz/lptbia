@@ -55,11 +55,15 @@ export const archiveQuery: string = groq`
 `
 
 export const projectQuery = groq`
-	*[_type=='project' && slug.current == $slug][0] {
+	*[_type=='project' && title == 'Barcelos Rooster'][0] {
   	...,
+		image {
+			...,
+			"imageAsset":asset->
+		},
 		gallery[] {
 			...,
-				"imageAsset":asset->
+			"imageAsset":asset->
 		},
 		artists[]->{
 			...,
@@ -82,6 +86,10 @@ export const projectQuery = groq`
 export const projectsQuery = groq`
 	*[_type=='project'] {
   	...,
+		image {
+			...,
+			"imageAsset":asset->
+		},
 		artists[]->{
 			...,
 			"slug":slug.current,

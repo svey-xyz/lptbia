@@ -116,13 +116,13 @@ const fields = [
 
 const customPreview = {
 	select: {
-		name: 'name',
+		title: 'title',
 		logo: 'logo',
 	},
 	prepare(value: any) {
-		const { name, logo } = value
+		const { title, logo } = value
 		return {
-			title: name ? name : 'Untitled Business',
+			title: title ? title : 'Untitled Business',
 			media: logo ? logo : FaStore,
 		}
 	},

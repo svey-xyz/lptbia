@@ -91,10 +91,10 @@ export function loadProjects() {
 	)
 }
 
-export function loadProject(title: string) {
+export function loadProject(slug: string) {
 	return loadQuery<projectData>(
 		projectQuery,
-		{ title },
+		{ slug },
 		{ next: { tags: ['project', 'projects', 'page'] } },
 	)
 }

@@ -8,6 +8,7 @@ export interface ProjectPageProps {
 }
 
 export const Project = ({ data }: ProjectPageProps) => {
+	console.log('Made it this far. Heres the data: ', data)
 	if (!data) return;
 	return (
 		<article className=''>

@@ -24,7 +24,7 @@ const Page = ({ params }: Props) => {
 	const { slug } = params
 	// Trying to import this array from any other file causes a weird error...
 	const DocumentTypesWithArchives = ["project", "news", "business"]
-	if (DocumentTypesWithArchives.includes(slug[0])) return <Pages.DocumentRoute documentType={slug[0]} title={slug[1]} />
+	if (DocumentTypesWithArchives.includes(slug[0])) return <Pages.DocumentRoute documentType={slug[0]} slug={slug[1]} />
 
 	return <Pages.PageRoute params={params} />
 

@@ -3,14 +3,14 @@ import { news } from './news';
 import { businesses } from './businesses'
 import { adresses } from './adresses';
 
-export const TypeContainers = [
+export const DocumentContainers = [
 	projects, news, businesses, adresses
 ]
 
-export const Types = (() => {
+const Types = (() => {
 	let types: Array<{ type: 'document', name: string }> = []
 
-	TypeContainers.forEach((typeContainer) => {
+	DocumentContainers.forEach((typeContainer) => {
 		types.push(typeContainer.document)
 		if (typeContainer.taxonomy) types.push(typeContainer.taxonomy)
 	})

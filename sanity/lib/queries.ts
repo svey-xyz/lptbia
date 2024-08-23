@@ -55,7 +55,7 @@ export const archiveQuery: string = groq`
 `
 
 export const projectQuery = groq`
-	*[_type=='project' && title == 'Barcelos Rooster'][0] {
+	*[_type=='project' && title == $title][0] {
   	...,
 		image {
 			...,

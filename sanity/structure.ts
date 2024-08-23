@@ -5,7 +5,7 @@ import { AiFillInfoCircle, AiFillStar } from "react-icons/ai";
 
 import { types } from "@/sanity/schema";
 import { RiGalleryView, RiPagesLine } from "react-icons/ri";
-import { TypeContainers } from "@/sanity/schemas/typeContainers";
+import { DocumentContainers } from "@/sanity/schemas/typeContainers";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 import { FaTag } from "react-icons/fa6";
 import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
@@ -16,7 +16,7 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 // Define the singleton document types
 const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", "archive"])
 
-const archivePages = (S: StructureBuilder) => TypeContainers.flatMap(typeContainer => {
+const archivePages = (S: StructureBuilder) => DocumentContainers.flatMap(typeContainer => {
 	if (typeContainer.child) return []
 	
 	const archiveName = `${pluralize(camelCaseToWords(typeContainer.type))} Archive`
@@ -26,7 +26,7 @@ const archivePages = (S: StructureBuilder) => TypeContainers.flatMap(typeContain
 	)
 }).filter((item)=>{ return item !== undefined})
 
-const typesList = (S: StructureBuilder) => TypeContainers.flatMap(typeContainer => {
+const typesList = (S: StructureBuilder) => DocumentContainers.flatMap(typeContainer => {
 	if (typeContainer.child) return []
 
 	const Title = camelCaseToWords(typeContainer.type)

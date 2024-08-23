@@ -91,6 +91,14 @@ export function loadProjects() {
 	)
 }
 
+export function loadProject(title: string) {
+	return loadQuery<projectData>(
+		projectQuery,
+		{ title },
+		{ next: { tags: ['project', 'projects', 'page'] } },
+	)
+}
+
 export function loadNews() {
 	return loadQuery<Array<newsData>>(
 		newsQuery,

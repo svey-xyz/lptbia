@@ -1,8 +1,6 @@
 import { Geopoint } from "@sanity/google-maps-input"
 import { ImageAsset, Slug, PortableTextBlock, Image } from "sanity"
-
-
-type documentTypesWithArchives = 'business' | 'project' | 'news'
+import { DocumentContainers } from '@/sanity/schemas/typeContainers'
 
 export interface inherentObjectData {
 	_key?: string,

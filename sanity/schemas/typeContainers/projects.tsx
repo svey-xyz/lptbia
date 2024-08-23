@@ -3,6 +3,7 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 import { BsFillBookmarkFill } from 'react-icons/bs'
 import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
 import { mediaAssetSource } from "sanity-plugin-media";
+import { DocumentTypeNames } from "@/sanity/schemas/typeContainers";
 
 const fields = [
 	defineField({
@@ -69,6 +70,7 @@ const fields = [
 	}),
 ]
 
-const args = { type: 'project', fields, icon: BsFillBookmarkFill }
+const type: DocumentTypeNames = 'project'
+const args = { type, fields, icon: BsFillBookmarkFill }
 export const projects = new typeContainer(args)
 

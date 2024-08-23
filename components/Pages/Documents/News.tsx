@@ -1,12 +1,12 @@
 import React from 'react';
-import { projectData } from '@/types';
+import { newsData } from '@/types';
 import { notFound } from 'next/navigation'
 
-export interface ProjectPageProps {
-	data: projectData
+export interface NewsPageProps {
+	data: newsData
 }
 
-export const Project = ({ data }: ProjectPageProps) => {
+export const News = ({ data }: NewsPageProps) => {
 	if (!data) return notFound();
 	return (
 		<article className=''>

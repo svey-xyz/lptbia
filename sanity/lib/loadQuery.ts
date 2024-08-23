@@ -6,9 +6,11 @@ import { draftMode } from 'next/headers'
 import {
 	pageQuery,
 	businessesQuery,
+	businessQuery,
 	settingsQuery,
 	archiveQuery,
 	newsQuery,
+	newsSingleQuery,
 	projectQuery,
 	projectsQuery,
 } from '@/sanity/lib/queries'
@@ -83,6 +85,14 @@ export function loadBusinesses() {
 	)
 }
 
+export function loadBusiness(slug: string) {
+	return loadQuery<BusinessPayload>(
+		businessQuery,
+		{ slug },
+		{ next: { tags: ['business', 'businesses', 'page'] } },
+	)
+}
+
 export function loadProjects() {
 	return loadQuery<Array<projectData>>(
 		projectsQuery,
@@ -103,6 +113,14 @@ export function loadNews() {
 	return loadQuery<Array<newsData>>(
 		newsQuery,
 		{},
+		{ next: { tags: ['news', 'page'] } },
+	)
+}
+
+export function loadNewsSingle(slug: string) {
+	return loadQuery<newsData>(
+		newsSingleQuery,
+		{ slug },
 		{ next: { tags: ['news', 'page'] } },
 	)
 }

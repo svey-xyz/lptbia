@@ -110,8 +110,16 @@ export const businessesQuery = groq`
 	}
 `
 
+export const businessQuery = groq`
+	*[_type=='business' && title match $slug][0] {
+		...,
+		address->,
+		logo->,
+	}
+`
+
 export const newsSingleQuery = groq`
-	*[_type=='news' && slug.current == $slug][0] {
+	*[_type=='news' && title match $slug][0] {
   	...,
 		image {
 			...,

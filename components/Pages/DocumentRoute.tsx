@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { loadProject } from '@/sanity/lib/loadQuery'
+import { loadBusiness, loadNews, loadNewsSingle, loadProject } from '@/sanity/lib/loadQuery'
 
 type DocumentPageProps = {
 	documentType: string,
@@ -8,19 +8,23 @@ type DocumentPageProps = {
 }
 
 export const DocumentRoute = async ({ documentType, slug }: DocumentPageProps) => {
-	let ArchiveCard = dynamic(() => import('@/components/cards/GenericArchiveCard'))
 	switch (documentType) {
 		case ('project'):
-			console.log('Type check success')
 			const ProjectPage = dynamic(() => import('@components/Pages/Documents/Project').then(Loader => Loader.Project))
-			const projectPayload = await loadProject(slug)
-			console.log(projectPayload)
-			return <ProjectPage data={projectPayload.data} />
+			const ProjectPayload = await loadProject(slug)
+
+			return <ProjectPage data={ProjectPayload.data} />
 		case ('business'):
-			return
+			const BusinessPage = dynamic(() => import('@components/Pages/Documents/Business').then(Loader => Loader.Business))
+			const BusinessPayload = await loadBusiness(slug)
+
+			return <BusinessPage data={BusinessPayload.data} />
 		case ('news'):
-			return
+			const NewsPage = dynamic(() => import('@components/Pages/Documents/News').then(Loader => Loader.News))
+			const NewsPayload = await loadNewsSingle(slug)
+
+			return <NewsPage data={NewsPayload.data} />
 		default:
-			return
+			return notFound()
 	}
 }

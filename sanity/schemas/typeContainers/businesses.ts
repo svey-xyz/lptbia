@@ -128,7 +128,7 @@ const customPreview = {
 	},
 }
 
-const args = { type: 'business', fields, groups, icon: IoStorefront, childTypes: [adresses], customPreview }
+const args = { type: 'business', fields, groups, icon: IoStorefront, childTypes: [adresses], customPreview, taxonomies: true }
 export const businesses = new typeContainer(args)
 
 

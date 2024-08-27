@@ -7,6 +7,7 @@ import { presentationTool } from 'sanity/presentation'
 /** PLUGINS */
 import { colorInput } from '@sanity/color-input'
 import { noteField } from 'sanity-plugin-note-field'
+import { visionTool } from '@sanity/vision'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId, googleMapsKey } from '@sanity/lib/api'
@@ -35,6 +36,7 @@ const defaultDesk = structureTool({
 })
 const deskPlugins = [
 	defaultDesk,
+	visionTool(),
 	colorInput(),
 	noteField(),
 	media(),

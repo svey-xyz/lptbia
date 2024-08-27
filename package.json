@@ -16,7 +16,7 @@
     "@iconify/react": "^4.1.1",
     "@portabletext/react": "^3.0.15",
     "@react-google-maps/api": "^2.19.3",
-    "@sanity/client": "latest",
+    "@sanity/client": "^6.21.3",
     "@sanity/color-input": "latest",
     "@sanity/google-maps-input": "latest",
     "@sanity/image-url": "^1.0.2",

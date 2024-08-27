@@ -7,12 +7,13 @@ import dynamic from 'next/dynamic'
 export const Standard = async ({ data }: { data: ArchiveBlockType }) => {
 	if (!data) return
 
-	let ArchiveCard = dynamic(() => import('@/components/cards/GenericArchiveCard'))
+	let ArchiveCard = dynamic(() => import('@/components/cards/archives/Generic'))
 
 	const archiveItems = await (async () => {
 		switch (data.archiveType) {
 			case ('business'):
 				const initialBusinessesPayload = await loadBusinesses()
+				ArchiveCard = dynamic(() => import('@/components/cards/archives/Business'))
 				if (!initialBusinessesPayload) return []
 				return initialBusinessesPayload.data		
 			case ('news'):

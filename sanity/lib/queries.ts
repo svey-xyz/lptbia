@@ -106,7 +106,10 @@ export const businessesQuery = groq`
 	*[_type=='business'] {
 		...,
 		address->,
-		logo->,
+		logo {
+      ...,
+      "imageAsset":asset->
+    }   
 	}
 `
 
@@ -114,7 +117,10 @@ export const businessQuery = groq`
 	*[_type=='business' && title match $slug][0] {
 		...,
 		address->,
-		logo->,
+		logo {
+      ...,
+      "imageAsset":asset->
+    }   
 	}
 `
 

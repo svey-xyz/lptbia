@@ -1,4 +1,4 @@
-import NewsArchiveCard from '@components/cards/NewsArchiveCard';
+import NewsArchiveCard from '@/components/cards/archives/News';
 import { NewsFeatureBlockType, block } from '@/types';
 import React from 'react';
 

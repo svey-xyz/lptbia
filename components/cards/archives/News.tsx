@@ -29,7 +29,7 @@ const NewsArchiveCard = ({news}:{news:newsData}) => {
 						{news.title}
 					</a>
 					<span className='text-sm leading-tight text-right'>
-						{readableDate(news.date)}
+						{/* {readableDate(news.date)} */}
 					</span>		
 				</div>
 

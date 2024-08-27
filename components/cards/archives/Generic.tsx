@@ -13,7 +13,7 @@ const GenericArchiveCard = ({ item }: { item: document | newsData | projectData 
 				<div className='relative min-h-48 max-h-48 overflow-hidden border-b border-accent-secondary border-solid'>
 					<div className='absolute flex flex-col items-center justify-center inset-0 bg-accent-secondary -z-1'>
 						<span className='text-bg font-semibold text-sm'>
-							No project image.
+							No {item._type} image.
 						</span>
 					</div>
 					{ item.image &&

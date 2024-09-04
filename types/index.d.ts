@@ -1,6 +1,6 @@
 import { Geopoint } from "@sanity/google-maps-input"
 import { ImageAsset, Slug, PortableTextBlock, Image } from "sanity"
-import { DocumentContainers } from '@/sanity/schemas/typeContainers'
+import { DocumentContainers } from '@/sanity/schemas/articles'
 
 export interface inherentObjectData {
 	_key?: string,

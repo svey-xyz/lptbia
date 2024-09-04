@@ -1,12 +1,11 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField } from "sanity";
 import { FieldGroupDefinition } from 'sanity'
 
-import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
 import { FaBandage, FaSignsPost } from "react-icons/fa6";
-import { IoStorefront } from "react-icons/io5";
 import { GiStreetLight } from "react-icons/gi";
 import { CgReadme } from "react-icons/cg";
 import { readableAddress } from "@/lib/readableAddress";
+import { ARTICLE } from "@/sanity/schemas/articles/constructors/article";
 
 const healthOptions = [
 	{ title: 'Good', value: 'good' },
@@ -202,6 +201,6 @@ const customPreview = {
 	},
 }
 
-const args = { type: 'address', taxonomies: false, child: true, fields, groups, icon: FaSignsPost, customPreview }
-export const adresses = new typeContainer(args)
+const args = { type: 'address', fields, groups, icon: FaSignsPost, customPreview }
+export const adresses = new ARTICLE(args)
 

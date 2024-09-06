@@ -5,11 +5,16 @@ import Link from 'next/link'
 import { BusinessPayload, article, newsData, projectData } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
-const BusinessArchiveCard = ({ item }: { item: BusinessPayload }) => {
+type args = {
+	item: BusinessPayload,
+	filtered?: boolean,
+}
+
+export const BusinessArchiveCard = async({ item, filtered = true }: args) => {
 	const itemHref = `/${item._type}/${slugifyWithOptions(item.title)}`
 
 	return (
-		<Link href={itemHref} className='relative flex flex-col group cursor-pointer' >
+		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden p-4
 					after:absolute after:flex after:inset-0 after:bg-accent-secondary after:-z-1'>

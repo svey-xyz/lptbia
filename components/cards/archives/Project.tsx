@@ -3,7 +3,12 @@ import { projectData } from "@/types";
 import TextBlock from "@components/site/TextBlock";
 import Image from '@components/site/Image'
 
-export default function ProjectArchiveCard({project, filtered = true}:{project:projectData, filtered: boolean}) {
+type args = {
+	item: projectData,
+	filtered?: boolean,
+}
+
+export const ProjectArchiveCard = async({ item, filtered = true }: args) => {
 	return (
 		<div className={`${filtered ? 'block' : "hidden"} relative flex flex-col`}>
 			{/* <a href={`/projects/${project.data.slug.current}`} aria-label={`Link to project: ${project.data.title}`}

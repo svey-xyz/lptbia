@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { projectData, taxonomyData } from "@/types";
-import ProjectArchiveCard from "../cards/archives/Project";
+import {ProjectArchiveCard} from "../cards/archives/Project";
 
 const allTag: taxonomyData = {
 	_type: 'taxonomicTerm',

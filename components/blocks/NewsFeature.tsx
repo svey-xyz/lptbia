@@ -11,7 +11,7 @@ export const Standard = ({ data }: { data: NewsFeatureBlockType }) => {
 			</span>
 			<div className='relative flex flex-col lg:flex-row gap-8 items-center lg:items-start lg:justify-center'>
 				{	data.news?.map((news) => {
-					return <NewsArchiveCard key={news._id} news={news} />
+					return <NewsArchiveCard key={news._id} item={news} />
 				})}
 			</div>
 		</div>

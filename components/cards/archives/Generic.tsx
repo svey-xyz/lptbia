@@ -5,10 +5,15 @@ import Link from 'next/link'
 import { BusinessPayload, article, newsData, projectData } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
-const GenericArchiveCard = ({ item }: { item: article | newsData | projectData | BusinessPayload }) => {
+type args = {
+	item: article | newsData | projectData | BusinessPayload,
+	filtered?: boolean,
+}
+
+export const GenericArchiveCard = async ({ item, filtered = true }: args) => {
 	const itemHref = `/${item._type}/${slugifyWithOptions(item.title)}`
 	return (
-		<Link href={itemHref} className='relative flex flex-col group cursor-pointer' >
+		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden border-b border-accent-secondary border-solid'>
 					<div className='absolute flex flex-col items-center justify-center inset-0 bg-accent-secondary -z-1'>

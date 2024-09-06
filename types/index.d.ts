@@ -146,6 +146,7 @@ export interface ArchiveBlockType extends block {
 	title?: string,
 	description?: PortableTextBlock,
 	archiveType: documentTypesWithArchives,
+	filterable?: boolean,
 	featured_newsTaxonomy?: Array<newsTaxonomyData>,
 	featured_businessTaxonomy?: Array<businessTaxonomyData>,
 	featured_projectTaxonomy?: Array<projectTaxonomyData>,

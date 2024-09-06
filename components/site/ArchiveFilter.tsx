@@ -71,23 +71,24 @@ export const ArchiveFilter = ({ articles, archive }: args) => {
 
 	return (
 		<div className="relative flex flex-col">
-				<fieldset className="flex flex-row gap-4">
-					{(taxonomies &&
-						taxonomies.map((taxonomy) => {
+				{((taxonomies && archive.filterable) &&
+					<fieldset className="flex flex-row gap-4 mb-4">
+						{taxonomies.map((taxonomy) => {
 							return (
 								<div key={taxonomy._id} className="group relative flex cursor-pointer w-auto px-4 flex-col items-center justify-center py-2">
 									<input type="radio" name="taxonomies" value={taxonomy.prefLabel}
-										className="rounded-2xl border border-solid border-fg-primary
-											hover:bg-fg-primary/20 checked:bg-fg-primary/40 absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none
+										className="peer  absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none
 											cursor-pointer transition-all duration-200
 											origin-center"
 										checked={filteredtaxonomyPrefLabel == taxonomy.prefLabel} onChange={handleFilterChange} ref={(() => { if (filteredtaxonomyPrefLabel == taxonomy.prefLabel) return alltaxonomyRef})() } />
-									<label className="leading-none text-sm">{taxonomy.prefLabel}</label>
+									<label className="text-accent-secondary/60 group-hover:text-accent peer-checked:text-accent-secondary peer-checked:brightness-90">
+										{taxonomy.prefLabel}
+									</label>
 								</div>
 							)
-						})
-					)}
-				</fieldset>
+						})}
+					</fieldset>
+				)}
 			<div className="relative grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pb-4 separator">
 				{((articles && ArchiveCard) &&
 					articles.map((article) => {

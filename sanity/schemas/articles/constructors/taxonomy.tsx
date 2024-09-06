@@ -59,15 +59,6 @@ export const taxonomy = (article: string) => {
 			/** OPTIONS */
 
 			defineField({
-				name: 'termVisibility',
-				title: 'Term Visibility',
-				type: 'boolean',
-				description: 'When set to true the term will be visible to users, all other terms are visible only in the database.',
-				fieldset: 'options',
-				initialValue: true,
-
-			}),
-			defineField({
 				name: 'prefLabel',
 				title: 'Title',
 				type: 'string',

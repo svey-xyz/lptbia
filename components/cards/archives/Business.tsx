@@ -2,7 +2,7 @@ import React from 'react';
 import Image from '@components/site/Image'
 import Link from 'next/link'
 
-import { BusinessPayload, document, newsData, projectData } from '@/types'
+import { BusinessPayload, article, newsData, projectData } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
 const BusinessArchiveCard = ({ item }: { item: BusinessPayload }) => {

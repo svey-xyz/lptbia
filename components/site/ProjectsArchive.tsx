@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { projectData, taxonomyData } from "@/types";
-import ProjectArchiveCard from "../cards/ProjectArchiveCard";
+import ProjectArchiveCard from "../cards/archives/Project";
 
 const allTag: taxonomyData = {
 	_type: 'taxonomicTerm',
@@ -11,7 +11,6 @@ const allTag: taxonomyData = {
 	_rev: '1.0',
 	_id: 'allTag',
 	prefLabel: 'All',
-	termVisibility: true
 }
 
 export default function ProjectsArchive({projects}:{projects:Array<projectData>}) {

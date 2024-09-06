@@ -2,10 +2,10 @@ import React from 'react';
 import Image from '@components/site/Image'
 import Link from 'next/link'
 
-import { BusinessPayload, document, newsData, projectData } from '@/types'
+import { BusinessPayload, article, newsData, projectData } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
-const GenericArchiveCard = ({ item }: { item: document | newsData | projectData | BusinessPayload }) => {
+const GenericArchiveCard = ({ item }: { item: article | newsData | projectData | BusinessPayload }) => {
 	const itemHref = `/${item._type}/${slugifyWithOptions(item.title)}`
 	return (
 		<Link href={itemHref} className='relative flex flex-col group cursor-pointer' >

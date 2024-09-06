@@ -16,6 +16,7 @@ const featuredTaxonomiesFields = ARTICLES.flatMap((article) => {
 		title: 'Featured Taxonomies',
 		name: `featured_${taxonomyTitle(article.type)}`,
 		type: 'array',
+		description: 'Only articles with the selected taxonomies will appear. If no taxonomies are selected then all articles of the type will be included.',
 		hidden: ({ parent }) => {
 			return parent?.archiveType !== article.type
 		},
@@ -49,6 +50,12 @@ const fields = [
 		name: 'description',
 		type: 'array',
 		of: [{type: 'block'}],
+	}),
+	defineField({
+		title: 'Filterable',
+		name: 'filterable',
+		type: 'boolean',
+		description: 'Controls whether the archive is filterable with taxonomy tags.',
 	}),
 	...featuredTaxonomiesFields
 ]

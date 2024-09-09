@@ -21,7 +21,9 @@ export const FeaturedTaxonomies = ({ data } : { data: FeaturedTaxonomyBlockType 
 								WebkitFilter: `brightness(${brightness}%)`,
 								filter: `brightness(${brightness}%)`,
 							}}/>
-						<Icon icon={tax.icon?.name} width={60} className='-rotate-12 group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-300'/>
+						{ tax.icon?.name &&
+							<Icon icon={tax.icon?.name} width={60} className='-rotate-12 group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-300'/>
+						}
 						<span className='text-lg font-bold opacity-80 group-hover:opacity-100 leading-tight' style={{ whiteSpace: "pre-line" }}>
 							{ breakAdditionSign(tax.prefLabel) }
 						</span>

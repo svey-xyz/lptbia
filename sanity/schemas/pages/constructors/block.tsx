@@ -1,9 +1,10 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
-import { defineType, defineField, PreviewConfig } from "sanity";
+import { defineType, defineField, FieldDefinition } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
 import { RxSection } from "react-icons/rx";
-import { fields } from "@/sanity/schemas/typeContainers/constructors/container";
+
+type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
 
 export function block(
 	args: {

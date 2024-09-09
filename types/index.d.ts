@@ -1,6 +1,6 @@
 import { Geopoint } from "@sanity/google-maps-input"
 import { ImageAsset, Slug, PortableTextBlock, Image } from "sanity"
-import { DocumentContainers } from '@/sanity/schemas/typeContainers'
+import { DocumentContainers } from '@/sanity/schemas/articles'
 
 export interface inherentObjectData {
 	_key?: string,
@@ -132,13 +132,25 @@ export interface InfoBlockType extends block {
 	],
 }
 
+// import ARTICLES from '@/sanity/schemas/articles'
+
+// const featuredTaxonomiesFields = ARTICLES.flatMap((article) => {
+// 	return `featured_${taxonomyTitle(article.type)}`
+// })
+
+/**
+ * featured taxonomy fields dynamically defined in /sanity/schema/pages/blocks/archive
+ */
+
 export interface ArchiveBlockType extends block {
 	title?: string,
 	description?: PortableTextBlock,
 	archiveType: documentTypesWithArchives,
-	newsTaxonomies?: Array<newsTaxonomyData>,
-	businessTaxonomies?: Array<businessTaxonomyData>,
-	projectTaxonomies?: Array<projectTaxonomyData>,
+	filterable?: boolean,
+	featured_newsTaxonomy?: Array<newsTaxonomyData>,
+	featured_businessTaxonomy?: Array<businessTaxonomyData>,
+	featured_projectTaxonomy?: Array<projectTaxonomyData>,
+	featured_addressTaxonomy?: Array<taxonomyData>,
 }
 
 export type BLOCK_TYPES = [FeaturedTaxonomyBlockType, TextBlockType, MapBlockType, NewsletterBlockType, NewsFeatureBlockType, ArchiveBlockType]
@@ -147,7 +159,7 @@ export type BLOCK_TYPES = [FeaturedTaxonomyBlockType, TextBlockType, MapBlockTyp
 
 // DOCUMENT INTERFACES
 
-export interface document extends inherentDocumentData {
+export interface article extends inherentDocumentData {
 	title: string,
 	description?: PortableTextBlock,
 	image?: sanityImage,
@@ -155,7 +167,7 @@ export interface document extends inherentDocumentData {
 }
 
 export interface taxonomyData extends inherentDocumentData {
-	termVisibility?: boolean,
+	icon?: icon,
 	prefLabel: string,
 	definition?: string,
 	related?: Array<taxonomyData>,
@@ -164,7 +176,6 @@ export interface taxonomyData extends inherentDocumentData {
 }
 
 export interface businessTaxonomyData extends taxonomyData {
-	icon: icon,
 }
 
 export interface newsTaxonomyData extends taxonomyData {
@@ -198,7 +209,7 @@ export interface SettingsPayload extends inherentDocumentData {
 	navigation?: Array<navigationItem>,
 }
 
-export interface BusinessPayload extends document {
+export interface BusinessPayload extends article {
 	title: string,
 	address?: address,
 	logo?: sanityImage,
@@ -215,7 +226,7 @@ export interface ArchivePayload extends inherentDocumentData {
 	blocks?: BLOCK_TYPES
 }
 
-export interface projectData extends document {
+export interface projectData extends article {
 	writeup?: PortableTextBlock,
 	credits?: PortableTextBlock,
 	gallery?: Array<sanityImage>,
@@ -230,7 +241,7 @@ export interface featuredContentData extends inherentDocumentData {
 	businessTaxonomies?: Array<businessTaxonomyData>,
 }
 
-export interface newsData extends document {
+export interface newsData extends article {
 	_type: "news",
 	content?: PortableTextBlock,
 	author?: string,

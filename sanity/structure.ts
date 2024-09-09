@@ -5,10 +5,9 @@ import { AiFillInfoCircle, AiFillStar } from "react-icons/ai";
 
 import { types } from "@/sanity/schema";
 import { RiGalleryView, RiPagesLine } from "react-icons/ri";
-import { DocumentContainers } from "@/sanity/schemas/typeContainers";
+import ARTICLES from "@/sanity/schemas/articles";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 import { FaTag } from "react-icons/fa6";
-import { typeContainer } from "@/sanity/schemas/typeContainers/constructors/container";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -16,41 +15,24 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 // Define the singleton document types
 const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", "archive"])
 
-const archivePages = (S: StructureBuilder) => DocumentContainers.flatMap(typeContainer => {
-	if (typeContainer.child) return []
-	
-	const archiveName = `${pluralize(camelCaseToWords(typeContainer.type))} Archive`
+const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
+	const archiveName = `${pluralize(camelCaseToWords(article.type))} Archive`
 
 	return S.listItem().title(archiveName).icon(RiPagesLine).child(
-		(S.document().title(archiveName).schemaType('archive').documentId(`${typeContainer.document.name}`))
+		(S.document().title(archiveName).schemaType('archive').documentId(`${article.document.name}`))
 	)
 }).filter((item)=>{ return item !== undefined})
 
-const typesList = (S: StructureBuilder) => DocumentContainers.flatMap(typeContainer => {
-	if (typeContainer.child) return []
+const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
+	const Title = camelCaseToWords(article.type)
 
-	const Title = camelCaseToWords(typeContainer.type)
+	let listItems: (ListItemBuilder | ListItem | Divider )[] = [
+		S.documentTypeListItem(article.taxonomy.name).title(`${Title} Taxonomies`).icon(FaTag),
+		S.divider(),
+		S.documentTypeListItem(article.document.name).title(pluralize(Title))
+	]
 
-	const ChildTaxonomyListItem = (children: typeContainer[]) => children.flatMap((child) => {
-		if (!child.taxonomy || !child.taxonomies) return []
-		return S.documentTypeListItem(child.taxonomy.name).title(`${Title} Taxonomies`).icon(FaTag)
-	})
-	
-
-	const ChildListItems = (children: typeContainer[]) => children.flatMap((childTypeContainer) => {
-		return S.documentTypeListItem(childTypeContainer.document.name).title(pluralize(camelCaseToWords(childTypeContainer.type)))
-	})
-
-	
-	let listItems: (ListItemBuilder | ListItem | Divider )[] = []
-
-	if (typeContainer.taxonomy) listItems.push(S.documentTypeListItem(typeContainer.taxonomy.name).title(`${Title} Taxonomies`).icon(FaTag))
-	if (typeContainer.childTypes) listItems.push(...ChildTaxonomyListItem(typeContainer.childTypes))
-	if (listItems.length > 0) listItems.push(S.divider())
-	listItems.push(S.documentTypeListItem(typeContainer.document.name).title(pluralize(Title)))
-	if (typeContainer.childTypes) listItems.push(...ChildListItems(typeContainer.childTypes))
-
-	return S.listItem().title(pluralize(Title)).icon(typeContainer.document.icon as any).child(
+	return S.listItem().title(pluralize(Title)).icon(article.document.icon as any).child(
 		S.list().title(pluralize(Title)).items(listItems),
 	)
 })

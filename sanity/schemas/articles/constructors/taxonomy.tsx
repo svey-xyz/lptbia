@@ -3,9 +3,10 @@ import { defineField, defineType } from "sanity";
 import React from "react";
 import { Icon } from '@iconify/react';
 import { FaTag } from "react-icons/fa6";
-import { args } from './container'
 
-import { taxonomyType } from "@/sanity/schemas/typeContainers/constructors/container";
+export const taxonomyTitle = (article: string) => {
+	return `${article}Taxonomy`
+}
 
 
 const skosPrimerURL: string = "https://www.w3.org/TR/2009/NOTE-skos-primer-20090818"
@@ -15,26 +16,16 @@ function skosSectionLink(sec: string, text: string) {
 }
 
 const taxonomicTermDescription =
-	<span>Terms aim to apply to { skosSectionLink('', 'SKOS guidelines')} but are adapted to fit the requirements of this project.</span>
+	<span>Terms aim to apply to {skosSectionLink('', 'SKOS guidelines')} but are adapted to fit the requirements of this project.</span>
 
-
-
-export function taxonomy(args: args) {
-	const { type, icon, fields } = args
-	const TaxonomyType = taxonomyType(type)
-
-	// const generatedFields = fields?.map(field => {
-	// 	field.fieldset = 'unique'
-	// 	return field
-	// })
-	// const fieldsArray = generatedFields ? generatedFields : []
-
+export const taxonomy = (article: string) => {
+	const TaxonomyTitle = taxonomyTitle(article)
 
 	return defineType({
-		title: camelCaseToWords(TaxonomyType),
-		name: TaxonomyType,
+		title: camelCaseToWords(TaxonomyTitle),
+		name: TaxonomyTitle,
 		type: 'document',
-		icon: icon || FaTag,
+		icon: FaTag,
 		description: taxonomicTermDescription,
 		fieldsets: [
 			{
@@ -59,24 +50,14 @@ export function taxonomy(args: args) {
 				type: 'note',
 				description: taxonomicTermDescription,
 			}),
-			
 			defineField({
 				name: 'icon',
 				title: 'Icon',
 				type: 'icon',
-			}),
+			}),	
 
 			/** OPTIONS */
 
-			defineField({
-				name: 'termVisibility',
-				title: 'Term Visibility',
-				type: 'boolean',
-				description: 'When set to true the term will be visible to users, all other terms are visible only in the database.',
-				fieldset: 'options',
-				initialValue: true,
-
-			}),
 			defineField({
 				name: 'prefLabel',
 				title: 'Title',
@@ -99,7 +80,7 @@ export function taxonomy(args: args) {
 				name: 'related',
 				title: 'Related Terms',
 				type: 'reference',
-				to: [{ type: TaxonomyType }],
+				to: [{ type: TaxonomyTitle }],
 				fieldset: 'relational',
 				description: skosSectionLink('secassociative', 'Related terms that are not broader or narrower.'),
 			}),
@@ -107,7 +88,7 @@ export function taxonomy(args: args) {
 				name: 'broader',
 				title: 'Broader Terms',
 				type: 'reference',
-				to: [{ type: TaxonomyType }],
+				to: [{ type: TaxonomyTitle }],
 				fieldset: 'relational',
 				description: skosSectionLink('sechierarchy', 'More general terms.'),
 			}),
@@ -115,7 +96,7 @@ export function taxonomy(args: args) {
 				name: 'narrower',
 				title: 'Narrower Terms',
 				type: 'reference',
-				to: [{ type: TaxonomyType }],
+				to: [{ type: TaxonomyTitle }],
 				fieldset: 'relational',
 				description: skosSectionLink('sechierarchy', 'More specific terms.'),
 			}),
@@ -130,7 +111,7 @@ export function taxonomy(args: args) {
 				return {
 					title: value.prefLabel,
 					description: value.description,
-					media: value.icon ? <Icon icon={value.icon.name as string} /> : icon,
+					media: value.icon ? <Icon icon={value.icon.name as string} /> : FaTag,
 				}
 			}
 		},

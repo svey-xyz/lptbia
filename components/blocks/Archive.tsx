@@ -1,19 +1,16 @@
-import { ArchiveBlockType, BusinessPayload, newsData, projectData } from '@/types';
+import { ArchiveBlockType } from '@/types';
 import React from 'react';
 import { loadBusinesses, loadNews, loadProjects } from '@/sanity/lib/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
-import dynamic from 'next/dynamic'
+import { ArchiveFilter } from '@/components/site/ArchiveFilter';
 
 export const Standard = async ({ data }: { data: ArchiveBlockType }) => {
 	if (!data) return
-
-	let ArchiveCard = dynamic(() => import('@/components/cards/archives/Generic'))
 
 	const archiveItems = await (async () => {
 		switch (data.archiveType) {
 			case ('business'):
 				const initialBusinessesPayload = await loadBusinesses()
-				ArchiveCard = dynamic(() => import('@/components/cards/archives/Business'))
 				if (!initialBusinessesPayload) return []
 				return initialBusinessesPayload.data		
 			case ('news'):
@@ -38,13 +35,15 @@ export const Standard = async ({ data }: { data: ArchiveBlockType }) => {
 			<span className='font-black text-4xl text-accent-secondary'>
 				{ archiveTitle }
 			</span>
-			<div className='relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+
+			<ArchiveFilter articles={archiveItems} archive={data} />
+			{/* <div className='relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
 				{ archiveItems.map((item) => {
 					return (
 						<ArchiveCard item={item} key={item._id} />
 					)
 				}) }
-			</div>
+			</div> */}
 		</div>
 	);
 };

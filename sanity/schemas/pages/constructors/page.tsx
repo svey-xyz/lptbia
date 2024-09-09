@@ -1,9 +1,9 @@
 import { blockTypes } from "@/sanity/schemas/pages/blocks";
-import { fields } from "@/sanity/schemas/typeContainers/constructors/container";
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, FieldDefinition } from "sanity";
 // import { blockTypes } from './blocks';
+type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
 
 export const page = (args: { name: string, fields?: fields, icon?: IconType | undefined }) => {
 	const { name, icon, fields } = args

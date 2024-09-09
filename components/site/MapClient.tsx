@@ -1,6 +1,6 @@
 'use client';
 
-import { MapBlockType, icon } from '@/types';
+import { block_Map, icon } from '@/types';
 import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import React, { useMemo } from 'react';
 import { Icon } from '@iconify/react';
@@ -15,7 +15,7 @@ interface LocationWithIcon {
 	icon?: icon
 }
 
-export const MapClient = ({ mapData, locationsWithIcons }: { mapData: MapBlockType, locationsWithIcons?: Array<LocationWithIcon> }) => {
+export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map, locationsWithIcons?: Array<LocationWithIcon> }) => {
 	const libraries = useMemo(() => ['places'], []);
 	const mapCenter = useMemo(
 		() => (mapData.centre),

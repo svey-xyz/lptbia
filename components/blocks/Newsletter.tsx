@@ -1,8 +1,8 @@
 import NewsletterForm from '@/components/site/NewsletterForm';
-import { NewsletterBlockType, block } from '@/types';
+import { block_Newsletter, block } from '@/types';
 import React from 'react';
 
-export const Standard = ({ data }: { data: NewsletterBlockType }) => {
+export const Standard = ({ data }: { data: block_Newsletter }) => {
 	return (
 		<div className="flex flex-col bg-accent">
 			<div className="main-padding py-12 flex flex-col gap-4 justify-center text-center">

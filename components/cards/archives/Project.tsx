@@ -1,10 +1,10 @@
 import React from "react";
-import { projectData } from "@/types";
+import { article_Project } from "@/types";
 import TextBlock from "@components/site/TextBlock";
 import Image from '@components/site/Image'
 
 type args = {
-	item: projectData,
+	item: article_Project,
 	filtered?: boolean,
 }
 

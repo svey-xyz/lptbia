@@ -1,8 +1,8 @@
 import NewsArchiveCard from '@/components/cards/archives/News';
-import { NewsFeatureBlockType, block } from '@/types';
+import { block_FeaturedArticles, block } from '@/types';
 import React from 'react';
 
-export const Standard = ({ data }: { data: NewsFeatureBlockType }) => {
+export const Standard = ({ data }: { data: block_FeaturedArticles }) => {
 	if (!data) return
 	return (
 		<div className='main-padding my-24 flex flex-col gap-12 items-center'>

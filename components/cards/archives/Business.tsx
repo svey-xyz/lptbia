@@ -2,11 +2,11 @@ import React from 'react';
 import Image from '@components/site/Image'
 import Link from 'next/link'
 
-import { BusinessPayload, article, newsData, projectData } from '@/types'
+import { article_Business, article, article_News, article_Project } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
 type args = {
-	item: BusinessPayload,
+	item: article_Business,
 	filtered?: boolean,
 }
 

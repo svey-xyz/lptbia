@@ -1,11 +1,11 @@
 'use client';
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { ArchiveBlockType, article, BusinessPayload, newsData, projectData, taxonomyData } from "@/types";
+import { block_Archive, article, article_Business, article_News, article_Project, taxonomy } from "@/types";
 import {GenericArchiveCard} from "@/components/cards/archives/Generic";
 import dynamic from 'next/dynamic'
 
-const alltaxonomy: taxonomyData = {
+const alltaxonomy: taxonomy = {
 	_type: 'taxonomicTerm',
 	_updatedAt: Date.now().toLocaleString(),
 	_createdAt: Date.now().toLocaleString(),
@@ -16,17 +16,17 @@ const alltaxonomy: taxonomyData = {
 
 type args = {
 	// items: Array<article> | Array<newsData> | Array<BusinessPayload> | Array<projectData>,
-	articles: Array<article> | Array<newsData> | Array<BusinessPayload> | Array<projectData>,
+	articles: Array<article> | Array<article_News> | Array<article_Business> | Array<article_Project>,
 	// Card?: React.ComponentType<{
 	// 	item: article | newsData | projectData | BusinessPayload;
 	// 	filtered?: boolean; 
 	// }>
 	// type: string,
-	archive: ArchiveBlockType,
+	archive: block_Archive,
 }
 
 type Card = React.ComponentType<{
-	item: article | newsData | projectData | BusinessPayload;
+	item: article | article_News | article_Project | article_Business;
 	filtered?: boolean;
 }>
 
@@ -47,13 +47,13 @@ export const ArchiveFilter = ({ articles, archive }: args) => {
 
 	}
 
-	let taxonomies: Array<taxonomyData> = []
+	let taxonomies: Array<taxonomy> = []
 	let taxonomyNames: Array<string> = []
 	
 	articles.forEach(article => {
 		if (!article.taxonomies) article.taxonomies = []
 		article.taxonomies?.unshift(alltaxonomy) // TODO all taxonomy gets added every re-render but is being filtered out by code below, it should only be added once
-		article.taxonomies?.forEach((taxonomy: taxonomyData) => {
+		article.taxonomies?.forEach((taxonomy: taxonomy) => {
 			if (taxonomyNames.indexOf(taxonomy.prefLabel) == -1) {
 				taxonomies.push(taxonomy)
 				taxonomyNames.push(taxonomy.prefLabel)
@@ -93,7 +93,7 @@ export const ArchiveFilter = ({ articles, archive }: args) => {
 				{((articles && ArchiveCard) &&
 					articles.map((article) => {
 						let taxonomyInFilter: boolean = false;
-						article.taxonomies?.forEach((taxonomy: taxonomyData) => {
+						article.taxonomies?.forEach((taxonomy: taxonomy) => {
 							if (taxonomy.prefLabel == filteredtaxonomyPrefLabel) taxonomyInFilter = true;
 						});
 						return (

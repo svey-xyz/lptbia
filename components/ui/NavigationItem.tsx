@@ -1,12 +1,12 @@
 'use client'
 
-import { ArchivePayload, navigationItem, PagePayload } from '@/types';
+import { ArchivePayload, object_NavigationItem, PagePayload } from '@/types';
 import { Popover, PopoverButton, PopoverPanel, CloseButton } from '@headlessui/react';
 import React from 'react';
 import Link from 'next/link'
 
 type NavigationItemParams = {
-	item: navigationItem,
+	item: object_NavigationItem,
 }
 
 export const NavigationItem = ({ item }: NavigationItemParams) => {

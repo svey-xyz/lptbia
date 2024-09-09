@@ -1,7 +1,7 @@
 
 import MapClient from '@/components/site/MapClient';
 import { loadBusinesses } from '@/sanity/lib/loadQuery';
-import { MapBlockType, icon } from '@/types';
+import { block_Map, icon } from '@/types';
 
 interface LatLng {
 	lat: number;
@@ -13,7 +13,7 @@ interface LocationWithIcon {
 	icon?: icon
 }
 
-export const Map = async ({ data }: { data: MapBlockType }) => {
+export const Map = async ({ data }: { data: block_Map }) => {
 	if (!data) return
 
 	const initial = await loadBusinesses()

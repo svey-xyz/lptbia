@@ -21,13 +21,13 @@ export interface sanityImage extends Image {
 	imageAsset: ImageAsset
 }
 
-export interface socialData extends inherentObjectData {
+export interface object_Social extends inherentObjectData {
 	socialType: 'twitter' | 'instagram' | 'facebook' | 'vimeo' | 'linkedin' | 'github',
 	socialTitle: string,
 	url: string,
 }
 
-export interface dateData extends inherentObjectData {
+export interface object_Date extends inherentObjectData {
 	displayDateSpecificity: 'YYYY-MM-DD, HH:mm' | 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY',
 	recurrence: '' | 'RRULE:FREQ=DAILY;INTERVAL=1' | 'RRULE:FREQ=WEEKLY;INTERVAL=1' | 'RRULE:FREQ=MONTHLY;INTERVAL=1' | 'RRULE:FREQ=YEARLY;INTERVAL=1',
 	startDate?: string,
@@ -39,7 +39,7 @@ export interface geopoint {
 	lat: number,
 }
 
-export interface location extends inherentObjectData {
+export interface object_Location extends inherentObjectData {
 	location?: geopoint,
 	unit?: string,
 	number?: number,
@@ -48,24 +48,11 @@ export interface location extends inherentObjectData {
 	preciseLocation?: boolean,
 }
 
-// export interface location extends inherentObjectData {
-// 	number?: number,
-// 	street?: string,
-// 	unit?: string,
-// 	location?:
-// }
-
-export interface link extends inherentObjectData {
+export interface object_Link extends inherentObjectData {
 	text?: string,
 	type?: 'internal' | 'external',
 	link?: string,
 	page?: PagePayload,
-}
-
-export interface address extends inherentObjectData {
-	icon?: icon,
-	location?: location,
-	notes: string,
 }
 
 export interface icon {
@@ -73,14 +60,7 @@ export interface icon {
 	name: string,
 }
 
-export interface frontpageFeature extends inherentObjectData {
-	title: string,
-	textContent: PortableTextBlock,
-	link: link,
-	image: sanityImage,
-}
-
-export interface navigationItem extends inherentObjectData {
+export interface object_NavigationItem extends inherentObjectData {
 	title: string,
 	pages?: Array<PagePayload | ArchivePayload>,
 }
@@ -94,32 +74,32 @@ export interface block extends inherentObjectData {
 	colour?: undefined | 'accent',
 }
 
-export interface FeaturedTaxonomyBlockType extends block {
-	taxonomies: Array<businessTaxonomyData>,
+export interface block_FeaturedTaxonomies extends block {
+	taxonomies: Array<taxonomy_Business>,
 }
 
-export interface TextBlockType extends block {
+export interface block_Text extends block {
 	title?: string,
 	text?: PortableTextBlock,
 	featuredImage?: sanityImage,
-	link?: link,
+	link?: object_Link,
 }
 
-export interface MapBlockType extends block {
+export interface block_Map extends block {
 	apiKey: string,
 	centre: geopoint,
 }
 
-export interface NewsletterBlockType extends block {
+export interface block_Newsletter extends block {
 
 }
 
-export interface NewsFeatureBlockType extends block {
+export interface block_FeaturedArticles extends block {
 	title?: string,
-	news?: Array<newsData>,
+	articles?: Array<_ARTICLE_TYPES>,
 }
 
-export interface InfoBlockType extends block {
+export interface block_Info extends block {
 	title?: string,
 	items?: [
 		{
@@ -132,63 +112,82 @@ export interface InfoBlockType extends block {
 	],
 }
 
-// import ARTICLES from '@/sanity/schemas/articles'
-
-// const featuredTaxonomiesFields = ARTICLES.flatMap((article) => {
-// 	return `featured_${taxonomyTitle(article.type)}`
-// })
-
-/**
- * featured taxonomy fields dynamically defined in /sanity/schema/pages/blocks/archive
- */
-
-export interface ArchiveBlockType extends block {
+export interface block_Archive extends block {
 	title?: string,
 	description?: PortableTextBlock,
 	archiveType: documentTypesWithArchives,
 	filterable?: boolean,
-	featured_newsTaxonomy?: Array<newsTaxonomyData>,
-	featured_businessTaxonomy?: Array<businessTaxonomyData>,
-	featured_projectTaxonomy?: Array<projectTaxonomyData>,
-	featured_addressTaxonomy?: Array<taxonomyData>,
+	featured_newsTaxonomy?: Array<taxonomy_News>,
+	featured_businessTaxonomy?: Array<taxonomy_Business>,
+	featured_projectTaxonomy?: Array<taxonomy_Project>,
+	featured_addressTaxonomy?: Array<taxonomy>,
 }
 
-export type BLOCK_TYPES = [FeaturedTaxonomyBlockType, TextBlockType, MapBlockType, NewsletterBlockType, NewsFeatureBlockType, ArchiveBlockType]
+export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive]
 
 
 
 // DOCUMENT INTERFACES
 
+export type _ARTICLE_TYPES = [
+	article_Business, article_Project, article_News, article_Address
+]
+
 export interface article extends inherentDocumentData {
 	title: string,
 	description?: PortableTextBlock,
 	image?: sanityImage,
-	taxonomies?: Array<taxonomyData>,
+	taxonomies?: Array<taxonomy>,
 }
 
-export interface taxonomyData extends inherentDocumentData {
+export interface article_News extends article {
+	_type: "news",
+	content?: PortableTextBlock,
+	author?: string,
+}
+
+export interface article_Project extends article {
+	writeup?: PortableTextBlock,
+	credits?: PortableTextBlock,
+	gallery?: Array<sanityImage>,
+	media?: Array<any>, // needs type definition
+}
+
+export interface article_Business extends article {
+	title: string,
+	address?: article_Address,
+	logo?: sanityImage,
+}
+
+export interface article_Address extends article {
+	icon?: icon,
+	location?: object_Location,
+	notes: string,
+}
+
+export interface taxonomy extends inherentDocumentData {
 	icon?: icon,
 	prefLabel: string,
 	definition?: string,
-	related?: Array<taxonomyData>,
-	broader?: Array<taxonomyData>,
-	narrower?: Array<taxonomyData>,
+	related?: Array<taxonomy>,
+	broader?: Array<taxonomy>,
+	narrower?: Array<taxonomy>,
 }
 
-export interface businessTaxonomyData extends taxonomyData {
+export interface taxonomy_Business extends taxonomy {
 }
 
-export interface newsTaxonomyData extends taxonomyData {
+export interface taxonomy_News extends taxonomy {
 }
 
-export interface projectTaxonomyData extends taxonomyData {
+export interface taxonomy_Project extends taxonomy {
 }
 
-export interface sponsorData extends inherentDocumentData {
+export interface sponsor extends inherentDocumentData {
 	title: string,
 	image?: sanityImage,
 	website?: string,
-	socials?: Array<socialData>,
+	socials?: Array<object_Social>,
 	about?: PortableTextBlock,
 }
 
@@ -200,50 +199,22 @@ export interface SettingsPayload extends inherentDocumentData {
 	keywords?: Array<string>,
 	contactEmail?: string,
 	phoneNumber?: string,
-	socials?: Array<socialData>,
+	socials?: Array<object_Social>,
 	about?: PortableTextBlock,
 	landAcknowledgement?: PortableTextBlock,
-	partners?: Array<sponsorData>,
-	location?: location,
+	partners?: Array<sponsor>,
+	location?: object_Location,
 	homepage?: PagePayload,
-	navigation?: Array<navigationItem>,
-}
-
-export interface BusinessPayload extends article {
-	title: string,
-	address?: address,
-	logo?: sanityImage,
+	navigation?: Array<object_NavigationItem>,
 }
 
 export interface PagePayload extends inherentDocumentData {
 	title?: string,
 	slug: string,
-	blocks?: BLOCK_TYPES
+	blocks?: _BLOCK_TYPES
 }
 
 export interface ArchivePayload extends inherentDocumentData {
 	title?: string,
-	blocks?: BLOCK_TYPES
+	blocks?: _BLOCK_TYPES
 }
-
-export interface projectData extends article {
-	writeup?: PortableTextBlock,
-	credits?: PortableTextBlock,
-	gallery?: Array<sanityImage>,
-	media?: Array<any>, // needs type definition
-}
-
-export interface featuredContentData extends inherentDocumentData {
-	frontpageFeature?: frontpageFeature,
-	heroImages?: Array<sanityImage>,
-	video?: string,
-	news?: Array<newsData>,
-	businessTaxonomies?: Array<businessTaxonomyData>,
-}
-
-export interface newsData extends article {
-	_type: "news",
-	content?: PortableTextBlock,
-	author?: string,
-}
-

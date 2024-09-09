@@ -1,10 +1,10 @@
-import { dateData } from "@/types";
+import { object_Date } from "@/types";
 import moment from 'moment-timezone';
 import { ReactNode } from "react";
 
 type displayDateSpecificity = "YYYY-MM-DD, HH:mm" | "YYYY-MM-DD" | "YYYY-MM" | "YYYY" | "YY-MM-DD" | "LL";
 
-export function readableDate(data?: dateData, overrideDisplayDateSpecificity?: displayDateSpecificity, endDate?: boolean): ReactNode {
+export function readableDate(data?: object_Date, overrideDisplayDateSpecificity?: displayDateSpecificity, endDate?: boolean): ReactNode {
 	if (!data) return;
 
 	const startDateText = data.startDate ? moment(data.startDate).tz('America/Toronto').format(overrideDisplayDateSpecificity ?? data.displayDateSpecificity) : ''

@@ -17,11 +17,11 @@ import {
 
 import {
 	PagePayload,
-	BusinessPayload,
+	article_Business,
 	SettingsPayload,
 	ArchivePayload,
-	newsData,
-	projectData,
+	article_News,
+	article_Project,
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
@@ -78,7 +78,7 @@ export function loadSettings() {
 }
 
 export function loadBusinesses() {
-	return loadQuery<Array<BusinessPayload>>(
+	return loadQuery<Array<article_Business>>(
 		businessesQuery,
 		{},
 		{ next: { tags: ['business', 'businesses', 'page'] } },
@@ -86,7 +86,7 @@ export function loadBusinesses() {
 }
 
 export function loadBusiness(slug: string) {
-	return loadQuery<BusinessPayload>(
+	return loadQuery<article_Business>(
 		businessQuery,
 		{ slug },
 		{ next: { tags: ['business', 'businesses', 'page'] } },
@@ -94,7 +94,7 @@ export function loadBusiness(slug: string) {
 }
 
 export function loadProjects() {
-	return loadQuery<Array<projectData>>(
+	return loadQuery<Array<article_Project>>(
 		projectsQuery,
 		{},
 		{ next: { tags: ['project', 'projects', 'page'] } },
@@ -102,7 +102,7 @@ export function loadProjects() {
 }
 
 export function loadProject(slug: string) {
-	return loadQuery<projectData>(
+	return loadQuery<article_Project>(
 		projectQuery,
 		{ slug },
 		{ next: { tags: ['project', 'projects', 'page'] } },
@@ -110,7 +110,7 @@ export function loadProject(slug: string) {
 }
 
 export function loadNews() {
-	return loadQuery<Array<newsData>>(
+	return loadQuery<Array<article_News>>(
 		newsQuery,
 		{},
 		{ next: { tags: ['news', 'page'] } },
@@ -118,7 +118,7 @@ export function loadNews() {
 }
 
 export function loadNewsSingle(slug: string) {
-	return loadQuery<newsData>(
+	return loadQuery<article_News>(
 		newsSingleQuery,
 		{ slug },
 		{ next: { tags: ['news', 'page'] } },

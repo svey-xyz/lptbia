@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from '@components/site/Image'
 
-import { newsData } from '@/types'
+import { article_News } from '@/types'
 import { readableDate } from '@lib/readableDate';
 
 type args = {
-	item: newsData,
+	item: article_News,
 	filtered?: boolean,
 }
 

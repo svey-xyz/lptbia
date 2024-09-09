@@ -1,11 +1,11 @@
 'use client'
 
-import { InfoBlockType } from '@/types';
+import { block_Info } from '@/types';
 import { Icon } from '@iconify/react';
 import React from 'react';
 import NumericLabel from 'react-pretty-numbers';
 
-export const Info = ({ data }: { data: InfoBlockType }) => {
+export const Info = ({ data }: { data: block_Info }) => {
 	return (
 		<div className='relative main-padding flex flex-col items-center py-12 text-accent-secondary gap-12'>
 			{ data.title &&

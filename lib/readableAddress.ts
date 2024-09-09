@@ -1,6 +1,6 @@
-import { address, location } from "@/types"
+import { article_Address, object_Location } from "@/types"
 
-export const readableAddress = (loc: location): string | undefined => {
+export const readableAddress = (loc: object_Location): string | undefined => {
 
 	const a = (loc.unit && loc.number) ? `${loc.number}.${loc.unit}` : loc.number ? `${loc.number}` : null
 	const b = (loc.street) ? `${loc.street}` : null

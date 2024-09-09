@@ -1,10 +1,10 @@
-import { ArchiveBlockType } from '@/types';
+import { block_Archive } from '@/types';
 import React from 'react';
 import { loadBusinesses, loadNews, loadProjects } from '@/sanity/lib/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
 import { ArchiveFilter } from '@/components/site/ArchiveFilter';
 
-export const Standard = async ({ data }: { data: ArchiveBlockType }) => {
+export const Standard = async ({ data }: { data: block_Archive }) => {
 	if (!data) return
 
 	const archiveItems = await (async () => {

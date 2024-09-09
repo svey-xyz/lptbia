@@ -1,10 +1,10 @@
 import React from 'react';
-import type { socialData } from '../../types'
+import type { object_Social } from '../../types'
 import { FaLink, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 
 import { IconType } from "react-icons";
 
-const Socials = ({ socials, className }: { socials: Array<socialData>, className?:string}) => {
+const Socials = ({ socials, className }: { socials: Array<object_Social>, className?:string}) => {
 	
 	return (
 		<div className={`${className} flex flex-row gap-4`}>

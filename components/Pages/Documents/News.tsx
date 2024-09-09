@@ -1,9 +1,9 @@
 import React from 'react';
-import { newsData } from '@/types';
+import { article_News } from '@/types';
 import { notFound } from 'next/navigation'
 
 export interface NewsPageProps {
-	data: newsData
+	data: article_News
 }
 
 export const News = ({ data }: NewsPageProps) => {

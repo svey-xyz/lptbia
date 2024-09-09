@@ -1,9 +1,9 @@
 import React from 'react';
-import { projectData } from '@/types';
+import { article_Project } from '@/types';
 import { notFound } from 'next/navigation'
 
 export interface ProjectPageProps {
-	data: projectData
+	data: article_Project
 }
 
 export const Project = ({ data }: ProjectPageProps) => {

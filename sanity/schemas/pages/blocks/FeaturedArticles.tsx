@@ -1,6 +1,11 @@
 import { defineType, defineField, defineArrayMember } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
 import { MdWebStories } from 'react-icons/md';
+import ARTICLES from '@/sanity/schemas/articles';
+
+const articleTypes = ARTICLES.flatMap((article) => {
+	return { type: article.type }
+})
 
 const fields = [
 	defineField({
@@ -15,7 +20,7 @@ const fields = [
 		of: [
 			{
 				type: 'reference',
-				to: [{type: 'news'}],
+				to: articleTypes,
 				options: {
 					disableNew: true,
 				}
@@ -24,4 +29,4 @@ const fields = [
 	}),
 ]
 
-export const NewsFeature = constructors.block({ name: 'NewsFeature', fields, icon: MdWebStories })
+export const FeaturedArticles = constructors.block({ name: 'FeaturedArticles', fields, icon: MdWebStories })

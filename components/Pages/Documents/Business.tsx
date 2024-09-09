@@ -1,11 +1,11 @@
 import React from 'react';
-import { BusinessPayload } from '@/types';
+import { article_Business } from '@/types';
 import { notFound } from 'next/navigation'
 
 // import { businessData } from '@/types';
 
 export interface BusinessPageProps {
-	data: BusinessPayload
+	data: article_Business
 }
 
 export const Business = ({ data }: BusinessPageProps) => {

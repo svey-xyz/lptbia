@@ -11,14 +11,14 @@ type args = {
 }
 
 export const BusinessArchiveCard = async({ item, filtered = true }: args) => {
-	const itemHref = `/${item._type}/${slugifyWithOptions(item.title)}`
+	const itemHref = `/article/${item._type}/${slugifyWithOptions(item._id)}`
 
 	return (
 		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden p-4
 					after:absolute after:flex after:inset-0 after:bg-accent-secondary after:-z-1'>
-					{ (!item.image && !item.logo) &&
+					{ (!item.image && !item.content.logo) &&
 						<div className='absolute flex flex-col items-center justify-center inset-0'>
 							<span className='text-bg font-semibold text-sm'>
 								No {item._type} image.
@@ -32,9 +32,9 @@ export const BusinessArchiveCard = async({ item, filtered = true }: args) => {
 							style={{ objectFit: 'cover', width: '100%', height: '100%' }}
 						/>
 					}
-					{ (!item.image && item.logo) &&
+					{(!item.image && item.content.logo) &&
 						<Image
-							image={item.logo}
+						image={item.content.logo}
 							size={{ width: 400, height: 400 }}
 							style={{ objectFit: 'contain', width: '100%', height: '100%' }}
 						/>

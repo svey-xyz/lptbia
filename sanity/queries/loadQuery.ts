@@ -2,6 +2,7 @@ import 'server-only'
 
 import * as queryStore from '@sanity/react-loader'
 import { draftMode } from 'next/headers'
+import dynamic from 'next/dynamic'
 
 import {
 	pageQuery,
@@ -9,11 +10,13 @@ import {
 	businessQuery,
 	settingsQuery,
 	archiveQuery,
+	bundle_Articles,
 	newsQuery,
 	newsSingleQuery,
 	projectQuery,
 	projectsQuery,
-} from '@/sanity/lib/queries'
+	single_Article,
+} from '@/sanity/queries/queries'
 
 import {
 	PagePayload,
@@ -22,10 +25,12 @@ import {
 	ArchivePayload,
 	article_News,
 	article_Project,
+	article,
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
-import { client } from "./client";
+import { client } from "../lib/client";
+import { capitalize, pluralize } from '@/lib/stringFunctions'
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 
@@ -74,6 +79,48 @@ export function loadSettings() {
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
+	)
+}
+
+export const load_singleArticle = async (type: string, slug: string) => {
+	let partial = await dynamic(() => import(`@/sanity/queries/articles/article`))
+	console.log('Type: ', type)
+	console.log('Slug: ', slug)
+	// try {
+	// 	partial = dynamic(() => import(`@/sanity/queries/articles/${capitalize(type)}`))
+	// } catch (e) {
+	// 	partial = dynamic(() => import(`@/sanity/queries/articles/article`))
+	// }
+	// console.log('Partial: ', partial)
+
+	return loadQuery<Array<article>>(
+		single_Article,
+		{
+			type,
+			slug,
+			// partial: ''
+		},
+		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
+	)
+}
+
+export const loadArticles = async(type: string) => {
+	let partial = await dynamic(() => import(`@/sanity/queries/articles/article`))
+
+	// try {
+	// 	partial = dynamic(() => import(`@/sanity/queries/articles/${capitalize(type)}`))
+	// } catch (e) {
+	// 	partial = dynamic(() => import(`@/sanity/queries/articles/article`))
+	// }
+	console.log('Partial: ', partial)
+
+	return loadQuery<Array<article>>(
+		bundle_Articles,
+		{
+			type,
+			partial:''
+		},
+		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
 	)
 }
 

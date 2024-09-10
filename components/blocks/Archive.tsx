@@ -1,6 +1,6 @@
 import { block_Archive } from '@/types';
 import React from 'react';
-import { loadBusinesses, loadNews, loadProjects } from '@/sanity/lib/loadQuery';
+import { loadBusinesses, loadNews, loadProjects } from '@/sanity/queries/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
 import { ArchiveFilter } from '@/components/site/ArchiveFilter';
 

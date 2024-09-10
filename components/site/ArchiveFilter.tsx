@@ -15,13 +15,7 @@ const alltaxonomy: taxonomy = {
 }
 
 type args = {
-	// items: Array<article> | Array<newsData> | Array<BusinessPayload> | Array<projectData>,
 	articles: Array<article> | Array<article_News> | Array<article_Business> | Array<article_Project>,
-	// Card?: React.ComponentType<{
-	// 	item: article | newsData | projectData | BusinessPayload;
-	// 	filtered?: boolean; 
-	// }>
-	// type: string,
 	archive: block_Archive,
 }
 

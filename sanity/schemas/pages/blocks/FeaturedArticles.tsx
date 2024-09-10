@@ -14,8 +14,8 @@ const fields = [
 		type: 'string',
 	}),
 	defineField({
-		title: 'News',
-		name: 'news',
+		title: 'Articles',
+		name: 'articles',
 		type: 'array',
 		of: [
 			{

@@ -96,7 +96,7 @@ export interface block_Newsletter extends block {
 
 export interface block_FeaturedArticles extends block {
 	title?: string,
-	articles?: Array<_ARTICLE_TYPES>,
+	articles?: _ARTICLE_TYPES,
 }
 
 export interface block_Info extends block {
@@ -135,6 +135,7 @@ export type _ARTICLE_TYPES = [
 
 export interface article extends inherentDocumentData {
 	title: string,
+	slug: string,
 	description?: PortableTextBlock,
 	image?: sanityImage,
 	taxonomies?: Array<taxonomy>,
@@ -154,9 +155,10 @@ export interface article_Project extends article {
 }
 
 export interface article_Business extends article {
-	title: string,
-	address?: article_Address,
-	logo?: sanityImage,
+	content: {
+		address?: article_Address,
+		logo?: sanityImage,
+	}
 }
 
 export interface article_Address extends article {

@@ -29,7 +29,7 @@ const BlockList: BlockMap = {
 	Text: dynamic(() => import('@/components/blocks/Text')),
 	Map: dynamic(() => import('@components/blocks/Map')),
 	Newsletter: dynamic(() => import('@components/blocks/Newsletter')),
-	NewsFeature: dynamic(() => import('@components/blocks/NewsFeature')),
+	FeaturedArticles: dynamic(() => import('@/components/blocks/FeaturedArticles')),
 	Info: dynamic(() => import('@components/blocks/Info')),
 	Archive: dynamic(() => import('@components/blocks/Archive')),
 }

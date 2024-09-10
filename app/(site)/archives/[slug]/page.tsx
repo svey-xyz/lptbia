@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadArchive } from '@sanity/lib/loadQuery'
+import { loadArchive } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
 
 type Props = {

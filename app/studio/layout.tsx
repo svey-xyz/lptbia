@@ -1,4 +1,4 @@
-import { loadSettings } from '@/sanity/lib/loadQuery';
+import { loadSettings } from '@/sanity/queries/loadQuery';
 import '@styles/studio.globals.css'
 
 import { Metadata, ResolvingMetadata } from 'next';

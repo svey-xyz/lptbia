@@ -9,7 +9,7 @@ import Head from '@site/head'
 import { draftMode } from 'next/headers';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
-import { loadSettings } from '@/sanity/lib/loadQuery';
+import { loadSettings } from '@/sanity/queries/loadQuery';
 import { AutomaticVisualEditing } from '@/components/AutomaticVisualEditing';
 
 const inter = Inter({ subsets: ['latin'] })

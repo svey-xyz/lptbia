@@ -1,6 +1,6 @@
 
 import MapClient from '@/components/site/MapClient';
-import { loadBusinesses } from '@/sanity/lib/loadQuery';
+import { loadBusinesses } from '@/sanity/queries/loadQuery';
 import { block_Map, icon } from '@/types';
 
 interface LatLng {

@@ -2,8 +2,8 @@ import { Page } from './Page'
 // import { PagePreview } from './PagePreview'
 import { PageRoute } from './PageRoute'
 import { ArchiveRoute } from './ArchiveRoute'
-import { DocumentRoute } from './DocumentRoute'
+import { ArticleRoute } from './ArticleRoute'
 
 
-export const Pages = { Page, PageRoute, ArchiveRoute, DocumentRoute }
+export const Pages = { Page, PageRoute, ArchiveRoute, ArticleRoute }
 export default Pages

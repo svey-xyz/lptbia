@@ -34,6 +34,18 @@ const _FIELDS = (type: string) => [
 		group: 'about',
 	}),
 	defineField({
+		title: 'Slug',
+		name: 'slug',
+		type: 'slug',
+		group: 'about',
+		options: {
+			source: 'title',
+			maxLength: 96,
+		},
+		description: 'Custom slugs are generally not recommended, use the generate option.',
+		validation: (Rule) => Rule.required()
+	}),
+	defineField({
 		title: 'Description',
 		name: 'description',
 		type: 'array',

@@ -21,7 +21,9 @@ export const generateMetadata = async(
 }
 
 const Page = ({ params }: Props) => {
-	return <Pages.PageRoute params={params} />
+	const { slug } = params
+
+	return <Pages.ArticleRoute type={slug[0]} slug={slug[1]} />
 }
 
 export default Page

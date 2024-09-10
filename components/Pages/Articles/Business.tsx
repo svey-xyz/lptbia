@@ -10,9 +10,12 @@ export interface BusinessPageProps {
 
 export const Business = ({ data }: BusinessPageProps) => {
 	if (!data) return notFound();
+	console.log('Data: ', data)
 	return (
 		<article className=''>
 			<h1>{data.title}</h1>
 		</article>
 	);
 };
+
+export default Business

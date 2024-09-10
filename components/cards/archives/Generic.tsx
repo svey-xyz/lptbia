@@ -11,7 +11,7 @@ type args = {
 }
 
 export const GenericArchiveCard = async ({ item, filtered = true }: args) => {
-	const itemHref = `/${item._type}/${slugifyWithOptions(item.title)}`
+	const itemHref = `/article/${item._type}/${slugifyWithOptions(item.title)}`
 	return (
 		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>

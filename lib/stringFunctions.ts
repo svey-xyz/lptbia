@@ -21,6 +21,7 @@ export const pluralize = (string: string) => {
 }
 
 export const slugifyWithOptions = (string: string) => {
+	if (!string) return
 	return slugify(string, slugOptions)
 }
 

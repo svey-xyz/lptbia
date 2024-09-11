@@ -1,7 +1,7 @@
 import { MdSettings } from "react-icons/md";
 import { StructureBuilder, ListItem, ListItemBuilder, Divider } from "sanity/structure";
-import { DocumentActionComponent, DocumentActionsContext, Template, DocumentDefinition } from "sanity";
-import { AiFillInfoCircle, AiFillStar } from "react-icons/ai";
+import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
+import { AiFillInfoCircle } from "react-icons/ai";
 
 import { types } from "@/sanity/schema";
 import { RiGalleryView, RiPagesLine } from "react-icons/ri";
@@ -66,45 +66,9 @@ export const structure = (S: StructureBuilder) =>
 
 			]),
 		),
-		// S.documentTypeListItem('page').title('Pages').icon(RiPagesLine),
 
 		S.divider(),
-		// S.listItem().title('Businesses').icon(IoStorefront).child(
-		// 	S.list().title('Businesses').items([ 
-		// 		S.documentTypeListItem('businessTaxonomy').title('Taxonomies'),
-		// 		S.divider(),
-		// 		S.documentTypeListItem('business').title('Directory'),
-		// 		S.listItem().title('Addresses').icon(FaSignsPost).child(
-		// 			S.documentTypeList('address')
-		// 				.child(id =>
-		// 					S.document()
-		// 						.schemaType('address')
-		// 						.documentId(id)
-		// 						.views([
-		// 							// The default form for editing a document
-		// 							S.view
-		// 								.form(),
-		// 							S.view
-		// 								.component(DocumentsPane)
-		// 								.options({
-		// 									query: `*[references($id)]`,
-		// 									params: { id: `_id` },
-		// 									options: { perspective: 'previewDrafts' },
-		// 									useDraft: true,
-		// 								})
-		// 								.title('Businesses at this address')
-		// 						])
-		// 				)
-		// 		),
-				
-		// 	]),
-			
-			
-		// ),
 		...typesList(S),
-
-		/** PROJECTS */
-		// S.documentTypeListItem('project').title('Projects'),
 	])
 	
 

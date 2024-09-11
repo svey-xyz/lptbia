@@ -3,6 +3,7 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { block_Archive, article, taxonomy } from "@/types";
 import dynamic from 'next/dynamic'
+import { capitalize } from "@/lib/stringFunctions";
 
 const alltaxonomy: taxonomy = {
 	_type: 'taxonomicTerm',
@@ -25,14 +26,10 @@ export const ArchiveFilter = ({ articles, archive }: args) => {
 
 	let ArchiveCard
 
-	switch (archive.archiveType) {
-		case ('business'):
-			ArchiveCard = dynamic(() => import('@/components/cards/archives/Business'))
-			break;
-		default:
-			ArchiveCard = dynamic(() => import('@/components/cards/archives/Generic'))
-			break;
-
+	try {
+		ArchiveCard = dynamic(() => import(`@/components/cards/archives/${capitalize(archive.archiveType)}`))
+	} catch (e) {
+		ArchiveCard = dynamic(() => import('@/components/cards/archives/Generic'))
 	}
 
 	let taxonomies: Array<taxonomy> = []

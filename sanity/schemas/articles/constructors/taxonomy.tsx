@@ -16,7 +16,7 @@ function skosSectionLink(sec: string, text: string) {
 }
 
 const taxonomicTermDescription =
-	<span>Terms aim to apply to {skosSectionLink('', 'SKOS guidelines')} but are adapted to fit the requirements of this project.</span>
+	<span>Terms aim to apply to {skosSectionLink('', 'SKOS guidelines')} but are adapted to fit the requirements of this site.</span>
 
 export const taxonomy = (article: string) => {
 	const TaxonomyTitle = taxonomyTitle(article)

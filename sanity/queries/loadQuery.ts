@@ -14,17 +14,13 @@ import {
 
 import {
 	PagePayload,
-	article_Business,
 	SettingsPayload,
-	ArchivePayload,
-	article_News,
-	article_Project,
-	article,
+	ArchivePayload
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
-import { client } from "../lib/client";
-import { capitalize, pluralize } from '@/lib/stringFunctions'
+import { client } from "@/sanity/lib/client";
+import { pluralize } from '@/lib/stringFunctions'
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 

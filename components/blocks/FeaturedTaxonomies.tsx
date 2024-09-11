@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { block_FeaturedTaxonomies, type taxonomy_Business } from '@/types'
+import { block_FeaturedTaxonomies } from '@/types'
 import { Icon } from '@iconify/react';
 import { breakAdditionSign } from '@lib/stringFunctions'
 

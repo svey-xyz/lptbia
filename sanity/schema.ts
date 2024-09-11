@@ -1,7 +1,3 @@
-// import BUSINESS from '@/sanity/schemas/typeContainers/businesses'
-// import PROJECTS from '@/sanity/schemas/documents/projects'
-// import NEWS from '@/sanity/schemas/documents/news'
-// import BLOCKS from '@schemas/pages/blocks'
 import { DocumentDefinition } from 'sanity'
 
 import PAGES from '@/sanity/schemas/pages'

@@ -4,7 +4,7 @@ import { loadArticles } from '@/sanity/queries/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
 import { ArchiveFilter } from '@/components/site/ArchiveFilter';
 
-export const Standard = async ({ data }: { data: block_Archive }) => {
+export const Archive = async ({ data }: { data: block_Archive }) => {
 	if (!data) return
 
 	const initialPayload = await loadArticles<article>(data.archiveType)
@@ -32,4 +32,4 @@ export const Standard = async ({ data }: { data: block_Archive }) => {
 	);
 };
 
-export default Standard;
+export default Archive;

@@ -1,9 +1,10 @@
 import { block_FeaturedArticles, block } from '@/types';
 import React from 'react';
 import dynamic from 'next/dynamic'
+import { capitalize } from '@/lib/stringFunctions';
 
 
-export const Standard = ({ data }: { data: block_FeaturedArticles }) => {
+export const FeaturedArticles = ({ data }: { data: block_FeaturedArticles }) => {
 	if (!data) return
 	return (
 		<div className='main-padding my-24 flex flex-col gap-12 items-center'>
@@ -14,23 +15,17 @@ export const Standard = ({ data }: { data: block_FeaturedArticles }) => {
 				{	data.articles?.map((article) => {
 					let FeaturedCard
 
-					switch (article._type) {
-						case ('business'):
-							FeaturedCard = dynamic(() => import('@/components/cards/archives/Business'))
-							break;
-						case ('news'):
-							FeaturedCard = dynamic(() => import('@/components/cards/archives/News'))
-							break;
-						default:
-							FeaturedCard = dynamic(() => import('@/components/cards/archives/Generic'))
-							break;
-
+					try {
+						FeaturedCard = dynamic(() => import(`@/components/cards/archives/${capitalize(article._type)}`))
+					} catch (e) {
+						FeaturedCard = dynamic(() => import(`@/components/cards/archives/Generic`))
 					}
-					return <FeaturedCard key={`${data._key}-${article._id}`} item={article as any} />
+
+					return <FeaturedCard key={`${data._key}-${article._id}`} article={article} />
 				})}
 			</div>
 		</div>
 	);
 };
 
-export default Standard;
+export default FeaturedArticles;

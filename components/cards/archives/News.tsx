@@ -1,27 +1,30 @@
 import React from 'react';
 import Image from '@components/site/Image'
 
-import { article_News } from '@/types'
+import { article, article_News } from '@/types'
 import { readableDate } from '@lib/readableDate';
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
 type args = {
-	item: article_News,
+	article: article,
 	filtered?: boolean,
 }
 
-const NewsArchiveCard = async ({ item, filtered = true }:args) => {
-	if (!item) return
-	const itemHref = `/article/${item._type}/${slugifyWithOptions(item.slug)}`
+const NewsArchiveCard = async ({ article, filtered = true }:args) => {
+	if (!article || !article.slug) return []
 
+	const itemHref = `/article/${article._type}/${slugifyWithOptions(article.slug)}`
+
+	if (article._type !== 'news') throw new Error(`Wrong article type - '${article._type}' - passed to News card.)`)
+	const news = article as article_News
 
 	return (
 		<div className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col bg-accent text-bg h-96 w-full'>
 				
-				{item.image &&
+				{news.image &&
 					<Image
-					image={item.image}
+					image={news.image}
 						size={{width:400, height:400}}
 						style={{objectFit: 'cover', width: '100%', height: '100%'}}
 					/>
@@ -36,7 +39,7 @@ const NewsArchiveCard = async ({ item, filtered = true }:args) => {
 				<div className='absolute bottom-0 px-4 py-2 bg-accent/80 w-full flex flex-row items-end gap-4 border-transparent border-t-2 group-hover:border-accent-secondary group-hover:bg-accent/90'>
 					<a href={itemHref} aria-label="Link to news article"
 						className='font-bold text-2xl flex-grow leading-none'>
-						{item.title}
+						{news.title}
 					</a>
 					<span className='text-sm leading-tight text-right'>
 						{/* {readableDate(news.date)} */}

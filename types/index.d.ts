@@ -155,10 +155,8 @@ export interface article_Project extends article {
 }
 
 export interface article_Business extends article {
-	content: {
-		address?: article_Address,
-		logo?: sanityImage,
-	}
+	address?: article_Address,
+	logo?: sanityImage,
 }
 
 export interface article_Address extends article {

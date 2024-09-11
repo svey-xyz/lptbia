@@ -2,14 +2,11 @@ import 'server-only'
 
 import * as queryStore from '@sanity/react-loader'
 import { draftMode } from 'next/headers'
-import dynamic from 'next/dynamic'
 
 import {
 	pageQuery,
 	settingsQuery,
-	archiveQuery,
-	bundle_Articles,
-	single_Article,
+	archiveQuery
 } from '@/sanity/queries/queries'
 
 import {
@@ -20,7 +17,9 @@ import {
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
-import { pluralize } from '@/lib/stringFunctions'
+import { capitalize, pluralize } from '@/lib/stringFunctions'
+import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partialArticles'
+import { single_Article, bundle_Articles } from '@/sanity/queries/buildArticleQuery'
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 
@@ -73,43 +72,27 @@ export function loadSettings() {
 }
 
 export const load_singleArticle = async <T>(type: string, slug: string) => {
-	let partial = await dynamic(() => import(`@/sanity/queries/articles/article`))
-	// console.log('Type: ', type)
-	// console.log('Slug: ', slug)
-	// try {
-	// 	partial = dynamic(() => import(`@/sanity/queries/articles/${capitalize(type)}`))
-	// } catch (e) {
-	// 	partial = dynamic(() => import(`@/sanity/queries/articles/article`))
-	// }
-	// console.log('Partial: ', partial)
+	const partial =
+		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
+		_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
+		undefined
 
 	return loadQuery<Array<T>>(
-		single_Article,
-		{
-			type,
-			slug,
-			// partial: ''
-		},
+		single_Article(partial),
+		{ type, slug, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
 	)
 }
 
 export const loadArticles = async <T>(type: string) => {
-	let partial = await dynamic(() => import(`@/sanity/queries/articles/article`))
-
-	// try {
-	// 	partial = dynamic(() => import(`@/sanity/queries/articles/${capitalize(type)}`))
-	// } catch (e) {
-	// 	partial = dynamic(() => import(`@/sanity/queries/articles/article`))
-	// }
-	// console.log('Partial: ', partial)
+	const partial =
+		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
+			_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
+			undefined
 
 	return loadQuery<Array<T>>(
-		bundle_Articles,
-		{
-			type,
-			partial:''
-		},
+		bundle_Articles(partial),
+		{ type, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
 	)
 }

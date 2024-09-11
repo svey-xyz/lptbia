@@ -23,7 +23,7 @@ export const BusinessArchiveCard = async ({ article, filtered = true }: args) =>
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden p-4
 					after:absolute after:flex after:inset-0 after:bg-accent-secondary after:-z-1'>
-					{(!business.image && !business.content.logo) &&
+					{(!business.image && !business.logo) &&
 						<div className='absolute flex flex-col items-center justify-center inset-0'>
 							<span className='text-bg font-semibold text-sm'>
 								No {business._type} image.
@@ -37,9 +37,9 @@ export const BusinessArchiveCard = async ({ article, filtered = true }: args) =>
 							style={{ objectFit: 'cover', width: '100%', height: '100%' }}
 						/>
 					}
-					{(!business.image && business.content.logo) &&
+					{(!business.image && business.logo) &&
 						<Image
-						image={business.content.logo}
+						image={business.logo}
 							size={{ width: 400, height: 400 }}
 							style={{ objectFit: 'contain', width: '100%', height: '100%' }}
 						/>

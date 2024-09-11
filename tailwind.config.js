@@ -21,12 +21,11 @@ module.exports = {
 		extend: {
 			height: {
 				'icon': 'var(--icon-size)',
+				'icon-sm': 'var(--icon-size-sm)',
 			},
 			width: {
 				'icon': 'var(--icon-size)',
-			},
-			minWidth: {
-				'icon': 'var(--icon-size)',
+				'icon-sm': 'var(--icon-size-sm)',
 			},
 			maxWidth: {
 				'prose-full': '85ch',

@@ -74,7 +74,7 @@ export const ArchiveFilter = ({ articles, archive }: args) => {
 						})}
 					</fieldset>
 				)}
-			<div className="relative grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pb-4 separator">
+			<div className="relative grid gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 pb-4 separator">
 				{((articles && ArchiveCard) &&
 					articles.map((article) => {
 						let taxonomyInFilter: boolean = false;

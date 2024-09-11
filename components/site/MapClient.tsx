@@ -25,7 +25,7 @@ export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map,
 	const mapOptions = useMemo<google.maps.MapOptions>(
 		() => ({
 			disableDefaultUI: true,
-			clickableIcons: false,
+			clickableIcons: true,
 			scrollwheel: false,
 			mapId: '9f77439149649dc7',
 		}),
@@ -38,7 +38,13 @@ export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map,
 	});
 
 	if (!isLoaded) {
-		return <p>Loading...</p>;
+		return (
+			<div className='relative main-padding flex flex-col justify-center items-center py-32 bg-bg'>
+				<p className='text-accent font-black'>
+					Loading Map...
+				</p>;
+			</div>
+		)
 	}
 
 
@@ -57,15 +63,15 @@ export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map,
 				{ locationsWithIcons?.map((location, index) => {
 					// console.log('Icon: ', location.icon)
 
-					const icon = location.icon?.name.split(':') || []
-					console.log('Icon URL: ', `https://api.iconify.design/${icon[0]}/${icon[1]}.svg`,)
+					const iconString = location.icon?.name.split(':') || []
+					// console.log('Icon URL: ', `https://api.iconify.design/${iconString[0]}/${iconString[1]}.svg`,)
 					return (<Marker
 						key={index}
 						position={location.geopoint}
-						icon={{
-							url: `https://api.iconify.design/${icon[0]}/${icon[1]}.svg?color=%23b00c00`,
-							scaledSize: new window.google.maps.Size(32, 32), // Adjust the size of the icon as needed
-						}}
+						// icon={{
+						// 	url: `https://api.iconify.design/${iconString[0]}/${iconString[1]}.svg?color=%23b00c00`,
+						// 	scaledSize: new window.google.maps.Size(32, 32), // Adjust the size of the icon as needed
+						// }}
 						
 					/>)
 				})}

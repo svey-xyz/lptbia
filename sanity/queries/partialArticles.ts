@@ -19,5 +19,6 @@ export const project = groq`
 export const business = groq`
 	logo {
 		${partial_ImageObject}
-	}
+	},
+	addresses[]->
 `

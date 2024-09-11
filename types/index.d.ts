@@ -155,7 +155,7 @@ export interface article_Project extends article {
 }
 
 export interface article_Business extends article {
-	address?: article_Address,
+	addresses?: Array<article_Address>,
 	logo?: sanityImage,
 	publicContact?: {
 		website?: string,

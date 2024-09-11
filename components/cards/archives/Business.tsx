@@ -2,39 +2,44 @@ import React from 'react';
 import Image from '@components/site/Image'
 import Link from 'next/link'
 
-import { article_Business, article, article_News, article_Project } from '@/types'
+import { article_Business, article} from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
 type args = {
-	item: article_Business,
+	article: article,
 	filtered?: boolean,
 }
 
-export const BusinessArchiveCard = async({ item, filtered = true }: args) => {
-	const itemHref = `/article/${item._type}/${slugifyWithOptions(item._id)}`
+export const BusinessArchiveCard = async ({ article, filtered = true }: args) => {
+	if (!article || !article.slug) return []
+	
+	const itemHref = `/article/${article._type}/${slugifyWithOptions(article.slug)}`
+
+	if (article._type !== 'business') throw new Error(`Wrong article type - '${article._type}' - passed to Business card.)`)
+	const business = article as article_Business
 
 	return (
 		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden p-4
 					after:absolute after:flex after:inset-0 after:bg-accent-secondary after:-z-1'>
-					{ (!item.image && !item.content.logo) &&
+					{(!business.image && !business.content.logo) &&
 						<div className='absolute flex flex-col items-center justify-center inset-0'>
 							<span className='text-bg font-semibold text-sm'>
-								No {item._type} image.
+								No {business._type} image.
 							</span>
 						</div>
 					}	
-					{item.image &&
+					{business.image &&
 						<Image
-							image={item.image}
+							image={business.image}
 							size={{ width: 400, height: 400 }}
 							style={{ objectFit: 'cover', width: '100%', height: '100%' }}
 						/>
 					}
-					{(!item.image && item.content.logo) &&
+					{(!business.image && business.content.logo) &&
 						<Image
-						image={item.content.logo}
+						image={business.content.logo}
 							size={{ width: 400, height: 400 }}
 							style={{ objectFit: 'contain', width: '100%', height: '100%' }}
 						/>
@@ -44,7 +49,7 @@ export const BusinessArchiveCard = async({ item, filtered = true }: args) => {
 
 				<div className='py-2 bg-bg w-full flex flex-col gap-4'>
 					<span className='text-xl text-accent text-center'>
-						{item.title}
+						{business.title}
 					</span>
 				</div>
 			</div>

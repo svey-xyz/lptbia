@@ -6,15 +6,9 @@ import dynamic from 'next/dynamic'
 
 import {
 	pageQuery,
-	businessesQuery,
-	businessQuery,
 	settingsQuery,
 	archiveQuery,
 	bundle_Articles,
-	newsQuery,
-	newsSingleQuery,
-	projectQuery,
-	projectsQuery,
 	single_Article,
 } from '@/sanity/queries/queries'
 
@@ -82,10 +76,10 @@ export function loadSettings() {
 	)
 }
 
-export const load_singleArticle = async (type: string, slug: string) => {
+export const load_singleArticle = async <T>(type: string, slug: string) => {
 	let partial = await dynamic(() => import(`@/sanity/queries/articles/article`))
-	console.log('Type: ', type)
-	console.log('Slug: ', slug)
+	// console.log('Type: ', type)
+	// console.log('Slug: ', slug)
 	// try {
 	// 	partial = dynamic(() => import(`@/sanity/queries/articles/${capitalize(type)}`))
 	// } catch (e) {
@@ -93,7 +87,7 @@ export const load_singleArticle = async (type: string, slug: string) => {
 	// }
 	// console.log('Partial: ', partial)
 
-	return loadQuery<Array<article>>(
+	return loadQuery<Array<T>>(
 		single_Article,
 		{
 			type,
@@ -104,7 +98,7 @@ export const load_singleArticle = async (type: string, slug: string) => {
 	)
 }
 
-export const loadArticles = async(type: string) => {
+export const loadArticles = async <T>(type: string) => {
 	let partial = await dynamic(() => import(`@/sanity/queries/articles/article`))
 
 	// try {
@@ -112,63 +106,15 @@ export const loadArticles = async(type: string) => {
 	// } catch (e) {
 	// 	partial = dynamic(() => import(`@/sanity/queries/articles/article`))
 	// }
-	console.log('Partial: ', partial)
+	// console.log('Partial: ', partial)
 
-	return loadQuery<Array<article>>(
+	return loadQuery<Array<T>>(
 		bundle_Articles,
 		{
 			type,
 			partial:''
 		},
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
-	)
-}
-
-export function loadBusinesses() {
-	return loadQuery<Array<article_Business>>(
-		businessesQuery,
-		{},
-		{ next: { tags: ['business', 'businesses', 'page'] } },
-	)
-}
-
-export function loadBusiness(slug: string) {
-	return loadQuery<article_Business>(
-		businessQuery,
-		{ slug },
-		{ next: { tags: ['business', 'businesses', 'page'] } },
-	)
-}
-
-export function loadProjects() {
-	return loadQuery<Array<article_Project>>(
-		projectsQuery,
-		{},
-		{ next: { tags: ['project', 'projects', 'page'] } },
-	)
-}
-
-export function loadProject(slug: string) {
-	return loadQuery<article_Project>(
-		projectQuery,
-		{ slug },
-		{ next: { tags: ['project', 'projects', 'page'] } },
-	)
-}
-
-export function loadNews() {
-	return loadQuery<Array<article_News>>(
-		newsQuery,
-		{},
-		{ next: { tags: ['news', 'page'] } },
-	)
-}
-
-export function loadNewsSingle(slug: string) {
-	return loadQuery<article_News>(
-		newsSingleQuery,
-		{ slug },
-		{ next: { tags: ['news', 'page'] } },
 	)
 }
 

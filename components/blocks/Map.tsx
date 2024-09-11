@@ -1,7 +1,7 @@
 
 import MapClient from '@/components/site/MapClient';
-import { loadBusinesses } from '@/sanity/queries/loadQuery';
-import { block_Map, icon } from '@/types';
+import { loadArticles } from '@/sanity/queries/loadQuery';
+import { article_Business, block_Map, icon } from '@/types';
 
 interface LatLng {
 	lat: number;
@@ -16,7 +16,7 @@ interface LocationWithIcon {
 export const Map = async ({ data }: { data: block_Map }) => {
 	if (!data) return
 
-	const initial = await loadBusinesses()
+	const initial = await loadArticles<article_Business>('business')
 	const businesses = initial.data;
 
 	const fetchLocations = async () => {
@@ -24,7 +24,7 @@ export const Map = async ({ data }: { data: block_Map }) => {
 			const positions: LocationWithIcon[] = [];
 
 			for (const business of businesses) {
-				const location = business.address?.location
+				const location = business.content.address?.location
 				if (!location) return
 
 				const address = `${location?.number} ${location?.street}`
@@ -34,7 +34,7 @@ export const Map = async ({ data }: { data: block_Map }) => {
 					const { lat, lng } = dataReturn.results[0].geometry.location;
 					positions.push({
 						geopoint: { lat, lng },
-						icon: business.address?.icon
+						icon: business.content.address?.icon
 					});
 				} else {
 					console.error('No results found for address:', address);

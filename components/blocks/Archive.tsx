@@ -1,32 +1,16 @@
-import { block_Archive } from '@/types';
+import { article, block_Archive } from '@/types';
 import React from 'react';
-import { loadBusinesses, loadNews, loadProjects } from '@/sanity/queries/loadQuery';
+import { loadArticles } from '@/sanity/queries/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
 import { ArchiveFilter } from '@/components/site/ArchiveFilter';
 
 export const Standard = async ({ data }: { data: block_Archive }) => {
 	if (!data) return
 
-	const archiveItems = await (async () => {
-		switch (data.archiveType) {
-			case ('business'):
-				const initialBusinessesPayload = await loadBusinesses()
-				if (!initialBusinessesPayload) return []
-				return initialBusinessesPayload.data		
-			case ('news'):
-				const initialNewsPayload = await loadNews()
-				if (!initialNewsPayload) return []
-				return initialNewsPayload.data		
-			case ('project'):
-				const initialProjectsPayload = await loadProjects()
-				if (!initialProjectsPayload) return []
-				return initialProjectsPayload.data		
-			default:
-				throw new Error('Unknown archive type!')
-		}
-	})()
-
-	if (!archiveItems) return
+	const initialPayload = await loadArticles<article>(data.archiveType)
+	if (!initialPayload) return []
+	
+	const archiveItems = initialPayload.data
 
 	const archiveTitle = `${pluralize(camelCaseToWords(data.archiveType))} Archive`
 

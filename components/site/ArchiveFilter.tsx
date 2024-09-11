@@ -1,8 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { block_Archive, article, article_Business, article_News, article_Project, taxonomy } from "@/types";
-import {GenericArchiveCard} from "@/components/cards/archives/Generic";
+import { block_Archive, article, taxonomy } from "@/types";
 import dynamic from 'next/dynamic'
 
 const alltaxonomy: taxonomy = {
@@ -15,14 +14,9 @@ const alltaxonomy: taxonomy = {
 }
 
 type args = {
-	articles: Array<article> | Array<article_News> | Array<article_Business> | Array<article_Project>,
+	articles: Array<article>,
 	archive: block_Archive,
 }
-
-type Card = React.ComponentType<{
-	item: article | article_News | article_Project | article_Business;
-	filtered?: boolean;
-}>
 
 export const ArchiveFilter = ({ articles, archive }: args) => {
 
@@ -91,7 +85,7 @@ export const ArchiveFilter = ({ articles, archive }: args) => {
 							if (taxonomy.prefLabel == filteredtaxonomyPrefLabel) taxonomyInFilter = true;
 						});
 						return (
-							<ArchiveCard key={article._id} item={article} filtered={taxonomyInFilter} />
+							<ArchiveCard key={article._id} article={article} filtered={taxonomyInFilter} />
 						)
 					})
 				)}

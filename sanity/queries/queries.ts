@@ -45,6 +45,21 @@ const partial_Artist: string = groq`
 	}
 `
 
+export const partial_Project = groq`
+	gallery[] {
+		${partial_ImageObject}
+	},
+	artists[]->{
+		${partial_Artist}
+	},
+	sponsors[]->{
+		...,
+		image {
+			${partial_ImageObject}
+		}
+	}
+`
+
 /** QUERIES */
 
 export const settingsQuery: string = groq`
@@ -80,7 +95,7 @@ export const archiveQuery: string = groq`
 `
 
 export const single_Article = groq`
-	*[_type == $type && slug == $slug][0] {
+	*[_type == $type && slug.current == $slug][0] {
 		${partial_Article}
 	}
 `
@@ -92,70 +107,3 @@ export const bundle_Articles = groq`
 	}
 `
 
-export const partial_Project = groq`
-	gallery[] {
-		${partial_ImageObject}
-	},
-	artists[]->{
-		${partial_Artist}
-	},
-	sponsors[]->{
-		...,
-		image {
-			${partial_ImageObject}
-		}
-	}
-`
-
-export const projectQuery = groq`
-	*[_type=='project' && title match $slug][0] {
-		${partial_Article},
-		${partial_Project}
-	}
-`
-
-export const projectsQuery = groq`
-	*[_type=='project'] {
-  	...,
-		artists[]->{
-			${partial_Artist}
-		}
-	}
-`
-
-export const businessesQuery = groq`
-	*[_type =='business'] {
-		...,
-		address->,
-		logo {
-      ${partial_ImageObject}
-    }   
-	}
-`
-
-export const businessQuery = groq`
-	*[_type=='business' && title match $slug][0] {
-		...,
-		address->,
-		logo {
-      ${partial_ImageObject}
-    }   
-	}
-`
-
-export const newsSingleQuery = groq`
-	*[_type=='news' && title match $slug][0] {
-  	...,
-		image {
-			${partial_ImageObject}
-		},
-	}
-`
-export const newsQuery = groq`
-	*[_type=='news'] {
-  	...,
-		image {
-			${partial_ImageObject}
-		},
-	}
-`

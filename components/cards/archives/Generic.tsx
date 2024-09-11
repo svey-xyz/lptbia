@@ -2,28 +2,29 @@ import React from 'react';
 import Image from '@components/site/Image'
 import Link from 'next/link'
 
-import { article_Business, article, article_News, article_Project } from '@/types'
+import { article } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 
 type args = {
-	item: article | article_News | article_Project | article_Business,
+	article: article,
 	filtered?: boolean,
 }
 
-export const GenericArchiveCard = async ({ item, filtered = true }: args) => {
-	const itemHref = `/article/${item._type}/${slugifyWithOptions(item.title)}`
+export const GenericArchiveCard = async ({ article, filtered = true }: args) => {
+	const itemHref = `/article/${article._type}/${slugifyWithOptions(article.slug)}`
+
 	return (
 		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden border-b border-accent-secondary border-solid'>
 					<div className='absolute flex flex-col items-center justify-center inset-0 bg-accent-secondary -z-1'>
 						<span className='text-bg font-semibold text-sm'>
-							No {item._type} image.
+							No {article._type} image.
 						</span>
 					</div>
-					{ item.image &&
+					{article.image &&
 						<Image
-							image={item.image}
+						image={article.image}
 							size={{ width: 400, height: 400 }}
 							style={{ objectFit: 'cover', width: '100%', height: '100%' }}
 						/>
@@ -33,7 +34,7 @@ export const GenericArchiveCard = async ({ item, filtered = true }: args) => {
 
 				<div className='py-2 bg-bg w-full flex flex-col gap-4'>
 					<span className='text-xl text-accent'>
-						{item.title}
+						{article.title}
 					</span>
 				</div>
 			</div>

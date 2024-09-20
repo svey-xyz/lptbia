@@ -55,6 +55,13 @@ export interface object_Link extends inherentObjectData {
 	page?: PagePayload,
 }
 
+export interface object_Contact extends inherentObjectData {
+	email?: string,
+	phone?: string,
+	website?: string,
+	socials?: Array<object_Social>
+}
+
 export interface icon {
 	_type: 'icon',
 	name: string,
@@ -157,10 +164,8 @@ export interface article_Project extends article {
 export interface article_Business extends article {
 	addresses?: Array<article_Address>,
 	logo?: sanityImage,
-	publicContact?: {
-		website?: string,
-		socials?: Array<object_Social>
-	}
+	publicContact?: object_Contact,
+	internalContact?: Array<object_Contact>
 }
 
 export interface article_Address extends article {

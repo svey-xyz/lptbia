@@ -1,20 +1,11 @@
 'use client';
 
-import { article_Business, block_Map, icon } from '@/types';
+import { block_Map } from '@/types';
 import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Icon } from '@iconify/react';
 import { IoCloseSharp } from 'react-icons/io5';
-
-interface LatLng {
-	lat: number;
-	lng: number;
-}
-
-interface BusinessMarker {
-	geopoint: LatLng,
-	business: article_Business
-}
+import { BusinessMarker } from '@/components/blocks/Map';
+import { InfoPanel } from '@/components/blocks/Map/InfoPanel';
 
 export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, businessMarkers?: Array<BusinessMarker> }) => {
 	const libraries = useMemo(() => ['places'], []);
@@ -94,25 +85,11 @@ export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, bu
 					/>)
 				})}
 				{ selectedMarker && (
-					<div
-						className={`absolute top-0 left-0 h-full w-72 bg-white p-4 transform transition-transform duration-300 ${panelOpen ? 'translate-x-0' : '-translate-x-full'
-							}`}
-					>
-						<button
-							className="absolute top-2 right-2 text-xl font-bold text-gray-500 hover:text-gray-700"
-							onClick={handleClose}
-						>
-							<IoCloseSharp className='h-icon w-icon' />
-						</button>
-						{selectedMarker ? (
-							<div>
-								<h2 className="text-lg font-bold">{selectedMarker.business.title}</h2>
-								<p className="mt-2 text-gray-600">{selectedMarker.business.title}</p>
-							</div>
-						) : (
-							<p className="text-gray-500">No marker selected.</p>
-						)}
-					</div>
+					<InfoPanel 
+						marker={selectedMarker}
+						handler={handleClose}
+						className={`transition-all duration-500 ${panelOpen ? 'translate-x-0' : '-translate-x-full'}`}
+					/>
 				)}
 			</GoogleMap>
 		</div>

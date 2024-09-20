@@ -1,5 +1,5 @@
 
-import MapClient from '@/components/site/MapClient';
+import Client from '@/components/blocks/Map/Client';
 import { loadArticles } from '@/sanity/queries/loadQuery';
 import { article_Business, block_Map, icon } from '@/types';
 
@@ -37,7 +37,7 @@ export const Map = async ({ data }: { data: block_Map }) => {
 
 	const businessMarkers = await fetchLocations()
 	
-	return <MapClient mapData={data} businessMarkers={businessMarkers}/>
+	return <Client mapData={data} businessMarkers={businessMarkers}/>
 };
 
 export default Map;

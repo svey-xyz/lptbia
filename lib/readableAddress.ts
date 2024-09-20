@@ -1,9 +1,9 @@
-import { article_Address, object_Location } from "@/types"
+import { article_Address } from "@/types"
 
-export const readableAddress = (loc: object_Location): string | undefined => {
+export const readableAddress = (address: article_Address): string | undefined => {
 
-	const a = (loc.unit && loc.number) ? `${loc.number}.${loc.unit}` : loc.number ? `${loc.number}` : null
-	const b = (loc.street) ? `${loc.street}` : null
+	const a = (address.unit && address.number) ? `${address.number}.${address.unit}` : address.number ? `${address.number}` : null
+	const b = (address.street) ? `${address.street}` : null
 
 	return (a && b) ? `${a} ${b}` : a ? a : b ? b : ''
 }

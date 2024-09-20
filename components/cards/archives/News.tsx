@@ -2,8 +2,8 @@ import React from 'react';
 import Image from '@components/site/Image'
 
 import { article, article_News } from '@/types'
-import { readableDate } from '@lib/readableDate';
-import { slugifyWithOptions } from '@/lib/stringFunctions';
+import { resolveHref } from '@/lib/resolveHref';
+import Link from 'next/link'
 
 type args = {
 	article: article,
@@ -12,8 +12,6 @@ type args = {
 
 const NewsArchiveCard = async ({ article, filtered = true }:args) => {
 	if (!article || !article.slug) return []
-
-	const itemHref = `/article/${article._type}/${slugifyWithOptions(article.slug)}`
 
 	if (article._type !== 'news') throw new Error(`Wrong article type - '${article._type}' - passed to News card.)`)
 	const news = article as article_News
@@ -37,10 +35,10 @@ const NewsArchiveCard = async ({ article, filtered = true }:args) => {
 				} */}
 				
 				<div className='absolute bottom-0 px-4 py-2 bg-accent/80 w-full flex flex-row items-end gap-4 border-transparent border-t-2 group-hover:border-accent-secondary group-hover:bg-accent/90'>
-					<a href={itemHref} aria-label="Link to news article"
+					<Link href={resolveHref(article._type, article.slug) || ''} aria-label="Link to news article"
 						className='font-bold text-2xl flex-grow leading-none'>
 						{news.title}
-					</a>
+					</Link>
 					<span className='text-sm leading-tight text-right'>
 						{/* {readableDate(news.date)} */}
 					</span>		

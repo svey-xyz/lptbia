@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { article } from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
+import { resolveHref } from '@/lib/resolveHref';
 
 type args = {
 	article: article,
@@ -11,10 +12,9 @@ type args = {
 }
 
 export const GenericArchiveCard = async ({ article, filtered = true }: args) => {
-	const itemHref = `/article/${article._type}/${slugifyWithOptions(article.slug)}`
 
 	return (
-		<Link href={itemHref} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
+		<Link href={resolveHref(article._type, article.slug) || ''} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden border-b border-accent-secondary border-solid'>
 					<div className='absolute flex flex-col items-center justify-center inset-0 bg-accent-secondary -z-1'>

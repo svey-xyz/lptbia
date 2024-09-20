@@ -77,7 +77,7 @@ export const load_singleArticle = async <T>(type: string, slug: string) => {
 		_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
 		undefined
 
-	return loadQuery<Array<T>>(
+	return loadQuery<T>(
 		single_Article(partial),
 		{ type, slug, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },

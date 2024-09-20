@@ -6,7 +6,7 @@ export interface GenericArticlePageProps {
 	data: article
 }
 
-export const Generic = ({ data }: GenericArticlePageProps) => {
+export const Generic = async ({ data }: GenericArticlePageProps) => {
 	if (!data) return notFound();
 	return (
 		<article className=''>
@@ -14,3 +14,5 @@ export const Generic = ({ data }: GenericArticlePageProps) => {
 		</article>
 	);
 };
+
+export default Generic

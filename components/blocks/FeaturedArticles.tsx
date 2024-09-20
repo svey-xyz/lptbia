@@ -11,8 +11,8 @@ interface CardMap {
 }
 
 const CardList: CardMap = {
-	Standard: dynamic(() => import('@components/site/cards/Generic')),
-	business: dynamic(() => import('@components/site/cards/Business')),
+	Standard: dynamic(() => import('@/components/blocks/Archive/cards/Generic')),
+	business: dynamic(() => import('@/components/blocks/Archive/cards/Business')),
 
 }
 

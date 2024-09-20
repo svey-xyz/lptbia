@@ -66,23 +66,27 @@ export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, bu
 				mapContainerStyle={{ width: '80%', height: mapHeight }}
 			>
 				{ businessMarkers?.map((marker, index) => {
-					// console.log('Icon: ', location.icon)
 					const primarytaxonomy = marker.business.taxonomies ? marker.business.taxonomies[0] : null
 					const icon = primarytaxonomy ? primarytaxonomy.icon : undefined
 
-					const iconString = icon?.name.split(':') || []
-					
-					// console.log('Icon URL: ', `https://api.iconify.design/${iconString[0]}/${iconString[1]}.svg`,)
-					return (<Marker
-						key={index}
-						position={marker.geopoint}
-						// icon={{
-						// 	url: `https://api.iconify.design/${iconString[0]}/${iconString[1]}.svg?color=%23b00c00`,
-						// 	scaledSize: new window.google.maps.Size(32, 32), // Adjust the size of the icon as needed
-						// }}
-						onClick={() => onMarkerClick(marker)}
-						
-					/>)
+					const iconString = icon?.name.split(':')
+
+					const mapIcon: string | google.maps.Icon | google.maps.Symbol | undefined = iconString ? {
+						url: `https://api.iconify.design/${iconString[0]}/${iconString[1]}.svg?color=%23b00c00`,
+						scaledSize: new window.google.maps.Size(32, 32)
+					} : undefined
+
+					// console.log('Icon: ', mapIcon)
+
+					return (
+						<Marker
+							key={index}
+							position={marker.geopoint}
+							icon={mapIcon}
+							onClick={() => onMarkerClick(marker)}
+							
+						/>
+					)
 				})}
 				{ selectedMarker && (
 					<InfoPanel 

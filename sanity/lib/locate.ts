@@ -1,4 +1,4 @@
-import { resolveHref } from '@sanity/lib/sanity.links'
+// import { resolveHref } from '@sanity/lib/sanity.links'
 import groq from 'groq'
 import { map, Observable } from 'rxjs'
 import {
@@ -54,7 +54,8 @@ export const locate: DocumentLocationResolver = (params, context) => {
 							locations: docs
 								?.map((doc) => {
 									
-									const href = resolveHref(doc._type, doc?.slug?.current)
+									// const href = resolveHref(doc._type, doc?.slug?.current)
+									const href = ''
 								
 									return {
 										title: doc?.title || 'Untitled',

@@ -13,7 +13,7 @@ const fields = [
 	defineField({
 		title: 'Write-up',
 		name: 'writeup',
-		type: 'basicBlockContent',
+		type: 'extraBlockContent',
 		description: 'Full write-up of the project.',
 	}),
 	defineField({

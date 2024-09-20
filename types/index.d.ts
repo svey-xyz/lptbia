@@ -157,8 +157,10 @@ export interface article_News extends article {
 export interface article_Project extends article {
 	writeup?: PortableTextBlock,
 	credits?: PortableTextBlock,
+	date?: object_Date,
 	gallery?: Array<sanityImage>,
-	media?: Array<any>, // needs type definition
+	sponsors?: Array<sponsor>
+	// media?: Array<any>, // needs type definition
 }
 
 export interface article_Business extends article {

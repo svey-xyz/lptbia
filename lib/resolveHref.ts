@@ -1,4 +1,6 @@
-export const resolveHref = (
+import { ArchivePayload, PagePayload } from "@/types"
+
+export const resolveArticleHref = (
 	documentType?: string,
 	slug?: string,
 ): string | undefined => {
@@ -13,4 +15,11 @@ export const resolveHref = (
 	// 		console.warn('Invalid document type:', documentType)
 	// 		return undefined
 	// }
+}
+
+
+export const resolvePageHref = (page: ArchivePayload | PagePayload): string => {
+	const slug = page._type == 'page' ? `/${(page as PagePayload).slug}` : `/archives/${(page as ArchivePayload)._id}`
+
+	return slug
 }

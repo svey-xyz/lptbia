@@ -4,6 +4,7 @@ import { ArchivePayload, object_NavigationItem, PagePayload } from '@/types';
 import { Popover, PopoverButton, PopoverPanel, CloseButton } from '@headlessui/react';
 import React from 'react';
 import Link from 'next/link'
+import { resolvePageHref } from '@/lib/resolveHref';
 
 type NavigationItemParams = {
 	item: object_NavigationItem,
@@ -39,7 +40,7 @@ type StaticNavigationParams = {
 
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
  return (
-	 <Link href={pageSlug(page)}>
+	 <Link href={resolvePageHref(page)}>
 		 <NavigationTitle title={title} />
 	</Link>
  )
@@ -61,7 +62,7 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 			{({ close }) => {
 				const items = pages.flatMap((page) => {
 					return (
-						<Link href={pageSlug(page)} key={page._id} className='px-4 py-2 text-sm font-bold text-accent-secondary hover:underline' onClick={() => { close() }}>
+						<Link href={resolvePageHref(page)} key={page._id} className='px-4 py-2 text-sm font-bold text-accent-secondary hover:underline' onClick={() => { close() }}>
 							{page.title}
 						</Link>
 					)
@@ -78,10 +79,4 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 		</PopoverPanel>
 	</Popover>
 	)
-}
-
-const pageSlug = (page: ArchivePayload | PagePayload): string => {
-	const slug = page._type == 'page' ? `/${(page as PagePayload).slug}` : `/archives/${(page as ArchivePayload)._id}`
-
-	return slug
 }

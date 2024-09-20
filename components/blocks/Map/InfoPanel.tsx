@@ -1,7 +1,7 @@
 import { BusinessMarker } from '@/components/blocks/Map';
 import TextBlock from '@/components/site/TextBlock';
 import { readableAddress } from '@/lib/readableAddress';
-import { resolveHref } from '@/lib/resolveHref';
+import { resolveArticleHref } from '@/lib/resolveHref';
 import { Button } from '@headlessui/react';
 import React from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
@@ -26,11 +26,11 @@ export const InfoPanel = ({ marker, handler, className }: { marker: BusinessMark
 						{ address }
 					</p>
 				}
-				<Link href={resolveHref(marker.business._type, marker.business.slug) || ''}>
+				<a href={resolveArticleHref(marker.business._type, marker.business.slug) || ''}>
 					<h2 className="text-lg font-black text-accent">
 						{marker.business.title}
 					</h2>
-				</Link>
+				</a>
 				
 				<TextBlock text={marker.business.description} />
 			</div>

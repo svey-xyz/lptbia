@@ -2,7 +2,7 @@ import React from 'react';
 import Image from '@components/site/Image'
 
 import { article, article_News } from '@/types'
-import { resolveHref } from '@/lib/resolveHref';
+import { resolveArticleHref } from '@/lib/resolveHref';
 import Link from 'next/link'
 
 type args = {
@@ -35,10 +35,10 @@ const NewsArchiveCard = async ({ article, filtered = true }:args) => {
 				} */}
 				
 				<div className='absolute bottom-0 px-4 py-2 bg-accent/80 w-full flex flex-row items-end gap-4 border-transparent border-t-2 group-hover:border-accent-secondary group-hover:bg-accent/90'>
-					<Link href={resolveHref(article._type, article.slug) || ''} aria-label="Link to news article"
+					<a href={resolveArticleHref(article._type, article.slug) || ''} aria-label="Link to news article"
 						className='font-bold text-2xl flex-grow leading-none'>
 						{news.title}
-					</Link>
+					</a>
 					<span className='text-sm leading-tight text-right'>
 						{/* {readableDate(news.date)} */}
 					</span>		

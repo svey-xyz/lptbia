@@ -8,9 +8,9 @@ interface LatLng {
 	lng: number;
 }
 
-interface LocationWithIcon {
+interface BusinessMarker {
 	geopoint: LatLng,
-	icon?: icon
+	business: article_Business
 }
 
 export const Map = async ({ data }: { data: block_Map }) => {
@@ -20,27 +20,24 @@ export const Map = async ({ data }: { data: block_Map }) => {
 	const businesses = initial.data;
 
 	const fetchLocations = async () => {
-		const positions: LocationWithIcon[] = [];
+		const positions: BusinessMarker[] = [];
 
 		for (const business of businesses) {
 			const address = business.addresses ? business.addresses[0] : null
 			if (!address) return
 
-			const primarytaxonomy = business.taxonomies ? business.taxonomies[0] : null
-			const icon = primarytaxonomy ? primarytaxonomy.icon : undefined
-
 			positions.push({
 				geopoint: address.location,
-				icon
+				business
 			});
 		}
 
 		return positions
 	};
 
-	const locationsWithIcons = await fetchLocations()
+	const businessMarkers = await fetchLocations()
 	
-	return <MapClient mapData={data} locationsWithIcons={locationsWithIcons}/>
+	return <MapClient mapData={data} businessMarkers={businessMarkers}/>
 };
 
 export default Map;

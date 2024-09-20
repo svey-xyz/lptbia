@@ -6,9 +6,9 @@ export const location = defineType({
 	name: 'location',
 	icon: MdLocationPin,
 	type: 'object',
-	options: {
-		collapsible: true, collapsed: true,
-	},
+	// options: {
+	// 	collapsible: true, collapsed: true,
+	// },
 	fields: [
 		defineField({
 			title: 'Number',
@@ -35,12 +35,12 @@ export const location = defineType({
 			name: 'notes',
 			type: 'string',
 		}),
-		defineField({
-			title: 'Precise Location',
-			name: 'preciseLocation',
-			type: 'boolean',
-			description: 'When set to true the precise location will be displayed.'
-		}),
+		// defineField({
+		// 	title: 'Precise Location',
+		// 	name: 'preciseLocation',
+		// 	type: 'boolean',
+		// 	description: 'When set to true the precise location will be displayed.'
+		// }),
 	],
 	preview: {
 		select: {

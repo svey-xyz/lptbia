@@ -28,16 +28,31 @@ const groups: FieldGroupDefinition[] = [
 
 const fields = [
 	defineField({
-		title: 'Location',
-		name: 'location',
-		type: 'location',
+		title: 'Number',
+		name: 'number',
+		type: 'number',
+		group: 'about',
+		validation: Rule => Rule.required()
+	}),
+	defineField({
+		title: 'Street',
+		name: 'street',
+		type: 'string',
+		group: 'about',
+		validation: Rule => Rule.required()
+	}),
+	defineField({
+		title: 'Unit',
+		name: 'unit',
+		type: 'string',
 		group: 'about',
 	}),
 	defineField({
-		name: 'icon',
-		title: 'Icon',
-		type: 'icon',
+		title: 'Location',
+		name: 'location',
+		type: 'geopoint',
 		group: 'about',
+		validation: Rule => Rule.required()
 	}),
 	defineField({
 		title: 'Type',
@@ -187,20 +202,7 @@ const fields = [
 
 
 // export const businesses = container({ type: 'business', fields, groups, icon: BsFillBookmarkFill })
-const customPreview = {
-	select: {
-		location: 'location',
-	},
-	prepare(value: any) {
-		const { location } = value
-		const address = readableAddress({ _type: 'loc', number: location.number, unit: location.unit, street: location.street })
-		return {
-			title: address ? address : 'Untitled Location',
-			media: FaSignsPost,
-		}
-	},
-}
 
-const args = { type: 'address', fields, groups, icon: FaSignsPost, customPreview }
+const args = { type: 'address', fields, groups, icon: FaSignsPost }
 export const adresses = new ARTICLE(args)
 

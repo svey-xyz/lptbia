@@ -1,5 +1,5 @@
 import { MdSettings } from "react-icons/md";
-import { StructureBuilder, ListItem, ListItemBuilder, Divider } from "sanity/structure";
+import { StructureBuilder, ListItem, ListItemBuilder, Divider, DefaultDocumentNodeResolver } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 import { AiFillInfoCircle } from "react-icons/ai";
 
@@ -8,6 +8,17 @@ import { RiGalleryView, RiPagesLine } from "react-icons/ri";
 import ARTICLES from "@/sanity/schemas/articles";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 import { FaTag } from "react-icons/fa6";
+import { ReferenceList } from "@/components/studio/ReferenceList";
+
+export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, options) => {
+
+	return S.document().views([
+		S.view.form(),
+		S.view.component(ReferenceList).title('Referenced In'), // Custom view
+	]);
+	
+	return S.document().views([S.view.form()]);
+};
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])

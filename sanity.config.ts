@@ -14,7 +14,7 @@ import { apiVersion, dataset, projectId, googleMapsKey } from '@sanity/lib/api'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'
-import { structure, schemaOptions, documentOptions } from '@/sanity/structure'
+import { structure, schemaOptions, documentOptions, defaultDocumentNode } from '@/sanity/structure'
 import { googleMapsInput } from '@sanity/google-maps-input'
 import { PluginOptions, defineConfig } from 'sanity'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
@@ -32,7 +32,8 @@ const googleMapsProps = {
 	}
 }
 const defaultDesk = structureTool({
-	structure
+	structure,
+	defaultDocumentNode
 })
 const deskPlugins = [
 	defaultDesk,

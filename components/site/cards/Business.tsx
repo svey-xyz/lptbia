@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { article_Business, article} from '@/types'
 import { slugifyWithOptions } from '@/lib/stringFunctions';
 import { GlobeAltIcon } from '@heroicons/react/24/solid'
+import { resolveContactHref } from '@/lib/resolveHref';
 
 type args = {
 	article: article,
@@ -54,7 +55,7 @@ export const BusinessArchiveCard = async ({ article, filtered = true }: args) =>
 						{business.title}
 					</span>
 					{ business.publicContact?.website &&
-						<Link href={business.publicContact.website} target="_blank"
+						<Link href={resolveContactHref(business.publicContact)} target="_blank"
 							className='flex flex-row cursor-pointer items-center gap-2'
 						>
 							<GlobeAltIcon className='w-icon-sm h-icon-sm text-accent'/>

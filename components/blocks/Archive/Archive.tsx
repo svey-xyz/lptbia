@@ -2,7 +2,7 @@ import { article, block_Archive } from '@/types';
 import React from 'react';
 import { loadArticles } from '@/sanity/queries/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
-import { ArchiveFilter } from '@/components/site/ArchiveFilter';
+import { Filter } from '@/components/blocks/Archive/Filter';
 
 export const Archive = async ({ data }: { data: block_Archive }) => {
 	if (!data) return
@@ -20,16 +20,7 @@ export const Archive = async ({ data }: { data: block_Archive }) => {
 				{ archiveTitle }
 			</span>
 
-			<ArchiveFilter articles={archiveItems} archive={data} />
-			{/* <div className='relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-				{ archiveItems.map((item) => {
-					return (
-						<ArchiveCard item={item} key={item._id} />
-					)
-				}) }
-			</div> */}
+			<Filter articles={archiveItems} archive={data} />
 		</div>
 	);
 };
-
-export default Archive;

@@ -19,18 +19,25 @@ type args = {
 	archive: block_Archive,
 }
 
-export const ArchiveFilter = ({ articles, archive }: args) => {
+interface CardMap {
+	[key: string]: React.ComponentType<{
+		article: article,
+		filtered?: boolean,
+	}>
+}
+
+const CardList: CardMap = {
+	Standard: dynamic(() => import('@components/site/cards/Generic')),
+	business: dynamic(() => import('@components/site/cards/Business')),
+
+}
+
+export const Filter = ({ articles, archive }: args) => {
 
 	const [filteredtaxonomyPrefLabel, setFilteredtaxonomyPrefLabel] = useState<string>(alltaxonomy.prefLabel)
 	const alltaxonomyRef = useRef<HTMLInputElement>(null)
 
-	let ArchiveCard
-
-	try {
-		ArchiveCard = dynamic(() => import(`@/components/cards/archives/${capitalize(archive.archiveType)}`))
-	} catch (e) {
-		ArchiveCard = dynamic(() => import('@/components/cards/archives/Generic'))
-	}
+	const ArchiveCard = CardList[archive.archiveType] ?? CardList.Standard
 
 	let taxonomies: Array<taxonomy> = []
 	let taxonomyNames: Array<string> = []

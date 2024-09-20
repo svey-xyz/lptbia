@@ -1,4 +1,4 @@
-# OAM Site & Database
+# LPTBIA Site & Database
 
 Built by [*svey*](https://github.com/svey-xyz) using [**Next.js**](https://nextjs.org), [**Tailwindcss**](https://tailwindcss.com), and [**Sanity**](https://sanity.io).
 

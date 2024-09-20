@@ -22,9 +22,11 @@ export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map,
 		[]
 	);
 
+	const mapHeight: string = '400px'
+
 	const mapOptions = useMemo<google.maps.MapOptions>(
 		() => ({
-			disableDefaultUI: true,
+			// disableDefaultUI: true,
 			clickableIcons: true,
 			scrollwheel: false,
 			mapId: '9f77439149649dc7',
@@ -39,10 +41,12 @@ export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map,
 
 	if (!isLoaded) {
 		return (
-			<div className='relative main-padding flex flex-col justify-center items-center py-32 bg-bg'>
-				<p className='text-accent font-black'>
-					Loading Map...
-				</p>;
+			<div className={`relative main-padding py-12 bg-bg`}>
+				<div className='flex flex-col justify-center items-center' style={{ height: mapHeight }}>
+					<p className={`text-accent font-black`}>
+						Loading Map...
+					</p>
+				</div>
 			</div>
 		)
 	}
@@ -57,12 +61,11 @@ export const MapClient = ({ mapData, locationsWithIcons }: { mapData: block_Map,
 				center={mapCenter}
 				id='9f77439149649dc7'
 				// mapTypeId='162b1e292ce4fc80'
-				mapContainerStyle={{ width: '80%', height: '400px' }}
-				onLoad={() => console.log('Map Component Loaded...')}
+				mapContainerStyle={{ width: '80%', height: mapHeight }}
+				// onLoad={() => console.log('Map Component Loaded...')}
 			>
 				{ locationsWithIcons?.map((location, index) => {
 					// console.log('Icon: ', location.icon)
-
 					const iconString = location.icon?.name.split(':') || []
 					// console.log('Icon URL: ', `https://api.iconify.design/${iconString[0]}/${iconString[1]}.svg`,)
 					return (<Marker

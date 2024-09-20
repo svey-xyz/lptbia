@@ -20,31 +20,22 @@ export const Map = async ({ data }: { data: block_Map }) => {
 	const businesses = initial.data;
 
 	const fetchLocations = async () => {
-		try {
-			const positions: LocationWithIcon[] = [];
+		const positions: LocationWithIcon[] = [];
 
-			for (const business of businesses) {
-				const address = business.addresses ? business.addresses[0] : null
-				if (!address) return
+		for (const business of businesses) {
+			const address = business.addresses ? business.addresses[0] : null
+			if (!address) return
 
-				const addressName = `${address?.location?.number} ${address?.location?.street}`
-				const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(addressName)}&key=${data.apiKey}`);
-				const dataReturn = await response.json();
-				if (dataReturn.results && dataReturn.results.length > 0) {
-					const { lat, lng } = dataReturn.results[0].geometry.location;
-					positions.push({
-						geopoint: { lat, lng },
-						icon: address?.icon
-					});
-				} else {
-					console.error('No results found for address:', address);
-				}
-			}
+			const primarytaxonomy = business.taxonomies ? business.taxonomies[0] : null
+			const icon = primarytaxonomy ? primarytaxonomy.icon : undefined
 
-			return positions
-		} catch (error) {
-			console.error('Error geocoding addresses:', error);
+			positions.push({
+				geopoint: address.location,
+				icon
+			});
 		}
+
+		return positions
 	};
 
 	const locationsWithIcons = await fetchLocations()

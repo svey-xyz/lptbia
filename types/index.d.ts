@@ -165,7 +165,11 @@ export interface article_Business extends article {
 
 export interface article_Address extends article {
 	icon?: icon,
-	location?: object_Location,
+	// location?: object_Location,
+	location: geopoint,
+	unit?: string,
+	number?: number,
+	street?: string,
 	notes: string,
 }
 

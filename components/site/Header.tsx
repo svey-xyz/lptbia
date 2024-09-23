@@ -2,6 +2,7 @@ import { loadSettings } from '@/sanity/queries/loadQuery'
 import Image from '@components/site/Image'
 import Link from 'next/link'
 import NavigationItem from '@/components/ui/NavigationItem'
+import { Navigation } from '@/components/site/Navigation'
 
 const Header = async() => {
 	const initial = await loadSettings()
@@ -18,11 +19,9 @@ const Header = async() => {
 							<Image image={settings.logo} size={{ width: 165, height: 100, sizes: "(max-width: 244px) 20vw, (max-width: 244px) 20vw, 20vw" }} />
 						}
 					</Link>
-					<div className='relative flex min-h-full items-center'>
-						{settings.navigation?.flatMap((item) => {
-							return <NavigationItem key={item.title} item={item} />
-						})}
-					</div>
+					{ settings.navigation &&
+						<Navigation navItems={settings.navigation} />
+					}
 				</div>
 			</div>
 		</div>

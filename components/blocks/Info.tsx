@@ -14,7 +14,7 @@ export const Info = ({ data }: { data: block_Info }) => {
 				</span>
 			}
 
-			<div className='flex flex-row gap-12 flex-wrap '>
+			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-12 max-w-full w-full'>
 				{ data.items?.map((item) => {
 					return (
 						<div key={item.title} className='flex flex-col items-center'>

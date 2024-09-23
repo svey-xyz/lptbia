@@ -1,5 +1,6 @@
 'use client'
 
+import { Menu } from '@/components/site/Menu';
 import NavigationItem from '@/components/ui/NavigationItem';
 import { object_NavigationItem } from '@/types';
 import React, { useEffect, useRef, useState } from 'react';
@@ -35,6 +36,12 @@ export const Navigation = ({ navItems }: { navItems: Array<object_NavigationItem
 					return <NavigationItem key={item.title} item={item} />
 				})}
 			</div>
+
+			{(gapWidth <= _BREAK_POINT) &&
+				<div className='absolute right-0 top-0 h-full flex flex-col items-center justify-center'>
+					<Menu navItems={navItems} />
+				</div>
+			}
 
 
 		</div>

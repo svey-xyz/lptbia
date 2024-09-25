@@ -34,7 +34,6 @@ export const link = defineType({
 			hidden: ({ parent, value }) => parent?.type !== 'external',
 			validation: Rule => Rule.custom((field, context) => {
 				const type: string | undefined = (context.parent as any).type
-				// console.log('type: ', type)
 				if (type !== 'external') return true
 				if (!field) return 'This field must not be empty'
 

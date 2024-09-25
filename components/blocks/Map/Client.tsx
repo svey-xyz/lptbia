@@ -76,8 +76,6 @@ export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, bu
 						scaledSize: new window.google.maps.Size(32, 32)
 					} : undefined
 
-					// console.log('Icon: ', mapIcon)
-
 					return (
 						<Marker
 							key={index}

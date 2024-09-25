@@ -5,7 +5,7 @@ import Socials from '@components/site/Socials'
 
 const Footer = ({}:{}) => {
 	return (
-		<section className='bg-bg-secondary'>
+		<section className='absolute bottom-0 left-0 right-0 bg-bg-secondary'>
 			<div className='main-padding py-8 text-bg flex flex-col md:flex-row gap-x-8 gap-y-2 md:items-center'>
 				{/* <span className='font-bold'>{ settings.motto && settings.motto }</span> */}
 				<NewsletterForm />

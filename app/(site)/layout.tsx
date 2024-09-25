@@ -45,12 +45,12 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	let documentClasses = `${inter.className} ${firaCode.variable}`
+	let documentClasses = `${inter.className} ${firaCode.variable} relative pb-24`
 	
 	return (
 		<html lang="en" className={documentClasses} suppressHydrationWarning>
 			<Head />
-			<body className='relative min-h-screen overflow-x-hidden'>
+			<body className='min-h-screen h-full overflow-x-hidden'>
 				<Header />
 				<main className='min-h-full'>
 					{ children }

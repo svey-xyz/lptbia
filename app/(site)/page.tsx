@@ -14,7 +14,7 @@ const Page = async() => {
 
 	
 
-	return <Pages.PageRoute params={{ slug: initial.data.homepage.slug }} />
+	return <Pages.PageRoute params={{ slug: [initial.data.homepage.slug] }} />
 }
 
 export default Page

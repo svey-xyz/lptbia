@@ -3,14 +3,14 @@ import { loadArticles, loadPage } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
 
 type Props = {
-	params: { slug: string }
+	params: { slug: Array<string> }
 }
 
 export const generateMetadata = async(
 	{ params }: Props,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> => {
-	const { data: page } = await loadPage(params.slug)
+	const { data: page } = await loadPage(params.slug[0])
 
 	return {
 		title: page?.title,

@@ -9,7 +9,7 @@ interface BlockMap {
 }
 
 interface ContainerMap {
-	[key: string]: React.ComponentType<{ children: React.ReactNode, data?:any }>
+	[key: string]: React.ComponentType<{ children: React.ReactNode, data?:any, index: number }>
 }
 
 export interface PageProps {
@@ -18,9 +18,9 @@ export interface PageProps {
 }
 
 const ContainerList: ContainerMap = {
-	Standard: dynamic(() => import('@components/blocks/containers/Standard')),
-	Video: dynamic(() => import('@components/blocks/containers/Video')),
-	Image: dynamic(() => import('@components/blocks/containers/Image')),
+	Standard: dynamic(() => import('@/components/sections/Standard')),
+	Video: dynamic(() => import('@/components/sections/Video')),
+	Image: dynamic(() => import('@/components/sections/Image')),
 }
 
 const BlockList: BlockMap = {
@@ -51,7 +51,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 
 					return (
 						<div data-sanity={attr()} key={section._key}>
-							<Container data={section} >
+							<Container data={section} index={i} >
 								{ section.blocks &&
 									section.blocks.map((block, i) => {
 										const BlockComponent = BlockList[block._type] ?? BlockList.Standard

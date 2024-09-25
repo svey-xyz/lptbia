@@ -9,7 +9,7 @@ export const FeaturedTaxonomies = ({ data } : { data: block_FeaturedTaxonomies |
 	if (!data) return;
 	return (
 		<div className="relative flex-row flex-wrap inline-flex justify-center w-full h-4/6 gap-y-4">
-			{data.taxonomies.map((tax, i, arr) => {
+			{data.taxonomies?.map((tax, i, arr) => {
 				const brightness = 100 - (i * 10)
 
 				return (

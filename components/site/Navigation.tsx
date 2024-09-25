@@ -17,7 +17,6 @@ export const Navigation = ({ navItems }: { navItems: Array<object_NavigationItem
 		if (!element || !parent) return
 
 		setGapWidth(parent.clientWidth - element.clientWidth)
-		console.log('Gap width: ', gapWidth)
 	}
 
 	useEffect(() => {

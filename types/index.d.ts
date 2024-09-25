@@ -76,10 +76,6 @@ export interface object_NavigationItem extends inherentObjectData {
 
 export interface block extends inherentObjectData {
 	title: string,
-	containerType: 'standard' | 'colour' | 'image' | 'video',
-	video?: string,
-	image?: sanityImage,
-	colour?: undefined | 'accent',
 }
 
 export interface block_FeaturedTaxonomies extends block {
@@ -132,6 +128,14 @@ export interface block_Archive extends block {
 }
 
 export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive]
+
+export interface section extends inherentObjectData {
+	type: 'standard' | 'colour' | 'image' | 'video',
+	video?: string,
+	image?: sanityImage,
+	colour?: undefined | 'accent',
+	blocks?: _BLOCK_TYPES
+}
 
 
 
@@ -227,10 +231,10 @@ export interface SettingsPayload extends inherentDocumentData {
 export interface PagePayload extends inherentDocumentData {
 	title?: string,
 	slug: string,
-	blocks?: _BLOCK_TYPES
+	sections?: Array<section>
 }
 
 export interface ArchivePayload extends inherentDocumentData {
 	title?: string,
-	blocks?: _BLOCK_TYPES
+	sections?: Array<section>
 }

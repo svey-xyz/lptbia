@@ -40,27 +40,32 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 	if (!data) return;
 	return (
 		<article className=''>
-			{ data.blocks &&
-				data.blocks.map((block, i) => {
-					// console.log('Block key: ', block)
+			{ data.sections &&
+				data.sections.map((section, i) => {
+					const Container = ContainerList[section.type] ?? ContainerList.Standard
 					const attr = createDataAttribute({
 						id: data._id,
 						type: data._type,
 						path: ['blocks', i, 'containerType']
 					});
 
-					const Container = ContainerList[block.containerType] ?? ContainerList.Standard
-					const BlockComponent = BlockList[block._type] ?? BlockList.Standard
-					return(
-						<div data-sanity={attr()} key={block._key}>
-							<Container data={block} >
-								<BlockComponent data={block} />
+					return (
+						<div data-sanity={attr()} key={section._key}>
+							<Container data={section} >
+								{ section.blocks &&
+									section.blocks.map((block, i) => {
+										const BlockComponent = BlockList[block._type] ?? BlockList.Standard
+
+										return(
+										<BlockComponent data={block} />
+										)
+									})
+
+								}
 							</Container>
 						</div>
-						
 					)
 				})
-
 			}
 		</article>
 	);

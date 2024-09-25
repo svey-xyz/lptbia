@@ -1,8 +1,8 @@
 import urlFor from '@/lib/urlFor';
-import { block, sanityImage } from '@/types';
+import { section, sanityImage } from '@/types';
 import React, { ReactNode } from 'react';
 
-export const Image = ({ children, data }: { children: ReactNode, data?: block }) => {
+export const Image = ({ children, data }: { children: ReactNode, data?: section }) => {
 	const BG_URL = data?.image ? urlFor(data?.image).url() : ''
 	return (
 		<div

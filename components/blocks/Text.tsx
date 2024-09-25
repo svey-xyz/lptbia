@@ -31,11 +31,11 @@ const Feature = ({ data }: { data: block_Text | undefined }) => {
 					/>
 				}
 
-				{ !data.featuredImage &&
+				{/* { !data.featuredImage &&
 					<span className='font-black text-4xl text-accent-secondary'>
 						{data.title}
 					</span>
-				}
+				} */}
 
 				<div className='relative flex flex-col font-semibold text-2xl gap-6 md:max-w-[50%] text-bg-secondary'>
 					

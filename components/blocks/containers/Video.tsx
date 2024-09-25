@@ -1,7 +1,7 @@
-import { block } from '@/types';
+import { section } from '@/types';
 import React, { ReactNode } from 'react';
 
-export const Video = ({ children, data }: { children:ReactNode, data?:block }) => {
+export const Video = ({ children, data }: { children:ReactNode, data?:section }) => {
 	return (
 		<div className="relative h-[900px] overflow-hidden items-center flex flex-col justify-center -mt-[--total-header-height]
 			after:absolute after:inset-0 after:bg-bg-secondary/[.65]">

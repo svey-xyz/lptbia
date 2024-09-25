@@ -1,4 +1,4 @@
-import { partial_ImageObject, partial_Blocks, partial_Article } from "@/sanity/queries/partials";
+import { partial_ImageObject, partial_Sections, partial_Article } from "@/sanity/queries/partials";
 import { groq } from "next-sanity";
 
 export const settingsQuery: string = groq`
@@ -16,7 +16,7 @@ export const settingsQuery: string = groq`
 			pages[]->{
 				...,
 				"slug":slug.current,
-				${partial_Blocks},
+				${partial_Sections},
 			},
 		},
 	}
@@ -26,14 +26,14 @@ export const pageQuery: string = groq`
 	*[_type=='page' && slug.current == $slug][0] {
   	...,
 		"slug":slug.current,
-		${partial_Blocks},
+		${partial_Sections},
 	}
 `
 
 export const archiveQuery: string = groq`
 	*[_type=='archive' && _id == $archiveID][0] {
   	...,
-		${partial_Blocks},
+		${partial_Sections},
 	}
 `
 

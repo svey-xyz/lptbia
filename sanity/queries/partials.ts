@@ -5,28 +5,31 @@ export const partial_ImageObject: string = groq`
 	"imageAsset":asset->
 `
 
-export const partial_Blocks: string = groq`
-	blocks[] {
+export const partial_Sections: string = groq`
+	sections[] {
 		...,
-		_type == "FeaturedTaxonomies" => {
+		blocks[] {
 			...,
-			taxonomies[]->,
-		},
-		_type == "FeaturedArticles" => {
-			...,
-			articles[]-> {
+			_type == "FeaturedTaxonomies" => {
 				...,
-				image {
+				taxonomies[]->,
+			},
+			_type == "FeaturedArticles" => {
+				...,
+				articles[]-> {
+					...,
+					image {
+						${partial_ImageObject}
+					}
+				},
+			},
+			_type == "Hero" => {
+				...,
+				featuredImage {
 					${partial_ImageObject}
 				}
 			},
-		},
-		_type == "Hero" => {
-			...,
-			featuredImage {
-				${partial_ImageObject}
-			}
-		},
+		}
 	}
 `
 

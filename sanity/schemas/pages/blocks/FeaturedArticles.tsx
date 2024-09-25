@@ -9,11 +9,6 @@ const articleTypes = ARTICLES.flatMap((article) => {
 
 const fields = [
 	defineField({
-		title: 'Title',
-		name: 'title',
-		type: 'string',
-	}),
-	defineField({
 		title: 'Articles',
 		name: 'articles',
 		type: 'array',

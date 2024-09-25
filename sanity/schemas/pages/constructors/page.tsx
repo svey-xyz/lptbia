@@ -30,10 +30,10 @@ export const page = (args: { name: string, fields?: fields, icon?: IconType | un
 				of: [{ type: 'block' }],
 			}),
 			defineField({
-				title: 'Blocks',
-				name: 'blocks',
+				title: 'Sections',
+				name: 'sections',
 				type: 'array',
-				of: blockTypes,
+				of: [{ type: 'section' }],
 			}),
 			...customPageFields,
 		],

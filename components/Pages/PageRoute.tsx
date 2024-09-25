@@ -4,11 +4,11 @@ import { Page } from '@/components/Pages/Page'
 import { loadArticles, loadPage } from '@/sanity/queries/loadQuery'
 
 type Props = {
-	params: { slug: string }
+	params: { slug: Array<string> }
 }
 
 export const PageRoute = async ({ params }: Props) => {
-	const initial = await loadPage(params.slug)
+	const initial = await loadPage(params.slug[0])
 
 	if (!initial.data) {
 		notFound()

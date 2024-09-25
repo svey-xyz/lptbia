@@ -13,7 +13,11 @@ export const settingsQuery: string = groq`
 		navigation[]{
 			// ...,
 			title,
-			pages[]->,
+			pages[]->{
+				...,
+				"slug":slug.current,
+				${partial_Blocks},
+			},
 		},
 	}
 `

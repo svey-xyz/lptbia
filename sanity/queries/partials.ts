@@ -21,6 +21,12 @@ export const partial_Blocks: string = groq`
 				}
 			},
 		},
+		_type == "Hero" => {
+			...,
+			featuredImage {
+				${partial_ImageObject}
+			}
+		},
 	}
 `
 

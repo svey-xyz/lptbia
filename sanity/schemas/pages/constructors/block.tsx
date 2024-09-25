@@ -6,6 +6,9 @@ import { RxSection } from "react-icons/rx";
 
 type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
 
+
+
+
 export function block(
 	args: {
 		name: string,
@@ -29,78 +32,24 @@ export function block(
 		icon,
 		fields: [
 			defineField({
-				name: 'containerType',
-				title: 'Container Type',
+				title: 'Title',
+				name: 'title',
 				type: 'string',
-				options: {
-					list: [
-						{ title: 'Standard', value: 'Standard' },
-						{ title: 'Colour', value: 'Colour' },
-						{ title: 'Image', value: 'Image' },
-						{ title: 'Video', value: 'Video'},
-					],
-					layout: 'radio',
-				},
-				initialValue: 'Standard',
 				validation: Rule => Rule.required()
-			}),
-			defineField({
-				name: 'video',
-				title: 'Video',
-				type: 'string',
-				description: '',
-				hidden: ({ parent, value }) => parent?.containerType !== 'Video',
-				validation: Rule => Rule.custom((field, context) => ((context.parent as any).containerType == 'Video' && field == undefined) ? 'This field is required.' : true),
-			}),
-			defineField({
-				title: 'Image',
-				name: 'image',
-				type: 'image',
-				options: {
-					sources: [mediaAssetSource],
-				},
-				preview: {
-					select: {
-						asset: 'asset',
-						title: 'asset.title',
-						description: 'asset.description'
-
-					},
-					prepare(value: any) {
-						return {
-							title: value.title ? value.title : 'Untitled Image',
-							subtitle: value.description,
-							media: value.asset
-						}
-					}
-				},
-				hidden: ({ parent, value }) => parent?.containerType !== 'Image',
-			}),
-			defineField({
-				name: 'colour',
-				title: 'Colour',
-				type: 'string',
-				description: '',
-				options: {
-					list: [
-						{ title: 'Accent', value: 'accent' },
-					],
-				},
-				hidden: ({ parent, value }) => parent?.containerType !== 'Colour',
 			}),
 			...fieldsArray
 		],
 		preview: {
 			select: {
 				type: '_type',
-				containerType: 'containerType',
+				title: 'title',
 				// logo: 'logo',
 			},
 			prepare(value: any) {
-				const { type, containerType } = value
+				const { type, title } = value
 				return {
 					title: type ? camelCaseToWords(type) : 'Unknown Block Type',
-					subtitle: `Container type: ${containerType}`,
+					subtitle: title ? title : 'No title!',
 					media: icon ? icon : RxSection,
 				}
 			},

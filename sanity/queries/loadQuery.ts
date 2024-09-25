@@ -63,7 +63,7 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 	}) as Promise<{ data: T, sourceMap: ContentSourceMap }>
 }) satisfies typeof queryStore.loadQuery
 
-export function loadSettings() {
+export const loadSettings = () => {
 	return loadQuery<SettingsPayload>(
 		settingsQuery,
 		{},
@@ -97,7 +97,7 @@ export const loadArticles = async <T>(type: string) => {
 	)
 }
 
-export function loadPage(slug: string) {
+export const loadPage = (slug: string) => {
 	return loadQuery<PagePayload | null>(
 		pageQuery,
 		{ slug },
@@ -105,7 +105,7 @@ export function loadPage(slug: string) {
 	)
 }
 
-export function loadArchive(archiveID: string) {
+export const loadArchive = (archiveID: string) => {
 	return loadQuery<ArchivePayload | null>(
 		archiveQuery,
 		{ archiveID },

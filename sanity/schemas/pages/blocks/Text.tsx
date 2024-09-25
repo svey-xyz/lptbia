@@ -7,11 +7,6 @@ import { BsJournalRichtext } from 'react-icons/bs';
 
 const fields = [
 	defineField({
-		title: 'Title',
-		name: 'title',
-		type: 'string'
-	}),
-	defineField({
 		title: 'Text',
 		name: 'text',
 		type: 'array',

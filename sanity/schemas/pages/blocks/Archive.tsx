@@ -41,11 +41,6 @@ const fields = [
 		},
 	}),
 	defineField({
-		title: 'Title',
-		name: 'title',
-		type: 'string',
-	}),
-	defineField({
 		title: 'Description',
 		name: 'description',
 		type: 'array',

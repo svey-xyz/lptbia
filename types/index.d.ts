@@ -75,6 +75,7 @@ export interface object_NavigationItem extends inherentObjectData {
 // BLOCKS
 
 export interface block extends inherentObjectData {
+	title: string,
 	containerType: 'standard' | 'colour' | 'image' | 'video',
 	video?: string,
 	image?: sanityImage,
@@ -86,10 +87,13 @@ export interface block_FeaturedTaxonomies extends block {
 }
 
 export interface block_Text extends block {
-	title?: string,
 	text?: PortableTextBlock,
 	featuredImage?: sanityImage,
 	link?: object_Link,
+}
+
+export interface block_Hero extends block {
+	image?: sanityImage,
 }
 
 export interface block_Map extends block {
@@ -102,12 +106,10 @@ export interface block_Newsletter extends block {
 }
 
 export interface block_FeaturedArticles extends block {
-	title?: string,
 	articles?: _ARTICLE_TYPES,
 }
 
 export interface block_Info extends block {
-	title?: string,
 	items?: [
 		{
 			title?: string,
@@ -120,7 +122,6 @@ export interface block_Info extends block {
 }
 
 export interface block_Archive extends block {
-	title?: string,
 	description?: PortableTextBlock,
 	archiveType: documentTypesWithArchives,
 	filterable?: boolean,

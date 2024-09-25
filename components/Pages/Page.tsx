@@ -32,6 +32,8 @@ const BlockList: BlockMap = {
 	FeaturedArticles: dynamic(() => import('@/components/blocks/FeaturedArticles')),
 	Info: dynamic(() => import('@components/blocks/Info')),
 	Archive: dynamic(() => import('@/components/blocks/Archive')),
+	Hero: dynamic(() => import('@/components/blocks/Hero')),
+
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {
@@ -50,8 +52,8 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 					const Container = ContainerList[block.containerType] ?? ContainerList.Standard
 					const BlockComponent = BlockList[block._type] ?? BlockList.Standard
 					return(
-						<div data-sanity={attr()}>
-							<Container key={block._key} data={block} >
+						<div data-sanity={attr()} key={block._key}>
+							<Container data={block} >
 								<BlockComponent data={block} />
 							</Container>
 						</div>

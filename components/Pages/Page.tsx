@@ -21,6 +21,8 @@ const ContainerList: ContainerMap = {
 	Standard: dynamic(() => import('@/components/sections/Standard')),
 	Video: dynamic(() => import('@/components/sections/Video')),
 	Image: dynamic(() => import('@/components/sections/Image')),
+	Colour: dynamic(() => import('@/components/sections/Colour')),
+
 }
 
 const BlockList: BlockMap = {

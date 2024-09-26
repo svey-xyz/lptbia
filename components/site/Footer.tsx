@@ -2,16 +2,22 @@ import React from 'react';
 // import { settings } from "@lib/data/data";
 import NewsletterForm from '@components/site/NewsletterForm'
 import Socials from '@components/site/Socials'
+import { loadSettings } from '@/sanity/queries/loadQuery';
 
-const Footer = ({}:{}) => {
+const Footer = async ({}:{}) => {
+	const initial = await loadSettings()
+	if (!initial) return
+
+	const settings = initial.data
+	
 	return (
 		<section className='absolute bottom-0 left-0 right-0 bg-bg-secondary'>
 			<div className='main-padding py-8 text-bg flex flex-col md:flex-row gap-x-8 gap-y-2 md:items-center'>
-				{/* <span className='font-bold'>{ settings.motto && settings.motto }</span> */}
+				<span className='font-bold'>{ settings.motto && settings.motto }</span>
 				<NewsletterForm />
-				{/* { settings.socials &&
+				{ settings.socials &&
 					<Socials socials={settings.socials} className='text-bg' />
-				} */}
+				}
 			</div>
 
 		</section>

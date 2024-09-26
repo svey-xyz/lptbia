@@ -93,42 +93,6 @@ export const settings = defineType({
 			type: 'geopoint',
 		}),
 		defineField({
-			title: 'Directors',
-			name: 'directors',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'object',
-					name: 'director',
-					fields: [
-						defineField({
-							title: 'Name',
-							name: 'name',
-							type: 'string',
-						}),
-						defineField({
-							title: 'Position',
-							name: 'position',
-							type: 'string',
-						}),
-						defineField({
-							name: 'business',
-							title: 'Business',
-							type: 'reference',
-							to: [ { type:'business', } ],
-							options: {
-								disableNew: true,
-							},
-						}),
-						defineField({
-							name: 'contact',
-							type: 'contact',
-						}),
-					]
-				}),
-			]
-		}),
-		defineField({
 			name: 'homepage',
 			title: 'Homepage',
 			type: 'reference',

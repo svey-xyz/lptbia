@@ -60,6 +60,8 @@ export const structure = (S: StructureBuilder) =>
 				S.divider(),
 
 				S.documentTypeListItem('sponsor').title('Sponsors'),
+				S.documentTypeListItem('director').title('Directors'),
+
 
 			]),
 		),

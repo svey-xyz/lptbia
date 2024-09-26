@@ -105,6 +105,10 @@ export interface block_FeaturedArticles extends block {
 	articles?: _ARTICLE_TYPES,
 }
 
+export interface block_Directors extends block {
+	directors?: Array<director>,
+}
+
 export interface block_Info extends block {
 	items?: [
 		{
@@ -209,6 +213,13 @@ export interface sponsor extends inherentDocumentData {
 	website?: string,
 	socials?: Array<object_Social>,
 	about?: PortableTextBlock,
+}
+
+export interface director extends inherentDocumentData {
+	name: string,
+	position?: string,
+	businesses?: Array<article_Business>,
+	contact?: object_Contact,
 }
 
 export interface SettingsPayload extends inherentDocumentData {

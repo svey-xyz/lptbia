@@ -22,20 +22,18 @@ import { social } from '@/sanity/schemas/objects/social'
 import { link } from '@/sanity/schemas/objects/link'
 import { basicDate } from '@/sanity/schemas/objects/basicDate'
 import { location } from '@/sanity/schemas/objects/location'
-
+import { contact } from '@/sanity/schemas/objects/contact'
 import { basicBlockContent, extraBlockContent } from '@/sanity/schemas/objects/blockContent'
 
-const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent]
+const _objects = [social, link, basicDate, location, basicBlockContent, extraBlockContent, contact]
 
 /**
  * Documents
  */
-import { settings } from '@/sanity/schemas/settings/settings'
-import { contact } from '@/sanity/schemas/objects/contact'
+import { settings } from '@/sanity/schemas/documents/settings'
+import { director } from '@/sanity/schemas/documents/director'
+import { sponsor } from '@/sanity/schemas/documents/sponsor'
 
-const _documents = [settings, contact]
+const _documents = [settings, director, sponsor]
 
-// Temp fix till converted to Article
-import { sponsor } from '@schemas/articles/sponsor'
-
-export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLE_TYPES, sponsor];
+export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLE_TYPES];

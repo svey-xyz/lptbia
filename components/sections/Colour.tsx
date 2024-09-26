@@ -12,8 +12,8 @@ const BgColourList: ColourMap = {
 }
 
 const FgColourList: ColourMap = {
-	accent: '!text-bg',
-	standard: '!text-accent-secondary'
+	accent: 'prose-headings:!text-bg prose:!text-bg text-bg',
+	standard: ''
 }
 
 export const Colour = ({ data, children, index }: { data?: section, children: ReactNode, index: number }) => {

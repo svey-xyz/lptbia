@@ -9,9 +9,9 @@ export const Info = ({ data }: { data: block_Info }) => {
 	return (
 		<div className='relative main-padding flex flex-col items-center py-12 gap-12'>
 			{ data.title &&
-				<span className='font-black text-4xl'>
+				<h2 className='font-black text-4xl'>
 					{data.title}
-				</span>
+				</h2>
 			}
 
 			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-12 max-w-full w-full'>
@@ -28,7 +28,7 @@ export const Info = ({ data }: { data: block_Info }) => {
 									<NumericLabel params={{ wholenumber: true, justification: 'C', shortFormat: true, commafy: true }}>{item.number}</NumericLabel>
 								</div>
 							}
-							<span className='text-xl font-bold'>{item.title}</span>
+							<h4 className='text-xl font-bold'>{item.title}</h4>
 							<span className='max-w-48 text-center'>{item.subTitle}</span>
 						</div>
 					)

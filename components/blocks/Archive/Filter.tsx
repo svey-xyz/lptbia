@@ -74,16 +74,17 @@ export const Filter = ({ articles, archive }: args) => {
 	return (
 		<div className="relative flex flex-col">
 				{((taxonomies && archive.filterable) &&
-					<fieldset className="flex flex-row gap-4 mb-4">
+					<fieldset className="flex flex-row gap-x-8 gap-y-2 mb-8 flex-wrap">
 						{taxonomies.map((taxonomy) => {
 							return (
-								<div key={taxonomy._id} className="group relative flex cursor-pointer w-auto px-4 flex-col items-center justify-center py-2">
+								<div key={taxonomy._id} className="group relative flex cursor-pointer w-auto flex-col items-center justify-center">
 									<input type="radio" name="taxonomies" value={encodeURIComponent(taxonomy.prefLabel)}
-										className="peer  absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none
+										className="peer absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none
 											cursor-pointer transition-all duration-200
 											origin-center"
 										checked={filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)} onChange={handleFilterChange} ref={(() => { if (filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)) return alltaxonomyRef})() } />
-									<label className="text-accent-secondary/60 group-hover:text-accent peer-checked:text-accent-secondary peer-checked:brightness-90">
+									<label className="text-accent-secondary/60
+										group-hover:text-accent peer-checked:text-accent-secondary peer-checked:brightness-75">
 										{taxonomy.prefLabel}
 									</label>
 								</div>

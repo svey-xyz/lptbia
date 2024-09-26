@@ -4,6 +4,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { block_Archive, article, taxonomy } from "@/types";
 import dynamic from 'next/dynamic'
 import { capitalize } from "@/lib/stringFunctions";
+import { useSearchParams } from 'next/navigation';
 
 const alltaxonomy: taxonomy = {
 	_type: 'taxonomicTerm',
@@ -34,7 +35,10 @@ const CardList: CardMap = {
 
 export const Filter = ({ articles, archive }: args) => {
 
-	const [filteredtaxonomyPrefLabel, setFilteredtaxonomyPrefLabel] = useState<string>(alltaxonomy.prefLabel)
+	const searchParams = useSearchParams();
+	const filter = searchParams.get('filter');
+
+	const [filteredEncodedLabel, setFilteredEncodedLabel] = useState<string>(alltaxonomy.prefLabel)
 	const alltaxonomyRef = useRef<HTMLInputElement>(null)
 
 	const ArchiveCard = CardList[archive.archiveType] ?? CardList.Standard
@@ -54,11 +58,17 @@ export const Filter = ({ articles, archive }: args) => {
 	});
 
 	useEffect(() => {
-		alltaxonomyRef.current ? alltaxonomyRef.current.checked = true : null
-	},)
+		if (!filter) alltaxonomyRef.current ? alltaxonomyRef.current.checked = true : null
+
+		if (filter) {
+			console.log("Filter: ", filter)
+			setFilteredEncodedLabel(encodeURIComponent(String(filter)));
+		}
+
+	}, [filter])
 
 	const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setFilteredtaxonomyPrefLabel(event.target?.value);
+		setFilteredEncodedLabel(event.target?.value);
 	}
 
 	return (
@@ -68,11 +78,11 @@ export const Filter = ({ articles, archive }: args) => {
 						{taxonomies.map((taxonomy) => {
 							return (
 								<div key={taxonomy._id} className="group relative flex cursor-pointer w-auto px-4 flex-col items-center justify-center py-2">
-									<input type="radio" name="taxonomies" value={taxonomy.prefLabel}
+									<input type="radio" name="taxonomies" value={encodeURIComponent(taxonomy.prefLabel)}
 										className="peer  absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none
 											cursor-pointer transition-all duration-200
 											origin-center"
-										checked={filteredtaxonomyPrefLabel == taxonomy.prefLabel} onChange={handleFilterChange} ref={(() => { if (filteredtaxonomyPrefLabel == taxonomy.prefLabel) return alltaxonomyRef})() } />
+										checked={filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)} onChange={handleFilterChange} ref={(() => { if (filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)) return alltaxonomyRef})() } />
 									<label className="text-accent-secondary/60 group-hover:text-accent peer-checked:text-accent-secondary peer-checked:brightness-90">
 										{taxonomy.prefLabel}
 									</label>
@@ -86,7 +96,7 @@ export const Filter = ({ articles, archive }: args) => {
 					articles.map((article) => {
 						let taxonomyInFilter: boolean = false;
 						article.taxonomies?.forEach((taxonomy: taxonomy) => {
-							if (taxonomy.prefLabel == filteredtaxonomyPrefLabel) taxonomyInFilter = true;
+							if (encodeURIComponent(taxonomy.prefLabel) == filteredEncodedLabel) taxonomyInFilter = true;
 						});
 						return (
 							<ArchiveCard key={article._id} article={article} filtered={taxonomyInFilter} />

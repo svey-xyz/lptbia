@@ -24,6 +24,12 @@ export const resolvePageHref = (page: ArchivePayload | PagePayload): string => {
 	return slug
 }
 
+export const resolveArchiveHref = (articleType: string): string => {
+	const slug = `/archives/${articleType}`
+
+	return slug
+}
+
 export const resolveContactHref = (contact: object_Contact | undefined): string => {
 	if (!contact) return ''
 	

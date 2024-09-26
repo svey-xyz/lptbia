@@ -4,6 +4,8 @@ import React from 'react';
 import { block_FeaturedTaxonomies } from '@/types'
 import { Icon } from '@iconify/react';
 import { breakAdditionSign } from '@lib/stringFunctions'
+import { resolveArchiveHref } from '@/lib/resolveHref';
+import { taxTypeToArticleType } from '@/lib/taxTypeToArticleType';
 
 export const FeaturedTaxonomies = ({ data } : { data: block_FeaturedTaxonomies | undefined } ) => {
 	if (!data) return;
@@ -15,6 +17,7 @@ export const FeaturedTaxonomies = ({ data } : { data: block_FeaturedTaxonomies |
 				return (
 					<a
 						key={tax._id}
+						href={`${resolveArchiveHref(taxTypeToArticleType(tax))}?filter=${encodeURIComponent(tax.prefLabel)}`} 
 						className='group relative flex flex-col gap-4 flex-grow px-5 pt-4 lg:pb-16 pb-8 text-bg justify-end border-transparent border-t-2 hover:border-accent-secondary'>
 						<div className='absolute inset-0 -z-1 bg-accent/75 saturate-150'
 							style={{

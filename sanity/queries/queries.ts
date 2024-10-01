@@ -25,7 +25,7 @@ export const settingsQuery: string = groq`
 export const directorsQuery: string = groq`
 	*[_type == "director"] {
 		${partial_Director}
-	}
+	}|order(orderRank)
 `
 
 export const pageQuery: string = groq`

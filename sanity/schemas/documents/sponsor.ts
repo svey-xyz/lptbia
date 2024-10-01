@@ -1,13 +1,16 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
 import { SiGithubsponsors } from 'react-icons/si';
 import { mediaAssetSource } from "sanity-plugin-media";
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
 
 export const sponsor = defineType({
 	title: "Sponsor",
 	name: "sponsor",
 	type: 'document',
 	icon: SiGithubsponsors,
+	orderings: [orderRankOrdering],
 	fields: [
+		orderRankField({ type: "category", newItemPosition: "before" }),
 		defineField({
 			title: 'Title',
 			name: 'title',

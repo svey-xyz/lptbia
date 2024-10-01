@@ -1,5 +1,5 @@
 import { MdSettings } from "react-icons/md";
-import { StructureBuilder, ListItem, ListItemBuilder, Divider, DefaultDocumentNodeResolver } from "sanity/structure";
+import { StructureBuilder, ListItem, ListItemBuilder, Divider, DefaultDocumentNodeResolver, StructureResolverContext } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 import { AiFillInfoCircle } from "react-icons/ai";
 
@@ -9,6 +9,9 @@ import ARTICLES from "@/sanity/schemas/articles";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 import { FaTag } from "react-icons/fa6";
 import { ReferenceList } from "@/components/studio/ReferenceList";
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
+import { TbChairDirector } from "react-icons/tb";
+import { SiGithubsponsors } from "react-icons/si";
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, options) => {
 
@@ -16,8 +19,6 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, options) => 
 		S.view.form(),
 		S.view.component(ReferenceList).title('Referenced In'), // Custom view
 	]);
-	
-	return S.document().views([S.view.form()]);
 };
 
 // Define the actions that should be available for singleton documents
@@ -48,7 +49,7 @@ const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	)
 })
 
-export const structure = (S: StructureBuilder) =>
+export const structure = (S: StructureBuilder, context: StructureResolverContext) =>
 	S.list().title('Content').items([
 		/** ABOUT */
 		S.listItem().title('About').icon(AiFillInfoCircle).child(
@@ -59,8 +60,26 @@ export const structure = (S: StructureBuilder) =>
 
 				S.divider(),
 
-				S.documentTypeListItem('sponsor').title('Sponsors'),
-				S.documentTypeListItem('director').title('Directors'),
+				// S.documentTypeListItem('sponsor').title('Sponsors'),
+				// S.documentTypeListItem('director').title('Directors'),
+				orderableDocumentListDeskItem({
+					type: 'sponsor',
+					title: 'Sponsors',
+					icon: SiGithubsponsors,
+					menuItems: [], // allow an array of `S.menuItem()` to be injected to orderable document list menu
+					// pass from the structure callback params above
+					S,
+					context,
+				}),
+				orderableDocumentListDeskItem({
+					type: 'director',
+					title: 'Directors',
+					icon: TbChairDirector,
+					menuItems: [], // allow an array of `S.menuItem()` to be injected to orderable document list menu
+					// pass from the structure callback params above
+					S,
+					context,
+				}),
 
 
 			]),

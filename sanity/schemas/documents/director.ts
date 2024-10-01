@@ -1,11 +1,14 @@
 import { TbChairDirector } from "react-icons/tb";
 import { defineType, defineField, defineArrayMember } from "sanity";
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
 
 export const director = defineType({
 	type: 'document',
 	name: 'director',
 	title: 'Director',
+	orderings: [orderRankOrdering],
 	fields: [
+		orderRankField({ type: "category", newItemPosition: "before" }),
 		defineField({
 			title: 'Name',
 			name: 'name',

@@ -45,7 +45,7 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	let documentClasses = `${inter.className} ${firaCode.variable} relative pb-24`
+	let documentClasses = `${inter.className} ${firaCode.variable} relative pb-36 md:24`
 	
 	return (
 		<html lang="en" className={documentClasses} suppressHydrationWarning>

@@ -12,11 +12,11 @@ const Feature = ({ data }: { data: block_Text | undefined }) => {
 	return (
 		<div className="relative overflow-hidden flex flex-col justify-center items-center py-16 gap-12">
 
-			{ data.featuredImage && 
+			{/* { data.featuredImage && 
 				<span className='font-black text-4xl text-accent-secondary'>
 					{data.title}
 				</span>
-			}
+			} */}
 			
 			<div className="relative flex main-padding md:items-center flex-col md:flex-row gap-12 justify-center">
 
@@ -37,7 +37,7 @@ const Feature = ({ data }: { data: block_Text | undefined }) => {
 					</span>
 				} */}
 
-				<div className='relative flex flex-col font-semibold text-2xl gap-6 md:max-w-[50%] text-bg-secondary'>
+				<div className='relative flex flex-col font-semibold text-2xl gap-6 max-w-prose-full text-bg-secondary'>
 					
 					{ data.text &&
 						<TextBlock text={data.text} />

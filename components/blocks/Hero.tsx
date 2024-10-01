@@ -14,7 +14,7 @@ const Hero = ({ data }: { data: block_Hero | undefined }) => {
 				backgroundImage: `url(${BG_URL})`
 			}}
 		>
-			<div className="relative flex main-padding flex-col items-center pt-80 pb-6 z-10">
+			<div className="relative flex main-padding flex-col pt-80 pb-6 z-10">
 				<h2 className='font-black text-accent text-4xl'>
 					{data.title}
 				</h2>

@@ -28,7 +28,7 @@ const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string
 		<form
 			name='newsletter'
 			method='post'
-			className={`${ className } ${ stacked ? 'flex-col' : 'flex-row items-center' } flex relative w-full gap-4`}>
+			className={`${ className } ${ stacked ? 'flex-col' : 'flex-row' } flex relative w-full gap-4`}>
 			<label
 				className='text-bg font-bold text-sm'
 				htmlFor={`email-field-${uuid}`}

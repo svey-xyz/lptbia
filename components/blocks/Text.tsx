@@ -10,7 +10,7 @@ import TextBlock from '@/components/site/TextBlock';
 const Feature = ({ data }: { data: block_Text | undefined }) => {
 	if (!data) return;
 	return (
-		<div className="relative overflow-hidden flex flex-col justify-center items-center py-16 gap-12">
+		<div className="relative overflow-hidden flex flex-col justify-center items-center py-4 gap-12">
 
 			{/* { data.featuredImage && 
 				<span className='font-black text-4xl text-accent-secondary'>
@@ -18,7 +18,7 @@ const Feature = ({ data }: { data: block_Text | undefined }) => {
 				</span>
 			} */}
 			
-			<div className="relative flex main-padding md:items-center flex-col md:flex-row gap-12 justify-center">
+			<div className="relative flex main-padding flex-col gap-12 justify-center">
 
 				{	data.featuredImage &&
 					<Image
@@ -37,7 +37,7 @@ const Feature = ({ data }: { data: block_Text | undefined }) => {
 					</span>
 				} */}
 
-				<div className='relative flex flex-col font-semibold text-2xl gap-6 max-w-prose-full text-bg-secondary'>
+				<div className='relative flex flex-col font-semibold max-w-prose-full'>
 					
 					{ data.text &&
 						<TextBlock text={data.text} />

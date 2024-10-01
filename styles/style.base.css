@@ -1,6 +1,6 @@
 @layer base {
 	:root {
-		--primary-fg: 0deg 0% 0%;
+		--primary-fg: 343deg 82% 15%;
 		--primary-bg: 32deg 88% 97%;
 		--secondary-bg: 343deg 82% 15%;
 
@@ -23,7 +23,7 @@
 	}
 
 	body {
-		@apply font-body text-left text-lg text-fg-primary bg-bg-primary transition-colors duration-300;
+		@apply font-body text-left text-fg-primary bg-bg-primary transition-colors duration-300;
 		/* background: linear-gradient(
 				to top,
 				transparent,
@@ -31,12 +31,14 @@
 			)
 			var(--primary-bg);*/
 	}
-	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent-secondary; }
+	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent-secondary mt-4; }
 	h1, h2 { @apply text-accent; }
 	h1 { @apply text-4xl; }
 	h2 { @apply text-2xl; }
+	h3 { @apply text-2xl; }
 	p { @apply mt-2; }
 	a { @apply cursor-pointer transition-opacity duration-300; }
+	em { @apply font-light; }
 
 	.main-padding { @apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32; }
 	.separator { @apply before:-z-1 before:absolute before:inset-0 before:border-b-2 before:border-solid before:border-fg-primary before:opacity-60; }

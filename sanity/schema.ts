@@ -31,7 +31,7 @@ const _objects = [social, link, basicDate, location, basicBlockContent, extraBlo
  * Documents
  */
 import { settings } from '@/sanity/schemas/documents/settings'
-import { director } from '@/sanity/schemas/documents/director'
+import { director } from '@/sanity/schemas/documents/person'
 import { sponsor } from '@/sanity/schemas/documents/sponsor'
 
 const _documents = [settings, director, sponsor]

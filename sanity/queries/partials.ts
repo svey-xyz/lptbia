@@ -47,7 +47,7 @@ export const business = groq`
 	addresses[]->
 `
 
-export const partial_Director: string = groq`
+export const partial_Person: string = groq`
 	...,
 	businesses[]-> {
 		...,
@@ -79,10 +79,10 @@ export const partial_Sections: string = groq`
 					${partial_ImageObject}
 				}
 			},
-			_type == "Directors" => {
+			_type == "People" => {
 				...,
-				directors[]-> {
-					${partial_Director}
+				people[]-> {
+					${partial_Person}
 				}
 			},
 		}

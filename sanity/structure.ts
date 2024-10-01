@@ -12,6 +12,7 @@ import { ReferenceList } from "@/components/studio/ReferenceList";
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { TbChairDirector } from "react-icons/tb";
 import { SiGithubsponsors } from "react-icons/si";
+import { BsPeopleFill } from "react-icons/bs";
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, options) => {
 
@@ -61,7 +62,7 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 				S.divider(),
 
 				// S.documentTypeListItem('sponsor').title('Sponsors'),
-				// S.documentTypeListItem('director').title('Directors'),
+				S.documentTypeListItem('person').title('People').icon(BsPeopleFill),
 				orderableDocumentListDeskItem({
 					type: 'sponsor',
 					title: 'Sponsors',
@@ -71,17 +72,6 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 					S,
 					context,
 				}),
-				orderableDocumentListDeskItem({
-					type: 'director',
-					title: 'Directors',
-					icon: TbChairDirector,
-					menuItems: [], // allow an array of `S.menuItem()` to be injected to orderable document list menu
-					// pass from the structure callback params above
-					S,
-					context,
-				}),
-
-
 			]),
 		),
 		S.listItem().title('Pages').icon(RiPagesLine).child(

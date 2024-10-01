@@ -105,8 +105,8 @@ export interface block_FeaturedArticles extends block {
 	articles?: _ARTICLE_TYPES,
 }
 
-export interface block_Directors extends block {
-	directors?: Array<director>,
+export interface block_People extends block {
+	people: Array<person>,
 }
 
 export interface block_Info extends block {
@@ -131,7 +131,7 @@ export interface block_Archive extends block {
 	featured_addressTaxonomy?: Array<taxonomy>,
 }
 
-export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive]
+export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive, block_People]
 
 export interface section extends inherentObjectData {
 	type: 'standard' | 'colour' | 'image' | 'video',
@@ -215,7 +215,7 @@ export interface sponsor extends inherentDocumentData {
 	about?: PortableTextBlock,
 }
 
-export interface director extends inherentDocumentData {
+export interface person extends inherentDocumentData {
 	name: string,
 	position?: string,
 	businesses?: Array<article_Business>,

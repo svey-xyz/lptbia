@@ -7,14 +7,12 @@ import {
 	pageQuery,
 	settingsQuery,
 	archiveQuery,
-	directorsQuery
 } from '@/sanity/queries/queries'
 
 import {
 	PagePayload,
 	SettingsPayload,
 	ArchivePayload,
-	director
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
@@ -70,14 +68,6 @@ export const loadSettings = () => {
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
-	)
-}
-
-export const loadDirectors = () => {
-	return loadQuery<Array<director>>(
-		directorsQuery,
-		{},
-		{ next: { tags: ['directors', 'director'] } },
 	)
 }
 

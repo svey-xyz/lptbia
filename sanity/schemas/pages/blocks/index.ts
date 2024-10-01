@@ -6,9 +6,9 @@ import { Newsletter } from '@/sanity/schemas/pages/blocks/Newsletter';
 import { Info } from '@/sanity/schemas/pages/blocks/Info';
 import { Hero } from '@/sanity/schemas/pages/blocks/Hero';
 import { Archive } from '@sanity/schemas/pages/blocks/Archive'
-import { Directors } from '@sanity/schemas/pages/blocks/Directors'
+import { People } from '@sanity/schemas/pages/blocks/People'
 
-export const Blocks = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, Hero, Directors];
+export const Blocks = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, Hero, People];
 
 export const blockTypes = Blocks.map((block) => {
 	return { type: block.name }

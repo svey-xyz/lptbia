@@ -23,7 +23,7 @@ export const Colour = ({ data, children, index }: { data?: section, children: Re
 
 	return (
 		<div
-			className={`relative overflow-hidden flex flex-col justify-center ${bgColour} ${fgColour}
+			className={`section ${bgColour} ${fgColour}
 			${(index == 0 && hasHero) ? '-mt-[--total-header-height]' : ''}`}
 		>
 			{children}

@@ -45,7 +45,7 @@ export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, bu
 
 	if (!isLoaded) {
 		return (
-			<div className={`relative main-padding py-12 bg-bg`}>
+			<div className={`section-block`}>
 				<div className='flex flex-col justify-center items-center' style={{ height: mapHeight }}>
 					<p className={`text-accent font-black`}>
 						Loading Map...
@@ -56,7 +56,7 @@ export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, bu
 	}
 
 	return (
-		<div className='relative main-padding flex flex-row justify-center py-12 bg-bg'>
+		<div className='section-block'>
 			<GoogleMap
 				options={mapOptions}
 				zoom={16}

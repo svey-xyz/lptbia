@@ -4,7 +4,7 @@ import React from 'react';
 export const People = async ({ data }: { data: block_People }) => {
 
 	return (
-		<div className='relative main-padding flex flex-col items-center py-12 gap-12 mb-8'>
+		<div className='section-block'>
 			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-12 max-w-full w-full'>
 				{	data.people.map((person) => {
 					return (

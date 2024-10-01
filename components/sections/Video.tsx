@@ -3,7 +3,8 @@ import React, { ReactNode } from 'react';
 
 export const Video = ({ children, data, index }: { children:ReactNode, data?:section, index: number }) => {
 	return (
-		<div className={`relative h-[900px] overflow-hidden items-center flex flex-col justify-center ${index == 0 ? '-mt-[--total-header-height]' : ''}
+		<div className={`section
+			h-[900px] ${index == 0 ? '-mt-[--total-header-height]' : ''}
 			after:absolute after:inset-0 after:bg-bg-secondary/[.65]`}>
 			<div className="h-full w-full top-0 left-0 absolute overflow-hidden">
 				<video autoPlay loop className="absolute min-w-full min-h-full object-cover">

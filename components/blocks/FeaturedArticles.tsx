@@ -20,7 +20,7 @@ export const FeaturedArticles = ({ data }: { data: block_FeaturedArticles }) => 
 	if (!data) return
 
 	return (
-		<div className='main-padding my-24 flex flex-col gap-12 items-center'>
+		<div className='section-block'>
 			<span className='font-black text-4xl text-accent-secondary'>
 				{ data.title }
 			</span>

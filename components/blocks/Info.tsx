@@ -7,7 +7,7 @@ import NumericLabel from 'react-pretty-numbers';
 
 export const Info = ({ data }: { data: block_Info }) => {
 	return (
-		<div className='relative main-padding flex flex-col py-4 gap-12'>
+		<div className='section-block'>
 			{ data.title &&
 				<h2 className='font-black text-4xl'>
 					{data.title}

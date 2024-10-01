@@ -8,7 +8,7 @@ const Hero = ({ data }: { data: block_Hero | undefined }) => {
 
 	return (
 		<div
-			className={`relative overflow-hidden flex flex-col justify-center bg-fixed bg-no-repeat bg-cover bg-center text-accent
+			className={`section-block bg-fixed bg-no-repeat bg-cover bg-center text-accent
 				after:absolute after:inset-0 after:bg-gradient-to-t after:from-bg after:to-bg/0`}
 			style={{
 				backgroundImage: `url(${BG_URL})`

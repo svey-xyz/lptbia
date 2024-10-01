@@ -15,7 +15,7 @@ export const Archive = async ({ data }: { data: block_Archive }) => {
 	const archiveTitle = `${pluralize(camelCaseToWords(data.archiveType))} Archive`
 
 	return (
-		<div className='main-padding my-24 flex flex-col gap-12 items-center'>
+		<div className='section-block'>
 			<span className='font-black text-4xl text-accent-secondary'>
 				{ archiveTitle }
 			</span>

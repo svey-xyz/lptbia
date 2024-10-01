@@ -6,15 +6,13 @@ export const Image = ({ children, index, data }: { children: ReactNode, index: n
 	const BG_URL = data?.image ? urlFor(data?.image).url() : ''
 	return (
 		<div
-			className={`relative overflow-hidden flex flex-col justify-center
-			bg-fixed bg-no-repeat bg-cover bg-center text-accent ${index == 0 ? '-mt-[--total-header-height]' : ''}
-			after:absolute after:inset-0 after:bg-bg/30 after:backdrop-blur-sm`}
+			className={`section
+			-z-50 bg-fixed bg-no-repeat bg-cover bg-center text-accent ${index == 0 ? '-mt-[--total-header-height]' : ''}
+			after:absolute after:inset-0 after:bg-bg/30 after:backdrop-blur-sm after:-z-30`}
 			style={{
 				backgroundImage: `url(${BG_URL})`
 			}}>
-			<div className='z-10'>
 				{children}
-			</div>
 		</div>
 	);
 };

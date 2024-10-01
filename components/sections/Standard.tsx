@@ -6,7 +6,7 @@ export const Standard = ({ data, children, index }: { data?: section, children:R
 	
 	return (
 		<div
-			className={`relative overflow-hidden flex flex-col justify-center
+			className={`section
 			${(index == 0 && hasHero) ? '-mt-[--total-header-height]' : ''}`}
 		>
 			{ children }

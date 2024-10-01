@@ -10,7 +10,7 @@ import { taxTypeToArticleType } from '@/lib/taxTypeToArticleType';
 export const FeaturedTaxonomies = ({ data } : { data: block_FeaturedTaxonomies | undefined } ) => {
 	if (!data) return;
 	return (
-		<div className="relative flex-row flex-wrap inline-flex justify-center w-full h-4/6 gap-y-4">
+		<div className="inline-flex flex-row flex-wrap justify-center w-full h-4/6 gap-y-4">
 			{data.taxonomies?.map((tax, i, arr) => {
 				const brightness = 100 - (i * 10)
 

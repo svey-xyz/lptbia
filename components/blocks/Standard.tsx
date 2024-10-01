@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Standard = ({data}:{data: block}) => {
 	return (
-		<div>
+		<div className='section-block'>
 			Block not found: { data._type }
 		</div>
 	);

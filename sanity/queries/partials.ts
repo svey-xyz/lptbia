@@ -5,6 +5,56 @@ export const partial_ImageObject: string = groq`
 	"imageAsset":asset->
 `
 
+export const partial_Article: string = groq`
+	...,
+	title,
+	"slug":slug.current,
+	description,
+	taxonomies[]->,
+	image {
+		${partial_ImageObject}
+	}
+`
+
+export const partial_Artist: string = groq`
+	...,
+	"slug":slug.current,
+	tags[]->,
+	image {
+		${partial_ImageObject}
+	}
+`
+
+export const project = groq`
+	gallery[] {
+		${partial_ImageObject}
+	},
+	artists[]->{
+		${partial_Artist}
+	},
+	sponsors[]->{
+		...,
+		image {
+			${partial_ImageObject}
+		}
+	}
+`
+
+export const business = groq`
+	logo {
+		${partial_ImageObject}
+	},
+	addresses[]->
+`
+
+export const partial_Director: string = groq`
+	...,
+	businesses[]-> {
+		...,
+		${business}
+	}
+`
+
 export const partial_Sections: string = groq`
 	sections[] {
 		...,
@@ -29,26 +79,12 @@ export const partial_Sections: string = groq`
 					${partial_ImageObject}
 				}
 			},
+			_type == "Directors" => {
+				...,
+				directors[]-> {
+					${partial_Director}
+				}
+			},
 		}
-	}
-`
-
-export const partial_Article: string = groq`
-	...,
-	title,
-	"slug":slug.current,
-	description,
-	taxonomies[]->,
-	image {
-		${partial_ImageObject}
-	}
-`
-
-export const partial_Artist: string = groq`
-	...,
-	"slug":slug.current,
-	tags[]->,
-	image {
-		${partial_ImageObject}
 	}
 `

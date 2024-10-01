@@ -6,19 +6,21 @@ import { draftMode } from 'next/headers'
 import {
 	pageQuery,
 	settingsQuery,
-	archiveQuery
+	archiveQuery,
+	directorsQuery
 } from '@/sanity/queries/queries'
 
 import {
 	PagePayload,
 	SettingsPayload,
-	ArchivePayload
+	ArchivePayload,
+	director
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
 import { capitalize, pluralize } from '@/lib/stringFunctions'
-import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partialArticles'
+import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partials'
 import { single_Article, bundle_Articles } from '@/sanity/queries/buildArticleQuery'
 
 export const token = process.env.SANITY_API_READ_TOKEN;
@@ -68,6 +70,14 @@ export const loadSettings = () => {
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
+	)
+}
+
+export const loadDirectors = () => {
+	return loadQuery<Array<director>>(
+		directorsQuery,
+		{},
+		{ next: { tags: ['directors', 'director'] } },
 	)
 }
 

@@ -35,7 +35,7 @@ const BlockList: BlockMap = {
 	Info: dynamic(() => import('@components/blocks/Info')),
 	Archive: dynamic(() => import('@/components/blocks/Archive')),
 	Hero: dynamic(() => import('@/components/blocks/Hero')),
-
+	Directors: dynamic(() => import('@/components/blocks/Directors')),
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {

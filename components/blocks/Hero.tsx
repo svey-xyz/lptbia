@@ -8,17 +8,15 @@ const Hero = ({ data }: { data: block_Hero | undefined }) => {
 
 	return (
 		<div
-			className={`section-block bg-fixed bg-no-repeat bg-cover bg-center text-accent
+			className={`section-block max-w-full bg-fixed bg-no-repeat bg-cover bg-center text-accent
 				after:absolute after:inset-0 after:bg-gradient-to-t after:from-bg after:to-bg/0`}
 			style={{
 				backgroundImage: `url(${BG_URL})`
 			}}
 		>
-			<div className="relative flex main-padding flex-col pt-80 pb-6 z-10">
-				<h2 className='font-black text-accent text-4xl'>
-					{data.title}
-				</h2>
-			</div>
+			<h2 className='font-black text-accent text-4xl pt-80 pb-6 z-10'>
+				{data.title}
+			</h2>
 		</div>
 	);
 };

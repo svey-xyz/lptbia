@@ -11,7 +11,7 @@ const Footer = async ({}:{}) => {
 	const settings = initial.data
 	
 	return (
-		<section className='absolute bottom-0 left-0 right-0 bg-bg-secondary'>
+		<section className='relative w-full bg-bg-secondary'>
 			<div className='main-padding py-8 text-bg flex flex-col md:flex-row gap-x-8 gap-y-2 md:items-center'>
 				<span className='font-bold'>{ settings.motto && settings.motto }</span>
 				<NewsletterForm />

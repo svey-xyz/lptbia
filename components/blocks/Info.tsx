@@ -9,12 +9,12 @@ export const Info = ({ data }: { data: block_Info }) => {
 	return (
 		<div className='section-block'>
 			{ data.title &&
-				<h2 className='font-black text-4xl'>
+				<h2>
 					{data.title}
 				</h2>
 			}
 
-			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-12 max-w-full w-full'>
+			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-8 max-w-full w-full'>
 				{ data.items?.map((item) => {
 					return (
 						<div key={item.title} className='flex flex-col'>
@@ -30,7 +30,7 @@ export const Info = ({ data }: { data: block_Info }) => {
 									</NumericLabel>
 								</div>
 							}
-							<h4 className='text-xl font-bold'>
+							<h4>
 								{item.title}
 							</h4>
 							<span className='max-w-48'>

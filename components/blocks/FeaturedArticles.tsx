@@ -21,9 +21,9 @@ export const FeaturedArticles = ({ data }: { data: block_FeaturedArticles }) => 
 
 	return (
 		<div className='section-block'>
-			<span className='font-black text-4xl text-accent-secondary'>
+			<h2>
 				{ data.title }
-			</span>
+			</h2>
 			<div className='relative flex flex-col lg:flex-row gap-8 items-center lg:items-start lg:justify-center'>
 				{	data.articles?.map((article) => {
 

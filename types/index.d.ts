@@ -75,7 +75,6 @@ export interface object_NavigationItem extends inherentObjectData {
 // BLOCKS
 
 export interface block extends inherentObjectData {
-	title: string,
 }
 
 export interface block_FeaturedTaxonomies extends block {
@@ -84,11 +83,15 @@ export interface block_FeaturedTaxonomies extends block {
 
 export interface block_Text extends block {
 	text?: PortableTextBlock,
-	featuredImage?: sanityImage,
 	link?: object_Link,
 }
 
 export interface block_Hero extends block {
+	title: string,
+	image?: sanityImage,
+}
+
+export interface block_Image extends block {
 	image?: sanityImage,
 }
 
@@ -98,10 +101,12 @@ export interface block_Map extends block {
 }
 
 export interface block_Newsletter extends block {
-
+	callToAction: string,
+	text: string,
 }
 
 export interface block_FeaturedArticles extends block {
+	title: string,
 	articles?: _ARTICLE_TYPES,
 }
 
@@ -110,6 +115,7 @@ export interface block_People extends block {
 }
 
 export interface block_Info extends block {
+	title: string,
 	items?: [
 		{
 			title?: string,
@@ -131,7 +137,14 @@ export interface block_Archive extends block {
 	featured_addressTaxonomy?: Array<taxonomy>,
 }
 
-export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive, block_People]
+type _BLOCK_TYPES_WITHOUT_COLUMNS = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive, block_People]
+
+
+export interface block_Columns extends block {
+	blocks?: _BLOCK_TYPES_WITHOUT_COLUMNS
+}
+
+export type _BLOCK_TYPES = [..._BLOCK_TYPES_WITHOUT_COLUMNS, block_Columns]
 
 export interface section extends inherentObjectData {
 	type: 'standard' | 'colour' | 'image' | 'video',

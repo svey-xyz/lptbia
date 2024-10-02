@@ -11,17 +11,6 @@ const Feature = ({ data }: { data: block_Text | undefined }) => {
 	if (!data) return;
 	return (
 		<div className="section-block">
-			{	data.featuredImage &&
-				<Image
-					image={data.featuredImage}
-					size={{
-						width: 1200, height: 1200,
-						sizes: "(max-width: 1200px) 60vw, (max-width: 1200px) 50vw, 50vw",
-					}}
-					className='h-auto w-96 shadow-xl rotate-3'
-				/>
-			}
-
 			<div className='relative flex flex-col max-w-prose-full'>
 				
 				{ data.text &&

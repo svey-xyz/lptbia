@@ -7,6 +7,12 @@ import { TbChartInfographic } from "react-icons/tb";
 
 const fields = [
 	defineField({
+		title: 'Title',
+		name: 'title',
+		type: 'string',
+		validation: Rule => Rule.required()
+	}),
+	defineField({
 		title: 'Items',
 		name: 'items',
 		type: 'array',

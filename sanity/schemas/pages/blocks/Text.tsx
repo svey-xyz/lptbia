@@ -15,31 +15,10 @@ const fields = [
 		],
 	}),
 	defineField({
-		title: 'Featured Image',
-		name: 'featuredImage',
-		type: 'image',
-		options: {
-			sources: [mediaAssetSource],
-		},
-		preview: {
-			select: {
-				asset: 'asset',
-				title: 'asset.title',
-				description: 'asset.description',
-			},
-			prepare(value: any) {
-				return {
-					title: value.title ? value.title : 'Untitled Image',
-					subtitle: value.description,
-					media: value.asset,
-				}
-			},
-		}
-	}),
-	defineField({
 		title: 'Link',
 		name: 'link',
 		type: 'link',
+		description: 'A link to appear as a button underneath the text.',
 	}),
 ]
 

@@ -45,6 +45,9 @@ export const link = defineType({
 			name: 'page',
 			type: 'reference',
 			to: [{type: 'page'}, {type: 'archive'}],
+			options: {
+				disableNew: true,
+			},
 			hidden: ({ parent, value }) => parent?.type !== 'internal',
 			validation: Rule => Rule.custom((field, context) => {
 				const type: string | undefined = (context.parent as any).type

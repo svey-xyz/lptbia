@@ -79,6 +79,12 @@ export const partial_Sections: string = groq`
 					${partial_ImageObject}
 				}
 			},
+			_type == "Image" => {
+				...,
+				image {
+					${partial_ImageObject}
+				}
+			},
 			_type == "People" => {
 				...,
 				people[]-> {

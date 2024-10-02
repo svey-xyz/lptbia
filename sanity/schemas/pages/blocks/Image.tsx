@@ -1,15 +1,9 @@
 import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
-import { BiSolidDockTop } from "react-icons/bi";
 import { mediaAssetSource } from 'sanity-plugin-media';
+import { FaImage } from 'react-icons/fa6';
 
 const fields = [
-	defineField({
-		title: 'Title',
-		name: 'title',
-		type: 'string',
-		validation: Rule => Rule.required()
-	}),
 	defineField({
 		title: 'Image',
 		name: 'image',
@@ -35,4 +29,4 @@ const fields = [
 	}),
 ]
 
-export const Hero = constructors.block({ name: 'Hero', fields, icon: BiSolidDockTop })
+export const Image = constructors.block({ name: 'Image', fields, icon: FaImage })

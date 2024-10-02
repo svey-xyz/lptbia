@@ -1,7 +1,5 @@
 import React from 'react';
 // import { featuredContent } from "@lib/data/data";
-
-import Image from '@/components/site/Image'
 import { block_Text } from '@/types';
 import TextBlock from '@/components/site/TextBlock';
 // import urlFor from '@/lib/urlFor';

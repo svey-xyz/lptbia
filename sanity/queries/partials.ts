@@ -55,42 +55,52 @@ export const partial_Person: string = groq`
 	}
 `
 
+const partial_Blocks: string = groq`
+	...,
+	_type == "FeaturedTaxonomies" => {
+		...,
+		taxonomies[]->,
+	},
+	_type == "FeaturedArticles" => {
+		...,
+		articles[]-> {
+			...,
+			image {
+				${partial_ImageObject}
+			}
+		},
+	},
+	_type == "Hero" => {
+		...,
+		featuredImage {
+			${partial_ImageObject}
+		}
+	},
+	_type == "Image" => {
+		...,
+		image {
+			${partial_ImageObject}
+		}
+	},
+	_type == "People" => {
+		...,
+		people[]-> {
+			${partial_Person}
+		}
+	}
+`
+
 export const partial_Sections: string = groq`
 	sections[] {
 		...,
 		blocks[] {
-			...,
-			_type == "FeaturedTaxonomies" => {
+			${partial_Blocks},
+			_type == "Columns" => {
 				...,
-				taxonomies[]->,
-			},
-			_type == "FeaturedArticles" => {
-				...,
-				articles[]-> {
-					...,
-					image {
-						${partial_ImageObject}
-					}
-				},
-			},
-			_type == "Hero" => {
-				...,
-				featuredImage {
-					${partial_ImageObject}
+				blocks[] {
+					${partial_Blocks}
 				}
-			},
-			_type == "Image" => {
-				...,
-				image {
-					${partial_ImageObject}
-				}
-			},
-			_type == "People" => {
-				...,
-				people[]-> {
-					${partial_Person}
-				}
-			},
+			}
 		}
 	}
 `

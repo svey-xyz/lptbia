@@ -27,6 +27,12 @@ const fields = [
 			}
 		},
 	}),
+	defineField({
+		title: 'Accented',
+		name: 'accented',
+		type: 'boolean',
+		description: 'Applies accent styling to the image.'
+	})
 ]
 
 export const Image = constructors.block({ name: 'Image', fields, icon: FaImage })

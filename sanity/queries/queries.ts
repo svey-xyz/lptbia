@@ -1,4 +1,4 @@
-import { partial_ImageObject, partial_Sections, partial_Article, partial_Person } from "@/sanity/queries/partials";
+import { partial_ImageObject, partial_Sections } from "@/sanity/queries/partials";
 import { groq } from "next-sanity";
 
 export const settingsQuery: string = groq`

@@ -93,6 +93,7 @@ export interface block_Hero extends block {
 
 export interface block_Image extends block {
 	image?: sanityImage,
+	accented?: boolean
 }
 
 export interface block_Map extends block {

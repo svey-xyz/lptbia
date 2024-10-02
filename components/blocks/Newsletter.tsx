@@ -2,14 +2,14 @@ import NewsletterForm from '@/components/site/NewsletterForm';
 import { block_Newsletter, block } from '@/types';
 import React from 'react';
 
-export const Standard = ({ data }: { data: block_Newsletter }) => {
+export const Standard = ({ data, className }: { data: block_Newsletter, className?: string }) => {
 	return (
-		<div className="section-block">
+		<div className={`${className}`}>
 			<h3>
-				Subscribe to our newsletter.
+				{ data.callToAction }
 			</h3>
 			<span>
-				Sign up with your email address to receive news and updates.
+				{ data.text }
 			</span>
 			<NewsletterForm stacked={true} className="max-w-prose" />
 			<span>

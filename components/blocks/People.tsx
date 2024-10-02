@@ -1,10 +1,10 @@
 import { block_People } from '@/types';
 import React from 'react';
 
-export const People = async ({ data }: { data: block_People }) => {
+export const People = async ({ data, className }: { data: block_People, className?: string }) => {
 
 	return (
-		<div className='section-block'>
+		<div className={`${className}`}>
 			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-12 max-w-full w-full'>
 				{	data.people.map((person) => {
 					return (

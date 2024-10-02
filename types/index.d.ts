@@ -144,7 +144,7 @@ export interface block_Columns extends block {
 	blocks?: _BLOCK_TYPES_WITHOUT_COLUMNS
 }
 
-export type _BLOCK_TYPES = [..._BLOCK_TYPES_WITHOUT_COLUMNS, block_Columns]
+export type _BLOCK_TYPES = [..._BLOCK_TYPES_WITHOUT_COLUMNS, block_Columns, block_Hero]
 
 export interface section extends inherentObjectData {
 	type: 'standard' | 'colour' | 'image' | 'video',

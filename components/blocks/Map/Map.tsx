@@ -13,7 +13,7 @@ interface BusinessMarker {
 	business: article_Business
 }
 
-export const Map = async ({ data }: { data: block_Map }) => {
+export const Map = async ({ data, className }: { data: block_Map, className?:string }) => {
 	if (!data) return
 
 	const initial = await loadArticles<article_Business>('business')
@@ -37,7 +37,7 @@ export const Map = async ({ data }: { data: block_Map }) => {
 
 	const businessMarkers = await fetchLocations()
 	
-	return <Client mapData={data} businessMarkers={businessMarkers}/>
+	return <Client mapData={data} businessMarkers={businessMarkers} className={`${className}`} />
 };
 
 export default Map;

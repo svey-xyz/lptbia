@@ -2,13 +2,13 @@ import React from 'react';
 import { block_Hero } from '@/types';
 import urlFor from '@/lib/urlFor';
 
-const Hero = ({ data }: { data: block_Hero | undefined }) => {
+const Hero = ({ data, className }: { data: block_Hero | undefined, className?:string }) => {
 	if (!data) return;
 	const BG_URL = data?.image ? urlFor(data?.image).url() : ''
 
 	return (
 		<div
-			className={`section-block max-w-full bg-fixed bg-no-repeat bg-cover bg-center text-accent
+			className={`${className} max-w-full bg-fixed bg-no-repeat bg-cover bg-center text-accent
 				after:absolute after:inset-0 after:bg-gradient-to-t after:from-bg after:to-bg/0`}
 			style={{
 				backgroundImage: `url(${BG_URL})`

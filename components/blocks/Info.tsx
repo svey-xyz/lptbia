@@ -5,9 +5,9 @@ import { Icon } from '@iconify/react';
 import React from 'react';
 import NumericLabel from 'react-pretty-numbers';
 
-export const Info = ({ data }: { data: block_Info }) => {
+export const Info = ({ data, className }: { data: block_Info, className?: string }) => {
 	return (
-		<div className='section-block'>
+		<div className={`${className}`}>
 			{ data.title &&
 				<h2>
 					{data.title}

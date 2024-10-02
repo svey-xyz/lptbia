@@ -3,10 +3,7 @@ import { ArchivePayload, PagePayload } from '@/types';
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
 import { createDataAttribute } from "@sanity/visual-editing";
-
-interface BlockMap {
-	[key: string]: React.ComponentType<{data:any}>
-}
+import { Blocks } from '@/components/site/Blocks';
 
 interface ContainerMap {
 	[key: string]: React.ComponentType<{ children: React.ReactNode, data?:any, index: number }>
@@ -23,19 +20,6 @@ const ContainerList: ContainerMap = {
 	Image: dynamic(() => import('@/components/sections/Image')),
 	Colour: dynamic(() => import('@/components/sections/Colour')),
 
-}
-
-const BlockList: BlockMap = {
-	Standard: dynamic(() => import('@components/blocks/Standard')),
-	FeaturedTaxonomies: dynamic(() => import('@components/blocks/FeaturedTaxonomies')),
-	Text: dynamic(() => import('@/components/blocks/Text')),
-	Map: dynamic(() => import('@components/blocks/Map')),
-	Newsletter: dynamic(() => import('@components/blocks/Newsletter')),
-	FeaturedArticles: dynamic(() => import('@/components/blocks/FeaturedArticles')),
-	Info: dynamic(() => import('@components/blocks/Info')),
-	Archive: dynamic(() => import('@/components/blocks/Archive')),
-	Hero: dynamic(() => import('@/components/blocks/Hero')),
-	People: dynamic(() => import('@/components/blocks/People')),
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {
@@ -55,14 +39,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 						<div data-sanity={attr()} key={section._key}>
 							<Container data={section} index={i} >
 								{ section.blocks &&
-									section.blocks.map((block, i) => {
-										const BlockComponent = BlockList[block._type] ?? BlockList.Standard
-
-										return(
-										<BlockComponent data={block} />
-										)
-									})
-
+									<Blocks blocks={section.blocks} blockClasses='section-block' />
 								}
 							</Container>
 						</div>

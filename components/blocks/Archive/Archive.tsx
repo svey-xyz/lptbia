@@ -4,7 +4,7 @@ import { loadArticles } from '@/sanity/queries/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
 import { Filter } from '@/components/blocks/Archive/Filter';
 
-export const Archive = async ({ data }: { data: block_Archive }) => {
+export const Archive = async ({ data, className }: { data: block_Archive, className?:string }) => {
 	if (!data) return
 
 	const initialPayload = await loadArticles<article>(data.archiveType)
@@ -15,7 +15,7 @@ export const Archive = async ({ data }: { data: block_Archive }) => {
 	const archiveTitle = `${pluralize(camelCaseToWords(data.archiveType))} Archive`
 
 	return (
-		<div className='section-block'>
+		<div className={`${className}`}>
 			<span className='font-black text-4xl text-accent-secondary'>
 				{ archiveTitle }
 			</span>

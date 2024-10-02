@@ -7,7 +7,7 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { BusinessMarker } from '@/components/blocks/Map';
 import { InfoPanel } from '@/components/blocks/Map/InfoPanel';
 
-export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, businessMarkers?: Array<BusinessMarker> }) => {
+export const MapClient = ({ mapData, businessMarkers, className }: { mapData: block_Map, businessMarkers?: Array<BusinessMarker>, className?:string }) => {
 	const libraries = useMemo(() => ['places'], []);
 	const mapCenter = useMemo(
 		() => (mapData.centre),
@@ -45,7 +45,7 @@ export const MapClient = ({ mapData, businessMarkers }: { mapData: block_Map, bu
 
 	if (!isLoaded) {
 		return (
-			<div className={`section-block`}>
+			<div className={`${className}`}>
 				<div className='flex flex-col justify-center items-center' style={{ height: mapHeight }}>
 					<p className={`text-accent font-black`}>
 						Loading Map...

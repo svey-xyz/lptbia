@@ -7,10 +7,10 @@ import TextBlock from '@/components/site/TextBlock';
 // import urlFor from '@/lib/urlFor';
 
 
-const Feature = ({ data }: { data: block_Text | undefined }) => {
+const Feature = ({ data, className }: { data: block_Text | undefined, className?:string }) => {
 	if (!data) return;
 	return (
-		<div className="section-block">
+		<div className={`${className}`}>
 			<div className='relative flex flex-col max-w-prose-full'>
 				
 				{ data.text &&

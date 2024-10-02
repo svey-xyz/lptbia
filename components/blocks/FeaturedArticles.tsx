@@ -16,11 +16,11 @@ const CardList: CardMap = {
 
 }
 
-export const FeaturedArticles = ({ data }: { data: block_FeaturedArticles }) => {
+export const FeaturedArticles = ({ data, className }: { data: block_FeaturedArticles, className?: string }) => {
 	if (!data) return
 
 	return (
-		<div className='section-block'>
+		<div className={`${className}`}>
 			<h2>
 				{ data.title }
 			</h2>

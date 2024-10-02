@@ -63,7 +63,7 @@ export const MapClient = ({ mapData, businessMarkers, className }: { mapData: bl
 				center={mapCenter}
 				id='9f77439149649dc7'
 				// mapTypeId='162b1e292ce4fc80'
-				mapContainerStyle={{ width: '80%', height: mapHeight }}
+				mapContainerStyle={{ width: '100%', height: mapHeight }}
 			>
 				{ businessMarkers?.map((marker, index) => {
 					const primarytaxonomy = marker.business.taxonomies ? marker.business.taxonomies[0] : null

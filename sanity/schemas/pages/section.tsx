@@ -30,13 +30,13 @@ export const section = defineType({
 			validation: Rule => Rule.required()
 		}),
 		defineField({
-			name: 'Header',
-			title: 'header',
+			name: 'header',
+			title: 'Header',
 			type: 'string',
 		}),
 		defineField({
-			name: 'Columns',
-			title: 'columns',
+			name: 'columns',
+			title: 'Columns',
 			type: 'boolean',
 		}),
 		defineField({

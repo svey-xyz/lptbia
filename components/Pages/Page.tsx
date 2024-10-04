@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic'
-import { ArchivePayload, PagePayload } from '@/types';
+import { ArchivePayload, PagePayload, section } from '@/types';
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
 import { createDataAttribute } from "@sanity/visual-editing";
 import { Blocks } from '@/components/site/Blocks';
 
 interface ContainerMap {
-	[key: string]: React.ComponentType<{ children: React.ReactNode, data?:any, index: number }>
+	[key: string]: React.ComponentType<{ data:section, index: number }>
 }
 
 export interface PageProps {
@@ -28,7 +28,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 		<article className=''>
 			{ data.sections &&
 				data.sections.map((section, i) => {
-					const Container = ContainerList[section.type] ?? ContainerList.Standard
+					const Section = ContainerList[section.type] ?? ContainerList.Standard
 					const attr = createDataAttribute({
 						id: data._id,
 						type: data._type,
@@ -37,11 +37,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 
 					return (
 						<div data-sanity={attr()} key={section._key}>
-							<Container data={section} index={i} >
-								{ section.blocks &&
-									<Blocks blocks={section.blocks} blockClasses='section-block' />
-								}
-							</Container>
+							<Section data={section} index={i} />
 						</div>
 					)
 				})

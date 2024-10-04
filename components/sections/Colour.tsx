@@ -1,6 +1,7 @@
 import { section } from '@/types';
 import React, { ReactNode } from 'react';
 import { Standard } from './Standard'
+import { Blocks } from '@/components/site/Blocks';
 
 interface ColourMap {
 	[key: string]: string
@@ -16,14 +17,12 @@ const FgColourList: ColourMap = {
 	standard: ''
 }
 
-export const Colour = ({ data, children, index }: { data?: section, children: ReactNode, index: number }) => {
+export const Colour = ({ data, index }: { data: section, index: number }) => {
 	const bgColour = BgColourList[data?.colour || 'standard']
 	const fgColour = FgColourList[data?.colour || 'standard']
 
 	return (
-		<Standard data={ data } index={ index } className={`${bgColour} ${fgColour}`}>
-			{children}
-		</Standard> 
+		<Standard data={ data } index={ index } className={`${bgColour} ${fgColour}`} />
 	);
 };
 

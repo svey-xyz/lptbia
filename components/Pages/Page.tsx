@@ -32,7 +32,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 					const attr = createDataAttribute({
 						id: data._id,
 						type: data._type,
-						path: ['blocks', i, 'containerType']
+						path: ['sections', i]
 					});
 
 					return (

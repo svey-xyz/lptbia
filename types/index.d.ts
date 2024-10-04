@@ -149,6 +149,8 @@ export type _BLOCK_TYPES = [..._BLOCK_TYPES_WITHOUT_COLUMNS, block_Columns, bloc
 
 export interface section extends inherentObjectData {
 	type: 'standard' | 'colour' | 'image' | 'video',
+	columns?: boolean,
+	header?: string,
 	video?: string,
 	image?: sanityImage,
 	colour?: undefined | 'accent',

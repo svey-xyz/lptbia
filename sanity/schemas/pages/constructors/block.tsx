@@ -1,18 +1,16 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
-import { defineType, defineField, FieldDefinition, PreviewConfig } from "sanity";
-import { mediaAssetSource } from "sanity-plugin-media";
+import { defineType, PreviewConfig } from "sanity";
 import { RxSection } from "react-icons/rx";
+import { fields } from "@/sanity/lib/types";
 
-type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
-
-export function block(
+export const block = (
 	args: {
 		name: string,
 		fields: fields,
 		preview?: PreviewConfig<any>
 		icon?: IconType | undefined
-	}) {
+	}) => {
 	const { name, fields, icon, preview } = args
 
 	const _PREVIEW = {

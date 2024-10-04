@@ -13,8 +13,9 @@ import { Text } from './Text';
 import { Image } from './Image';
 import { camelCaseToWords } from '@/lib/stringFunctions';
 import { block } from '@/types';
+import { Contact } from './Contact';
 
-const BlocksWithoutColumns = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, People, Image]
+const BlocksWithoutColumns = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, People, Image, Contact]
 
 const blockTypesWithoutColumns = BlocksWithoutColumns.map((block) => {
 	return { type: block.name }

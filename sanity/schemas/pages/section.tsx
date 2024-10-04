@@ -24,10 +24,20 @@ export const section = defineType({
 					{ title: 'Image', value: 'Image' },
 					{ title: 'Video', value: 'Video' },
 				],
-				layout: 'radio',
+				layout: 'dropdown',
 			},
 			initialValue: 'Standard',
 			validation: Rule => Rule.required()
+		}),
+		defineField({
+			name: 'Header',
+			title: 'header',
+			type: 'string',
+		}),
+		defineField({
+			name: 'Columns',
+			title: 'columns',
+			type: 'boolean',
 		}),
 		defineField({
 			name: 'video',

@@ -12,15 +12,9 @@ type args = {
 }
 
 export const Standard = ({ index, data, className, style, children }: args) => {
-	// Add a negative margin to sections at the top of a page with a hero
-	const hasHero = data?.blocks ? data.blocks[0]._type == 'Hero' : false
 	return (
 		<div
-			className={`
-				section
-				${ (index == 0 && hasHero) && '-mt-[--total-header-height]' }
-				${ className }
-			`}
+			className={`section ${ className }`}
 			style={style}
 		>
 			{ children }
@@ -31,8 +25,6 @@ export const Standard = ({ index, data, className, style, children }: args) => {
 					<Blocks blocks={data?.blocks} blockClasses={`section-block`}/>
 				}
 			</div>
-			{/* { children } */}
-			
 		</div>
 	)
 };

@@ -15,7 +15,6 @@ const BlockList: BlockMap = {
 	FeaturedArticles: dynamic(() => import('@/components/blocks/FeaturedArticles')),
 	Info: dynamic(() => import('@components/blocks/Info')),
 	Archive: dynamic(() => import('@/components/blocks/Archive')),
-	Hero: dynamic(() => import('@/components/blocks/Hero')),
 	People: dynamic(() => import('@/components/blocks/People')),
 	Image: dynamic(() => import('@/components/blocks/Image')),
 }

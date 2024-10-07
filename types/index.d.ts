@@ -87,11 +87,6 @@ export interface block_Text extends block {
 	link?: object_Link,
 }
 
-export interface block_Hero extends block {
-	title: string,
-	image?: sanityImage,
-}
-
 export interface block_Image extends block {
 	image?: sanityImage,
 	accented?: boolean
@@ -258,12 +253,16 @@ export interface SettingsPayload extends inherentDocumentData {
 }
 
 export interface PagePayload extends inherentDocumentData {
-	title?: string,
+	title: string,
 	slug: string,
+	description?: PortableTextBlock,
+	heroImage?: sanityImage,
 	sections?: Array<section>
 }
 
 export interface ArchivePayload extends inherentDocumentData {
 	title?: string,
 	sections?: Array<section>
+	description?: PortableTextBlock,
+	heroImage?: sanityImage,
 }

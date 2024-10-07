@@ -4,13 +4,12 @@ import { Map } from './Map';
 import { FeaturedArticles } from './FeaturedArticles';
 import { Newsletter } from './Newsletter';
 import { Info } from './Info';
-import { Hero } from './Hero';
 import { Archive } from './Archive'
 import { People } from './People'
 import { Image } from './Image'
 import { Contact } from './Contact'
 
-export const Blocks = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, Hero, People, Image, Contact];
+export const Blocks = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, People, Image, Contact];
 
 export const blockTypes = Blocks.map((block) => {
 	return { type: block.name }

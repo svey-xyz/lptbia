@@ -1,4 +1,3 @@
-import { Blocks } from '@/components/site/Blocks';
 import { Standard } from './Standard';
 import urlFor from '@/lib/urlFor';
 import { section, sanityImage } from '@/types';

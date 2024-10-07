@@ -1,7 +1,6 @@
 import { section } from '@/types';
 import React, { ReactNode } from 'react';
 import { Standard } from './Standard'
-import { Blocks } from '@/components/site/Blocks';
 
 interface ColourMap {
 	[key: string]: string

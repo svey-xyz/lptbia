@@ -48,6 +48,12 @@ const fields = [
 		group: 'about',
 	}),
 	defineField({
+		title: 'Postal Code',
+		name: 'postalCode',
+		type: 'string',
+		group: 'about',
+	}),
+	defineField({
 		title: 'Location',
 		name: 'location',
 		type: 'geopoint',

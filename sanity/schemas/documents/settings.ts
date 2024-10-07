@@ -88,9 +88,10 @@ export const settings = defineType({
 			type: 'extraBlockContent',
 		}),
 		defineField({
-			title: 'Location',
-			name: 'location',
-			type: 'geopoint',
+			title: 'Address',
+			name: 'address',
+			type: 'reference',
+			to: [{ type: 'address' }]
 		}),
 		defineField({
 			name: 'homepage',

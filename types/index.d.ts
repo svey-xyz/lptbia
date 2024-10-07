@@ -75,6 +75,7 @@ export interface object_NavigationItem extends inherentObjectData {
 // BLOCKS
 
 export interface block extends inherentObjectData {
+	hiddenOnMobile?: boolean
 }
 
 export interface block_FeaturedTaxonomies extends block {
@@ -202,6 +203,7 @@ export interface article_Address extends article {
 	unit?: string,
 	number?: number,
 	street?: string,
+	postalCode?: string,
 	notes: string,
 }
 
@@ -250,7 +252,7 @@ export interface SettingsPayload extends inherentDocumentData {
 	about?: PortableTextBlock,
 	landAcknowledgement?: PortableTextBlock,
 	partners?: Array<sponsor>,
-	location?: object_Location,
+	address?: article_Address,
 	homepage?: PagePayload,
 	navigation?: Array<object_NavigationItem>,
 }

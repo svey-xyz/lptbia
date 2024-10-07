@@ -19,6 +19,7 @@ export const settingsQuery: string = groq`
 				${partial_Sections},
 			},
 		},
+		address->,
 	}
 `
 

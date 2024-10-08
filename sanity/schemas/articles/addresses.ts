@@ -4,7 +4,7 @@ import { FieldGroupDefinition } from 'sanity'
 import { FaBandage, FaSignsPost } from "react-icons/fa6";
 import { GiStreetLight } from "react-icons/gi";
 import { CgReadme } from "react-icons/cg";
-import { readableAddress } from "@/lib/readableAddress";
+import { readableAddress } from "@/lib/stringFunctions";
 import { ARTICLE } from "@/sanity/schemas/articles/constructors/article";
 
 const healthOptions = [

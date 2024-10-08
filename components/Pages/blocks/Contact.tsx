@@ -3,7 +3,6 @@
 import { block_Contact, object_Contact, SettingsPayload } from '@/types';
 import React, { useState, useRef } from 'react';
 import Form, { fieldArgs } from '@/components/site/Form';
-import { readableAddress } from '@/lib/stringFunctions';
 import { Address } from '@/components/site/Address';
 import { ContactInfo } from '@/components/site/ContactInfo';
 

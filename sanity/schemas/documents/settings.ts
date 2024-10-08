@@ -64,23 +64,9 @@ export const settings = defineType({
 			],
 		}),
 		defineField({
-			title: 'Contact Email',
-			name: 'email',
-			type: 'string',
-			validation: (Rule) => Rule.email(),
-		}),
-		defineField({
-			title: 'Phone Number',
-			name: 'phoneNumber',
-			type: 'string',
-		}),
-		defineField({
-			title: 'Socials',
-			name: 'socials',
-			type: 'array',
-			of: [
-				defineArrayMember({ type: 'social', }),
-			],
+			title: 'Contact',
+			name: 'contact',
+			type: 'contact',
 		}),
 		defineField({
 			title: 'About',

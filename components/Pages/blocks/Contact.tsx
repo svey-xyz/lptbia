@@ -1,10 +1,11 @@
 'use client'
 
-import { block_Contact, SettingsPayload } from '@/types';
+import { block_Contact, object_Contact, SettingsPayload } from '@/types';
 import React, { useState, useRef } from 'react';
 import Form, { fieldArgs } from '@/components/site/Form';
 import { readableAddress } from '@/lib/stringFunctions';
 import { Address } from '@/components/site/Address';
+import { ContactInfo } from '@/components/site/ContactInfo';
 
 export const Contact = ({ data, className, siteData }: { data: block_Contact | undefined, className?: string, siteData?: SettingsPayload }) => {
 	const nameRef = useRef<HTMLInputElement>(null);
@@ -63,7 +64,7 @@ export const Contact = ({ data, className, siteData }: { data: block_Contact | u
 	]
 
 	const ContactLegend = (
-		<div>
+		<div className='flex flex-col gap-3'>
 			<h3>{ siteData?.title }</h3>
 			<p className=''>
 				{ siteData?.address &&
@@ -71,9 +72,9 @@ export const Contact = ({ data, className, siteData }: { data: block_Contact | u
 					<Address address={siteData.address} />
 				}
 			</p>
-			<p className=''>
-
-			</p>
+			{ siteData?.contact &&
+				<ContactInfo contact={siteData.contact} />
+			}
 			<p>
 				For any inquiries, please fill out this form:
 			</p>

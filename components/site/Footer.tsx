@@ -15,8 +15,8 @@ const Footer = async ({}:{}) => {
 			<div className='main-padding py-8 text-bg flex flex-col md:flex-row gap-x-8 gap-y-2 md:items-center'>
 				<span className='font-bold'>{ settings.motto && settings.motto }</span>
 				<NewsletterForm />
-				{ settings.socials &&
-					<Socials socials={settings.socials} className='text-bg' />
+				{ settings.contact?.socials &&
+					<Socials socials={settings.contact.socials} className='text-bg' />
 				}
 			</div>
 

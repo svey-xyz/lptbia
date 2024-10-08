@@ -4,6 +4,7 @@ import { block_Contact, SettingsPayload } from '@/types';
 import React, { useState, useRef } from 'react';
 import Form, { fieldArgs } from '@/components/site/Form';
 import { readableAddress } from '@/lib/stringFunctions';
+import { Address } from '@/components/site/Address';
 
 export const Contact = ({ data, className, siteData }: { data: block_Contact | undefined, className?: string, siteData?: SettingsPayload }) => {
 	const nameRef = useRef<HTMLInputElement>(null);
@@ -18,12 +19,12 @@ export const Contact = ({ data, className, siteData }: { data: block_Contact | u
 
 		try {
 			const formData = {
-				user: nameRef.current?.value || '',
-				pass: emailRef.current?.value || '',
-				code: messageRef.current?.value || '',
+				name: nameRef.current?.value || '',
+				email: emailRef.current?.value || '',
+				message: messageRef.current?.value || '',
 			};
 
-			let res = await fetch('/api/account', {
+			let res = await fetch('/api/contact', {
 				cache: 'no-store',
 				method: 'POST',
 				headers: {
@@ -41,9 +42,8 @@ export const Contact = ({ data, className, siteData }: { data: block_Contact | u
 			}
 
 		} catch (error) {
-			setMessage('Error creating account')
+			setMessage('Error submitting message.')
 			setError(true)
-			console.error('Error creating account', error);
 		}
 	};
 
@@ -67,7 +67,8 @@ export const Contact = ({ data, className, siteData }: { data: block_Contact | u
 			<h3>{ siteData?.title }</h3>
 			<p className=''>
 				{ siteData?.address &&
-					readableAddress(siteData.address)
+					// readableAddress(siteData.address)
+					<Address address={siteData.address} />
 				}
 			</p>
 			<p className=''>
@@ -82,7 +83,7 @@ export const Contact = ({ data, className, siteData }: { data: block_Contact | u
 
 	return (
 		<div className={`${className} flex flex-col`}>
-			<Form submitFn={handleSubmit} fields={formFields} FormLegend={ContactLegend} submitText={data?.buttonText} />
+			<Form submitFn={handleSubmit} fields={formFields} FormLegend={ContactLegend} submitText={data?.buttonText} message={message} />
 		</div>
 	);
 };

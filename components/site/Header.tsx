@@ -14,13 +14,17 @@ const Header = async() => {
 		<div className="relative h-full flex flex-col items-center justify-center z-50">
 			<div className="relative main-padding">
 				<div className='relative flex flex-row justify-between gap-4 my-4'>
-					<Link href='/' aria-label='Link to the site home.' className='relative z-10'>
+					<Link href='/' aria-label='Link to the site home.' className='relative z-10 flex-grow'>
 						{ settings.logo &&
-							<Image image={settings.logo} size={{ width: 165, height: 100, sizes: "(max-width: 244px) 20vw, (max-width: 244px) 20vw, 20vw" }} />
+							<Image
+								image={settings.logo}
+								size={{ width: 165, height: 100, sizes: "(max-width: 244px) 50vw, (max-width: 244px) 50vw, 50vw" }}
+								className='min-w-[165px]'
+							/>
 						}
 					</Link>
 					{ settings.navigation &&
-						<Navigation navItems={settings.navigation} />
+						<Navigation navItems={settings.navigation} className='flex-shrink' />
 					}
 				</div>
 			</div>

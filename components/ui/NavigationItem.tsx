@@ -40,7 +40,7 @@ type StaticNavigationParams = {
 
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
  return (
-	 <Link href={resolvePageHref(page)}>
+	 <Link href={resolvePageHref(page)} className=''>
 		 <NavigationTitle title={title} />
 	</Link>
  )

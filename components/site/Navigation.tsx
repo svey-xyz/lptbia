@@ -5,7 +5,7 @@ import NavigationItem from '@/components/ui/NavigationItem';
 import { object_NavigationItem } from '@/types';
 import React, { useEffect, useRef, useState } from 'react';
 
-export const Navigation = ({ navItems }: { navItems: Array<object_NavigationItem> }) => {
+export const Navigation = ({ navItems, className }: { navItems: Array<object_NavigationItem>, className?:string }) => {
 
 	const navContainer = useRef<HTMLDivElement>(null)
 	const [gapWidth, setGapWidth] = useState<number>(0); // default width, detect on server.
@@ -26,9 +26,9 @@ export const Navigation = ({ navItems }: { navItems: Array<object_NavigationItem
 	}, [handleResize]);
 
 	return (
-		<div className='relative w-full'>
+		<div className={`relative max-w-full w-full overflow-hidden ${className}`}>
 			<div
-				className={`relative flex flex-row min-h-full items-center max-w-fit ml-auto ${(gapWidth > _BREAK_POINT) ? 'visible' : 'invisible'}`}
+				className={`relative flex flex-row min-h-full items-center w-fit max-w-full ml-auto ${(gapWidth > _BREAK_POINT) ? 'visible' : 'invisible'}`}
 				ref={navContainer}
 			>
 				{ navItems.flatMap((item) => {
@@ -41,8 +41,6 @@ export const Navigation = ({ navItems }: { navItems: Array<object_NavigationItem
 					<Menu navItems={navItems} />
 				</div>
 			}
-
-
 		</div>
 	);
 };

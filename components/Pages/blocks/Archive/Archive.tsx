@@ -2,7 +2,7 @@ import { article, block_Archive } from '@/types';
 import React from 'react';
 import { loadArticles } from '@/sanity/queries/loadQuery';
 import { camelCaseToWords, pluralize } from '@/lib/stringFunctions';
-import { Filter } from '@/components/blocks/Archive/Filter';
+import { Filter } from '@/components/Pages/blocks/Archive/Filter';
 
 export const Archive = async ({ data, className }: { data: block_Archive, className?:string }) => {
 	if (!data) return

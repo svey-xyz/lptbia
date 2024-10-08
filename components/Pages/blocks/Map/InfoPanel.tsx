@@ -1,4 +1,4 @@
-import { BusinessMarker } from '@/components/blocks/Map';
+import { BusinessMarker } from '@/components/Pages/blocks/Map';
 import TextBlock from '@/components/site/TextBlock';
 import { readableAddress } from '@/lib/stringFunctions';
 import { resolveArticleHref, resolveContactHref } from '@/lib/resolveHref';

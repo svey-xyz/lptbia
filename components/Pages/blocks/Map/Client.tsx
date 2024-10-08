@@ -3,8 +3,8 @@
 import { block_Map } from '@/types';
 import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import React, { useCallback, useMemo, useState } from 'react';
-import { BusinessMarker } from '@/components/blocks/Map';
-import { InfoPanel } from '@/components/blocks/Map/InfoPanel';
+import { BusinessMarker } from '@/components/Pages/blocks/Map';
+import { InfoPanel } from '@/components/Pages/blocks/Map/InfoPanel';
 
 export const MapClient = ({ mapData, businessMarkers, className }: { mapData: block_Map, businessMarkers?: Array<BusinessMarker>, className?:string }) => {
 	const libraries = useMemo(() => ['places'], []);

@@ -1,4 +1,4 @@
-import { Blocks } from '@/components/site/Blocks';
+import { Blocks } from '@/components/Pages/Blocks';
 import { section } from '@/types';
 import React, { ReactNode } from 'react';
 

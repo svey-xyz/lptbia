@@ -15,10 +15,10 @@ export interface PageProps {
 }
 
 const ContainerList: ContainerMap = {
-	Standard: dynamic(() => import('@/components/sections/Standard')),
-	Video: dynamic(() => import('@/components/sections/Video')),
-	Image: dynamic(() => import('@/components/sections/Image')),
-	Colour: dynamic(() => import('@/components/sections/Colour')),
+	Standard: dynamic(() => import('@/components/Pages/sections/Standard')),
+	Video: dynamic(() => import('@/components/Pages/sections/Video')),
+	Image: dynamic(() => import('@/components/Pages/sections/Image')),
+	Colour: dynamic(() => import('@/components/Pages/sections/Colour')),
 
 }
 

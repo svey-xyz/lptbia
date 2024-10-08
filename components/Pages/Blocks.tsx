@@ -8,17 +8,17 @@ interface BlockMap {
 }
 
 const BlockList: BlockMap = {
-	Standard: dynamic(() => import('@components/blocks/Standard')),
-	FeaturedTaxonomies: dynamic(() => import('@components/blocks/FeaturedTaxonomies')),
-	Text: dynamic(() => import('@/components/blocks/Text')),
-	Map: dynamic(() => import('@components/blocks/Map')),
-	Newsletter: dynamic(() => import('@components/blocks/Newsletter')),
-	FeaturedArticles: dynamic(() => import('@/components/blocks/FeaturedArticles')),
-	Info: dynamic(() => import('@components/blocks/Info')),
-	Archive: dynamic(() => import('@/components/blocks/Archive')),
-	People: dynamic(() => import('@/components/blocks/People')),
-	Image: dynamic(() => import('@/components/blocks/Image')),
-	Contact: dynamic(() => import('@/components/blocks/Contact'))
+	Standard: dynamic(() => import('@/components/Pages/blocks/Standard')),
+	FeaturedTaxonomies: dynamic(() => import('@/components/Pages/blocks/FeaturedTaxonomies')),
+	Text: dynamic(() => import('@/components/Pages/blocks/Text')),
+	Map: dynamic(() => import('@/components/Pages/blocks/Map')),
+	Newsletter: dynamic(() => import('@/components/Pages/blocks/Newsletter')),
+	FeaturedArticles: dynamic(() => import('@/components/Pages/blocks/FeaturedArticles')),
+	Info: dynamic(() => import('@/components/Pages/blocks/Info')),
+	Archive: dynamic(() => import('@/components/Pages/blocks/Archive')),
+	People: dynamic(() => import('@/components/Pages/blocks/People')),
+	Image: dynamic(() => import('@/components/Pages/blocks/Image')),
+	Contact: dynamic(() => import('@/components/Pages/blocks/Contact'))
 }
 
 export const Blocks = async ({ blocks, blockClasses }: { blocks: _BLOCK_TYPES, blockClasses?: string }) => {

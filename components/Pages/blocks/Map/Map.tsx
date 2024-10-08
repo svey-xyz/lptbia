@@ -1,5 +1,5 @@
 
-import Client from '@/components/blocks/Map/Client';
+import Client from '@/components/Pages/blocks/Map/Client';
 import { loadArticles } from '@/sanity/queries/loadQuery';
 import { article_Business, block_Map, icon } from '@/types';
 

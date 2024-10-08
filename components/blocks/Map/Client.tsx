@@ -3,7 +3,6 @@
 import { block_Map } from '@/types';
 import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import React, { useCallback, useMemo, useState } from 'react';
-import { IoCloseSharp } from 'react-icons/io5';
 import { BusinessMarker } from '@/components/blocks/Map';
 import { InfoPanel } from '@/components/blocks/Map/InfoPanel';
 

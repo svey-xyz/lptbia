@@ -134,14 +134,11 @@ export interface block_Archive extends block {
 	featured_addressTaxonomy?: Array<taxonomy>,
 }
 
-type _BLOCK_TYPES_WITHOUT_COLUMNS = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive, block_People]
-
-
-export interface block_Columns extends block {
-	blocks?: _BLOCK_TYPES_WITHOUT_COLUMNS
+export interface block_Contact extends block {
+	buttonText: string
 }
 
-export type _BLOCK_TYPES = [..._BLOCK_TYPES_WITHOUT_COLUMNS, block_Columns, block_Hero]
+export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive, block_People, block_Columns, block_Hero]
 
 export interface section extends inherentObjectData {
 	type: 'standard' | 'colour' | 'image' | 'video',

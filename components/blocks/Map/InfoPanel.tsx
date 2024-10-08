@@ -1,6 +1,6 @@
 import { BusinessMarker } from '@/components/blocks/Map';
 import TextBlock from '@/components/site/TextBlock';
-import { readableAddress } from '@/lib/readableAddress';
+import { readableAddress } from '@/lib/stringFunctions';
 import { resolveArticleHref, resolveContactHref } from '@/lib/resolveHref';
 import { Button } from '@headlessui/react';
 import React from 'react';

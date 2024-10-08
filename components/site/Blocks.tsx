@@ -1,9 +1,10 @@
-import { _BLOCK_TYPES, _BLOCK_TYPES_WITHOUT_COLUMNS } from '@/types';
+import { _BLOCK_TYPES, block, SettingsPayload } from '@/types';
 import React from 'react';
 import dynamic from 'next/dynamic'
+import { loadSettings } from '@/sanity/queries/loadQuery';
 
 interface BlockMap {
-	[key: string]: React.ComponentType<{ data: any, className?: string }>
+	[key: string]: React.ComponentType<{ data: any, className?: string, siteData?: SettingsPayload | undefined }>
 }
 
 const BlockList: BlockMap = {
@@ -17,15 +18,17 @@ const BlockList: BlockMap = {
 	Archive: dynamic(() => import('@/components/blocks/Archive')),
 	People: dynamic(() => import('@/components/blocks/People')),
 	Image: dynamic(() => import('@/components/blocks/Image')),
+	Contact: dynamic(() => import('@/components/blocks/Contact'))
 }
 
-export const Blocks = ({ blocks, blockClasses }: { blocks: _BLOCK_TYPES | _BLOCK_TYPES_WITHOUT_COLUMNS, blockClasses?: string }) => {
-	
+export const Blocks = async ({ blocks, blockClasses }: { blocks: _BLOCK_TYPES, blockClasses?: string }) => {
+	const settings = await loadSettings()
+
 	return blocks.map((block, i) => {
 		const BlockComponent = BlockList[block._type] ?? BlockList.Standard
 
 		return (
-			<BlockComponent data={block} className={blockClasses} />
+			<BlockComponent data={block} className={`${blockClasses} ${ block.hiddenOnMobile && 'hidden lg:flex' }`} siteData={settings.data} />
 		)
 	})
 };

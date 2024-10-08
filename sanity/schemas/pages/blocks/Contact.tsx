@@ -6,7 +6,7 @@ import { MdOutlineContactMail } from 'react-icons/md';
 const fields: any = [
 	defineField({
 		title: 'Button Text',
-		name: 'text',
+		name: 'buttonText',
 		type: 'string',
 	}),
 ]

@@ -23,11 +23,12 @@ export default NavigationItem;
 
 type NavigationTitleParams = {
 	title: string,
+	className?: string
 }
 
-const NavigationTitle = ({ title }: NavigationTitleParams) => {
+const NavigationTitle = ({ title, className }: NavigationTitleParams) => {
 	return (
-		<span className='font-bold text-bg bg-accent-secondary/60 outline-none px-4 py-1 group-hover:bg-accent-secondary/80 transition-colors duration-200'>
+		<span className={`${className} font-bold text-bg outline-none px-4 py-1 transition-colors duration-200`}>
 			{title}
 		</span>
 	)
@@ -40,8 +41,8 @@ type StaticNavigationParams = {
 
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
  return (
-	 <Link href={resolvePageHref(page)} className=''>
-		 <NavigationTitle title={title} />
+	 <Link href={resolvePageHref(page)} className='group'>
+		 <NavigationTitle title={title} className={`bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} />
 	</Link>
  )
 }
@@ -55,14 +56,14 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 
 	return (
 	<Popover className="group relative z-50">
-		<PopoverButton>
-			<NavigationTitle title={title} />
+		<PopoverButton className={`outline-none`} >
+			<NavigationTitle title={title} className='bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
 		</PopoverButton>
-		<PopoverPanel anchor="bottom" className="flex flex-col z-50 [--anchor-gap:4px] sm:[--anchor-gap:8px] bg-bg fg-fg gap-2">
+		<PopoverPanel className="flex flex-col z-50 bg-bg w-full gap-1 py-4">
 			{({ close }) => {
 				const items = pages.flatMap((page) => {
 					return (
-						<Link href={resolvePageHref(page)} key={page._id} className='px-4 py-2 text-sm font-bold text-accent-secondary hover:underline' onClick={() => { close() }}>
+						<Link href={resolvePageHref(page)} key={page._id} className='px-4 py-2 text-sm font-bold hover:underline' onClick={() => { close() }}>
 							{page.title}
 						</Link>
 					)
@@ -72,10 +73,7 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 						{items}
 					</>
 				)
-			}
-
-			}
-			{/* { } */}
+			}}
 		</PopoverPanel>
 	</Popover>
 	)

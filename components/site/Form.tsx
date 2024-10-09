@@ -29,7 +29,7 @@ export const Form = ({ submitFn, fields, submitText = 'Submit', FormLegend, mess
 					</Legend>
 				}
 				{ fields.map((field) => {
-						return <FieldGenerator args={field} />
+					return <FieldGenerator key={field.label} args={field} />
 					})
 				}
 				<Button
@@ -50,7 +50,7 @@ export const Form = ({ submitFn, fields, submitText = 'Submit', FormLegend, mess
 
 const FieldGenerator = ({ args }: { args: fieldArgs }) => {
 	return (
-		<Field key={args.label} className='flex flex-col gap-2'>
+		<Field className='flex flex-col gap-2'>
 			<Label className="block text-accent">{args.label}</Label>
 			<Input className="p-2 w-full bg-bg outline-none border border-accent-secondary" name="username" ref={args.ref} required={args.required} />
 		</Field>

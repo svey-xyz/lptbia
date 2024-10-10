@@ -49,7 +49,9 @@ export const locate: DocumentLocationResolver = (params, context) => {
 					case 'page':
 						const homeSlug = docs?.find((doc) => doc._type === 'siteSettings')?.homepage?.slug.current
 						const pageSlug = docs?.find((doc) => doc._id === params.id)?.slug?.current
-						const isHomepage = pageSlug === homeSlug
+						
+						const isHomepage = homeSlug && (pageSlug === homeSlug)
+						
 						return {
 							locations: docs
 								?.map((doc) => {

@@ -18,6 +18,7 @@ const BlockList: BlockMap = {
 	Archive: dynamic(() => import('@/components/Pages/blocks/Archive')),
 	People: dynamic(() => import('@/components/Pages/blocks/People')),
 	Image: dynamic(() => import('@/components/Pages/blocks/Image')),
+	Gallery: dynamic(() => import('@/components/Pages/blocks/Gallery')),
 	Contact: dynamic(() => import('@/components/Pages/blocks/Contact'))
 }
 

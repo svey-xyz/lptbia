@@ -96,13 +96,15 @@ export const section = defineType({
 	preview: {
 		select: {
 			type: 'type',
+			columns: 'columns',
 			blocks: 'blocks'
 			// logo: 'logo',
 		},
 		prepare(value: any) {
-			const { type, blocks } = value
+			const { type, blocks, columns } = value
+			const ColumnsText = columns ? `Columns | ` : ``
 			const subtitle = blocks ? 
-				`Blocks: ${blocks?.map((block: block, i: number, arr: Array<block>) => {
+				`${ColumnsText}Blocks: ${blocks?.map((block: block, i: number, arr: Array<block>) => {
 					return ` ${camelCaseToWords(block._type)}`
 				})}` :
 				`No blocks configured!`

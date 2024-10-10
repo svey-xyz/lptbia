@@ -8,8 +8,9 @@ import { Archive } from './Archive'
 import { People } from './People'
 import { Image } from './Image'
 import { Contact } from './Contact'
+import { Gallery } from './Gallery'
 
-export const Blocks = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, People, Image, Contact];
+export const Blocks = [FeaturedTaxonomies, Text, Map, FeaturedArticles, Newsletter, Info, Archive, People, Image, Contact, Gallery];
 
 export const blockTypes = Blocks.map((block) => {
 	return { type: block.name }

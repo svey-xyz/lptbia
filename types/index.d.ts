@@ -92,6 +92,10 @@ export interface block_Image extends block {
 	accented?: boolean
 }
 
+export interface block_Gallery extends block {
+	images: Array<sanityImage>,
+}
+
 export interface block_Map extends block {
 	apiKey: string,
 	centre: geopoint,

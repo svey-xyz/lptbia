@@ -79,6 +79,8 @@ export const section = defineType({
 			options: {
 				list: [
 					{ title: 'Accent', value: 'accent' },
+					{ title: 'Secondary Accent', value: 'accent-secondary' },
+
 				],
 			},
 			hidden: ({ parent, value }) => parent?.type !== 'Colour',

@@ -55,23 +55,23 @@ type PopoverParams = {
 const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 
 	return (
-	<Popover className="group relative z-50">
+	<Popover className="group relative z-10">
 		<PopoverButton className={`outline-none`} >
 			<NavigationTitle title={title} className='bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
 		</PopoverButton>
-		<PopoverPanel className="flex flex-col z-50 bg-bg w-full gap-1 py-4">
+		<PopoverPanel>
 			{({ close }) => {
 				const items = pages.flatMap((page) => {
 					return (
-						<Link href={resolvePageHref(page)} key={page._id} className='px-4 py-2 text-sm font-bold hover:underline' onClick={() => { close() }}>
+						<Link href={resolvePageHref(page)} key={page._id} className='relative z-10 px-4 py-2 text-sm font-bold hover:underline' onClick={() => { close() }}>
 							{page.title}
 						</Link>
 					)
 				})
 				return (
-					<>
-						{items}
-					</>
+					<div className="absolute flex flex-col z-50 bg-bg w-full gap-1 py-4 h-fit mt-1">
+						{ items }
+					</div>
 				)
 			}}
 		</PopoverPanel>

@@ -27,12 +27,18 @@ export const Colour = ({ data, index }: { data: section, index: number }) => {
 		<div
 			className={`section ${bgColour} ${fgColour}`}
 		>
-			<div className={`relative main-padding flex flex-col h-full w-full z-10 gap-12 justify-center items-center text-center
-				${ (data.columns) && 'md:flex-wrap md:!flex-row' }`}>
-
-				{ data.blocks &&
-					<Blocks blocks={data?.blocks} blockClasses={`section-block`}/>
+			<div className={`relative main-padding flex flex-col h-full w-full gap-6`}>
+				{data.header &&
+					<h2 className=''>
+						{data.header}
+					</h2>
 				}
+				<div className={`relative flex flex-col h-full w-full z-10 gap-12 justify-center
+					${(data.columns) && 'md:flex-wrap md:!flex-row'}`}>
+					{data.blocks &&
+						<Blocks blocks={data?.blocks} blockClasses={`section-block`} />
+					}
+				</div>
 			</div>
 		</div>
 		// <Standard data={ data } index={ index } className={`${bgColour} ${fgColour}`} />

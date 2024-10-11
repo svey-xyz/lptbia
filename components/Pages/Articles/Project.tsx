@@ -19,7 +19,7 @@ export const Project = async ({ data }: ProjectPageProps) => {
 		<article className='py-12 max-h-fit overflow-hidden
 		'>
 			{project.image &&
-				<div className='absolute inset-0 -m-12'>
+				<div className='absolute inset-0 -mt-12 -mx-12'>
 					<div className='relative h-[60dvh] overflow-hidden
 						after:-z-1 after:absolute after:inset-0 after:bg-gradient-to-t after:from-bg after:via-bg/80 after:to-bg/0'>
 						<Image

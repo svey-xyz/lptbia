@@ -16,14 +16,19 @@ export const GenericArchiveCard = async ({ article, filtered = true }: args) => 
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden'>
 					{ article.image ?
-						<div className='flex flex-col relative w-full h-full items-center justify-center'>
-							<div className='w-auto h-full'>
-								<Image
-									image={article.image}
-									size={{ width: 400, height: 400 }}
-									style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
-								/>
-							</div>
+						<div className='relative flex flex-col w-full h-full items-center justify-center'>
+							<Image
+								image={article.image}
+								size={{ width: 400, height: 400 }}
+								style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
+								className='p-2'
+							/>
+							<Image
+								image={article.image}
+								size={{ width: 400, height: 400 }}
+								style={{ objectFit: 'cover', width: '100%', height: '100%', filter: 'blur(50px)' }}
+								className='absolute inset-0 -z-1 opacity-60'
+							/>
 						</div>
 						:
 						<div className='absolute inset-0 bg-accent-secondary/80 flex flex-col items-center justify-center'>

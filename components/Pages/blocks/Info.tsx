@@ -7,7 +7,7 @@ import NumericLabel from 'react-pretty-numbers';
 
 export const Info = ({ data, className }: { data: block_Info, className?: string }) => {
 	return (
-		<div className={`${className}`}>
+		<div className={`${className} w-full`}>
 			{ data.title &&
 				<h2>
 					{data.title}
@@ -17,7 +17,7 @@ export const Info = ({ data, className }: { data: block_Info, className?: string
 			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-8 max-w-full w-full'>
 				{ data.items?.map((item) => {
 					return (
-						<div key={item.title} className='flex flex-col'>
+						<div key={item.title} className='flex flex-col items-start text-left'>
 							{ item.icon &&
 								<div className='rounded-full bg-accent-secondary text-4xl text-bg p-3 mb-2 w-fit'>
 									<Icon icon={item.icon.name} />

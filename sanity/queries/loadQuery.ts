@@ -76,7 +76,7 @@ export const load_singleArticle = async <T>(type: string, slug: string) => {
 	const partial =
 		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
 		_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
-		undefined
+		''
 
 	return loadQuery<T>(
 		single_Article(partial),
@@ -89,7 +89,7 @@ export const loadArticles = async <T>(type: string, taxonomies?:Array<taxonomy>)
 	const partial =
 		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
 			_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
-			undefined
+			''
 
 	return loadQuery<Array<T>>(
 		bundle_Articles(partial, taxonomies),

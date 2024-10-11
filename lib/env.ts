@@ -10,8 +10,7 @@ export const googleMapsKey = assertValue(
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T  {
   if (v === undefined) {
-    // throw new Error(errorMessage) // Always throws error
-		console.log(errorMessage)
+		throw new Error(errorMessage)
   }
 
   return v as T

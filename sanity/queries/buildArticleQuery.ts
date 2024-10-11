@@ -2,7 +2,7 @@ import { partial_Article } from "@/sanity/queries/partials"
 import { taxonomy } from "@/types"
 import { groq } from "next-sanity"
 
-export const single_Article = (partial?: string) => {
+export const single_Article = (partial: string = '') => {
 	return groq`
 		*[_type == $type && slug.current == $slug][0] {
 			${partial_Article},
@@ -11,7 +11,7 @@ export const single_Article = (partial?: string) => {
 	`
 }
 
-export const bundle_Articles = (partial?: string, taxonomies?: Array<taxonomy>) => {
+export const bundle_Articles = (partial: string = '', taxonomies?: Array<taxonomy>) => {
 	const taxonomyIDs = (taxonomies?.flatMap((tax) => {
 		return `"${tax._id}"`
 	}))

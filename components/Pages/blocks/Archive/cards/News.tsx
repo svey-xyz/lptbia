@@ -35,7 +35,7 @@ const NewsArchiveCard = async ({ article, filtered = true }:args) => {
 				} */}
 				
 				<div className='absolute bottom-0 px-4 py-2 bg-accent/80 w-full flex flex-row items-end gap-4 border-transparent border-t-2 group-hover:border-accent-secondary group-hover:bg-accent/90'>
-					<a href={resolveArticleHref(article._type, article.slug) || ''} aria-label="Link to news article"
+					<a href={resolveArticleHref(article) || ''} aria-label="Link to news article"
 						className='font-bold text-2xl flex-grow leading-none'>
 						{news.title}
 					</a>

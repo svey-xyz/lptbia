@@ -1,11 +1,10 @@
-import { ArchivePayload, object_Contact, PagePayload } from "@/types"
+import { ArchivePayload, article, object_Contact, PagePayload } from "@/types"
 
 export const resolveArticleHref = (
-	documentType?: string,
-	slug?: string,
+	article: article,
 ): string | undefined => {
 
-	return `/article/${documentType}/${slug}`
+	return `/article/${article._type}/${article.slug}`
 	// switch (documentType) {
 	// 	case 'page':
 	// 		return slug ? `/${slug}` : undefined

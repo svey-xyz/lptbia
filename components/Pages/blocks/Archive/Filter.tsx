@@ -61,7 +61,6 @@ export const Filter = ({ articles, archive }: args) => {
 		if (!filter) alltaxonomyRef.current ? alltaxonomyRef.current.checked = true : null
 
 		if (filter) {
-			console.log("Filter: ", filter)
 			setFilteredEncodedLabel(encodeURIComponent(String(filter)));
 		}
 
@@ -73,7 +72,7 @@ export const Filter = ({ articles, archive }: args) => {
 
 	return (
 		<div className="relative flex flex-col">
-				{((taxonomies && archive.filterable) &&
+				{((taxonomies?.length > 1 && archive.filterable) &&
 					<fieldset className="flex flex-row gap-x-8 gap-y-2 mb-8 flex-wrap">
 						{taxonomies.map((taxonomy) => {
 							return (

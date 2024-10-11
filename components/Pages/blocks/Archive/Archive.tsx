@@ -8,8 +8,6 @@ import { taxonomyTitle } from '@/sanity/schemas/articles/constructors/taxonomy';
 export const Archive = async ({ data, className }: { data: block_Archive, className?:string }) => {
 	if (!data) return
 
-	console.log('Featured Taxonomies: ', data.featuredTaxonomies)
-
 	const initialPayload = await loadArticles<article>(data.archiveType, data.featuredTaxonomies)
 	if (!initialPayload) return []
 	

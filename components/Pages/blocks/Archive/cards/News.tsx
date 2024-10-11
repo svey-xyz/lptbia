@@ -5,6 +5,7 @@ import { article, article_News } from '@/types'
 import { resolveArticleHref } from '@/lib/resolveHref';
 import Link from 'next/link'
 import { readableDate } from '@/lib/stringFunctions';
+import TextBlock from '@/components/site/TextBlock';
 
 type args = {
 	article: article,
@@ -43,6 +44,9 @@ const NewsArchiveCard = async ({ article, filtered = true }:args) => {
 				<div className='py-2 bg-bg w-full flex flex-col gap-4'>
 					<span className='text-xl text-accent font-black'>
 						{news.title}
+					</span>
+					<span>
+						<TextBlock text={news.description} />
 					</span>
 					<span className='text-sm text-accent-secondary-dark'>
 						{ readableDate(news.date) }

@@ -51,6 +51,7 @@ export const partial_Person: string = groq`
 	...,
 	businesses[]-> {
 		...,
+		${partial_Article},
 		${business}
 	}
 `
@@ -70,12 +71,6 @@ const partial_Blocks: string = groq`
 			}
 		},
 	},
-	_type == "Hero" => {
-		...,
-		featuredImage {
-			${partial_ImageObject}
-		}
-	},
 	_type == "Image" => {
 		...,
 		image {
@@ -86,6 +81,14 @@ const partial_Blocks: string = groq`
 		...,
 		people[]-> {
 			${partial_Person}
+		}
+	},
+	_type == "Map" => {
+		...,
+		featured_Businesses[]-> {
+			...,
+			${partial_Article},
+			${business}
 		}
 	}
 `

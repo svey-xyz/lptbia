@@ -1,43 +1,40 @@
 
 import Client from '@/components/Pages/blocks/Map/Client';
+import { googleMapsKey } from '@/lib/env';
 import { loadArticles } from '@/sanity/queries/loadQuery';
 import { article_Business, block_Map, icon } from '@/types';
-
-interface LatLng {
-	lat: number;
-	lng: number;
-}
-
-interface BusinessMarker {
-	geopoint: LatLng,
-	business: article_Business
-}
 
 export const Map = async ({ data, className }: { data: block_Map, className?:string }) => {
 	if (!data) return
 
 	const initial = await loadArticles<article_Business>('business')
 	const businesses = initial.data;
+	const FeaturedTaxonomies = data.featured_Businesses
 
-	const fetchLocations = async () => {
-		const positions: BusinessMarker[] = [];
+	const businessMarkers = businesses.flatMap((business) => {
+		const address = business.addresses ? business.addresses[0] : null
+		if (!address) return []
+		if (FeaturedTaxonomies) {
+			let hasFeature = false
+			if (!business.taxonomies) return []
 
-		for (const business of businesses) {
-			const address = business.addresses ? business.addresses[0] : null
-			if (!address) return
+			for (var tax of business.taxonomies) {
+				if (FeaturedTaxonomies.includes(tax)) {
+					hasFeature = true
+					break
+				}
+			}
 
-			positions.push({
-				geopoint: address.location,
-				business
-			});
+			if (!hasFeature) return []
 		}
 
-		return positions
-	};
-
-	const businessMarkers = await fetchLocations()
+		return ({
+			geopoint: address.location,
+			business
+		});
+	})
 	
-	return <Client mapData={data} businessMarkers={businessMarkers} className={`${className}`} />
+	return <Client apiKey={googleMapsKey} mapData={data} businessMarkers={businessMarkers} className={`${className}`} />
 };
 
 export default Map;

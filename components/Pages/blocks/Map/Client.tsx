@@ -6,7 +6,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { BusinessMarker } from '@/components/Pages/blocks/Map';
 import { InfoPanel } from '@/components/Pages/blocks/Map/InfoPanel';
 
-export const MapClient = ({ mapData, businessMarkers, className }: { mapData: block_Map, businessMarkers?: Array<BusinessMarker>, className?:string }) => {
+export const MapClient = ({ apiKey, mapData, businessMarkers, className }: { apiKey: string, mapData: block_Map, businessMarkers?: Array<BusinessMarker>, className?:string }) => {
 	const libraries = useMemo(() => ['places'], []);
 	const mapCenter = useMemo(
 		() => (mapData.centre),
@@ -28,7 +28,7 @@ export const MapClient = ({ mapData, businessMarkers, className }: { mapData: bl
 	);
 
 	const { isLoaded } = useLoadScript({
-		googleMapsApiKey: mapData.apiKey,
+		googleMapsApiKey: apiKey,
 		libraries: libraries as any,
 	});
 

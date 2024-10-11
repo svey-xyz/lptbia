@@ -1,19 +1,9 @@
-import { defineType, defineField, defineArrayMember } from 'sanity';
+import { defineField } from 'sanity';
 import { } from 'react-icons';
-import { mediaAssetSource } from 'sanity-plugin-media';
-
 import constructors from '@/sanity/schemas/pages/constructors';
 import { FaMapLocationDot } from 'react-icons/fa6';
-import ARTICLES from '@/sanity/schemas/articles';
-import { taxonomyTitle } from '@/sanity/schemas/articles/constructors/taxonomy';
 
 const fields: any = [
-	defineField({
-		title: 'Api Key',
-		name: 'apiKey',
-		type: 'string',
-		validation: Rule => Rule.required(),
-	}),
 	defineField({
 		title: 'Centre',
 		name: 'centre',

@@ -97,8 +97,8 @@ export interface block_Gallery extends block {
 }
 
 export interface block_Map extends block {
-	apiKey: string,
 	centre: geopoint,
+	featured_Businesses?: Array<taxonomy_Business>
 }
 
 export interface block_Newsletter extends block {

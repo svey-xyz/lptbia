@@ -10,25 +10,10 @@ const archiveTypes = ARTICLES.flatMap((article) => {
 	return { title: camelCaseToWords(article.type), value: article.type }
 })
 
-const featuredTaxonomiesFields = ARTICLES.flatMap((article) => {
-	const taxonomyType = { type: taxonomyTitle(article.type) }
-	return defineField({
-		title: 'Featured Taxonomies',
-		name: `featured_${taxonomyTitle(article.type)}`,
-		type: 'array',
-		description: 'Only articles with the selected taxonomies will appear. If no taxonomies are selected then all articles of the type will be included.',
-		hidden: ({ parent }) => {
-			return parent?.archiveType !== article.type
-		},
-		of: [{
-			type: 'reference',
-			to: [taxonomyType],
-			options: {
-				disableNew: true
-			}
-		}]
-	})
-})
+const taxonomyTypes = ARTICLES.flatMap((article) => {
+	return { type: taxonomyTitle(article.type) }
+}) 
+
 
 const fields = [
 	defineField({
@@ -52,7 +37,19 @@ const fields = [
 		type: 'boolean',
 		description: 'Controls whether the archive is filterable with taxonomy tags.',
 	}),
-	...featuredTaxonomiesFields
+	defineField({
+		title: 'Featured Taxonomies',
+		name: `featuredTaxonomies`,
+		type: 'array',
+		description: 'Only articles with the selected taxonomies will appear. If no taxonomies are selected then all articles of the type will be included.',
+		of: [{
+			type: 'reference',
+			to: taxonomyTypes,
+			options: {
+				disableNew: true
+			}
+		}]
+	})
 ]
 
 export const Archive = constructors.block({ name: 'Archive', fields, icon: RiGalleryView })

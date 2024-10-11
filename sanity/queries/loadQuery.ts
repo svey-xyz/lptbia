@@ -13,6 +13,7 @@ import {
 	PagePayload,
 	SettingsPayload,
 	ArchivePayload,
+	taxonomy,
 } from '@/types'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
@@ -84,14 +85,14 @@ export const load_singleArticle = async <T>(type: string, slug: string) => {
 	)
 }
 
-export const loadArticles = async <T>(type: string) => {
+export const loadArticles = async <T>(type: string, taxonomies?:Array<taxonomy>) => {
 	const partial =
 		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
 			_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
 			undefined
 
 	return loadQuery<Array<T>>(
-		bundle_Articles(partial),
+		bundle_Articles(partial, taxonomies),
 		{ type, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
 	)

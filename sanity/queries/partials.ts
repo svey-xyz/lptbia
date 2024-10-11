@@ -58,6 +58,12 @@ export const partial_Person: string = groq`
 
 const partial_Blocks: string = groq`
 	...,
+	_type == "Archive" => {
+		...,
+		featuredTaxonomies[]-> {
+			...,
+		} 
+	},
 	_type == "FeaturedTaxonomies" => {
 		...,
 		taxonomies[]->,

@@ -132,10 +132,7 @@ export interface block_Archive extends block {
 	description?: PortableTextBlock,
 	archiveType: documentTypesWithArchives,
 	filterable?: boolean,
-	featured_newsTaxonomy?: Array<taxonomy_News>,
-	featured_businessTaxonomy?: Array<taxonomy_Business>,
-	featured_projectTaxonomy?: Array<taxonomy_Project>,
-	featured_addressTaxonomy?: Array<taxonomy>,
+	featuredTaxonomies?: Array<taxonomy>,
 }
 
 export interface block_Contact extends block {

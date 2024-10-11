@@ -1,4 +1,5 @@
 import { partial_Article } from "@/sanity/queries/partials"
+import { taxonomy } from "@/types"
 import { groq } from "next-sanity"
 
 export const single_Article = (partial?: string) => {
@@ -10,9 +11,15 @@ export const single_Article = (partial?: string) => {
 	`
 }
 
-export const bundle_Articles = (partial?: string) => {
+export const bundle_Articles = (partial?: string, taxonomies?: Array<taxonomy>) => {
+	const taxonomyIDs = (taxonomies?.flatMap((tax) => {
+		return `"${tax._id}"`
+	}))
+
+	const referenceString = taxonomyIDs ? `&& references(*[_id in [${taxonomyIDs}]]._id)` : ``
+
 	return groq`
-		*[_type == $type] {
+		*[_type == $type ${referenceString}] {
 			${partial_Article},
 			${partial}
 		}

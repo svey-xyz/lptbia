@@ -170,7 +170,8 @@ export interface article extends inherentDocumentData {
 export interface article_News extends article {
 	_type: "news",
 	content?: PortableTextBlock,
-	author?: string,
+	date?: object_Date,
+	author?: Array<person>,
 }
 
 export interface article_Project extends article {

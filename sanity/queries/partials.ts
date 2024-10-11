@@ -56,6 +56,12 @@ export const partial_Person: string = groq`
 	}
 `
 
+export const news = groq`
+	authors[]->{
+		${partial_Person}
+	}
+`
+
 const partial_Blocks: string = groq`
 	...,
 	_type == "Archive" => {

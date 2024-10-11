@@ -10,11 +10,21 @@ const fields = [
 		description: 'The main content of the news.',
 	}),
 	defineField({
-		title: 'Author',
-		name: 'author',
-		type: 'string',
-		description: 'Author of the article.'
+		title: 'Author(s)',
+		name: 'authors',
+		type: 'array',
+		of: [
+			{
+				type: 'reference',
+				to: [{ type: 'person' }],
+			}
+		],
 	}),
+	defineField({
+		title: 'Date',
+		name: 'date',
+		type: 'basicDate'
+	})
 ]
 
 const args = { type: 'news', fields, icon: ImNewspaper }

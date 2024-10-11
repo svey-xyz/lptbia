@@ -48,6 +48,7 @@ const Gallery = ({ data, className }: { data: block_Gallery, className?: string 
 		<div className=''>
 			<div className={`${className} grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4`}>
 				{images.map((image, i) => {
+					if (!image) return
 					return (
 						<div key={image.imageAsset._id} className={`${_LIIGHTBOX ? 'cursor-pointer' : ''}`}
 							onClick={(e) => { if (mounted && _LIIGHTBOX) openLightBox(e, i) }}>

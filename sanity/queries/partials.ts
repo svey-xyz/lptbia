@@ -77,6 +77,12 @@ const partial_Blocks: string = groq`
 			${partial_ImageObject}
 		}
 	},
+	_type == "Gallery" => {
+		...,
+		images[] {
+			${partial_ImageObject}
+		}
+	},
 	_type == "People" => {
 		...,
 		people[]-> {
@@ -98,12 +104,6 @@ export const partial_Sections: string = groq`
 		...,
 		blocks[] {
 			${partial_Blocks},
-			_type == "Columns" => {
-				...,
-				blocks[] {
-					${partial_Blocks}
-				}
-			}
 		}
 	}
 `

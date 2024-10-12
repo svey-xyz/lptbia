@@ -5,6 +5,7 @@ import { Popover, PopoverButton, PopoverPanel, CloseButton } from '@headlessui/r
 import React from 'react';
 import Link from 'next/link'
 import { resolvePageHref } from '@/lib/resolveHref';
+import { FaChevronDown } from "react-icons/fa";
 
 type NavigationItemParams = {
 	item: object_NavigationItem,
@@ -23,13 +24,17 @@ export default NavigationItem;
 
 type NavigationTitleParams = {
 	title: string,
-	className?: string
+	className?: string,
+	chevron?: boolean
 }
 
-const NavigationTitle = ({ title, className }: NavigationTitleParams) => {
+const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) => {
 	return (
-		<span className={`${className} font-bold text-bg outline-none px-4 py-1 transition-colors duration-200`}>
+		<span className={`${className} font-bold text-bg outline-none px-4 py-1 transition-colors duration-200 flex flex-row items-center justify-center gap-1`}>
 			{title}
+			{ chevron &&
+				<FaChevronDown className='' />
+			}
 		</span>
 	)
 }
@@ -56,8 +61,9 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 
 	return (
 	<Popover className="group relative z-10">
-		<PopoverButton className={`outline-none`} >
-			<NavigationTitle title={title} className='bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
+		<PopoverButton className={`outline-none flex flex-row`} >
+			<NavigationTitle title={title} chevron={true}
+				className='bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
 		</PopoverButton>
 		<PopoverPanel>
 			{({ close }) => {

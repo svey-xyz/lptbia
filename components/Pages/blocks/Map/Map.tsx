@@ -14,12 +14,13 @@ export const Map = async ({ data, className }: { data: block_Map, className?:str
 	const businessMarkers = businesses.flatMap((business) => {
 		const address = business.addresses ? business.addresses[0] : null
 		if (!address) return []
+
 		if (FeaturedTaxonomies) {
 			let hasFeature = false
 			if (!business.taxonomies) return []
 
 			for (var tax of business.taxonomies) {
-				if (FeaturedTaxonomies.includes(tax)) {
+				if (FeaturedTaxonomies.some(t => t._id == tax._id)) {
 					hasFeature = true
 					break
 				}
@@ -33,6 +34,8 @@ export const Map = async ({ data, className }: { data: block_Map, className?:str
 			business
 		});
 	})
+
+	console.log('businessMarkers: ', businessMarkers)
 	
 	return <Client apiKey={googleMapsKey} mapData={data} businessMarkers={businessMarkers} className={`${className}`} />
 };

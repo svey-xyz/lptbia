@@ -68,7 +68,7 @@
 		}
 	},
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git config devcontainers-theme.show-dirty 1 && bun i && bun run dev",
+	"postCreateCommand": "git config devcontainers-theme.show-dirty 1 && chown -R svey ../ && chmod -R svey ../ && bun i && bun run dev",
 	// Uncomment to connect as svey instead. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "svey"
 }

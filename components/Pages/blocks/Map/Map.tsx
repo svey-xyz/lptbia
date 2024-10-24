@@ -34,8 +34,6 @@ export const Map = async ({ data, className }: { data: block_Map, className?:str
 			business
 		});
 	})
-
-	console.log('businessMarkers: ', businessMarkers)
 	
 	return <Client apiKey={googleMapsKey} mapData={data} businessMarkers={businessMarkers} className={`${className}`} />
 };

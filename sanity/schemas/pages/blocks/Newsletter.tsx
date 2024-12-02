@@ -1,4 +1,5 @@
 import constructors from '@/sanity/schemas/pages/constructors';
+import { Rule } from 'postcss';
 import { RiInputField } from 'react-icons/ri';
 import { defineField } from 'sanity';
 
@@ -19,6 +20,12 @@ const fields: any = [
 		title: 'Text',
 		name: 'text',
 		type: 'string'
+	}),
+	defineField({
+		title: 'Audience ID',
+		name: 'audienceID',
+		type: 'string',
+		validation: (Rule) => Rule.required()
 	})
 ]
 

@@ -2,13 +2,12 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
-const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string}) => {
-	const uuid = uuidv4();
+const NewsletterForm = ({stacked, className, uuid}:{stacked?:boolean,className?:string, uuid:string}) => {
 
 	const [email, setEmail] = useState<string>('')
 	const [error, setError] = useState<boolean>(false)
+
 
 	const handleChange = (value: string) => {
 		setEmail(value)

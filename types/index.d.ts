@@ -102,8 +102,9 @@ export interface block_Map extends block {
 }
 
 export interface block_Newsletter extends block {
-	callToAction: string,
-	text: string,
+	callToAction?: string,
+	text?: string,
+	audienceID: string,
 }
 
 export interface block_FeaturedArticles extends block {

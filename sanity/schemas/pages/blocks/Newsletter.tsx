@@ -1,5 +1,4 @@
 import constructors from '@/sanity/schemas/pages/constructors';
-import { Rule } from 'postcss';
 import { RiInputField } from 'react-icons/ri';
 import { defineField } from 'sanity';
 

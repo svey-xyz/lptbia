@@ -14,10 +14,10 @@ export const Info = ({ data, className }: { data: block_Info, className?: string
 				</h2>
 			}
 
-			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-8 max-w-full w-full'>
+			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-8 max-w-full'>
 				{ data.items?.map((item) => {
 					return (
-						<div key={item.title} className='flex flex-col items-start text-left'>
+						<div key={item.title} className='flex flex-col items-start text-left w-full'>
 							{ item.icon &&
 								<div className='rounded-full bg-accent-secondary text-4xl text-bg p-3 mb-2 w-fit'>
 									<Icon icon={item.icon.name} />

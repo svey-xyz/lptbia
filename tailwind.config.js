@@ -26,6 +26,9 @@ module.exports = {
 			width: {
 				'icon': 'var(--icon-size)',
 				'icon-sm': 'var(--icon-size-sm)',
+				'prose-full': '85ch',
+				'prose': '65ch',
+				'prose-short': '45ch',
 			},
 			maxWidth: {
 				'prose-full': '85ch',

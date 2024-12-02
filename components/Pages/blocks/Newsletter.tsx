@@ -4,7 +4,7 @@ import React from 'react';
 
 export const Standard = ({ data, className }: { data: block_Newsletter, className?: string }) => {
 	return (
-		<div className={`${className}`}>
+		<div className={`${className} w-prose-full`}>
 			<h3>
 				{ data.callToAction }
 			</h3>

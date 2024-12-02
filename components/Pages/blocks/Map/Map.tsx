@@ -14,12 +14,13 @@ export const Map = async ({ data, className }: { data: block_Map, className?:str
 	const businessMarkers = businesses.flatMap((business) => {
 		const address = business.addresses ? business.addresses[0] : null
 		if (!address) return []
+
 		if (FeaturedTaxonomies) {
 			let hasFeature = false
 			if (!business.taxonomies) return []
 
 			for (var tax of business.taxonomies) {
-				if (FeaturedTaxonomies.includes(tax)) {
+				if (FeaturedTaxonomies.some(t => t._id == tax._id)) {
 					hasFeature = true
 					break
 				}

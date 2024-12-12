@@ -5,8 +5,8 @@ import { useEffect } from 'react'
 
 export function AutomaticVisualEditing() {
 	useEffect(() => {
-		// If not an iframe or a Vercel Preview deployment, turn off Draft Mode
-		if (process.env.NEXT_PUBLIC_VERCEL_ENV !== 'preview' && window === parent) {
+		// If not an iframe turn off Draft Mode
+		if (window === parent) {
 			location.href = '/api/disable-draft'
 		}
 	}, [])

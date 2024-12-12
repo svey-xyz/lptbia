@@ -3,7 +3,7 @@ import Image from '@components/site/Image'
 import Link from 'next/link'
 
 import { article_Business, article} from '@/types'
-import { slugifyWithOptions } from '@/lib/stringFunctions';
+import { readableAddress, slugifyWithOptions } from '@/lib/stringFunctions';
 import { GlobeAltIcon } from '@heroicons/react/24/solid'
 import { resolveContactHref } from '@/lib/resolveHref';
 import Socials from '@/components/site/Socials';
@@ -55,6 +55,11 @@ export const BusinessArchiveCard = async ({ article, filtered = true }: args) =>
 					<span className='text-xl font-black text-accent leading-tight'>
 						{business.title}
 					</span>
+					{ business.addresses && 
+						<span className='text-accent-secondary leading-tight'>
+							{ readableAddress(business.addresses[0]) }
+						</span>
+					}
 					<div className='flex flex-row gap-2'>
 						{business.publicContact?.socials &&
 							<Socials socials={business.publicContact.socials} className='relative w-icon-sm text-accent' />

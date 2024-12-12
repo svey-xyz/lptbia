@@ -11,7 +11,7 @@ export const Standard = ({ data, className }: { data: block_Newsletter, classNam
 			<span>
 				{ data.text }
 			</span>
-			<NewsletterForm stacked={true} className="max-w-prose" uuid={`${data._key}`} audienceID={data.audienceID} />
+			<NewsletterForm stacked={true} className="max-w-prose mx-auto" uuid={`${data._key}`} audienceID={data.audienceID} />
 			<span>
 				We do not share our mailing list.
 			</span>

@@ -248,6 +248,7 @@ export interface SettingsPayload extends inherentDocumentData {
 	address?: article_Address,
 	homepage?: PagePayload,
 	navigation?: Array<object_NavigationItem>,
+	newsletterAudienceID?: string
 }
 
 export interface PagePayload extends inherentDocumentData {

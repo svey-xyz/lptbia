@@ -129,6 +129,12 @@ export const settings = defineType({
 				},
 			]
 		}),
+		defineField({
+			title: 'Newsletter Audience ID',
+			name: 'newsletterAudienceID',
+			type: 'string',
+			description: 'Used in areas where the newsletter subscription appears outside of a page block (e.g. the footer). This should likely be your public newsletter audience ID. If no ID is provided the newsletter signup will not appear.'
+		})
 	],
 	preview: {
 		select: {

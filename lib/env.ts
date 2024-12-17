@@ -9,13 +9,13 @@ export const googleMapsKey = assertValue(
 )
 
 export const mailchimpDatacenter = assertValue(
-	process.env.NEXT_PUBLIC_MAILCHIMP_DATACENTER,
-	'Missing environment variable: NEXT_PUBLIC_MAILCHIMP_DATACENTER'
+	process.env.MAILCHIMP_DATACENTER,
+	'Missing environment variable: MAILCHIMP_DATACENTER'
 )
 
 export const mailchimpApiKey = assertValue(
-	process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY,
-	'Missing environment variable: NEXT_PUBLIC_MAILCHIMP_API_KEY'
+	process.env.MAILCHIMP_API_KEY,
+	'Missing environment variable: MAILCHIMP_API_KEY'
 )
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T  {

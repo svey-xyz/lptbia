@@ -24,7 +24,13 @@ const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boole
 			email
 		);
 
-		if (check) setError(true)
+		if (check) {
+			setError(true)
+			setMessage('Invalid email.')
+			return
+		}
+
+
 		if (inputRef == null || !inputRef.current) setError(true)
 
 		const res = await fetch("/api/newsletter-subscribe", {
@@ -39,13 +45,15 @@ const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boole
 
 			method: "POST",
 		});
+		const data = await res.json()
+		setMessage(data.message)
 	}
 
 	return (
 		<form
 			name='newsletter'
 			method='post'
-			className={`${ className } ${ stacked ? 'flex-col' : 'flex-row' } flex relative w-full gap-4`}>
+			className={`${ className } flex-col flex relative w-full gap-4`}>
 			<label
 				className='text-bg font-bold text-sm'
 				htmlFor={`email-field-${uuid}`}
@@ -53,29 +61,31 @@ const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boole
 			>
 				Email
 			</label>
-			<input
-				id={`email-field-${uuid}`}
-				type='email'
-				ref={inputRef}
-				name='email'
-				required={true}
-				className={`bg-bg py-1 px-3 text-fg outline-none focus:outline focus:outline-1 focus:outline-accent-secondary w-full`}
-				placeholder="Email"
-				value={email}
-				onChange={e => { handleChange(e.target.value); }}
-				autoCapitalize="off"
-				autoCorrect="off"
-			/>
-			<button
-				className='bg-accent-secondary py-1 px-10 text-bg hover:bg-accent-secondary/80 transition-colors duration-300'
-				onClick={(e) => { handleSubmit(e); }}
-				type='submit'
-			>
-				Submit
-			</button>
+			<div className={`${stacked ? 'flex-col' : 'flex-row'} flex relative w-full gap-4 my-2`}>
+				<input
+					id={`email-field-${uuid}`}
+					type='email'
+					ref={inputRef}
+					name='email'
+					required={true}
+					className={`bg-bg py-1 px-3 text-fg outline-none focus:outline focus:outline-1 focus:outline-accent-secondary w-full`}
+					placeholder="Email"
+					value={email}
+					onChange={e => { handleChange(e.target.value); }}
+					autoCapitalize="off"
+					autoCorrect="off"
+				/>
+				<button
+					className='bg-accent-secondary py-1 px-10 text-bg hover:bg-accent-secondary/80 transition-colors duration-300'
+					onClick={(e) => { handleSubmit(e); }}
+					type='submit'
+				>
+					Submit
+				</button>
+			</div>
 			{ message &&
-				<div className={`${error ? 'text-accent-failure' : 'text-accent-success'} font-bold`}>
-					{message}
+				<div className={`absolute -bottom-[20px] font-bold`}>
+					{ message }
 				</div>
 			}
 		</form>

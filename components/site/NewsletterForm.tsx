@@ -3,10 +3,12 @@
 import React, { useRef, MouseEvent } from 'react';
 import { useState } from 'react';
 
-const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boolean,className?:string, uuid:string, audienceID:string}) => {
+const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boolean,className?:string, uuid:string, audienceID?:string}) => {
+	if (!audienceID) return <></>
 
 	const [email, setEmail] = useState<string>('')
 	const [error, setError] = useState<boolean>(false)
+	const [message, setMessage] = useState<string>()
 	const inputRef = useRef<HTMLInputElement | null>(null)
 
 
@@ -37,9 +39,8 @@ const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boole
 
 			method: "POST",
 		});
-
-
 	}
+
 	return (
 		<form
 			name='newsletter'
@@ -72,6 +73,11 @@ const NewsletterForm = ({ stacked, className, uuid, audienceID }:{stacked?:boole
 			>
 				Submit
 			</button>
+			{ message &&
+				<div className={`${error ? 'text-accent-failure' : 'text-accent-success'} font-bold`}>
+					{message}
+				</div>
+			}
 		</form>
 	);
 };

@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { Bars2Icon } from '@heroicons/react/24/solid';
 import { usePathname } from 'next/navigation'
+import { Portal } from '@/components/ui/Portal';
 
 export const Navigation = ({ navItems, className }: { navItems: Array<object_NavigationItem>, className?:string }) => {
 	const navContainer = useRef<HTMLDivElement>(null)
@@ -62,7 +63,9 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 			</div>
 
 			{(gapWidth <= _BREAK_POINT) &&
-				<MenuPopover navItems={navItems} />
+				<Portal parentID='HeaderBox'>
+					<MenuPopover navItems={navItems} />
+				</Portal>
 			}
 		</div>
 	);

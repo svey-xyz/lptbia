@@ -13,8 +13,8 @@ const Header = async() => {
 	return (
 		<div className="relative h-full flex flex-col items-center justify-center z-50">
 			<div className="relative main-padding">
-				<div className='relative flex flex-row justify-between gap-4 my-4'>
-					<Link href='/' aria-label='Link to the site home.' className='relative z-10 flex-grow'>
+				<div id="HeaderBox" className='relative flex flex-row justify-between gap-4 my-4'>
+					<Link href='/' aria-label='Link to the site home.' className='relative z-10'>
 						{ settings.logo &&
 							<Image
 								image={settings.logo}
@@ -24,7 +24,7 @@ const Header = async() => {
 						}
 					</Link>
 					{ settings.navigation &&
-						<Navigation navItems={settings.navigation} className='flex-shrink' />
+						<Navigation navItems={settings.navigation} className='' />
 					}
 				</div>
 			</div>

@@ -19,7 +19,7 @@ import { googleMapsInput } from '@sanity/google-maps-input'
 import { PluginOptions, defineConfig } from 'sanity'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
-
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { locate } from '@/sanity/lib/locate'
 
 const googleMapsProps = {
@@ -37,20 +37,21 @@ const defaultDesk = structureTool({
 })
 const deskPlugins = [
 	defaultDesk,
-	visionTool(),
+	// visionTool(),
 	colorInput(),
 	noteField(),
 	media(),
 	googleMapsInput(googleMapsProps),
 	iconify({ showName: false, }),
-	presentationTool({
-		locate,
-		previewUrl: {
-			draftMode: {
-				enable: '/api/draft',
-			},
-		},
-	}),
+	vercelDeployTool(),
+	// presentationTool({
+	// 	locate,
+	// 	previewUrl: {
+	// 		draftMode: {
+	// 			enable: '/api/draft',
+	// 		},
+	// 	},
+	// }),
 
 ] as PluginOptions[]
 

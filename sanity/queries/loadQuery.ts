@@ -21,6 +21,7 @@ import { client } from "@/sanity/lib/client";
 import { capitalize, pluralize } from '@/lib/stringFunctions'
 import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partials'
 import { single_Article, bundle_Articles } from '@/sanity/queries/buildArticleQuery'
+import { perspective as libPerspective } from '@/sanity/lib/api'
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 
@@ -42,7 +43,7 @@ const usingCdn = serverClient.config().useCdn
 
 export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: QueryOptions = {}) => {
 	const {
-		perspective = draftMode().isEnabled ? 'previewDrafts' : 'published',
+		perspective = draftMode().isEnabled ? 'previewDrafts' : libPerspective,
 	} = options
 	// Don't cache by default
 	let revalidate: NextFetchRequestConfig['revalidate'] = 0

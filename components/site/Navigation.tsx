@@ -34,7 +34,7 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 
 	const MenuPopover = ({ navItems, className }: { navItems: Array<object_NavigationItem>, className?: string }) => {
 		return (
-			<Popover className="absolute right-0 top-0 h-full flex flex-col items-center justify-center">
+			<Popover className="absolute right-0 top-0 h-full flex flex-col items-center justify-center outline-none">
 				<PopoverButton>
 					<Button className='relative z-10'>
 						<Bars2Icon className='w-icon h-icon text-accent-secondary stroke-1 stroke-accent-secondary' />

@@ -46,8 +46,8 @@ type StaticNavigationParams = {
 
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
  return (
-	 <Link href={resolvePageHref(page)} className='group'>
-		 <NavigationTitle title={title} className={`bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} />
+	 <Link href={resolvePageHref(page)} className='group outline-none w-fit'>
+		 <NavigationTitle title={title} className={`w-fit bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} />
 	</Link>
  )
 }
@@ -60,12 +60,12 @@ type PopoverParams = {
 const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 
 	return (
-	<Popover className="group relative z-10">
-		<PopoverButton className={`outline-none flex flex-row`} >
+	<Popover className="group relative w-auto">
+			<PopoverButton className={`outline-none flex flex-row w-auto`} >
 			<NavigationTitle title={title} chevron={true}
-				className='bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
+				className='w-auto bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
 		</PopoverButton>
-		<PopoverPanel>
+		<PopoverPanel className={`relative z-20`} >
 			{({ close }) => {
 				const items = pages.flatMap((page) => {
 					return (

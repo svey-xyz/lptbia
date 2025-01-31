@@ -1,6 +1,12 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { loadArchive } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
+import { generateStaticSlugsForArchives } from '@/lib/server/generateStaticSlugs'
+
+export async function generateStaticParams() {
+	const staticSlugs = await generateStaticSlugsForArchives()
+	return staticSlugs
+}
 
 type Props = {
 	params: { slug: string }

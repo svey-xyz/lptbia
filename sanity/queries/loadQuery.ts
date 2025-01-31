@@ -45,18 +45,11 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 	const {
 		perspective = draftMode().isEnabled ? 'previewDrafts' : libPerspective,
 	} = options
-	// Don't cache by default
-	let revalidate: NextFetchRequestConfig['revalidate'] = 0
-	// If `next.tags` is set, and we're not using the CDN, then it's safe to cache
-	if (!usingCdn && Array.isArray(options.next?.tags)) {
-		revalidate = false
-	} else if (usingCdn) {
-		revalidate = 60
-	}
+
 	return queryStore.loadQuery(query, params, {
 		...options,
 		next: {
-			revalidate,
+			revalidate: false,
 			...(options.next || {}),
 		},
 		perspective,

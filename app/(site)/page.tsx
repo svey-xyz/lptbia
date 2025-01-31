@@ -1,6 +1,8 @@
 import { loadSettings } from '@/sanity/queries/loadQuery';
 import Pages from '@/components/Pages';
 
+export const dynamic = "force-static";
+
 const Page = async() => {
 	const initial = await loadSettings()
 

@@ -162,7 +162,7 @@ export type _ARTICLE_TYPES = [
 
 export interface article extends inherentDocumentData {
 	title: string,
-	slug: string,
+	slug: { current: string },
 	description?: PortableTextBlock,
 	image?: sanityImage,
 	taxonomies?: Array<taxonomy>,

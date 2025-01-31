@@ -4,7 +4,7 @@ export const resolveArticleHref = (
 	article: article,
 ): string | undefined => {
 
-	return `/article/${article._type}/${article.slug}`
+	return `/article/${article._type}/${article.slug.current }`
 	// switch (documentType) {
 	// 	case 'page':
 	// 		return slug ? `/${slug}` : undefined

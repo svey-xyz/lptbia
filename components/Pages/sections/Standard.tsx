@@ -18,7 +18,7 @@ export const Standard = ({ index, data, className, style, children }: args) => {
 			style={style}
 		>
 			{ children }
-			<div className={`relative main-padding flex flex-col h-full w-full gap-6`}>
+			<div className={`relative main-padding flex flex-col h-full w-full gap-6 max-w-screen overflow-x-hidden`}>
 				{ data.header &&
 					<h2 className=''>
 						{ data.header }

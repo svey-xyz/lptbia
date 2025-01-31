@@ -45,14 +45,14 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	let documentClasses = `${inter.className} ${firaCode.variable} relative`
+	let documentClasses = `${inter.className} ${firaCode.variable} relative max-w-screen overflow-x-hidden`
 	
 	return (
 		<html lang="en" className={documentClasses} suppressHydrationWarning>
 			<Head />
-			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
+			<body className='relative min-h-screen h-full flex flex-col overflow-x-hidden max-w-screen'>
 				<Header />
-				<main className='min-h-full flex-grow'>
+				<main className='relative min-h-full flex-grow overflow-x-hidden max-w-screen'>
 					{ children }
 				</main>
 				{ draftMode().isEnabled && <AutomaticVisualEditing /> }

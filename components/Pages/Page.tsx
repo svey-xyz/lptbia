@@ -28,7 +28,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 	const BG_URL = data?.heroImage ? urlFor(data?.heroImage).url() : ''
 
 	return (
-		<article className=''>
+		<article className='max-w-screen overflow-x-hidden'>
 			{	BG_URL &&
 				<div
 					className={`-mt-[--total-header-height] relative max-w-full bg-fixed bg-no-repeat bg-cover bg-center text-accent

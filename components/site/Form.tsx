@@ -52,7 +52,7 @@ const FieldGenerator = ({ args }: { args: fieldArgs }) => {
 	return (
 		<Field className='flex flex-col gap-2'>
 			<Label className="block text-accent">{args.label}</Label>
-			<Input className="p-2 w-full bg-bg outline-none border border-accent-secondary" name="username" ref={args.ref} required={args.required} />
+			<Input className="p-2 w-full bg-bg outline-none border border-accent-secondary" name={args.label} ref={args.ref} required={args.required} />
 		</Field>
 	)
 }

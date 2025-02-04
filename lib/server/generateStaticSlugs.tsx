@@ -53,7 +53,7 @@ export const generateStaticSlugsForArchives = async () => {
 }
 
 export const generateStaticSlugsForArticles = async () => {
-	const articleTypes = ['project', 'news', 'address'] // skip generating for bussinesses since they dont have their own pages, if wanted just add 'business' to array
+	const articleTypes = ['project', 'news'] // skip generating for business & address since they dont have their own pages, if wanted just add 'business' and 'address' to array
 	let articles: Array<{
 		type: string,
 		slug?: {
@@ -78,7 +78,7 @@ export const generateStaticSlugsForArticles = async () => {
 					},
 				},
 			)
-		console.log('Loaded paths for: ', type, '. Paths: ', staticSlugs)
+		// console.log('Loaded paths for: ', type, '. Paths: ', staticSlugs)
 		staticSlugs.forEach((staticPath) => {
 			articles.push({ type: type, slug: staticPath.slug })
 		})

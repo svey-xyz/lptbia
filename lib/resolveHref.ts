@@ -3,17 +3,9 @@ import { ArchivePayload, article, object_Contact, PagePayload } from "@/types"
 export const resolveArticleHref = (
 	article: article,
 ): string | undefined => {
+	const _SLUG = article.slug?.current || article.slug
 
-	return `/article/${article._type}/${article.slug.current }`
-	// switch (documentType) {
-	// 	case 'page':
-	// 		return slug ? `/${slug}` : undefined
-	// 	case 'project':
-	// 		return slug ? `/projects/${slug}` : undefined
-	// 	default:
-	// 		console.warn('Invalid document type:', documentType)
-	// 		return undefined
-	// }
+	return `/article/${article._type}/${_SLUG }`
 }
 
 

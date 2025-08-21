@@ -13,6 +13,7 @@ interface args {
 	fields?: fields,
 	icon?: IconType,
 	groups?: FieldGroupDefinition[],
+	customOrderings?: Array<{ title: string, name: string, by: Array<{ field: string, direction: 'asc' | 'desc'}>}>,
 	customPreview?: PreviewConfig,
 }
 
@@ -110,16 +111,18 @@ export class ARTICLE {
 	type: string
 	document: DocumentDefinition
 	taxonomy: DocumentDefinition
+	orderings?: Array<{ title: string, name: string, by: Array<{ field: string, direction: 'asc' | 'desc'}>}>
 
 	constructor(args: args) {
 		this.type = args.type
 		this.document = article(args)
 		this.taxonomy = taxonomy(args.type)
+		this.orderings = args.customOrderings || []
 	}
 }
 
 const article = (args: args) => {
-	const { type, icon, fields, groups } = args
+	const { type, icon, fields, groups, customOrderings } = args
  	let documentFields = [
 		..._FIELDS(type),
 		...fields || [],
@@ -137,6 +140,10 @@ const article = (args: args) => {
 			...(groups || [])
 		],
 		fields: documentFields,
+		orderings: [
+			...customOrderings || [],
+			{ title: 'Title', name: 'title', by: [{ field: 'title', direction: 'asc' }] },
+		],
 		preview: documentPreview,
 	})
 }

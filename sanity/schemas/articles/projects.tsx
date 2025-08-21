@@ -44,6 +44,12 @@ const fields = [
 	}),
 ]
 
-const args = { type: 'project', fields, icon: BsFillBookmarkFill }
+
+const orderings = [
+	{ title: 'Date Desc', name: 'dateDesc', by: [{ field: 'date.endDate', direction: 'desc' as const }, { field: 'date.startDate', direction: 'desc' as const }] },
+	{ title: 'Date Asc', name: 'dateAsc', by: [{ field: 'date.startDate', direction: 'asc' as const }, { field: 'date.startDate', direction: 'asc' as const }] },
+]
+
+const args = { type: 'project', fields, icon: BsFillBookmarkFill, customOrderings: orderings }
 export const projects = new ARTICLE(args)
 

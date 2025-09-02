@@ -22,6 +22,6 @@ export const bundle_Articles = (partial: string = '', taxonomies?: Array<taxonom
 		*[_type == $type ${referenceString}] {
 			${partial_Article},
 			${partial}
-		} | order(date.startDate desc, publishedAt desc)
+		} | order(date.startDate desc)
 	`
 }

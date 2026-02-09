@@ -67,9 +67,14 @@ export interface icon {
 	name: string,
 }
 
+export interface object_ExternalNavItem extends inherentObjectData {
+	text: string,
+	url: string,
+}
+
 export interface object_NavigationItem extends inherentObjectData {
 	title: string,
-	pages?: Array<PagePayload | ArchivePayload>,
+	pages?: Array<PagePayload | ArchivePayload | object_ExternalNavItem>,
 }
 
 // BLOCKS

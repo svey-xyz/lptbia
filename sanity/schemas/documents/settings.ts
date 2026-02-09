@@ -6,6 +6,7 @@ import {
 import { mediaAssetSource } from "sanity-plugin-media";
 
 import { PiTabsDuotone } from "react-icons/pi";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const settings = defineType({
 	title: 'Settings',
@@ -122,6 +123,26 @@ export const settings = defineType({
 									options: {
 										disableNew: true,
 									},
+								},
+								{
+									title: 'External Link',
+									name: 'externalLink',
+									type: 'object',
+									icon: FaExternalLinkAlt,
+									fields: [
+										defineField({
+											title: 'Link Text',
+											name: 'text',
+											type: 'string',
+											validation: Rule => Rule.required(),
+										}),
+										defineField({
+											title: 'URL',
+											name: 'url',
+											type: 'url',
+											validation: Rule => Rule.required().uri({scheme: ['http', 'https'] }).error(`Please enter a valid URL starting with http:// or https://`)
+										}),
+									]
 								},
 							]
 						}

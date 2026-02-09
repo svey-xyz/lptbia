@@ -1,11 +1,12 @@
 'use client'
 
-import { ArchivePayload, object_NavigationItem, PagePayload } from '@/types';
+import { ArchivePayload, object_ExternalNavItem, object_NavigationItem, PagePayload } from '@/types';
 import { Popover, PopoverButton, PopoverPanel, CloseButton } from '@headlessui/react';
 import React from 'react';
 import Link from 'next/link'
 import { resolvePageHref } from '@/lib/resolveHref';
 import { FaChevronDown } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 type NavigationItemParams = {
 	item: object_NavigationItem,
@@ -26,14 +27,18 @@ type NavigationTitleParams = {
 	title: string,
 	className?: string,
 	chevron?: boolean
+	external?: boolean,
 }
 
-const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) => {
+const NavigationTitle = ({ title, className, chevron, external }: NavigationTitleParams) => {
 	return (
 		<span className={`${className} font-bold text-bg outline-none px-4 py-1 transition-colors duration-200 flex flex-row items-center justify-center gap-1`}>
 			{title}
 			{ chevron &&
 				<FaChevronDown className='' />
+			}
+			{ external &&
+				<FaExternalLinkAlt className='inline-block' />
 			}
 		</span>
 	)
@@ -41,20 +46,30 @@ const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) =
 
 type StaticNavigationParams = {
 	title: string,
-	page: PagePayload | ArchivePayload,
+	page: PagePayload | ArchivePayload | object_ExternalNavItem,
 }
 
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
- return (
-	 <Link href={resolvePageHref(page)} className='group outline-none w-fit'>
-		 <NavigationTitle title={title} className={`w-fit bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} />
-	</Link>
- )
+	if (page._type == 'page' || page._type == 'archive') {
+		const _ITEM = page as PagePayload | ArchivePayload
+		return (
+			<Link href={resolvePageHref(_ITEM)} className='group outline-none w-fit'>
+				<NavigationTitle title={title} className={`w-fit bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} />
+			</Link>
+		)
+	} else if (page._type == 'externalLink') {
+		const _ITEM = page as object_ExternalNavItem
+		return (
+			<Link href={_ITEM.url} className='group outline-none w-fit'>
+				<NavigationTitle title={title} className={`w-fit bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} external={true}/>
+			</Link>
+		)
+	}
 }
 
 type PopoverParams = {
 	title: string,
-	pages: ArchivePayload[] | PagePayload[],
+	pages: Array<PagePayload | ArchivePayload | object_ExternalNavItem>,
 }
 
 const PopoverNavigation = ({ title, pages }: PopoverParams) => {
@@ -68,11 +83,25 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 		<PopoverPanel className={`relative z-20`} >
 			{({ close }) => {
 				const items = pages.flatMap((page) => {
-					return (
-						<Link href={resolvePageHref(page)} key={page._id} className='relative z-10 px-4 py-2 text-sm font-bold hover:underline' onClick={() => { close() }}>
-							{page.title}
-						</Link>
-					)
+					if (page._type == 'page' || page._type == 'archive') {
+						const _ITEM = page as PagePayload | ArchivePayload
+						return (
+							<Link href={resolvePageHref(_ITEM)} key={_ITEM._id} className='relative z-10 px-4 py-2 text-sm font-bold hover:underline' onClick={() => { close() }}>
+								{_ITEM.title}
+							</Link>
+						)
+					} else if (page._type == 'externalLink') {
+						const _ITEM = page as object_ExternalNavItem
+						return (
+							<Link
+								href={_ITEM.url}
+								key={_ITEM._key}
+								className='relative z-10 px-4 py-2 text-sm font-bold hover:underline flex flex-row items-center justify-between'
+								onClick={() => { close() }}>
+								{_ITEM.text} <FaExternalLinkAlt className='inline-block' />
+							</Link>
+						)
+					}
 				})
 				return (
 					<div className="absolute flex flex-col z-50 bg-bg w-full gap-1 py-4 h-fit mt-1">

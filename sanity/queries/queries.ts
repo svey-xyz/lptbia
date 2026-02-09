@@ -13,11 +13,18 @@ export const settingsQuery: string = groq`
 		navigation[]{
 			// ...,
 			title,
-			pages[]->{
-				...,
-				"slug":slug.current,
-				${partial_Sections},
-			},
+			pages[]{
+				 _type == 'page' || 'archive' => @->{
+					...,
+					"slug":slug.current,
+					${partial_Sections},
+				},
+  			_type == "externalLink" => @{
+					...,
+					text,
+					url
+				}
+			}
 		},
 		address->,
 	}

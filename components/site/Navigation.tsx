@@ -58,6 +58,7 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 				ref={navContainer}
 			>
 				{ navItems.flatMap((item) => {
+					// console.log('Rendering navigation item:', item);
 					return <NavigationItem key={item.title} item={item} />
 				})}
 			</div>

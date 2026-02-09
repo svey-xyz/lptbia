@@ -60,7 +60,7 @@ const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
 	} else if (page._type == 'externalLink') {
 		const _ITEM = page as object_ExternalNavItem
 		return (
-			<Link href={_ITEM.url} className='group outline-none w-fit'>
+			<Link href={_ITEM.url} className='group outline-none w-fit' target="_blank">
 				<NavigationTitle title={title} className={`w-fit bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} external={true}/>
 			</Link>
 		)
@@ -96,6 +96,7 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 							<Link
 								href={_ITEM.url}
 								key={_ITEM._key}
+								target="_blank"
 								className='relative z-10 px-4 py-2 text-sm font-bold hover:underline flex flex-row items-center justify-between'
 								onClick={() => { close() }}>
 								{_ITEM.text} <FaExternalLinkAlt className='inline-block' />
